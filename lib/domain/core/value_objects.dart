@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 import 'errors.dart';
 import 'failures.dart';
@@ -12,7 +13,7 @@ abstract class ValueObject<T> {
 
   /// Throws [UnexpectedValueError] containing the [ValueFailure]
   T getOrCrash() {
-    return value.fold((ValueFailure<T> f) =>throw UnexpectedValueError(f), id);
+    return value.fold((ValueFailure<T> f) => throw UnexpectedValueError(f), id);
   }
 
   bool isValid() => value.isRight();
@@ -29,4 +30,21 @@ abstract class ValueObject<T> {
 
   @override
   String toString() => 'Value(value: $value)';
+}
+
+class UniqueId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  const UniqueId._(this.value);
+
+  factory UniqueId() {
+    return UniqueId._(
+      right(const Uuid().v1())
+    );
+  }
+
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    return UniqueId._(right(uniqueId));
+  }
 }

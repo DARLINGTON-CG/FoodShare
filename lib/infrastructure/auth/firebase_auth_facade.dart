@@ -6,6 +6,9 @@ import 'package:foodshare/domain/auth/i_auth_facade.dart';
 import 'package:foodshare/domain/auth/value_objects.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/auth/user.dart';
+import 'firebase_user_map.dart';
+
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
@@ -51,7 +54,6 @@ class FirebaseAuthFacade implements IAuthFacade {
         return left(const AuthFailure.serverError());
       }
     } catch (e) {
-      print(e.toString());
       if (e.toString().contains('wrong-password') ||
           e.toString().contains('user-not-found')) {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
@@ -59,5 +61,16 @@ class FirebaseAuthFacade implements IAuthFacade {
         return left(const AuthFailure.serverError());
       }
     }
+  }
+
+  @override
+  Option<LocalUser> getSignedInUser() {
+    final User? _firebaseuser = _firebaseAuth.currentUser;
+    return optionOf(_firebaseuser?.toUser);
+  }
+
+  @override
+  Future<void> signOut() async{
+   await _firebaseAuth.signOut();
   }
 }

@@ -21,29 +21,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     on<RegisterWithEmailAndPasswordPressed>(
         _onRegisterWithEmailAndPasswordPressed);
     on<SignInWithEmailAndPasswordPressed>(_onSignInWithEmailAndPasswordPressed);
-
-    // ((EmailChanged event, Emitter<SignInFormState> emit) {
-
-    //   event.map(emailChanged: (EmailChanged e) async* {
-    // yield state.copyWith(
-    //     emailAddress: EmailAddress(e.emailString),
-    //     authFailureOrSuccessOption: none());
-    //   }, passwordChanged: (PasswordChanged e) async* {
-    //     yield state.copyWith(
-    //         password: Password(e.passwordString),
-    //         authFailureOrSuccessOption: none());
-    //   }, registerWithEmailAndPasswordPressed:
-    //       (RegisterWithEmailAndPasswordPressed e) async* {
-    //     yield _performActionOnAuthFacadeWithEmailAndPassword(
-    //         _authFacade.registerWithEmailAndPassword);
-    //   }, signInWithEmailAndPasswordPressed:
-    //       (SignInWithEmailAndPasswordPressed e) async* {
-    //     yield* _performActionOnAuthFacadeWithEmailAndPassword(
-    //         _authFacade.signInWithEmailAndPassword);
-    //   });
-    // },
-
-    // )  on<PasswordChanged>((PasswordChaged event,Emitter<SignInFormState> emit)){});
   }
 
   void _onEmailChanged(EmailChanged event, Emitter<SignInFormState> emit) {
