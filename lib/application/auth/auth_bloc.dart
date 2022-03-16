@@ -29,7 +29,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await _authFacade.signOut();
     emit(const AuthState.unauthenticated());
   }
-
-  @override
-  AuthState get initialState => const AuthState.initial();
 }
