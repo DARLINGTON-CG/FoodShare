@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../application/auth/sign_in_form/sign_in_form_bloc.dart';
-import '../../injector.dart';
 import '../anim/fade_slide_transition.dart';
 import '../core/constants.dart';
-import 'widgets/login_form.dart';
+import 'widgets/sign_up_form.dart';
 
-class Login extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   final double screenHeight;
 
-  const Login({
-    required this.screenHeight,
+  const SignUpPage({ required this.screenHeight,
     Key? key,
+   
   }) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
+class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _headerTextAnimation;
   late Animation<double> _formElementAnimation;
-
+ 
   @override
   void initState() {
     super.initState();
@@ -51,6 +48,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       ),
     ));
 
+  
+  
+
     _animationController.forward();
   }
 
@@ -66,35 +66,29 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       resizeToAvoidBottomInset: false,
       backgroundColor: kWhite,
       appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        actionsIconTheme: const IconThemeData(color: Colors.black),
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: FadeSlideTransition(
-          animation: _headerTextAnimation,
-          additionalOffset: 0,
-          child: Text("Welcome Back",
-              style: GoogleFonts.alegreya(
-                  fontSize: 21,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold)),
-        ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: kPaddingL,
-          ),
-          child: BlocProvider<SignInFormBloc>(
-            create: (BuildContext context) => getIt<SignInFormBloc>(),
-            child: LoginForm(
-                animation: _formElementAnimation,
-              ) ,
-          
+          elevation: 0.0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          actionsIconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: FadeSlideTransition(
+            animation: _headerTextAnimation,
+            additionalOffset: 0,
+            child: Text("New Account",
+                style: GoogleFonts.alegreya(
+                    fontSize: 21,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold)),
           ),
         ),
-      ),
+      body:  SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
+              child: SignUpForm(
+                    animation: _formElementAnimation,
+                  ), 
+            ),
+          ),
     );
   }
 }

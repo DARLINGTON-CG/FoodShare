@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/sign_in/sign_in_page.dart';
+import 'package:foodshare/presentation/sign_in/welcome_page.dart';
 
 class AppWidget extends StatelessWidget
 {
@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget
     return const MaterialApp(
       title: 'FoodShare' ,
       debugShowCheckedModeBanner: false,
-      home: SignInPage(),
+      home: WelcomePage(),
     );
   }
 }
