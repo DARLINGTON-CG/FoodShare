@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../anim/fade_slide_transition.dart';
 import '../../core/constants.dart';
 import 'custom_button.dart';
+
 class LoginForm extends StatelessWidget {
   final Animation<double> animation;
 
@@ -167,7 +168,6 @@ class LoginForm extends StatelessWidget {
                     textColor: kWhite,
                     text: 'Login to continue',
                     onPressed: () {
-                     
                       BlocProvider.of<SignInFormBloc>(context).add(
                           const SignInFormEvent
                               .signInWithEmailAndPasswordPressed());

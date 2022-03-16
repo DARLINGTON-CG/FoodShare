@@ -6,7 +6,6 @@ import 'package:foodshare/domain/auth/i_auth_facade.dart';
 import 'package:foodshare/domain/auth/value_objects.dart';
 import 'package:injectable/injectable.dart';
 
-
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
@@ -15,7 +14,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
       {required EmailAddress emailAddress, required Password password}) async {
-    final String emailAddressString = emailAddress.getOrCrash();
+    final String emailAddressString = emailAddress.getOrCrash().trim();
     final String passwordString = password.getOrCrash();
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
@@ -27,20 +26,34 @@ class FirebaseAuthFacade implements IAuthFacade {
       } else {
         return left(const AuthFailure.serverError());
       }
+    } catch (e) {
+      if (e.toString().contains('email-already-in-use')) {
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
     }
   }
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
-      {required EmailAddress emailAddress, required Password password}) async{
-   final String emailAddressString = emailAddress.getOrCrash();
+      {required EmailAddress emailAddress, required Password password}) async {
+    final String emailAddressString = emailAddress.getOrCrash().trim();
     final String passwordString = password.getOrCrash();
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: emailAddressString, password: passwordString);
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.code == 'wrong-password' || e.code == 'user-not-found' ) {
+      if (e.code == 'wrong-password' || e.code == 'user-not-found') {
+        return left(const AuthFailure.invalidEmailAndPasswordCombination());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    } catch (e) {
+      print(e.toString());
+      if (e.toString().contains('wrong-password') ||
+          e.toString().contains('user-not-found')) {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());
