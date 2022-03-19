@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../injector.dart';
 import '../anim/fade_slide_transition.dart';
 import '../core/constants.dart';
 import 'widgets/sign_up_form.dart';
@@ -84,9 +87,11 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
       body:  SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
-              child: SignUpForm(
+              child:  BlocProvider<SignInFormBloc>(
+            create: (BuildContext context) => getIt<SignInFormBloc>(),
+            child:SignupForm(
                     animation: _formElementAnimation,
-                  ), 
+                  )), 
             ),
           ),
     );

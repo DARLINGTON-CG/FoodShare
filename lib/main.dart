@@ -9,6 +9,8 @@ import 'injector.dart';
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
 
+   
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent,

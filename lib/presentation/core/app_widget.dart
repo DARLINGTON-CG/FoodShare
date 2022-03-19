@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/sign_in/welcome_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodshare/application/auth/auth_bloc.dart';
+import 'package:foodshare/presentation/routes/router.gr.dart';
 
-class AppWidget extends StatelessWidget
-{
+import '../../injector.dart';
+
+class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
 
- @override
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'FoodShare' ,
-      debugShowCheckedModeBanner: false,
-      home: WelcomePage(),
+    final AppRouter _appRouter = AppRouter();
+    return MultiBlocProvider(
+      // ignore: always_specify_types
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (BuildContext context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        )
+      ],
+      child: MaterialApp.router(
+        title: 'FoodShare',
+        debugShowCheckedModeBanner: false,
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+      ),
     );
   }
 }

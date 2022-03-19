@@ -8,19 +8,19 @@ import '../anim/fade_slide_transition.dart';
 import '../core/constants.dart';
 import 'widgets/login_form.dart';
 
-class Login extends StatefulWidget {
-  final double screenHeight;
+class SignInPage extends StatefulWidget {
 
-  const Login({
-    required this.screenHeight,
+
+  const SignInPage({
+  
     Key? key,
   }) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
+class _SignInPageState extends State<SignInPage> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _headerTextAnimation;
   late Animation<double> _formElementAnimation;
