@@ -155,7 +155,7 @@ class LoginForm extends StatelessWidget {
                         style: GoogleFonts.alegreya(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: const Color(0xFF4E33FF)),
+                            color: const Color(0xFF3212F1)),
                       ),
                       onPressed: () {},
                     )),
@@ -165,6 +165,7 @@ class LoginForm extends StatelessWidget {
                   additionalOffset: 2 * space,
                   child: CustomButton(
                     color: Colors.black,
+                    isSubmitting: state.isSubmitting,
                     textColor: kWhite,
                     text: 'Login to continue',
                     onPressed: () {
