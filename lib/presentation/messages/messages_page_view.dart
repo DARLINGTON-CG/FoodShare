@@ -1,39 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../anim/page/slide_in.dart';
+import 'chat_page.dart';
+import '../anim/page/slide_up.dart';
+import '../profile/profile_page.dart';
 
 class MessagesPageView extends StatelessWidget {
   const MessagesPageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers:<Widget> [
-      SliverAppBar(
-        title:const Text('Chats'),
-        elevation: 0.0,
-        pinned: true,
-        centerTitle: true,
-        leading: Center(
-          child: GestureDetector(
-            onTap: (){},
-            //  =>
-            //     Navigator.of(context).push(SlideUp(page: const ProfilePage())),
-            child: Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2), shape: BoxShape.circle),
-            ),
-          ),
-        ),
-        actions:<Widget> [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          )
-        ],
-      ),
+    return CustomScrollView(slivers: <Widget>[
+     
       SliverAnimatedList(
         itemBuilder: (BuildContext context, int index, Animation<double> anim) {
           return ListTile(
@@ -46,23 +25,24 @@ class MessagesPageView extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Raised By Wolves',
-              style: GoogleFonts.alegreya(
-                  color: const Color(0xFFF1F1F1),
-                  fontSize: 19,
+              'Glovo',
+              style: GoogleFonts.lato(
+                  color: Colors.black,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
-              'A desire after lottery!! If i would..',
-              style: GoogleFonts.alegreya(color: const Color(0xFFF1F1F1),fontSize: 15),
+              'Order food and enjoy the rest of your day...',
+              style: GoogleFonts.alegreya(color: Colors.grey, fontSize: 15),
             ),
             onTap: () {
-             // Navigator.of(context).push(SlideIn(page: const MessagingPage()));
+              Navigator.of(context).push(SlideIn(page: const ChatPage()));
             },
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
-                Text('16:51', style: GoogleFonts.alegreya(color: Colors.white,fontSize:15)),
+              children: <Widget>[
+                Text('16:51',
+                    style: GoogleFonts.lato(color: Colors.white, fontSize: 15)),
                 Container(
                   width: 21,
                   height: 21,
@@ -74,14 +54,16 @@ class MessagesPageView extends StatelessWidget {
                   ),
                   child: Center(
                       child: Text('12',
-                          style: GoogleFonts.alegreya(
-                              color: Colors.black, fontSize: 11,))),
+                          style: GoogleFonts.lato(
+                            color: Colors.black,
+                            fontSize: 11,
+                          ))),
                 )
               ],
             ),
           );
         },
-        initialItemCount: 10,
+        initialItemCount: 1,
       )
     ]);
   }

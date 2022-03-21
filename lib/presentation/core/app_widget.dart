@@ -30,8 +30,9 @@ class AppWidget extends StatelessWidget {
               backgroundColor: Colors.white,
               actionsIconTheme:
                   const IconThemeData(color: Colors.black, size: 22),
-              titleTextStyle: GoogleFonts.alegreya(
-                  fontSize: 20, fontWeight: FontWeight.bold)),
+              iconTheme:const IconThemeData(color: Colors.black, size: 22) ,
+              titleTextStyle: GoogleFonts.lato(
+                  fontSize: 19, fontWeight: FontWeight.bold,color: Colors.black)),
           
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
