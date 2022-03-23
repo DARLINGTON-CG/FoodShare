@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -104,7 +105,7 @@ class ProfilePage extends StatelessWidget {
                     child: const Center(
                         child: Icon(Icons.settings, color: Colors.black)),
                   ),
-                  // onTap: () => Navigator.of(context).push(SlideUpAnim(page: const AccountSettingsPage())),
+                   onTap: () {},//=> Navigator.of(context).push(SlideUpAnim(page: MainExample())),
                   title: Text(
                     'Account Settings',
                     style: GoogleFonts.alegreya(

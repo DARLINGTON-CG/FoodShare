@@ -6,34 +6,132 @@ class PaymentsPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers:<Widget> [
-        
-         SliverToBoxAdapter(
-        child: Container(
-      margin: const EdgeInsets.only(top: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget> [
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Text('Events',
-                style: GoogleFonts.alegreya(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFFFFFFFF))),
-          ),
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(10)),
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0, left: 10, right: 10),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  'Saved cards',
+                  style:
+                      GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              subtitle: Text(
+                'List of all credit cards ',
+                style: GoogleFonts.lato(fontSize: 14),
+              ),
+              trailing: Container(
+                  width: 100,
+                  height: 40,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF3212F1),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      '+Add new',
+                      style: GoogleFonts.lato(fontSize: 15, color: Colors.white),
+                    ),
+                  )),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: 90,
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  border:
+                      Border.all(color: const Color(0xFF3212F1).withOpacity(0.5)),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Center(
+                child: ListTile(
+                  leading: Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF3212F1).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10)),
+                    width: 60,
+                    height: 60,
+                    child:
+                        Center(child: Text('Visa', style: GoogleFonts.lobster())),
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      'Visa xxx 2342',
+                      style: GoogleFonts.lato(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Expires on 5/32 ',
+                    style: GoogleFonts.lato(fontSize: 14),
+                  ),
+                  trailing: const Icon(Icons.more_horiz_rounded),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              height: 90,
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  border:
+                      Border.all(color: const Color(0xFF3212F1).withOpacity(0.5)),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Center(
+                child: ListTile(
+                  leading: Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF3212F1).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10)),
+                    width: 60,
+                    height: 60,
+                    child: Center(child: Text('M', style: GoogleFonts.lobster())),
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      'Mastercard xxx 2342',
+                      style: GoogleFonts.lato(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Expires on 5/32 ',
+                    style: GoogleFonts.lato(fontSize: 14),
+                  ),
+                  trailing: const Icon(Icons.more_horiz_rounded),
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+            ListTile(
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  'Transactions',
+                  style:
+                      GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              subtitle: Text(
+                'List of all transactions made ',
+                style: GoogleFonts.lato(fontSize: 14),
+              ),
+            ),
+            const SizedBox(height: 15),
+            Text(
+              'No current transactions',
+              style: GoogleFonts.lato(fontSize: 18),
+            ),
+          ],
+        ),
       ),
-    )),
-      ],
     );
   }
 }

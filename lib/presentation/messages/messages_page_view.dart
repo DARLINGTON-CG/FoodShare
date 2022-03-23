@@ -3,9 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../anim/page/slide_in.dart';
 import 'chat_page.dart';
-import '../anim/page/slide_up.dart';
-import '../profile/profile_page.dart';
-
 class MessagesPageView extends StatelessWidget {
   const MessagesPageView({Key? key}) : super(key: key);
 

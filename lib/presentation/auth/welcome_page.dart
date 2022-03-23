@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/routes/router.gr.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_route/auto_route.dart';
 
-import '../anim/page/slide_up.dart';
-import 'sign_in_page.dart';
-import 'sign_up_page.dart';
 import 'widgets/sign_container.dart';
-
+import '../../presentation/routes/router.gr.dart';
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 

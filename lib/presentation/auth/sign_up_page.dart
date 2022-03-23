@@ -85,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
         ),
       body:  SafeArea(
             child: Stack(
-              children: [
+              children:<Widget> [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
                   child:  BlocProvider<SignInFormBloc>(
