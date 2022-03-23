@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/anim/page/slide_up.dart';
+import 'package:foodshare/presentation/routes/router.gr.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_route/auto_route.dart';
 
+import '../anim/page/slide_up.dart';
 import 'sign_in_page.dart';
 import 'sign_up_page.dart';
 import 'widgets/sign_container.dart';
@@ -46,18 +48,15 @@ class WelcomePage extends StatelessWidget {
                       displayText: 'Sign up',
                       isOutlined: false,
                       onPressedCallback: () =>
-                          Navigator.of(context).push(SlideUpAnim(
-                              page: SignUpPage(
-                            screenHeight: MediaQuery.of(context).size.height,
-                          )))),
+                          context.replaceRoute(const SignUpPageRoute())),
                   const SizedBox(
                     width: 15,
                   ),
                   SignContainer(
                       displayText: 'Sign In',
                       isOutlined: true,
-                      onPressedCallback: () => Navigator.of(context)
-                          .push(SlideUpAnim(page: const SignInPage()))),
+                      onPressedCallback: () =>
+                          context.replaceRoute(const SignInPageRoute())),
                 ],
               )
             ],

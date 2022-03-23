@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:foodshare/domain/auth/auth_failure.dart';
-import 'package:foodshare/domain/core/failures.dart';
+import 'package:foodshare/presentation/routes/router.gr.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_route/auto_route.dart';
 
+import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../../domain/auth/auth_failure.dart';
+import '../../../domain/core/failures.dart';
 import '../../anim/fade_slide_transition.dart';
 import '../../core/constants.dart';
 import 'custom_button.dart';
@@ -31,13 +33,16 @@ class LoginForm extends StatelessWidget {
             (Either<AuthFailure, Unit> either) =>
                 either.fold((AuthFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    behavior: SnackBarBehavior.floating,
                       content: Text(failure.map(
                           cancelledByUser: (_) => "Cancelled",
                           serverError: (_) => "Server Error",
                           emailAlreadyInUse: (_) => "Email already in use",
                           invalidEmailAndPasswordCombination: (_) =>
                               "Invalid email and password combination"))));
-                }, (Unit success) => null));
+                }, (Unit success) => 
+                context.replaceRoute(const HomePageRoute())
+                ));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -73,6 +78,20 @@ class LoginForm extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.redAccent.withOpacity(0.5),
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.redAccent.withOpacity(0.8),
+                        ),
+                      ),
+                      errorStyle:
+                          GoogleFonts.lato(fontSize: 13, color: Colors.red),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(
@@ -110,6 +129,12 @@ class LoginForm extends StatelessWidget {
                                 shortPassword: (_) => 'Short Password',
                                 orElse: () => null),
                             (_) => null),
+                    obscureText: true,
+                    toolbarOptions: const ToolbarOptions(
+                        copy: false,
+                        cut: false,
+                        paste: false,
+                        selectAll: false),
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(kPaddingM),
                       focusedBorder: OutlineInputBorder(
@@ -122,6 +147,20 @@ class LoginForm extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(
                           color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.redAccent.withOpacity(0.8),
+                        ),
+                      ),
+                      errorStyle:
+                          GoogleFonts.lato(fontSize: 13, color: Colors.red),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.redAccent.withOpacity(0.5),
                         ),
                       ),
                       hintText: "Password",
@@ -157,7 +196,7 @@ class LoginForm extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: const Color(0xFF3212F1)),
                       ),
-                      onPressed: () {},
+                      onPressed: () => context.replaceRoute(const SignUpPageRoute()),
                     )),
                 const SizedBox(height: 10),
                 FadeSlideTransition(

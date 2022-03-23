@@ -9,9 +9,8 @@ import '../core/constants.dart';
 import 'widgets/sign_up_form.dart';
 
 class SignUpPage extends StatefulWidget {
-  final double screenHeight;
-
-  const SignUpPage({ required this.screenHeight,
+ 
+  const SignUpPage({
     Key? key,
    
   }) : super(key: key);
@@ -85,13 +84,17 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
           ),
         ),
       body:  SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
-              child:  BlocProvider<SignInFormBloc>(
-            create: (BuildContext context) => getIt<SignInFormBloc>(),
-            child:SignupForm(
-                    animation: _formElementAnimation,
-                  )), 
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
+                  child:  BlocProvider<SignInFormBloc>(
+                create: (BuildContext context) => getIt<SignInFormBloc>(),
+                child:SignupForm(
+                        animation: _formElementAnimation,
+                      )), 
+                ),
+              ],
             ),
           ),
     );
