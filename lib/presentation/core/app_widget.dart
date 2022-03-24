@@ -33,7 +33,7 @@ class AppWidget extends StatelessWidget {
               iconTheme:const IconThemeData(color: Colors.black, size: 22) ,
               titleTextStyle: GoogleFonts.lato(
                   fontSize: 19, fontWeight: FontWeight.bold,color: Colors.black)),
-          
+        
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           navigationBarTheme: const NavigationBarThemeData(
@@ -41,7 +41,6 @@ class AppWidget extends StatelessWidget {
               indicatorColor: Colors.transparent,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
               height: 60),
-          androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
           splashColor: Colors.transparent,
           textTheme: TextTheme(
             bodyText1: GoogleFonts.lato(fontSize: 19,color: Colors.black),

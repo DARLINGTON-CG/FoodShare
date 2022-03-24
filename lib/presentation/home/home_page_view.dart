@@ -26,6 +26,8 @@ class _HomePageViewState extends State<HomePageView> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      
       slivers: <Widget>[
         SliverAppBar(
           title:  TabBar(
