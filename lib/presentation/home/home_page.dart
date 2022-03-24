@@ -20,6 +20,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  List<String> appBarTitle = <String>[
+    "All Activities",
+    "Chats",
+    "Maps",
+    "Transactions"
+  ];
 
   int index = 0;
   int pageIndex = 0;
@@ -39,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0.0,
           title: Text(
-            'FoodShare',
+            appBarTitle[pageIndex],
             style: GoogleFonts.alegreya(fontSize: 18, color: Colors.black),
           ),
           centerTitle: true,
@@ -63,14 +69,11 @@ class _HomePageState extends State<HomePage> {
                 icon: const Icon(Icons.notifications))
           ],
         ),
-        
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            backgroundColor: Colors.amberAccent,
-            child: const Icon(Icons.more_horiz,
-                color: Colors.white)),
+        // floatingActionButton: FloatingActionButton(
+        //     onPressed: () {},
+        //     backgroundColor: Colors.amberAccent,
+        //     child: const Icon(Icons.more_horiz, color: Colors.white)),
         bottomNavigationBar: NavigationBar(
-
           selectedIndex: index,
           onDestinationSelected: (int selected) {
             setState(() {
@@ -119,9 +122,12 @@ class _HomePageState extends State<HomePage> {
                 isSelected: index == 4),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: _widgetOptions[pageIndex],
-        ));
+        body:  _widgetOptions[pageIndex]
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 15),
+        //   child:,
+        // )
+        
+        );
   }
 }

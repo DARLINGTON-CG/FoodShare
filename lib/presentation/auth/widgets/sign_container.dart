@@ -19,8 +19,8 @@ class SignContainer extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         decoration: BoxDecoration(
-            color: isOutlined ? Colors.transparent : Colors.black,
-            border: isOutlined ? Border.all(color: Colors.black) : null,
+            color: isOutlined ? Colors.transparent : const Color(0xFF3212F1),
+            border: isOutlined ? Border.all(color: const Color(0xFF3212F1)) : null,
             borderRadius: BorderRadius.circular(10)),
         child: Text(
           displayText,

@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: color,
             ),
-            child: isSubmitting ? const ThreeDotIndicator(color: Color(0xFF3212F1),size: 15,):  Center(
+            child: isSubmitting ? const ThreeDotIndicator(color: Colors.white,size: 15,):  Center(
                 child: Text(
               text,
               style: GoogleFonts.alegreya(fontSize: 17, color: Colors.white),

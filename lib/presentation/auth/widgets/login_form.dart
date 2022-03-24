@@ -51,6 +51,7 @@ class LoginForm extends StatelessWidget {
             autovalidateMode: state.showErrorMessages
                 ? AutovalidateMode.always
                 : AutovalidateMode.disabled,
+            
             child: Column(
               children: <Widget>[
                 FadeSlideTransition(
@@ -194,7 +195,7 @@ class LoginForm extends StatelessWidget {
                         style: GoogleFonts.alegreya(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: const Color(0xFF3212F1)),
+                            color: const Color(0xFF000000)),
                       ),
                       onPressed: () => context.replaceRoute(const SignUpPageRoute()),
                     )),
@@ -203,7 +204,7 @@ class LoginForm extends StatelessWidget {
                   animation: animation,
                   additionalOffset: 2 * space,
                   child: CustomButton(
-                    color: Colors.black,
+                    color: const Color(0xFF3212F1),
                     isSubmitting: state.isSubmitting,
                     textColor: kWhite,
                     text: 'Login to continue',

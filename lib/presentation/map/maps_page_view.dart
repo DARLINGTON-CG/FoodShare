@@ -14,7 +14,7 @@ class MapPageView extends StatefulWidget {
   State<MapPageView> createState() => _MapPageViewState();
 }
 
-class _MapPageViewState extends State<MapPageView> with OSMMixinObserver {
+class _MapPageViewState extends State<MapPageView> with OSMMixinObserver, AutomaticKeepAliveClientMixin {
   late CustomController controller;
   late GlobalKey<ScaffoldState> scaffoldKey;
   Key mapGlobalkey = UniqueKey();
@@ -152,6 +152,8 @@ class _MapPageViewState extends State<MapPageView> with OSMMixinObserver {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Stack(
       children: <Widget>[
         OSMFlutter(
@@ -350,4 +352,7 @@ class _MapPageViewState extends State<MapPageView> with OSMMixinObserver {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

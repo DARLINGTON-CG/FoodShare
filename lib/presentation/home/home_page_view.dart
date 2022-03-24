@@ -1,61 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageView extends StatelessWidget {
+class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);
+
+  @override
+  State<HomePageView> createState() => _HomePageViewState();
+}
+
+class _HomePageViewState extends State<HomePageView> with SingleTickerProviderStateMixin {
+   late TabController tabController;
+  @override
+  void initState() {
+    tabController = TabController(length: 2, vsync: this);
+  
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        SliverToBoxAdapter(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 58,
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
-                  height: 58,
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 5, bottom: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(0xFFFFB20F)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Free',
-                          style: GoogleFonts.alegreya(
-                              color: Colors.black, fontSize: 16)),
-                      const Icon(Icons.circle, size: 5, color: Colors.green)
-                    ],
-                  ),
+        SliverAppBar(
+          title:  TabBar(
+              labelColor:  Colors.black ,
+              indicatorSize: TabBarIndicatorSize.label,
+              controller: tabController,
+              tabs: <Widget> [
+                Tab(
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        " Free Food ",
+                        style: GoogleFonts.lato(fontSize: 15)
+                      )),
                 ),
-                const SizedBox(width: 10),
-                Container(
-                  height: 58,
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 5, bottom: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(0xFFE4FDE1)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Paid',
-                          style: GoogleFonts.alegreya(
-                              color: Colors.black, fontSize: 16)),
-                      const Icon(Icons.circle, size: 5, color: Colors.green)
-                    ],
-                  ),
+                Tab(
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        " Paid Food ",
+                        style: GoogleFonts.lato(fontSize: 15),
+                      )),
                 ),
-                const SizedBox(width: 10),
-              ],
-            ),
-          ),
+              ]),
         ),
+
+     
         SliverPadding(
           padding: const EdgeInsets.only(top: 10),
           sliver: SliverList(
@@ -166,3 +163,4 @@ class HomePageView extends StatelessWidget {
     );
   }
 }
+
