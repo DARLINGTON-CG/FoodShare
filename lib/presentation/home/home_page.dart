@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodshare/presentation/anim/page/slide_in.dart';
+import 'package:foodshare/presentation/notification/notification_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../anim/page/slide_up.dart';
@@ -56,30 +58,19 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: <Widget>[
             IconButton(
-                onPressed: () =>
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      padding: const EdgeInsets.all(10),
-                      width: 240,
-
-                      content: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const Icon(Icons.cancel_rounded, color: Colors.red),
-                          const SizedBox(width: 13),
-                          Text('No internet connection',
-                              style: GoogleFonts.alegreya(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold))
-                        ],
-                      ), //Container(child: Text("No internet connection\nPlease we will addres it,\n Dont fret")),
-                      backgroundColor: Colors.black,
-                      behavior: SnackBarBehavior.floating,
-                    )),
+                onPressed: () => Navigator.of(context)
+                    .push(SlideIn(page: const NotificationPage())),
                 icon: const Icon(Icons.notifications))
           ],
         ),
+        
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.amberAccent,
+            child: const Icon(Icons.more_horiz,
+                color: Colors.white)),
         bottomNavigationBar: NavigationBar(
+
           selectedIndex: index,
           onDestinationSelected: (int selected) {
             setState(() {
@@ -100,13 +91,26 @@ class _HomePageState extends State<HomePage> {
                 label: 'Chat',
                 iconName: Icons.chat_bubble_rounded,
                 isSelected: index == 1),
-            FloatingActionButton.small(
-                key: const Key('create_floating_button'),
-                onPressed: () {},
-                child: const Icon(
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        blurRadius: 4,
+                        color: Colors.grey.withOpacity(0.4),
+                        offset: const Offset(-1, 5),
+                        spreadRadius: 0.3)
+                  ],
+                  color: const Color(0xFF3212F1)),
+              child: const Center(
+                child: Icon(
                   Icons.add,
+                  color: Colors.white,
                 ),
-                backgroundColor: const Color(0xFF3212F1)),
+              ),
+            ),
             NavBarItem(
                 label: 'Map', iconName: Icons.map, isSelected: index == 3),
             NavBarItem(

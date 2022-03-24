@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             title: Text('Profile',
-                style: GoogleFonts.alegreya(fontSize: 18, color: Colors.black)),
+                style: GoogleFonts.lato(fontSize: 18, color: Colors.black)),
             centerTitle: true,
             leading: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -46,14 +46,15 @@ class ProfilePage extends StatelessWidget {
                   ),
                   title: Text(
                     'Data',
-                    style: GoogleFonts.alegreya(
-                      fontSize: 18,
+                    style: GoogleFonts.lato(
+                      fontSize: 17,
                       color: Colors.black,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   subtitle: Text('Personal user data',
-                      style: GoogleFonts.alegreya(
-                          fontSize: 17, color: Colors.black))),
+                      style: GoogleFonts.lato(
+                          fontSize: 15))),
               ListTile(
                   leading: Container(
                     width: 55,
@@ -66,14 +67,14 @@ class ProfilePage extends StatelessWidget {
                   ),
                   title: Text(
                     'Friends',
-                    style: GoogleFonts.alegreya(
-                      fontSize: 18,
-                      color: Colors.black,
+                    style: GoogleFonts.lato(
+                      fontSize: 17,
+                      color: Colors.black,fontWeight: FontWeight.bold,
                     ),
                   ),
                   subtitle: Text('Friendly system users',
-                      style: GoogleFonts.alegreya(
-                          fontSize: 17, color: Colors.black))),
+                      style: GoogleFonts.lato(
+                          fontSize: 15))),
               ListTile(
                   leading: Container(
                     width: 55,
@@ -87,14 +88,14 @@ class ProfilePage extends StatelessWidget {
                   ),
                   title: Text(
                     'Chats',
-                    style: GoogleFonts.alegreya(
-                      fontSize: 18,
-                      color: Colors.black,
+                    style: GoogleFonts.lato(
+                      fontSize: 17,
+                      color: Colors.black,fontWeight: FontWeight.bold,
                     ),
                   ),
                   subtitle: Text('Friendly system users',
-                      style: GoogleFonts.alegreya(
-                          fontSize: 17, color: Colors.black))),
+                      style: GoogleFonts.lato(
+                          fontSize: 15, color: Colors.grey))),
               ListTile(
                   leading: Container(
                     width: 55,
@@ -108,14 +109,14 @@ class ProfilePage extends StatelessWidget {
                    onTap: () {},//=> Navigator.of(context).push(SlideUpAnim(page: MainExample())),
                   title: Text(
                     'Account Settings',
-                    style: GoogleFonts.alegreya(
-                      fontSize: 18,
-                      color: Colors.black,
+                    style: GoogleFonts.lato(
+                      fontSize: 17,
+                      color: Colors.black,fontWeight: FontWeight.bold,
                     ),
                   ),
                   subtitle: Text('System updates and alerts',
-                      style: GoogleFonts.alegreya(
-                          fontSize: 17, color: Colors.black))),
+                      style: GoogleFonts.lato(
+                          fontSize: 15, color: Colors.grey))),
             ]),
           )
         ],
