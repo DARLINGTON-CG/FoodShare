@@ -30,10 +30,11 @@ class AppWidget extends StatelessWidget {
               backgroundColor: Colors.white,
               actionsIconTheme:
                   const IconThemeData(color: Colors.black, size: 22),
-              iconTheme:const IconThemeData(color: Colors.black, size: 22) ,
+              iconTheme: const IconThemeData(color: Colors.black, size: 22),
               titleTextStyle: GoogleFonts.lato(
-                  fontSize: 19, fontWeight: FontWeight.bold,color: Colors.black)),
-        
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black)),
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           navigationBarTheme: const NavigationBarThemeData(
@@ -42,14 +43,13 @@ class AppWidget extends StatelessWidget {
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
               height: 60),
           splashColor: Colors.transparent,
+          useMaterial3: true,
           textTheme: TextTheme(
-            bodyText1: GoogleFonts.lato(fontSize: 19,color: Colors.black),
-            bodyText2: GoogleFonts.lato(fontSize: 18,color: Colors.black),
+            bodyText1: GoogleFonts.lato(fontSize: 19, color: Colors.black),
+            bodyText2: GoogleFonts.lato(fontSize: 18, color: Colors.black),
           ),
         ),
       ),
     );
   }
 }
-
-

@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          elevation: 0.0,
+          elevation: 1.0,
+         
           title: Text(
             appBarTitle[pageIndex],
             style: GoogleFonts.alegreya(fontSize: 18, color: Colors.black),

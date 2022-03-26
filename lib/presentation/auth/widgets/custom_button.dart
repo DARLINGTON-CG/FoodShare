@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final Widget? image;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isSubmitting;
 
   const CustomButton({
