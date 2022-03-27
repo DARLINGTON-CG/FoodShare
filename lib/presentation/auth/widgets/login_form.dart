@@ -96,7 +96,7 @@ class LoginForm extends StatelessWidget {
                           BlocProvider.of<SignInFormBloc>(context)
                               .add(SignInFormEvent.passwordChanged(value)),
                      forgotPasswordFunc:  () => Navigator.of(context)
-                        .push(SlideUpAnim(page: ResetPasswordPage())),
+                        .push(SlideUpAnim(page:const ResetPasswordPage())),
                     )),
                 SizedBox(height: space),
                 FadeSlideTransition(

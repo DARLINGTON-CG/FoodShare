@@ -18,6 +18,10 @@ abstract class ValueObject<T> {
 
   bool isValid() => value.isRight();
 
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold((ValueFailure<T> l) => left(l), (_) => right(unit));
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -39,9 +43,7 @@ class UniqueId extends ValueObject<String> {
   const UniqueId._(this.value);
 
   factory UniqueId() {
-    return UniqueId._(
-      right(const Uuid().v1())
-    );
+    return UniqueId._(right(const Uuid().v1()));
   }
 
   factory UniqueId.fromUniqueString(String uniqueId) {
