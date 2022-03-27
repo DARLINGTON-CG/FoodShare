@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../..//auth/widgets/reset_page_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../injector.dart';
 import '../anim/fade_slide_transition.dart';
+import 'widgets/reset_page_view.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);

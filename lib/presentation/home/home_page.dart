@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          elevation: 1.0,
+          elevation: pageIndex == 0? 0.0: 1.0,
          
           title: Text(
             appBarTitle[pageIndex],

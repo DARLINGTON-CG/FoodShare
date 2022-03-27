@@ -9,11 +9,12 @@ class InputField extends StatefulWidget {
   final Function()? forgotPasswordFunc;
   final Function(String)? onChangedFunc;
   final String? Function(String?)? validator;
-
+  final bool? hideForgot;
   const InputField({
     required this.label,
     required this.passwordField,
     required this.validator,
+    this.hideForgot,
     this.forgotPasswordFunc,
     this.onChangedFunc,
     Key? key,
@@ -79,16 +80,21 @@ class _InputFieldState extends State<InputField> {
         suffixIcon: widget.passwordField
             ? Wrap(
                 children: <Widget>[
-                  TextButton(
-                      onPressed: widget.forgotPasswordFunc,
-                      child: Text(
-                        "FORGOT",
-                        style: GoogleFonts.alegreya(
-                            fontSize: 15, color: const Color(0xFF0051FF)),
-                      )),
+                  Visibility(
+                    visible: widget.hideForgot != true,
+                    child: TextButton(
+                        onPressed: widget.forgotPasswordFunc,
+                        child: Text(
+                          "FORGOT",
+                          style: GoogleFonts.alegreya(
+                              fontSize: 15, color: const Color(0xFF0051FF)),
+                        )),
+                  ),
                   IconButton(
                       icon: Icon(
-                       !hidden ? Icons.visibility_rounded : Icons.visibility_off,
+                        !hidden
+                            ? Icons.visibility_rounded
+                            : Icons.visibility_off,
                         color: Colors.blueGrey,
                         size: 18,
                       ),

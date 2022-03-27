@@ -11,6 +11,7 @@ import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../anim/fade_slide_transition.dart';
 import '../../core/constants.dart';
 import 'custom_button.dart';
+import 'input_field.dart';
 
 class SignupForm extends StatelessWidget {
   final Animation<double> animation;
@@ -52,16 +53,13 @@ class SignupForm extends StatelessWidget {
                 : AutovalidateMode.disabled,
             child: Column(
               children: <Widget>[
-                FadeSlideTransition(
-                  animation: animation,
-                  additionalOffset: 0.0,
-                  child: TextFormField(
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (String value) =>
-                        BlocProvider.of<SignInFormBloc>(context)
-                            .add(SignInFormEvent.emailChanged(value)),
-                    validator: (_) => BlocProvider.of<SignInFormBloc>(context)
+                 FadeSlideTransition(
+                    animation: animation,
+                    additionalOffset: 0.0,
+                    child: InputField(
+                      label: "Email Address",
+                      passwordField: false,
+                      validator:  (_) => BlocProvider.of<SignInFormBloc>(context)
                         .state
                         .emailAddress
                         .value
@@ -70,57 +68,19 @@ class SignupForm extends StatelessWidget {
                                 invalidEmail: (_) => 'Invalid Email',
                                 orElse: () => null),
                             (_) => null),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(kPaddingM),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.redAccent.withOpacity(0.5),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black.withOpacity(0.5),
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.redAccent.withOpacity(0.8),
-                        ),
-                      ),
-                      errorStyle:
-                          GoogleFonts.lato(fontSize: 13, color: Colors.red),
-                      hintText: "Email Address",
-                      hintStyle: GoogleFonts.alegreya(
-                        color: kBlack.withOpacity(0.7),
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.person,
-                        color: kBlack,
-                      ),
-                    ),
-                  ),
-                ),
+                      onChangedFunc:(String value) =>
+                        BlocProvider.of<SignInFormBloc>(context)
+                            .add(SignInFormEvent.emailChanged(value),
+                    ))),
                 SizedBox(height: space),
                 FadeSlideTransition(
-                  animation: animation,
-                  additionalOffset: space,
-                  child: TextFormField(
-                    autocorrect: false,
-                    onChanged: (String value) =>
-                        BlocProvider.of<SignInFormBloc>(context)
-                            .add(SignInFormEvent.passwordChanged(value)),
-                    validator: (_) => BlocProvider.of<SignInFormBloc>(context)
+                    animation: animation,
+                    additionalOffset: space,
+                    child: InputField(
+                      label: "Password",
+                      passwordField: true,
+                      hideForgot: true,
+                      validator:  (_) => BlocProvider.of<SignInFormBloc>(context)
                         .state
                         .password
                         .value
@@ -129,53 +89,13 @@ class SignupForm extends StatelessWidget {
                                 shortPassword: (_) => 'Short Password',
                                 orElse: () => null),
                             (_) => null),
-                    obscureText: true,
-                    toolbarOptions: const ToolbarOptions(
-                        copy: false,
-                        cut: false,
-                        paste: false,
-                        selectAll: false),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(kPaddingM),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.redAccent.withOpacity(0.8),
-                        ),
-                      ),
-                      errorStyle:
-                          GoogleFonts.lato(fontSize: 13, color: Colors.red),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.redAccent.withOpacity(0.5),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black.withOpacity(0.5),
-                        ),
-                      ),
-                      hintText: "Password",
-                      hintStyle: GoogleFonts.alegreya(
-                        fontSize: 17,
-                        color: kBlack.withOpacity(0.7),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: kBlack.withOpacity(0.75),
-                      ),
-                    ),
-                  ),
-                ),
+                      onChangedFunc:(String value) =>
+                        BlocProvider.of<SignInFormBloc>(context)
+                            .add(SignInFormEvent.passwordChanged(value)),
+                   
+                    )),
+               
+              
                 SizedBox(height: space),
                 FadeSlideTransition(
                   animation: animation,

@@ -30,6 +30,8 @@ class _HomePageViewState extends State<HomePageView> with SingleTickerProviderSt
       
       slivers: <Widget>[
         SliverAppBar(
+          elevation: 1.0,
+          pinned: true,
           title:  TabBar(
               labelColor:  Colors.black ,
               indicatorSize: TabBarIndicatorSize.label,
