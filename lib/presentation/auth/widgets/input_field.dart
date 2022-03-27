@@ -87,12 +87,16 @@ class _InputFieldState extends State<InputField> {
                             fontSize: 15, color: const Color(0xFF0051FF)),
                       )),
                   IconButton(
-                      icon: const Icon(
-                        Icons.visibility_off,
+                      icon: Icon(
+                       !hidden ? Icons.visibility_rounded : Icons.visibility_off,
                         color: Colors.blueGrey,
                         size: 18,
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+                        setState(() {
+                          hidden = !hidden;
+                        });
+                      }),
                 ],
               )
             : null,

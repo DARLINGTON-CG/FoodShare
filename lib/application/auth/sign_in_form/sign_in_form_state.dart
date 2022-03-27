@@ -3,12 +3,14 @@ part of 'sign_in_form_bloc.dart';
 @freezed
  class SignInFormState with _$SignInFormState {
    factory SignInFormState(
-      {required EmailAddress emailAddress,
+      {
+      required EmailAddress emailAddress,
       required Password password,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<Either<AuthFailure,Unit>> authFailureOrSuccessOption
+      required Option<Either<AuthFailure,Unit>> authFailureOrSuccessOption,
+      required EmailAddress resetEmailAddress
       }) = _SignInFormState;
   
-  factory SignInFormState.initial() => SignInFormState(emailAddress: EmailAddress(""), password: Password(""), showErrorMessages: false, isSubmitting: false, authFailureOrSuccessOption: none());
+  factory SignInFormState.initial() => SignInFormState(emailAddress: EmailAddress(""), password: Password(""), showErrorMessages: false, isSubmitting: false, authFailureOrSuccessOption: none(),resetEmailAddress: EmailAddress(''));
 }

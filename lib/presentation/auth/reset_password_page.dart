@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/presentation/auth/widgets/custom_button.dart';
+import '../..//auth/widgets/reset_page_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../injector.dart';
 import '../anim/fade_slide_transition.dart';
-import 'widgets/input_field.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
   late AnimationController _animationController;
   late Animation<double> _headerAnimation;
   late Animation<double> _formAnimation;
- 
+
   @override
   void initState() {
     super.initState();
@@ -57,7 +58,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
               additionalOffset: 0,
               child: Text("Reset Password",
                   style: GoogleFonts.lato(
-                      fontSize:19,
+                      fontSize: 19,
                       color: Colors.black,
                       fontWeight: FontWeight.bold)),
             )),
@@ -65,62 +66,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
         body: SafeArea(
           child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 2),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    FadeSlideTransition(
-                      animation: _formAnimation,
-                      additionalOffset: 0,
-                      child: Text(
-                        "Enter your email address below\nto receive a reset link.",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.lato(
-                            fontSize: 16, color:  Colors.black),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 23,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Column(children:<Widget> [
-                        FadeSlideTransition(
-                            animation: _formAnimation,
-                            additionalOffset: 0,
-                            child: const InputField(
-                              label: "Email Address",
-                              passwordField: false,
-                              key:  Key("ResetWithEmailField"),
-                              validator: null,
-                              forgotPasswordFunc: null,
-                              onChangedFunc: null,
-                            )),
-                        const SizedBox(height: 15),
-                        FadeSlideTransition(
-                            animation: _formAnimation,
-                            additionalOffset: 0,
-                            child: Text(
-                              "Make sure to provide the email\nused for registration.",
-                              style: GoogleFonts.lato(
-                                  fontSize: 16, color:Colors.black),
-                              textAlign: TextAlign.center,
-                            )),
-                        const SizedBox(height: 15),
-                        FadeSlideTransition(
-                            animation: _formAnimation,
-                            additionalOffset: 0,
-                            child: const CustomButton(
-                              key:  Key("ResetFormRaisedButton"),
-                              textColor: Colors.white,
-                              text: "Press to Reset",
-                              isSubmitting: false,
-                              color: Color(0xFF3212F1),
-                              onPressed: null,
-                            ))
-                      ]),
-                    )
-                  ])),
+              child: BlocProvider<SignInFormBloc>(
+                  create: (BuildContext context) => getIt<SignInFormBloc>(),
+                  child: ResetPageView(
+                    formAnimation: _formAnimation,
+                  ))),
         ));
   }
 }
@@ -128,9 +78,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
 class LeadingIconAnimation extends StatelessWidget {
   final Animation<double> animation;
   final Widget? child;
-  const LeadingIconAnimation(
-      { required this.animation, required this.child,Key? key,})
-      : super(key: key);
+  const LeadingIconAnimation({
+    required this.animation,
+    required this.child,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -10,5 +10,6 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
       {required EmailAddress emailAddress, required Password password});
   Option<LocalUser> getSignedInUser();
-  Future<void> signOut();
+  Future<Either<AuthFailure,Unit>> sendResetEmail({required EmailAddress emailAddress});
+  Future<Either<AuthFailure,Unit>> signOut();
 }

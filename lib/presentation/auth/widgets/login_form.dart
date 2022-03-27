@@ -41,6 +41,7 @@ class LoginForm extends StatelessWidget {
                           cancelledByUser: (_) => "Cancelled",
                           serverError: (_) => "Server Error",
                           emailAlreadyInUse: (_) => "Email already in use",
+                          invalidEmailProvided: (_) => "Invalid email provided",
                           invalidEmailAndPasswordCombination: (_) =>
                               "Invalid email and password combination"))));
                 },

@@ -35,6 +35,7 @@ class SignupForm extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(failure.map(
                           cancelledByUser: (_) => "Cancelled",
+                          invalidEmailProvided: (_) => "Invalid email provided",
                           serverError: (_) => "Server Error",
                           emailAlreadyInUse: (_) => "Email already in use",
                           invalidEmailAndPasswordCombination: (_) =>

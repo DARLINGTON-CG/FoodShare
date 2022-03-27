@@ -21,6 +21,26 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     on<RegisterWithEmailAndPasswordPressed>(
         _onRegisterWithEmailAndPasswordPressed);
     on<SignInWithEmailAndPasswordPressed>(_onSignInWithEmailAndPasswordPressed);
+    on<OnResetPasswordPressed>(_onResetPasswordPressed);
+    on<ResetEmailChanged>(_onResetEmailChanged);
+  }
+
+  void _onResetPasswordPressed(
+      OnResetPasswordPressed event, Emitter<SignInFormState> emit) async{
+    final bool isEmailValid = state.resetEmailAddress.isValid();
+   
+    if (isEmailValid) {
+      emit(state.copyWith(
+          isSubmitting: true, authFailureOrSuccessOption: none()));
+          
+      final Either<AuthFailure, Unit> failureOrSuccess =
+          await _authFacade.sendResetEmail(emailAddress: state.resetEmailAddress);
+      emit(state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: some(failureOrSuccess)));
+    }
+    emit(state.copyWith(
+        showErrorMessages: true, authFailureOrSuccessOption: none()));
   }
 
   void _onEmailChanged(EmailChanged event, Emitter<SignInFormState> emit) {
@@ -29,6 +49,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         emailAddress: EmailAddress(event.emailString),
         authFailureOrSuccessOption: none()));
   }
+  void _onResetEmailChanged(ResetEmailChanged event, Emitter<SignInFormState> emit) {
+    final SignInFormState state = this.state;
+    emit(state.copyWith(
+        resetEmailAddress: EmailAddress(event.resetEmailString),
+        authFailureOrSuccessOption: none()));
+  }
+
 
   void _onPasswordChanged(
       PasswordChanged event, Emitter<SignInFormState> emit) {
