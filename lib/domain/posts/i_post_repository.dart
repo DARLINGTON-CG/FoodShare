@@ -9,5 +9,5 @@ abstract class IPostRepository {
   Stream<Either<PostFailure, KtList<Post>>> watchAllUncompleted();
   Stream<Either<PostFailure, Unit>> create(Post post);
   Stream<Either<PostFailure, Unit>> update(Post post);
-  Stream<Either<PostFailure, Unit>> delete(Post post);
+  Future<Either<PostFailure, Unit>> delete(Post post);
 }

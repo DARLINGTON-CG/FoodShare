@@ -1,42 +1,9 @@
-// import 'package:equatable/equatable.dart';
+part of 'post_actor_bloc.dart';
 
-// abstract class PostActorState extends Equatable {
-//   PostActorState();
-
-//   @override
-//   List<Object> get props => [];
-// }
-
-// /// UnInitialized
-// class UnPostActorState extends PostActorState {
-
-//   UnPostActorState();
-
-//   @override
-//   String toString() => 'UnPostActorState';
-// }
-
-// /// Initialized
-// class InPostActorState extends PostActorState {
-//   InPostActorState(this.hello);
-  
-//   final String hello;
-
-//   @override
-//   String toString() => 'InPostActorState $hello';
-
-//   @override
-//   List<Object> get props => [hello];
-// }
-
-// class ErrorPostActorState extends PostActorState {
-//   ErrorPostActorState(this.errorMessage);
- 
-//   final String errorMessage;
-  
-//   @override
-//   String toString() => 'ErrorPostActorState';
-
-//   @override
-//   List<Object> get props => [errorMessage];
-// }
+@freezed
+class PostActorState with _$PostActorState {
+  const factory PostActorState.initial() = _Initial;
+  const factory PostActorState.actionProgress() = _ActionProgress;
+  const factory PostActorState.actionFailure(PostFailure postFailure) = _ActionFailure;
+  const factory PostActorState.actionSuccess() = _ActionSuccess;
+}

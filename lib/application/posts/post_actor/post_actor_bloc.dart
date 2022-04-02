@@ -1,21 +1,27 @@
-// import 'dart:async';
-// import 'dart:developer' as developer;
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
-// import 'package:bloc/bloc.dart';
-// import 'package:foodshare/application/posts/post_actor/post_actor/index.dart';
+import '../../../domain/posts/i_post_repository.dart';
+import '../../../domain/posts/post.dart';
+import '../../../domain/posts/post_failure.dart';
 
-// class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
+part 'post_actor_event.dart';
+part 'post_actor_state.dart';
+part 'post_actor_bloc.freezed.dart';
 
-//   PostActorBloc(PostActorState initialState) : super(initialState){
-//    on<PostActorEvent>((event, emit) {
-//       return emit.forEach<PostActorState>(
-//         event.applyAsync(currentState: state, bloc: this),
-//         onData: (state) => state,
-//         onError: (error, stackTrace) {
-//           developer.log('$error', name: 'PostActorBloc', error: error, stackTrace: stackTrace);
-//           return ErrorPostActorState(error.toString());
-//         },
-//       );
-//     });
-//   }
-// }
+@injectable
+class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
+  final IPostRepository _postRepository;
+  PostActorBloc(this._postRepository) : super(const PostActorState.initial()) {
+    on<PostActorEvent>(
+        (PostActorEvent event, Emitter<PostActorState> emit) async {
+      emit(const PostActorState.actionProgress());
+      final Either<PostFailure, Unit> possibleFailure =
+          await _postRepository.delete(event.post);
+      emit(possibleFailure.fold((PostFailure f) => PostActorState.actionFailure(f),
+          (Unit r) => const PostActorState.actionSuccess()));
+    });
+  }
+}

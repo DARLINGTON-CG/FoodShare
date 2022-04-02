@@ -25,6 +25,12 @@ class _$PostWatcherEventTearOff {
   _WatchUncompletedStarted watchUncompletedStarted() {
     return const _WatchUncompletedStarted();
   }
+
+  _PostReceived postReceived(Either<PostFailure, KtList<Post>> failureOrPost) {
+    return _PostReceived(
+      failureOrPost,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,18 +42,24 @@ mixin _$PostWatcherEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
     required TResult Function() watchUncompletedStarted,
+    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
+        postReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,18 +68,21 @@ mixin _$PostWatcherEvent {
     required TResult Function(_WatchAllStarted value) watchAllStarted,
     required TResult Function(_WatchUncompletedStarted value)
         watchUncompletedStarted,
+    required TResult Function(_PostReceived value) postReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +157,8 @@ class _$_WatchAllStarted
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
     required TResult Function() watchUncompletedStarted,
+    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
+        postReceived,
   }) {
     return watchAllStarted();
   }
@@ -151,6 +168,8 @@ class _$_WatchAllStarted
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
   }) {
     return watchAllStarted?.call();
   }
@@ -160,6 +179,8 @@ class _$_WatchAllStarted
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
@@ -174,6 +195,7 @@ class _$_WatchAllStarted
     required TResult Function(_WatchAllStarted value) watchAllStarted,
     required TResult Function(_WatchUncompletedStarted value)
         watchUncompletedStarted,
+    required TResult Function(_PostReceived value) postReceived,
   }) {
     return watchAllStarted(this);
   }
@@ -183,6 +205,7 @@ class _$_WatchAllStarted
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
   }) {
     return watchAllStarted?.call(this);
   }
@@ -192,6 +215,7 @@ class _$_WatchAllStarted
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
@@ -259,6 +283,8 @@ class _$_WatchUncompletedStarted
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
     required TResult Function() watchUncompletedStarted,
+    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
+        postReceived,
   }) {
     return watchUncompletedStarted();
   }
@@ -268,6 +294,8 @@ class _$_WatchUncompletedStarted
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
   }) {
     return watchUncompletedStarted?.call();
   }
@@ -277,6 +305,8 @@ class _$_WatchUncompletedStarted
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
     TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
     required TResult orElse(),
   }) {
     if (watchUncompletedStarted != null) {
@@ -291,6 +321,7 @@ class _$_WatchUncompletedStarted
     required TResult Function(_WatchAllStarted value) watchAllStarted,
     required TResult Function(_WatchUncompletedStarted value)
         watchUncompletedStarted,
+    required TResult Function(_PostReceived value) postReceived,
   }) {
     return watchUncompletedStarted(this);
   }
@@ -300,6 +331,7 @@ class _$_WatchUncompletedStarted
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
   }) {
     return watchUncompletedStarted?.call(this);
   }
@@ -309,6 +341,7 @@ class _$_WatchUncompletedStarted
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
     TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
     required TResult orElse(),
   }) {
     if (watchUncompletedStarted != null) {
@@ -320,6 +353,160 @@ class _$_WatchUncompletedStarted
 
 abstract class _WatchUncompletedStarted implements PostWatcherEvent {
   const factory _WatchUncompletedStarted() = _$_WatchUncompletedStarted;
+}
+
+/// @nodoc
+abstract class _$PostReceivedCopyWith<$Res> {
+  factory _$PostReceivedCopyWith(
+          _PostReceived value, $Res Function(_PostReceived) then) =
+      __$PostReceivedCopyWithImpl<$Res>;
+  $Res call({Either<PostFailure, KtList<Post>> failureOrPost});
+}
+
+/// @nodoc
+class __$PostReceivedCopyWithImpl<$Res>
+    extends _$PostWatcherEventCopyWithImpl<$Res>
+    implements _$PostReceivedCopyWith<$Res> {
+  __$PostReceivedCopyWithImpl(
+      _PostReceived _value, $Res Function(_PostReceived) _then)
+      : super(_value, (v) => _then(v as _PostReceived));
+
+  @override
+  _PostReceived get _value => super._value as _PostReceived;
+
+  @override
+  $Res call({
+    Object? failureOrPost = freezed,
+  }) {
+    return _then(_PostReceived(
+      failureOrPost == freezed
+          ? _value.failureOrPost
+          : failureOrPost // ignore: cast_nullable_to_non_nullable
+              as Either<PostFailure, KtList<Post>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PostReceived with DiagnosticableTreeMixin implements _PostReceived {
+  const _$_PostReceived(this.failureOrPost);
+
+  @override
+  final Either<PostFailure, KtList<Post>> failureOrPost;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PostWatcherEvent.postReceived(failureOrPost: $failureOrPost)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PostWatcherEvent.postReceived'))
+      ..add(DiagnosticsProperty('failureOrPost', failureOrPost));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PostReceived &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrPost, failureOrPost));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureOrPost));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PostReceivedCopyWith<_PostReceived> get copyWith =>
+      __$PostReceivedCopyWithImpl<_PostReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAllStarted,
+    required TResult Function() watchUncompletedStarted,
+    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
+        postReceived,
+  }) {
+    return postReceived(failureOrPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
+  }) {
+    return postReceived?.call(failureOrPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function()? watchUncompletedStarted,
+    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
+        postReceived,
+    required TResult orElse(),
+  }) {
+    if (postReceived != null) {
+      return postReceived(failureOrPost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAllStarted value) watchAllStarted,
+    required TResult Function(_WatchUncompletedStarted value)
+        watchUncompletedStarted,
+    required TResult Function(_PostReceived value) postReceived,
+  }) {
+    return postReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllStarted,
+    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
+  }) {
+    return postReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllStarted,
+    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_PostReceived value)? postReceived,
+    required TResult orElse(),
+  }) {
+    if (postReceived != null) {
+      return postReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostReceived implements PostWatcherEvent {
+  const factory _PostReceived(Either<PostFailure, KtList<Post>> failureOrPost) =
+      _$_PostReceived;
+
+  Either<PostFailure, KtList<Post>> get failureOrPost;
+  @JsonKey(ignore: true)
+  _$PostReceivedCopyWith<_PostReceived> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
