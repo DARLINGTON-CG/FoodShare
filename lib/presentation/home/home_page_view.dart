@@ -8,12 +8,13 @@ class HomePageView extends StatefulWidget {
   State<HomePageView> createState() => _HomePageViewState();
 }
 
-class _HomePageViewState extends State<HomePageView> with SingleTickerProviderStateMixin {
-   late TabController tabController;
+class _HomePageViewState extends State<HomePageView>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
-  
+
     super.initState();
   }
 
@@ -27,23 +28,20 @@ class _HomePageViewState extends State<HomePageView> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
-      
       slivers: <Widget>[
         SliverAppBar(
           elevation: 1.0,
           pinned: true,
-          title:  TabBar(
-              labelColor:  Colors.black ,
+          title: TabBar(
+              labelColor: Colors.black,
               indicatorSize: TabBarIndicatorSize.label,
               controller: tabController,
-              tabs: <Widget> [
+              tabs: <Widget>[
                 Tab(
                   child: Align(
                       alignment: Alignment.center,
-                      child: Text(
-                        " Free Food ",
-                        style: GoogleFonts.lato(fontSize: 15)
-                      )),
+                      child: Text(" Free Food ",
+                          style: GoogleFonts.lato(fontSize: 15))),
                 ),
                 Tab(
                   child: Align(
@@ -55,11 +53,10 @@ class _HomePageViewState extends State<HomePageView> with SingleTickerProviderSt
                 ),
               ]),
         ),
-
-     
         SliverPadding(
           padding: const EdgeInsets.only(top: 10),
-          sliver: SliverList(
+          sliver: 
+          SliverList(
               delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
               return Container(
@@ -167,4 +164,3 @@ class _HomePageViewState extends State<HomePageView> with SingleTickerProviderSt
     );
   }
 }
-
