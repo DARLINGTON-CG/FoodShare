@@ -6,6 +6,7 @@ part of 'post_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
       body: json['body'] as String,
       name: json['name'] as String,
@@ -14,6 +15,7 @@ _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
           .fromJson(json['serverTimeStamp'] as Object),
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
     <String, dynamic>{
       'body': instance.body,

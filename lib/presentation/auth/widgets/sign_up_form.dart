@@ -1,15 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/presentation/routes/router.gr.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:auto_route/auto_route.dart';
+
 
 import '../../../domain/auth/auth_failure.dart';
 import '../../../domain/core/failures.dart';
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../anim/fade_slide_transition.dart';
+import '../../anim/page/slide_in.dart';
 import '../../core/constants.dart';
+import '../../home/home_page.dart';
+import '../sign_in_page.dart';
 import 'custom_button.dart';
 import 'input_field.dart';
 
@@ -42,7 +44,7 @@ class SignupForm extends StatelessWidget {
                           invalidEmailAndPasswordCombination: (_) =>
                               "Invalid email and password combination"))));
                 },
-                    (Unit success) => context.replaceRoute(const HomePageRoute())));
+                    (Unit success) =>  Navigator.of(context).pushReplacement( SlideIn(page:const HomePage() ) )));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -116,7 +118,7 @@ class SignupForm extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: const Color(0xff000000)),
                       ),
-                      onPressed: () => context.replaceRoute(const SignInPageRoute()),
+                      onPressed: () =>  Navigator.of(context).pushReplacement( SlideIn(page:const SignInPage() ) ),
                     )),
                 const SizedBox(height: 10),
                 FadeSlideTransition(

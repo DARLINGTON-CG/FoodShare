@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:foodshare/domain/auth/auth_failure.dart';
+import '../../domain/auth/auth_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:foodshare/domain/auth/i_auth_facade.dart';
-import 'package:foodshare/domain/auth/value_objects.dart';
+import '../../domain/auth/i_auth_facade.dart';
+import '../../domain/auth/value_objects.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/auth/user.dart';

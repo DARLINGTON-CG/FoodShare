@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodshare/domain/auth/user.dart';
-import 'package:foodshare/domain/core/value_objects.dart';
+import '../../domain/auth/user.dart';
+import '../../domain/core/value_objects.dart';
 
 extension FirebaseUserDomainX on User {
   LocalUser get toUser {

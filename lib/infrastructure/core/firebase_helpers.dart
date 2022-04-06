@@ -20,5 +20,6 @@ extension FirestoreX on FirebaseFirestore {
 
 // ignore: always_specify_types
 extension DocumentReferenceX on DocumentReference {
+  // ignore: always_specify_types
   CollectionReference get postCollection => collection('posts');
 }

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:foodshare/domain/core/value_objects.dart';
-import 'package:foodshare/domain/posts/value_objects.dart';
+import '../core/value_objects.dart';
+import 'value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../core/failures.dart';

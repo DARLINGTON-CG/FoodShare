@@ -1,7 +1,7 @@
-import 'package:foodshare/domain/core/failures.dart';
+import '../core/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:foodshare/domain/core/value_objects.dart';
-import 'package:foodshare/domain/core/value_validators.dart';
+import '../core/value_objects.dart';
+import '../core/value_validators.dart';
 import 'package:kt_dart/collection.dart';
 
 class PostBody extends ValueObject<String> {

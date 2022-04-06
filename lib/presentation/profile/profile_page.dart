@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'account_settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../anim/page/slide_in.dart';
 
 
 class ProfilePage extends StatelessWidget {
@@ -14,6 +17,7 @@ class ProfilePage extends StatelessWidget {
             title: Text('Profile',
                 style: GoogleFonts.lato(fontSize: 18, color: Colors.black)),
             centerTitle: true,
+            elevation: 0.0,
             leading: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: const Icon(
@@ -106,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                     child: const Center(
                         child: Icon(Icons.settings, color: Colors.black)),
                   ),
-                   onTap: () {},//=> Navigator.of(context).push(SlideUpAnim(page: MainExample())),
+                   onTap: () => Navigator.of(context).push(SlideIn(page: const AccountSettingsPage())),
                   title: Text(
                     'Account Settings',
                     style: GoogleFonts.lato(

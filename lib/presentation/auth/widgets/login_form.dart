@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/presentation/auth/widgets/input_field.dart';
-import 'package:foodshare/presentation/routes/router.gr.dart';
+import '../../anim/page/slide_in.dart';
+import '../../home/home_page.dart';
+import '../sign_up_page.dart';
+import 'input_field.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:auto_route/auto_route.dart';
+
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../../domain/auth/auth_failure.dart';
@@ -46,7 +48,7 @@ class LoginForm extends StatelessWidget {
                               "Invalid email and password combination"))));
                 },
                     (Unit success) =>
-                        context.replaceRoute(const HomePageRoute())));
+                         Navigator.of(context).pushReplacement( SlideIn(page:const HomePage() ) )));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -119,7 +121,7 @@ class LoginForm extends StatelessWidget {
                             color: const Color(0xFF000000)),
                       ),
                       onPressed: () =>
-                          context.replaceRoute(const SignUpPageRoute()),
+                           Navigator.of(context).pushReplacement( SlideUpAnim(page:const SignUpPage() ) ),
                     )),
                 const SizedBox(height: 10),
                 FadeSlideTransition(

@@ -1,5 +1,5 @@
-import 'package:foodshare/domain/core/value_objects.dart';
-import 'package:foodshare/domain/posts/value_objects.dart';
+import '../../domain/core/value_objects.dart';
+import '../../domain/posts/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,6 +14,7 @@ class PostDto with _$PostDto {
   const PostDto._();
 
   const factory PostDto(
+      // ignore: invalid_annotation_target
       {@JsonKey(ignore: true) String? id,
       required String body,
       required String name,

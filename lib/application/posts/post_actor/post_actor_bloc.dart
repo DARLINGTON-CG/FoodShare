@@ -7,9 +7,9 @@ import '../../../domain/posts/i_post_repository.dart';
 import '../../../domain/posts/post.dart';
 import '../../../domain/posts/post_failure.dart';
 
+part 'post_actor_bloc.freezed.dart';
 part 'post_actor_event.dart';
 part 'post_actor_state.dart';
-part 'post_actor_bloc.freezed.dart';
 
 @injectable
 class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {

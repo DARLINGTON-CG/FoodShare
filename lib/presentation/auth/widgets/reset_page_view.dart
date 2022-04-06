@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/presentation/auth/widgets/success_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -10,6 +9,7 @@ import '../../../domain/core/failures.dart';
 import '../../anim/fade_slide_transition.dart';
 import 'custom_button.dart';
 import 'input_field.dart';
+import 'success_dialog.dart';
 
 class ResetPageView extends StatelessWidget {
   final Animation<double> formAnimation;

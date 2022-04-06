@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/anim/widgets/three_dot_indicator.dart';
+import '../../anim/widgets/three_dot_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {

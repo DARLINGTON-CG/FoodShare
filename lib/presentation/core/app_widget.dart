@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/application/auth/auth_bloc.dart';
-import 'package:foodshare/presentation/routes/router.gr.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/auth/auth_bloc.dart';
 import '../../injector.dart';
+import '../splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter _appRouter = AppRouter();
     return MultiBlocProvider(
       // ignore: always_specify_types
       providers: [
@@ -20,14 +19,14 @@ class AppWidget extends StatelessWidget {
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         )
       ],
-      child: MaterialApp.router(
+      child: MaterialApp(
         title: 'FoodShare',
         debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
+        home: const SplashPage(),
         theme: ThemeData(
           appBarTheme: AppBarTheme(
               backgroundColor: Colors.white,
+              elevation: 0.0,
               actionsIconTheme:
                   const IconThemeData(color: Colors.black, size: 22),
               iconTheme: const IconThemeData(color: Colors.black, size: 22),

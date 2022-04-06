@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodshare/presentation/anim/page/slide_in.dart';
-import 'package:foodshare/presentation/notification/notification_page.dart';
+import '../anim/page/slide_in.dart';
+import '../notification/notification_page.dart';
+import '../posts/post_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../anim/page/slide_up.dart';
@@ -95,23 +96,26 @@ class _HomePageState extends State<HomePage> {
                 label: 'Chat',
                 iconName: Icons.chat_bubble_rounded,
                 isSelected: index == 1),
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        blurRadius: 4,
-                        color: Colors.grey.withOpacity(0.4),
-                        offset: const Offset(-1, 5),
-                        spreadRadius: 0.3)
-                  ],
-                  color: const Color(0xFF3212F1)),
-              child: const Center(
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
+            InkWell(
+              onTap: () => Navigator.of(context).push(SlideUpAnim(page:const PostPage())),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          blurRadius: 4,
+                          color: Colors.grey.withOpacity(0.4),
+                          offset: const Offset(-1, 5),
+                          spreadRadius: 0.3)
+                    ],
+                    color: const Color(0xFF3212F1)),
+                child: const Center(
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:foodshare/domain/core/value_objects.dart';
+import '../core/value_objects.dart';
 
 import '../core/failures.dart';
 import '../core/value_validators.dart';
