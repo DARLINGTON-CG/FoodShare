@@ -37,9 +37,11 @@ class AppWidget extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           navigationBarTheme: const NavigationBarThemeData(
+            
               backgroundColor: Colors.white,
               indicatorColor: Colors.transparent,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+
               height: 60),
           splashColor: Colors.transparent,
           useMaterial3: true,

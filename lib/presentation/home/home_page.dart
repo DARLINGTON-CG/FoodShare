@@ -43,40 +43,43 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          elevation: pageIndex == 0? 0.0: 1.0,
-         
-          title: Text(
-            appBarTitle[pageIndex],
-            style: GoogleFonts.alegreya(fontSize: 18, color: Colors.black),
-          ),
-          centerTitle: true,
-          leading: Center(
-            child: GestureDetector(
-              onTap: () => Navigator.of(context)
-                  .push(SlideUpAnim(page: const ProfilePage())),
-              child: Container(
-                width: 38,
-                height: 38,
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
-                    shape: BoxShape.circle),
+        appBar: pageIndex == 0
+            ? null
+            : AppBar(
+                elevation: 1.0,
+                title: Text(
+                  appBarTitle[pageIndex],
+                  style:
+                      GoogleFonts.alegreya(fontSize: 18, color: Colors.black),
+                ),
+                centerTitle: true,
+                leading: Center(
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context)
+                        .push(SlideUpAnim(page: const ProfilePage())),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.2),
+                          shape: BoxShape.circle),
+                    ),
+                  ),
+                ),
+                actions: <Widget>[
+                  IconButton(
+                      onPressed: () => Navigator.of(context)
+                          .push(SlideIn(page: const NotificationPage())),
+                      icon: const Icon(Icons.notifications))
+                ],
               ),
-            ),
-          ),
-          actions: <Widget>[
-            IconButton(
-                onPressed: () => Navigator.of(context)
-                    .push(SlideIn(page: const NotificationPage())),
-                icon: const Icon(Icons.notifications))
-          ],
-        ),
         // floatingActionButton: FloatingActionButton(
         //     onPressed: () {},
         //     backgroundColor: Colors.amberAccent,
         //     child: const Icon(Icons.more_horiz, color: Colors.white)),
         bottomNavigationBar: NavigationBar(
           selectedIndex: index,
+          
           onDestinationSelected: (int selected) {
             setState(() {
               index = selected;
@@ -97,7 +100,8 @@ class _HomePageState extends State<HomePage> {
                 iconName: Icons.chat_bubble_rounded,
                 isSelected: index == 1),
             InkWell(
-              onTap: () => Navigator.of(context).push(SlideUpAnim(page:const PostPage())),
+              onTap: () => Navigator.of(context)
+                  .push(SlideUpAnim(page: const PostPage())),
               child: Container(
                 width: 40,
                 height: 40,
@@ -127,12 +131,12 @@ class _HomePageState extends State<HomePage> {
                 isSelected: index == 4),
           ],
         ),
-        body:  _widgetOptions[pageIndex]
+        body: _widgetOptions[pageIndex]
         // Padding(
         //   padding: const EdgeInsets.only(top: 15),
         //   child:,
         // )
-        
+
         );
   }
 }
