@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> appBarTitle = <String>[
     "All Activities",
@@ -37,6 +38,8 @@ class _HomePageState extends State<HomePage> {
     const MapPageView(),
     const PaymentsPageView(),
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +76,8 @@ class _HomePageState extends State<HomePage> {
                       icon: const Icon(Icons.notifications))
                 ],
               ),
-        // floatingActionButton: FloatingActionButton(
-        //     onPressed: () {},
-        //     backgroundColor: Colors.amberAccent,
-        //     child: const Icon(Icons.more_horiz, color: Colors.white)),
         bottomNavigationBar: NavigationBar(
           selectedIndex: index,
-          
           onDestinationSelected: (int selected) {
             setState(() {
               index = selected;
@@ -102,27 +100,28 @@ class _HomePageState extends State<HomePage> {
             InkWell(
               onTap: () => Navigator.of(context)
                   .push(SlideUpAnim(page: const PostPage())),
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          blurRadius: 4,
-                          color: Colors.grey.withOpacity(0.4),
-                          offset: const Offset(-1, 5),
-                          spreadRadius: 0.3)
-                    ],
-                    color: const Color(0xFF3212F1)),
-                child: const Center(
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
+              child:Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            blurRadius: 4,
+                            color: Colors.grey.withOpacity(0.4),
+                            offset: const Offset(-1, 5),
+                            spreadRadius: 0.3)
+                      ],
+                      color: const Color(0xFF3212F1)),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
+            
             NavBarItem(
                 label: 'Map', iconName: Icons.map, isSelected: index == 3),
             NavBarItem(

@@ -22,8 +22,9 @@ class PostPage extends StatelessWidget {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF3212F1),
-          onPressed: () {}, child: const Icon(Icons.post_add)),
+          backgroundColor: const Color(0xFF3212F1),
+          onPressed: () {},
+          child: const Icon(Icons.post_add)),
       body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
@@ -72,7 +73,8 @@ class PostPage extends StatelessWidget {
             ),
           ),
         ),
-        const InputFieldAndLabel(label: 'Describe what is being given away....'),
+        const InputFieldAndLabel(
+            label: 'Describe what is being given away....'),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 55,
@@ -105,7 +107,6 @@ class PostPage extends StatelessWidget {
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-        
           height: 55,
           decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
           child: ListTile(
@@ -115,8 +116,8 @@ class PostPage extends StatelessWidget {
             ),
           ),
         ),
-        const InputFieldAndLabel(label: 'What time should the person pick it up?...'),
-        
+        const InputFieldAndLabel(
+            label: 'What time should the person pick it up?...'),
       ]),
     );
   }
