@@ -8,20 +8,12 @@ class InputFieldAndLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget> [
-            Padding(
-       padding: const EdgeInsets.only(left:8.0),
-       child: Text(label,
-              style: GoogleFonts.lato(fontSize: 16, color: Colors.black87,fontWeight:FontWeight.bold)),
-     ),
-     TextField(
+    return TextField(
       autocorrect: false,
     
-     
+    
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(left:10,bottom:5),
+        contentPadding: const EdgeInsets.only(top: 25,left:10,bottom:3),
         isCollapsed: true,
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -29,6 +21,7 @@ class InputFieldAndLabel extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        hintText: label,
         errorBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
@@ -49,16 +42,14 @@ class InputFieldAndLabel extends StatelessWidget {
           ),
         ),
        // hintText: widget.label,
-        hintStyle: GoogleFonts.alegreya(
+        hintStyle: GoogleFonts.lato(
           color: Colors.black.withOpacity(0.7),
-          fontSize: 17,
+          fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
        
         
       ),
-    ),
-      ],
     );
   }
 }

@@ -12,7 +12,7 @@ class PostPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Post Food',
-            style: GoogleFonts.lato(fontSize: 18, color: Colors.black)),
+            style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(
@@ -21,73 +21,103 @@ class PostPage extends StatelessWidget {
             )),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){}, child: const Icon(Icons.post_add)),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-        child:
-            ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
-          SizedBox(
-              height: 110,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                            color: Colors.grey,
-                            width: 0.5,
-                            style: BorderStyle.solid)),
-                    child: const Center(
-                        child: Icon(Icons.camera_alt_rounded,
-                            size: 30, color: Colors.grey)),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text('Please add an image',
-                      style: GoogleFonts.lato(
-                          fontSize: 16, color: Colors.redAccent)),
-                ],
-              )),
-          const SizedBox(height: 25),
-          const InputFieldAndLabel(label: 'Title'),
-          const SizedBox(height: 20),
-          const InputFieldAndLabel(label: 'Description'),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text('Quantity',
-                style: GoogleFonts.lato(
-                    fontSize: 16,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold)),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF3212F1),
+          onPressed: () {}, child: const Icon(Icons.post_add)),
+      body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 1,
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.1),
           ),
-          SizedBox(
-            height: 60,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              children: <Widget>[
-                CircularSelector(
-                    number: '1', color: Colors.grey.withOpacity(0.5)),
-                CircularSelector(
-                    number: '2', color: Colors.grey.withOpacity(0.5)),
-                CircularSelector(
-                    number: '3', color: Colors.grey.withOpacity(0.5)),
-                CircularSelector(
-                    number: '4', color: Colors.grey.withOpacity(0.5)),
-                CircularSelector(
-                    number: '5', color: Colors.grey.withOpacity(0.5)),
-              ],
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 55,
+          decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+          child: ListTile(
+            title: Text(
+              "Add Image",
+              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
             ),
           ),
-          const SizedBox(height: 20),
-          const InputFieldAndLabel(label: 'Pick up times'),
-          const SizedBox(height: 20),
-        ]),
-      ),
+        ),
+        SizedBox(
+            height: 110,
+            child: IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {},
+            )),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 55,
+          decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+          child: ListTile(
+            title: Text(
+              "Title",
+              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+            ),
+          ),
+        ),
+        const InputFieldAndLabel(label: 'Add a title...'),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 55,
+          decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+          child: ListTile(
+            title: Text(
+              'Description',
+              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+            ),
+          ),
+        ),
+        const InputFieldAndLabel(label: 'Describe what is being given away....'),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 55,
+          decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+          child: ListTile(
+            title: Text(
+              'Quantity',
+              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 60,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            children: <Widget>[
+              CircularSelector(
+                  number: '1', color: Colors.blueGrey.withOpacity(0.1)),
+              CircularSelector(
+                  number: '2', color: Colors.blueGrey.withOpacity(0.1)),
+              CircularSelector(
+                  number: '3', color: Colors.blueGrey.withOpacity(0.1)),
+              CircularSelector(
+                  number: '4', color: Colors.blueGrey.withOpacity(0.1)),
+              CircularSelector(
+                  number: '5', color: Colors.blueGrey.withOpacity(0.1)),
+            ],
+          ),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+        
+          height: 55,
+          decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+          child: ListTile(
+            title: Text(
+              'Pick up times',
+              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+            ),
+          ),
+        ),
+        const InputFieldAndLabel(label: 'What time should the person pick it up?...'),
+        
+      ]),
     );
   }
 }
