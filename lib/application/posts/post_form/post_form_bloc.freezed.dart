@@ -15,249 +15,6 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$PostFormStateTearOff {
-  const _$PostFormStateTearOff();
-
-  _PostFormState call(
-      {required Post post,
-      required bool showErrorMessages,
-      required bool isSaving,
-      required bool isEditing,
-      required Option<Either<PostFailure, Unit>> successOrFailure}) {
-    return _PostFormState(
-      post: post,
-      showErrorMessages: showErrorMessages,
-      isSaving: isSaving,
-      isEditing: isEditing,
-      successOrFailure: successOrFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $PostFormState = _$PostFormStateTearOff();
-
-/// @nodoc
-mixin _$PostFormState {
-  Post get post => throw _privateConstructorUsedError;
-  bool get showErrorMessages => throw _privateConstructorUsedError;
-  bool get isSaving => throw _privateConstructorUsedError;
-  bool get isEditing => throw _privateConstructorUsedError;
-  Option<Either<PostFailure, Unit>> get successOrFailure =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PostFormStateCopyWith<PostFormState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostFormStateCopyWith<$Res> {
-  factory $PostFormStateCopyWith(
-          PostFormState value, $Res Function(PostFormState) then) =
-      _$PostFormStateCopyWithImpl<$Res>;
-  $Res call(
-      {Post post,
-      bool showErrorMessages,
-      bool isSaving,
-      bool isEditing,
-      Option<Either<PostFailure, Unit>> successOrFailure});
-
-  $PostCopyWith<$Res> get post;
-}
-
-/// @nodoc
-class _$PostFormStateCopyWithImpl<$Res>
-    implements $PostFormStateCopyWith<$Res> {
-  _$PostFormStateCopyWithImpl(this._value, this._then);
-
-  final PostFormState _value;
-  // ignore: unused_field
-  final $Res Function(PostFormState) _then;
-
-  @override
-  $Res call({
-    Object? post = freezed,
-    Object? showErrorMessages = freezed,
-    Object? isSaving = freezed,
-    Object? isEditing = freezed,
-    Object? successOrFailure = freezed,
-  }) {
-    return _then(_value.copyWith(
-      post: post == freezed
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as Post,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSaving: isSaving == freezed
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEditing: isEditing == freezed
-          ? _value.isEditing
-          : isEditing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      successOrFailure: successOrFailure == freezed
-          ? _value.successOrFailure
-          : successOrFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PostFailure, Unit>>,
-    ));
-  }
-
-  @override
-  $PostCopyWith<$Res> get post {
-    return $PostCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$PostFormStateCopyWith<$Res>
-    implements $PostFormStateCopyWith<$Res> {
-  factory _$PostFormStateCopyWith(
-          _PostFormState value, $Res Function(_PostFormState) then) =
-      __$PostFormStateCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {Post post,
-      bool showErrorMessages,
-      bool isSaving,
-      bool isEditing,
-      Option<Either<PostFailure, Unit>> successOrFailure});
-
-  @override
-  $PostCopyWith<$Res> get post;
-}
-
-/// @nodoc
-class __$PostFormStateCopyWithImpl<$Res>
-    extends _$PostFormStateCopyWithImpl<$Res>
-    implements _$PostFormStateCopyWith<$Res> {
-  __$PostFormStateCopyWithImpl(
-      _PostFormState _value, $Res Function(_PostFormState) _then)
-      : super(_value, (v) => _then(v as _PostFormState));
-
-  @override
-  _PostFormState get _value => super._value as _PostFormState;
-
-  @override
-  $Res call({
-    Object? post = freezed,
-    Object? showErrorMessages = freezed,
-    Object? isSaving = freezed,
-    Object? isEditing = freezed,
-    Object? successOrFailure = freezed,
-  }) {
-    return _then(_PostFormState(
-      post: post == freezed
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as Post,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSaving: isSaving == freezed
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEditing: isEditing == freezed
-          ? _value.isEditing
-          : isEditing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      successOrFailure: successOrFailure == freezed
-          ? _value.successOrFailure
-          : successOrFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PostFailure, Unit>>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PostFormState implements _PostFormState {
-  const _$_PostFormState(
-      {required this.post,
-      required this.showErrorMessages,
-      required this.isSaving,
-      required this.isEditing,
-      required this.successOrFailure});
-
-  @override
-  final Post post;
-  @override
-  final bool showErrorMessages;
-  @override
-  final bool isSaving;
-  @override
-  final bool isEditing;
-  @override
-  final Option<Either<PostFailure, Unit>> successOrFailure;
-
-  @override
-  String toString() {
-    return 'PostFormState(post: $post, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, successOrFailure: $successOrFailure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _PostFormState &&
-            const DeepCollectionEquality().equals(other.post, post) &&
-            const DeepCollectionEquality()
-                .equals(other.showErrorMessages, showErrorMessages) &&
-            const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
-            const DeepCollectionEquality().equals(other.isEditing, isEditing) &&
-            const DeepCollectionEquality()
-                .equals(other.successOrFailure, successOrFailure));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(post),
-      const DeepCollectionEquality().hash(showErrorMessages),
-      const DeepCollectionEquality().hash(isSaving),
-      const DeepCollectionEquality().hash(isEditing),
-      const DeepCollectionEquality().hash(successOrFailure));
-
-  @JsonKey(ignore: true)
-  @override
-  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
-      __$PostFormStateCopyWithImpl<_PostFormState>(this, _$identity);
-}
-
-abstract class _PostFormState implements PostFormState {
-  const factory _PostFormState(
-          {required Post post,
-          required bool showErrorMessages,
-          required bool isSaving,
-          required bool isEditing,
-          required Option<Either<PostFailure, Unit>> successOrFailure}) =
-      _$_PostFormState;
-
-  @override
-  Post get post;
-  @override
-  bool get showErrorMessages;
-  @override
-  bool get isSaving;
-  @override
-  bool get isEditing;
-  @override
-  Option<Either<PostFailure, Unit>> get successOrFailure;
-  @override
-  @JsonKey(ignore: true)
-  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$PostFormEventTearOff {
   const _$PostFormEventTearOff();
 
@@ -1094,4 +851,247 @@ class _$_Saved implements _Saved {
 
 abstract class _Saved implements PostFormEvent {
   const factory _Saved() = _$_Saved;
+}
+
+/// @nodoc
+class _$PostFormStateTearOff {
+  const _$PostFormStateTearOff();
+
+  _PostFormState call(
+      {required Post post,
+      required bool showErrorMessages,
+      required bool isSaving,
+      required bool isEditing,
+      required Option<Either<PostFailure, Unit>> successOrFailure}) {
+    return _PostFormState(
+      post: post,
+      showErrorMessages: showErrorMessages,
+      isSaving: isSaving,
+      isEditing: isEditing,
+      successOrFailure: successOrFailure,
+    );
+  }
+}
+
+/// @nodoc
+const $PostFormState = _$PostFormStateTearOff();
+
+/// @nodoc
+mixin _$PostFormState {
+  Post get post => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get isSaving => throw _privateConstructorUsedError;
+  bool get isEditing => throw _privateConstructorUsedError;
+  Option<Either<PostFailure, Unit>> get successOrFailure =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PostFormStateCopyWith<PostFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PostFormStateCopyWith<$Res> {
+  factory $PostFormStateCopyWith(
+          PostFormState value, $Res Function(PostFormState) then) =
+      _$PostFormStateCopyWithImpl<$Res>;
+  $Res call(
+      {Post post,
+      bool showErrorMessages,
+      bool isSaving,
+      bool isEditing,
+      Option<Either<PostFailure, Unit>> successOrFailure});
+
+  $PostCopyWith<$Res> get post;
+}
+
+/// @nodoc
+class _$PostFormStateCopyWithImpl<$Res>
+    implements $PostFormStateCopyWith<$Res> {
+  _$PostFormStateCopyWithImpl(this._value, this._then);
+
+  final PostFormState _value;
+  // ignore: unused_field
+  final $Res Function(PostFormState) _then;
+
+  @override
+  $Res call({
+    Object? post = freezed,
+    Object? showErrorMessages = freezed,
+    Object? isSaving = freezed,
+    Object? isEditing = freezed,
+    Object? successOrFailure = freezed,
+  }) {
+    return _then(_value.copyWith(
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditing: isEditing == freezed
+          ? _value.isEditing
+          : isEditing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      successOrFailure: successOrFailure == freezed
+          ? _value.successOrFailure
+          : successOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PostFailure, Unit>>,
+    ));
+  }
+
+  @override
+  $PostCopyWith<$Res> get post {
+    return $PostCopyWith<$Res>(_value.post, (value) {
+      return _then(_value.copyWith(post: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$PostFormStateCopyWith<$Res>
+    implements $PostFormStateCopyWith<$Res> {
+  factory _$PostFormStateCopyWith(
+          _PostFormState value, $Res Function(_PostFormState) then) =
+      __$PostFormStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Post post,
+      bool showErrorMessages,
+      bool isSaving,
+      bool isEditing,
+      Option<Either<PostFailure, Unit>> successOrFailure});
+
+  @override
+  $PostCopyWith<$Res> get post;
+}
+
+/// @nodoc
+class __$PostFormStateCopyWithImpl<$Res>
+    extends _$PostFormStateCopyWithImpl<$Res>
+    implements _$PostFormStateCopyWith<$Res> {
+  __$PostFormStateCopyWithImpl(
+      _PostFormState _value, $Res Function(_PostFormState) _then)
+      : super(_value, (v) => _then(v as _PostFormState));
+
+  @override
+  _PostFormState get _value => super._value as _PostFormState;
+
+  @override
+  $Res call({
+    Object? post = freezed,
+    Object? showErrorMessages = freezed,
+    Object? isSaving = freezed,
+    Object? isEditing = freezed,
+    Object? successOrFailure = freezed,
+  }) {
+    return _then(_PostFormState(
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: isSaving == freezed
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditing: isEditing == freezed
+          ? _value.isEditing
+          : isEditing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      successOrFailure: successOrFailure == freezed
+          ? _value.successOrFailure
+          : successOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PostFailure, Unit>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PostFormState implements _PostFormState {
+  const _$_PostFormState(
+      {required this.post,
+      required this.showErrorMessages,
+      required this.isSaving,
+      required this.isEditing,
+      required this.successOrFailure});
+
+  @override
+  final Post post;
+  @override
+  final bool showErrorMessages;
+  @override
+  final bool isSaving;
+  @override
+  final bool isEditing;
+  @override
+  final Option<Either<PostFailure, Unit>> successOrFailure;
+
+  @override
+  String toString() {
+    return 'PostFormState(post: $post, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, successOrFailure: $successOrFailure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PostFormState &&
+            const DeepCollectionEquality().equals(other.post, post) &&
+            const DeepCollectionEquality()
+                .equals(other.showErrorMessages, showErrorMessages) &&
+            const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
+            const DeepCollectionEquality().equals(other.isEditing, isEditing) &&
+            const DeepCollectionEquality()
+                .equals(other.successOrFailure, successOrFailure));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(post),
+      const DeepCollectionEquality().hash(showErrorMessages),
+      const DeepCollectionEquality().hash(isSaving),
+      const DeepCollectionEquality().hash(isEditing),
+      const DeepCollectionEquality().hash(successOrFailure));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
+      __$PostFormStateCopyWithImpl<_PostFormState>(this, _$identity);
+}
+
+abstract class _PostFormState implements PostFormState {
+  const factory _PostFormState(
+          {required Post post,
+          required bool showErrorMessages,
+          required bool isSaving,
+          required bool isEditing,
+          required Option<Either<PostFailure, Unit>> successOrFailure}) =
+      _$_PostFormState;
+
+  @override
+  Post get post;
+  @override
+  bool get showErrorMessages;
+  @override
+  bool get isSaving;
+  @override
+  bool get isEditing;
+  @override
+  Option<Either<PostFailure, Unit>> get successOrFailure;
+  @override
+  @JsonKey(ignore: true)
+  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
