@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'account_settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../anim/page/slide_in.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);

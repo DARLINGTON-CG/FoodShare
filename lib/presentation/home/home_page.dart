@@ -20,7 +20,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> appBarTitle = <String>[
     "All Activities",
@@ -38,8 +37,6 @@ class _HomePageState extends State<HomePage> {
     const MapPageView(),
     const PaymentsPageView(),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +95,94 @@ class _HomePageState extends State<HomePage> {
                 iconName: Icons.chat_bubble_rounded,
                 isSelected: index == 1),
             InkWell(
-              onTap: () => Navigator.of(context)
-                  .push(SlideUpAnim(page: const PostPage())),
-              child:Container(
+                onTap: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        height: 170,
+                        color: Colors.white,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 55,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color:
+                                                Colors.grey.withOpacity(0.1)))),
+                                child: ListTile(
+                                  title: Text(
+                                    "Choose a category",
+                                    style: GoogleFonts.lato(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: const Color(0xFF3212F1)),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 55,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color:
+                                                Colors.grey.withOpacity(0.1)))),
+                                child: ListTile(
+                                  onTap: () {
+                                    Navigator.of(context).pop();
+                                   
+                                      Navigator.of(context).push(
+                                          SlideUpAnim(page: const PostPage()));
+                                   
+                                  },
+                                  trailing: const Icon(
+                                    Icons.free_breakfast_rounded,
+                                    color: Colors.black,
+                                  ),
+                                  title: Text(
+                                    "Free food",
+                                    style: GoogleFonts.lato(
+                                        fontSize: 14, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 55,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color:
+                                                Colors.grey.withOpacity(0.1)))),
+                                child: ListTile(
+                                  trailing: const Icon(
+                                    Icons.account_balance_wallet,
+                                    color: Colors.black,
+                                  ),
+                                  title: Text(
+                                    "Paid food",
+                                    style: GoogleFonts.lato(
+                                        fontSize: 14, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: Container(
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
@@ -119,9 +201,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                     ),
                   ),
-                ),
-              ),
-            
+                )),
             NavBarItem(
                 label: 'Map', iconName: Icons.map, isSelected: index == 3),
             NavBarItem(

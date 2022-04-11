@@ -49,7 +49,7 @@ class _HomePageViewState extends State<HomePageView>
                     ),
                   ),
                 ),
-                elevation: 0.0,
+                elevation: 0.5,
                 title: const Text(
                   "----------------",
                 ),
@@ -68,7 +68,6 @@ class _HomePageViewState extends State<HomePageView>
                       indicatorColor: Colors.black,
                       labelStyle: GoogleFonts.lato(fontSize: 15),
                       indicatorSize: TabBarIndicatorSize.label,
-                      // These are the widgets to put in each tab in the tab bar.
                       tabs: _tabs
                           .map((String name) => Tab(
                                 text: name,
@@ -82,7 +81,6 @@ class _HomePageViewState extends State<HomePageView>
           ];
         },
         body: TabBarView(
-          // These are the contents of the tab views, below the tabs.
           children: _tabs.map((String name) {
             return SafeArea(
               top: false,
@@ -96,6 +94,15 @@ class _HomePageViewState extends State<HomePageView>
                       SliverOverlapInjector(
                         handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
                             context),
+                      ),
+                      SliverToBoxAdapter(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 1,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(0.1),
+                          ),
+                        ),
                       ),
                       SliverPadding(
                         padding: const EdgeInsets.only(top: 10),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
@@ -14,9 +13,8 @@ class NotificationPage extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.close)),
       ),
-      body: Center(
-          child: Text("No new notifications",
-              style: GoogleFonts.lato(fontSize: 16))),
+      body:const Center(child:  Text("No new notifications"))
     );
   }
+
 }
