@@ -117,11 +117,8 @@ class _HomePageViewState extends State<HomePageView>
                         SliverPadding(
                             padding: const EdgeInsets.only(top: 10),
                             sliver: state.map(initial: (_) {
-                            
                               return SliverToBoxAdapter(child: Container());
                             }, loadingProgress: (_) {
-                            
-
                               return const SliverToBoxAdapter(
                                 child: Center(
                                     child:
@@ -130,7 +127,6 @@ class _HomePageViewState extends State<HomePageView>
                             },
                                 // ignore: always_specify_types
                                 loadSuccess: (state) {
-                             
                               return SliverList(
                                 delegate: SliverChildBuilderDelegate(
                                   (BuildContext context, int index) {
@@ -143,14 +139,10 @@ class _HomePageViewState extends State<HomePageView>
                                         margin: const EdgeInsets.all(10),
                                       );
                                     } else {
-                                      return Container(
-                                          color: Colors.blue,
-                                          margin: const EdgeInsets.all(10),
-                                          width: 100,
-                                          height: 100);
+                                      return PostItem(
+                                        post: post,
+                                          );
                                     }
-
-                                    //  return const PostItem();
                                   },
                                   childCount: state.posts.size,
                                 ),
@@ -158,7 +150,6 @@ class _HomePageViewState extends State<HomePageView>
                             },
                                 // ignore: always_specify_types
                                 loadFailure: (state) {
-                                  
                               return SliverToBoxAdapter(
                                 child: Container(
                                   color: Colors.black,

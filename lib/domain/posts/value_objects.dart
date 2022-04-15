@@ -29,7 +29,9 @@ class PostTitle extends ValueObject<String> {
   factory PostTitle(String input) {
     return PostTitle._(validateMaxString(input, maxLength)
         .flatMap(validateStringNotEmpty)
-        .flatMap(validateSingleLine));
+        // .flatMap(validateSingleLine)
+        
+        );
   }
 }
 
@@ -41,7 +43,7 @@ class PostImageUrl extends ValueObject<String> {
 
   factory PostImageUrl(String input) {
     return PostImageUrl._(
-        validateStringNotEmpty(input).flatMap(validateSingleLine));
+        validateStringNotEmpty(input));
   }
 }
 
@@ -53,7 +55,9 @@ class PickupTime extends ValueObject<String> {
 
   factory PickupTime(String input) {
     return PickupTime._(
-        validateStringNotEmpty(input).flatMap(validateSingleLine));
+        validateStringNotEmpty(input)
+        // .flatMap(validateSingleLine)
+        );
   }
 }
 

@@ -1,8 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../domain/posts/post.dart';
+
 class PostItem extends StatelessWidget {
-  const PostItem({Key? key}) : super(key: key);
+  final Post post;
+
+  const PostItem({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,82 +22,61 @@ class PostItem extends StatelessWidget {
             margin: const EdgeInsets.only(right: 20),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.grey.withOpacity(0.2)),
+                color: Colors.grey.withOpacity(0.2),
+                image: DecorationImage(
+                  
+                    image: CachedNetworkImageProvider(
+                      post.imageUrl.getOrCrash(),
+                    ),
+                    fit: BoxFit.cover)),
           ),
           Expanded(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                Text('Articulos carnaval',
+                Text(post.title.getOrCrash(),
+                    style: GoogleFonts.lato(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    )),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(post.description.getOrCrash(),
                     style: GoogleFonts.lato(
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
                     )),
                 const SizedBox(
                   height: 10,
                 ),
                 Row(
                   children: <Widget>[
-                    Container(
-                      width: 28,
-                      height: 28,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.2),
-                          shape: BoxShape.circle),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text('Sam',
-                        style: GoogleFonts.alegreya(
-                          fontSize: 16,
-                        )),
-                    const SizedBox(
-                      width: 8,
-                    ),
                     const Icon(
-                      Icons.star,
-                      size: 19,
-                      color: Colors.amber,
-                    ),
-                    Text('5.0',
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                        )),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: <Widget>[
-                    const Icon(
-                      Icons.location_on,
+                      Icons.numbers_rounded,
                       size: 16,
                     ),
-                    Text('3680.2km',
+                    Text(post.quantity.getOrCrash().toString(),
                         style: GoogleFonts.lato(
-                          fontSize: 13,
-                        )),
+                            fontSize: 13, fontWeight: FontWeight.bold)),
                     const SizedBox(
                       width: 8,
                     ),
                     const Icon(
-                      Icons.remove_red_eye_rounded,
+                      Icons.timer_outlined,
                       size: 16,
                     ),
                     const SizedBox(
                       width: 4,
                     ),
-                    Text('104',
+                    Text(post.pickupTime.getOrCrash(),
                         style: GoogleFonts.lato(
-                          fontSize: 13,
-                        )),
+                            fontSize: 13, fontWeight: FontWeight.bold)),
                     const SizedBox(
                       width: 4,
                     ),
-                    Text('Wanted',
+                    Text("-- Jonh Buscon",
                         style: GoogleFonts.lato(
                             fontSize: 13, fontWeight: FontWeight.bold)),
                   ],
