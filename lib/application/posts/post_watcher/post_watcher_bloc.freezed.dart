@@ -521,8 +521,10 @@ class _$PostWatcherStateTearOff {
     return const _LoadingProgress();
   }
 
-  _LoadSuccess loadSuccess() {
-    return const _LoadSuccess();
+  _LoadSuccess loadSuccess(KtList<Post> posts) {
+    return _LoadSuccess(
+      posts,
+    );
   }
 
   _LoadFailure loadFailure(PostFailure postFailure) {
@@ -541,7 +543,7 @@ mixin _$PostWatcherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(KtList<Post> posts) loadSuccess,
     required TResult Function(PostFailure postFailure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -549,7 +551,7 @@ mixin _$PostWatcherState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -557,7 +559,7 @@ mixin _$PostWatcherState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -652,7 +654,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(KtList<Post> posts) loadSuccess,
     required TResult Function(PostFailure postFailure) loadFailure,
   }) {
     return initial();
@@ -663,7 +665,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
   }) {
     return initial?.call();
@@ -674,7 +676,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -778,7 +780,7 @@ class _$_LoadingProgress
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(KtList<Post> posts) loadSuccess,
     required TResult Function(PostFailure postFailure) loadFailure,
   }) {
     return loadingProgress();
@@ -789,7 +791,7 @@ class _$_LoadingProgress
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
   }) {
     return loadingProgress?.call();
@@ -800,7 +802,7 @@ class _$_LoadingProgress
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -857,6 +859,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
+  $Res call({KtList<Post> posts});
 }
 
 /// @nodoc
@@ -869,43 +872,67 @@ class __$LoadSuccessCopyWithImpl<$Res>
 
   @override
   _LoadSuccess get _value => super._value as _LoadSuccess;
+
+  @override
+  $Res call({
+    Object? posts = freezed,
+  }) {
+    return _then(_LoadSuccess(
+      posts == freezed
+          ? _value.posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as KtList<Post>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
-  const _$_LoadSuccess();
+  const _$_LoadSuccess(this.posts);
+
+  @override
+  final KtList<Post> posts;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherState.loadSuccess()';
+    return 'PostWatcherState.loadSuccess(posts: $posts)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherState.loadSuccess'));
+      ..add(DiagnosticsProperty('type', 'PostWatcherState.loadSuccess'))
+      ..add(DiagnosticsProperty('posts', posts));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LoadSuccess);
+        (other.runtimeType == runtimeType &&
+            other is _LoadSuccess &&
+            const DeepCollectionEquality().equals(other.posts, posts));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(posts));
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+      __$LoadSuccessCopyWithImpl<_LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(KtList<Post> posts) loadSuccess,
     required TResult Function(PostFailure postFailure) loadFailure,
   }) {
-    return loadSuccess();
+    return loadSuccess(posts);
   }
 
   @override
@@ -913,10 +940,10 @@ class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
   }) {
-    return loadSuccess?.call();
+    return loadSuccess?.call(posts);
   }
 
   @override
@@ -924,12 +951,12 @@ class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess();
+      return loadSuccess(posts);
     }
     return orElse();
   }
@@ -973,7 +1000,12 @@ class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements PostWatcherState {
-  const factory _LoadSuccess() = _$_LoadSuccess;
+  const factory _LoadSuccess(KtList<Post> posts) = _$_LoadSuccess;
+
+  KtList<Post> get posts;
+  @JsonKey(ignore: true)
+  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1061,7 +1093,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(KtList<Post> posts) loadSuccess,
     required TResult Function(PostFailure postFailure) loadFailure,
   }) {
     return loadFailure(postFailure);
@@ -1072,7 +1104,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
   }) {
     return loadFailure?.call(postFailure);
@@ -1083,7 +1115,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(KtList<Post> posts)? loadSuccess,
     TResult Function(PostFailure postFailure)? loadFailure,
     required TResult orElse(),
   }) {

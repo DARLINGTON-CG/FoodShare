@@ -12,6 +12,7 @@ extension FirestoreX on FirebaseFirestore {
     final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
     final LocalUser user =
         userOption.getOrElse(() => throw NotAuthenticatedError());
+    
     return FirebaseFirestore.instance
         .collection('users')
         .doc(user.id.getOrCrash());

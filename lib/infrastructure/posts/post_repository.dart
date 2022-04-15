@@ -88,6 +88,7 @@ class PostRepository implements IPostRepository {
                     PostDto.fromFirestore(doc).toDomain())
                 .toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
+      print("ERROR OCCURRED {}");
       if (error is PlatformException &&
           error.message!.contains("PERMISSION_DENIED")) {
         return left(const PostFailure.insufficientPermissions());

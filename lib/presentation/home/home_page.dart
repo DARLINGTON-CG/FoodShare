@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../anim/page/slide_in.dart';
 import '../notification/notification_page.dart';
 import '../posts/post_page.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import '../../application/posts/post_actor/post_actor_bloc.dart';
+import '../../application/posts/post_watcher/post_watcher_bloc.dart';
+import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../map/maps_page_view.dart';
 import '../payments/payments_page_view.dart';
@@ -40,7 +44,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MultiBlocProvider(
+      // ignore: always_specify_types
+      providers: [
+        BlocProvider<PostWatcherBloc>(
+            create: (BuildContext context) => getIt<PostWatcherBloc>()
+              ..add(const PostWatcherEvent.watchAllStarted())),
+        BlocProvider<PostActorBloc>(
+            create: (BuildContext context) => getIt<PostActorBloc>())
+      ],
+      child: MultiBlocListener(
+        // ignore: always_specify_types
+        listeners: [
+          BlocListener<PostActorBloc, PostActorState>(
+            listener: (BuildContext context, PostActorState state) {
+              state.maybeMap(
+                  actionFailure: (PostActorState state) {}, orElse: () {});
+            },
+          )
+        ],
+        child:Scaffold(
         key: _scaffoldKey,
         resizeToAvoidBottomInset: false,
         appBar: pageIndex == 0
@@ -216,6 +239,6 @@ class _HomePageState extends State<HomePage> {
         //   child:,
         // )
 
-        );
+        )));
   }
 }

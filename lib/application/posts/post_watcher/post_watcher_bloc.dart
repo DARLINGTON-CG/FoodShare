@@ -37,8 +37,8 @@ class PostWatcherBloc extends Bloc<PostWatcherEvent, PostWatcherState> {
                 add(PostWatcherEvent.postReceived(failureOrPost)));
       }, postReceived: ( _PostReceived e) {
         emit(e.failureOrPost.fold(
-            (PostFailure f) => PostWatcherState.loadFailure(f),
-            (KtList<Post> r) => const PostWatcherState.loadSuccess()));
+            (PostFailure failure) => PostWatcherState.loadFailure(failure),
+            (KtList<Post> posts) => PostWatcherState.loadSuccess(posts)));
       });
     });
     // on<WatchAllStarted>(_onWatchAllStarted);
