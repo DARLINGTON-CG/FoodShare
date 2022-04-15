@@ -31,19 +31,19 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
             (Post initialPost) =>
                 state.copyWith(post: initialPost, isEditing: true)));
       },
-      bodyChanged: (_BodyChanged e) {
+      descriptionChanged: (_DescriptionChanged e) {
         emit(state.copyWith(
-            post: state.post.copyWith(body: PostBody(e.bodyStr)),
+            post: state.post.copyWith(description: PostDescription(e.description)),
             successOrFailure: none()));
       },
-      optionChanged: (_OptionChanged e) {
+      quantityChanged: (_QuantityChanged e) {
         emit(state.copyWith(
-            post: state.post.copyWith(option: PostOption(e.optionStr)),
+            post: state.post.copyWith(quantity: PostQuantity(e.quantity)),
             successOrFailure: none()));
       },
-      nameChanged: (_NameChanged e) {
+      titleChanged: (_TitleChanged e) {
         emit(state.copyWith(
-            post: state.post.copyWith(name: PostName(e.name)),
+            post: state.post.copyWith(title: PostTitle(e.title)),
             successOrFailure: none()));
       },
       saved: (_Saved e) async {

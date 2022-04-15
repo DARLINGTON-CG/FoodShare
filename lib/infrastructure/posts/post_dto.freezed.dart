@@ -24,15 +24,19 @@ class _$PostDtoTearOff {
 
   _PostDto call(
       {@JsonKey(ignore: true) String? id,
-      required String body,
-      required String name,
-      required String option,
+      required String imageUrl,
+      required String pickupTime,
+      required String description,
+      required int quantity,
+      required String title,
       @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
     return _PostDto(
       id: id,
-      body: body,
-      name: name,
-      option: option,
+      imageUrl: imageUrl,
+      pickupTime: pickupTime,
+      description: description,
+      quantity: quantity,
+      title: title,
       serverTimeStamp: serverTimeStamp,
     );
   }
@@ -49,9 +53,11 @@ const $PostDto = _$PostDtoTearOff();
 mixin _$PostDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  String get body => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get option => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  String get pickupTime => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
@@ -66,9 +72,11 @@ abstract class $PostDtoCopyWith<$Res> {
       _$PostDtoCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String body,
-      String name,
-      String option,
+      String imageUrl,
+      String pickupTime,
+      String description,
+      int quantity,
+      String title,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -83,9 +91,11 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? body = freezed,
-    Object? name = freezed,
-    Object? option = freezed,
+    Object? imageUrl = freezed,
+    Object? pickupTime = freezed,
+    Object? description = freezed,
+    Object? quantity = freezed,
+    Object? title = freezed,
     Object? serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
@@ -93,17 +103,25 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      pickupTime: pickupTime == freezed
+          ? _value.pickupTime
+          : pickupTime // ignore: cast_nullable_to_non_nullable
               as String,
-      option: option == freezed
-          ? _value.option
-          : option // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
@@ -120,9 +138,11 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String body,
-      String name,
-      String option,
+      String imageUrl,
+      String pickupTime,
+      String description,
+      int quantity,
+      String title,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -138,9 +158,11 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? body = freezed,
-    Object? name = freezed,
-    Object? option = freezed,
+    Object? imageUrl = freezed,
+    Object? pickupTime = freezed,
+    Object? description = freezed,
+    Object? quantity = freezed,
+    Object? title = freezed,
     Object? serverTimeStamp = freezed,
   }) {
     return _then(_PostDto(
@@ -148,17 +170,25 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      pickupTime: pickupTime == freezed
+          ? _value.pickupTime
+          : pickupTime // ignore: cast_nullable_to_non_nullable
               as String,
-      option: option == freezed
-          ? _value.option
-          : option // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
@@ -173,9 +203,11 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
 class _$_PostDto extends _PostDto {
   const _$_PostDto(
       {@JsonKey(ignore: true) this.id,
-      required this.body,
-      required this.name,
-      required this.option,
+      required this.imageUrl,
+      required this.pickupTime,
+      required this.description,
+      required this.quantity,
+      required this.title,
       @ServerTimestampConverter() required this.serverTimeStamp})
       : super._();
 
@@ -186,18 +218,22 @@ class _$_PostDto extends _PostDto {
   @JsonKey(ignore: true)
   final String? id;
   @override
-  final String body;
+  final String imageUrl;
   @override
-  final String name;
+  final String pickupTime;
   @override
-  final String option;
+  final String description;
+  @override
+  final int quantity;
+  @override
+  final String title;
   @override
   @ServerTimestampConverter()
   final FieldValue serverTimeStamp;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, body: $body, name: $name, option: $option, serverTimeStamp: $serverTimeStamp)';
+    return 'PostDto(id: $id, imageUrl: $imageUrl, pickupTime: $pickupTime, description: $description, quantity: $quantity, title: $title, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -206,9 +242,13 @@ class _$_PostDto extends _PostDto {
         (other.runtimeType == runtimeType &&
             other is _PostDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.option, option) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.pickupTime, pickupTime) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.serverTimeStamp, serverTimeStamp));
   }
@@ -217,9 +257,11 @@ class _$_PostDto extends _PostDto {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(option),
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(pickupTime),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(serverTimeStamp));
 
   @JsonKey(ignore: true)
@@ -236,9 +278,11 @@ class _$_PostDto extends _PostDto {
 abstract class _PostDto extends PostDto {
   const factory _PostDto(
           {@JsonKey(ignore: true) String? id,
-          required String body,
-          required String name,
-          required String option,
+          required String imageUrl,
+          required String pickupTime,
+          required String description,
+          required int quantity,
+          required String title,
           @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
       _$_PostDto;
   const _PostDto._() : super._();
@@ -249,11 +293,15 @@ abstract class _PostDto extends PostDto {
   @JsonKey(ignore: true)
   String? get id;
   @override
-  String get body;
+  String get imageUrl;
   @override
-  String get name;
+  String get pickupTime;
   @override
-  String get option;
+  String get description;
+  @override
+  int get quantity;
+  @override
+  String get title;
   @override
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp;

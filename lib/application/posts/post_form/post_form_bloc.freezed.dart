@@ -24,21 +24,21 @@ class _$PostFormEventTearOff {
     );
   }
 
-  _BodyChanged bodyChanged(String bodyStr) {
-    return _BodyChanged(
-      bodyStr,
+  _DescriptionChanged descriptionChanged(String description) {
+    return _DescriptionChanged(
+      description,
     );
   }
 
-  _OptionChanged optionChanged(String optionStr) {
-    return _OptionChanged(
-      optionStr,
+  _QuantityChanged quantityChanged(int quantity) {
+    return _QuantityChanged(
+      quantity,
     );
   }
 
-  _NameChanged nameChanged(String name) {
-    return _NameChanged(
-      name,
+  _TitleChanged titleChanged(String title) {
+    return _TitleChanged(
+      title,
     );
   }
 
@@ -55,27 +55,27 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) =>
@@ -83,27 +83,27 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) =>
@@ -193,9 +193,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) {
     return initialized(intialPostOption);
@@ -205,9 +205,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) {
     return initialized?.call(intialPostOption);
@@ -217,9 +217,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -233,9 +233,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
   }) {
     return initialized(this);
@@ -245,9 +245,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
   }) {
     return initialized?.call(this);
@@ -257,9 +257,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -280,183 +280,32 @@ abstract class _Initialized implements PostFormEvent {
 }
 
 /// @nodoc
-abstract class _$BodyChangedCopyWith<$Res> {
-  factory _$BodyChangedCopyWith(
-          _BodyChanged value, $Res Function(_BodyChanged) then) =
-      __$BodyChangedCopyWithImpl<$Res>;
-  $Res call({String bodyStr});
+abstract class _$DescriptionChangedCopyWith<$Res> {
+  factory _$DescriptionChangedCopyWith(
+          _DescriptionChanged value, $Res Function(_DescriptionChanged) then) =
+      __$DescriptionChangedCopyWithImpl<$Res>;
+  $Res call({String description});
 }
 
 /// @nodoc
-class __$BodyChangedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
-    implements _$BodyChangedCopyWith<$Res> {
-  __$BodyChangedCopyWithImpl(
-      _BodyChanged _value, $Res Function(_BodyChanged) _then)
-      : super(_value, (v) => _then(v as _BodyChanged));
-
-  @override
-  _BodyChanged get _value => super._value as _BodyChanged;
-
-  @override
-  $Res call({
-    Object? bodyStr = freezed,
-  }) {
-    return _then(_BodyChanged(
-      bodyStr == freezed
-          ? _value.bodyStr
-          : bodyStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_BodyChanged implements _BodyChanged {
-  const _$_BodyChanged(this.bodyStr);
-
-  @override
-  final String bodyStr;
-
-  @override
-  String toString() {
-    return 'PostFormEvent.bodyChanged(bodyStr: $bodyStr)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _BodyChanged &&
-            const DeepCollectionEquality().equals(other.bodyStr, bodyStr));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(bodyStr));
-
-  @JsonKey(ignore: true)
-  @override
-  _$BodyChangedCopyWith<_BodyChanged> get copyWith =>
-      __$BodyChangedCopyWithImpl<_BodyChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
-    required TResult Function() saved,
-  }) {
-    return bodyChanged(bodyStr);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
-    TResult Function()? saved,
-  }) {
-    return bodyChanged?.call(bodyStr);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (bodyChanged != null) {
-      return bodyChanged(bodyStr);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
-    required TResult Function(_Saved value) saved,
-  }) {
-    return bodyChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
-    TResult Function(_Saved value)? saved,
-  }) {
-    return bodyChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
-    TResult Function(_Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (bodyChanged != null) {
-      return bodyChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BodyChanged implements PostFormEvent {
-  const factory _BodyChanged(String bodyStr) = _$_BodyChanged;
-
-  String get bodyStr;
-  @JsonKey(ignore: true)
-  _$BodyChangedCopyWith<_BodyChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$OptionChangedCopyWith<$Res> {
-  factory _$OptionChangedCopyWith(
-          _OptionChanged value, $Res Function(_OptionChanged) then) =
-      __$OptionChangedCopyWithImpl<$Res>;
-  $Res call({String optionStr});
-}
-
-/// @nodoc
-class __$OptionChangedCopyWithImpl<$Res>
+class __$DescriptionChangedCopyWithImpl<$Res>
     extends _$PostFormEventCopyWithImpl<$Res>
-    implements _$OptionChangedCopyWith<$Res> {
-  __$OptionChangedCopyWithImpl(
-      _OptionChanged _value, $Res Function(_OptionChanged) _then)
-      : super(_value, (v) => _then(v as _OptionChanged));
+    implements _$DescriptionChangedCopyWith<$Res> {
+  __$DescriptionChangedCopyWithImpl(
+      _DescriptionChanged _value, $Res Function(_DescriptionChanged) _then)
+      : super(_value, (v) => _then(v as _DescriptionChanged));
 
   @override
-  _OptionChanged get _value => super._value as _OptionChanged;
+  _DescriptionChanged get _value => super._value as _DescriptionChanged;
 
   @override
   $Res call({
-    Object? optionStr = freezed,
+    Object? description = freezed,
   }) {
-    return _then(_OptionChanged(
-      optionStr == freezed
-          ? _value.optionStr
-          : optionStr // ignore: cast_nullable_to_non_nullable
+    return _then(_DescriptionChanged(
+      description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -464,70 +313,71 @@ class __$OptionChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OptionChanged implements _OptionChanged {
-  const _$_OptionChanged(this.optionStr);
+class _$_DescriptionChanged implements _DescriptionChanged {
+  const _$_DescriptionChanged(this.description);
 
   @override
-  final String optionStr;
+  final String description;
 
   @override
   String toString() {
-    return 'PostFormEvent.optionChanged(optionStr: $optionStr)';
+    return 'PostFormEvent.descriptionChanged(description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OptionChanged &&
-            const DeepCollectionEquality().equals(other.optionStr, optionStr));
+            other is _DescriptionChanged &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(optionStr));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
-  _$OptionChangedCopyWith<_OptionChanged> get copyWith =>
-      __$OptionChangedCopyWithImpl<_OptionChanged>(this, _$identity);
+  _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith =>
+      __$DescriptionChangedCopyWithImpl<_DescriptionChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) {
-    return optionChanged(optionStr);
+    return descriptionChanged(description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) {
-    return optionChanged?.call(optionStr);
+    return descriptionChanged?.call(description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
-    if (optionChanged != null) {
-      return optionChanged(optionStr);
+    if (descriptionChanged != null) {
+      return descriptionChanged(description);
     }
     return orElse();
   }
@@ -536,149 +386,150 @@ class _$_OptionChanged implements _OptionChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
   }) {
-    return optionChanged(this);
+    return descriptionChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
   }) {
-    return optionChanged?.call(this);
+    return descriptionChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
-    if (optionChanged != null) {
-      return optionChanged(this);
+    if (descriptionChanged != null) {
+      return descriptionChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _OptionChanged implements PostFormEvent {
-  const factory _OptionChanged(String optionStr) = _$_OptionChanged;
+abstract class _DescriptionChanged implements PostFormEvent {
+  const factory _DescriptionChanged(String description) = _$_DescriptionChanged;
 
-  String get optionStr;
+  String get description;
   @JsonKey(ignore: true)
-  _$OptionChangedCopyWith<_OptionChanged> get copyWith =>
+  _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NameChangedCopyWith<$Res> {
-  factory _$NameChangedCopyWith(
-          _NameChanged value, $Res Function(_NameChanged) then) =
-      __$NameChangedCopyWithImpl<$Res>;
-  $Res call({String name});
+abstract class _$QuantityChangedCopyWith<$Res> {
+  factory _$QuantityChangedCopyWith(
+          _QuantityChanged value, $Res Function(_QuantityChanged) then) =
+      __$QuantityChangedCopyWithImpl<$Res>;
+  $Res call({int quantity});
 }
 
 /// @nodoc
-class __$NameChangedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
-    implements _$NameChangedCopyWith<$Res> {
-  __$NameChangedCopyWithImpl(
-      _NameChanged _value, $Res Function(_NameChanged) _then)
-      : super(_value, (v) => _then(v as _NameChanged));
+class __$QuantityChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$QuantityChangedCopyWith<$Res> {
+  __$QuantityChangedCopyWithImpl(
+      _QuantityChanged _value, $Res Function(_QuantityChanged) _then)
+      : super(_value, (v) => _then(v as _QuantityChanged));
 
   @override
-  _NameChanged get _value => super._value as _NameChanged;
+  _QuantityChanged get _value => super._value as _QuantityChanged;
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? quantity = freezed,
   }) {
-    return _then(_NameChanged(
-      name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_QuantityChanged(
+      quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_NameChanged implements _NameChanged {
-  const _$_NameChanged(this.name);
+class _$_QuantityChanged implements _QuantityChanged {
+  const _$_QuantityChanged(this.quantity);
 
   @override
-  final String name;
+  final int quantity;
 
   @override
   String toString() {
-    return 'PostFormEvent.nameChanged(name: $name)';
+    return 'PostFormEvent.quantityChanged(quantity: $quantity)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NameChanged &&
-            const DeepCollectionEquality().equals(other.name, name));
+            other is _QuantityChanged &&
+            const DeepCollectionEquality().equals(other.quantity, quantity));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(quantity));
 
   @JsonKey(ignore: true)
   @override
-  _$NameChangedCopyWith<_NameChanged> get copyWith =>
-      __$NameChangedCopyWithImpl<_NameChanged>(this, _$identity);
+  _$QuantityChangedCopyWith<_QuantityChanged> get copyWith =>
+      __$QuantityChangedCopyWithImpl<_QuantityChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) {
-    return nameChanged(name);
+    return quantityChanged(quantity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) {
-    return nameChanged?.call(name);
+    return quantityChanged?.call(quantity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
-    if (nameChanged != null) {
-      return nameChanged(name);
+    if (quantityChanged != null) {
+      return quantityChanged(quantity);
     }
     return orElse();
   }
@@ -687,49 +538,201 @@ class _$_NameChanged implements _NameChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
   }) {
-    return nameChanged(this);
+    return quantityChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
   }) {
-    return nameChanged?.call(this);
+    return quantityChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
-    if (nameChanged != null) {
-      return nameChanged(this);
+    if (quantityChanged != null) {
+      return quantityChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _NameChanged implements PostFormEvent {
-  const factory _NameChanged(String name) = _$_NameChanged;
+abstract class _QuantityChanged implements PostFormEvent {
+  const factory _QuantityChanged(int quantity) = _$_QuantityChanged;
 
-  String get name;
+  int get quantity;
   @JsonKey(ignore: true)
-  _$NameChangedCopyWith<_NameChanged> get copyWith =>
+  _$QuantityChangedCopyWith<_QuantityChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$TitleChangedCopyWith<$Res> {
+  factory _$TitleChangedCopyWith(
+          _TitleChanged value, $Res Function(_TitleChanged) then) =
+      __$TitleChangedCopyWithImpl<$Res>;
+  $Res call({String title});
+}
+
+/// @nodoc
+class __$TitleChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$TitleChangedCopyWith<$Res> {
+  __$TitleChangedCopyWithImpl(
+      _TitleChanged _value, $Res Function(_TitleChanged) _then)
+      : super(_value, (v) => _then(v as _TitleChanged));
+
+  @override
+  _TitleChanged get _value => super._value as _TitleChanged;
+
+  @override
+  $Res call({
+    Object? title = freezed,
+  }) {
+    return _then(_TitleChanged(
+      title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TitleChanged implements _TitleChanged {
+  const _$_TitleChanged(this.title);
+
+  @override
+  final String title;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.titleChanged(title: $title)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TitleChanged &&
+            const DeepCollectionEquality().equals(other.title, title));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(title));
+
+  @JsonKey(ignore: true)
+  @override
+  _$TitleChangedCopyWith<_TitleChanged> get copyWith =>
+      __$TitleChangedCopyWithImpl<_TitleChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
+    required TResult Function() saved,
+  }) {
+    return titleChanged(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function()? saved,
+  }) {
+    return titleChanged?.call(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (titleChanged != null) {
+      return titleChanged(title);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return titleChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return titleChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (titleChanged != null) {
+      return titleChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TitleChanged implements PostFormEvent {
+  const factory _TitleChanged(String title) = _$_TitleChanged;
+
+  String get title;
+  @JsonKey(ignore: true)
+  _$TitleChangedCopyWith<_TitleChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -772,9 +775,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Post> intialPostOption) initialized,
-    required TResult Function(String bodyStr) bodyChanged,
-    required TResult Function(String optionStr) optionChanged,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) {
     return saved();
@@ -784,9 +787,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) {
     return saved?.call();
@@ -796,9 +799,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Post> intialPostOption)? initialized,
-    TResult Function(String bodyStr)? bodyChanged,
-    TResult Function(String optionStr)? optionChanged,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -812,9 +815,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_BodyChanged value) bodyChanged,
-    required TResult Function(_OptionChanged value) optionChanged,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
   }) {
     return saved(this);
@@ -824,9 +827,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
   }) {
     return saved?.call(this);
@@ -836,9 +839,9 @@ class _$_Saved implements _Saved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_BodyChanged value)? bodyChanged,
-    TResult Function(_OptionChanged value)? optionChanged,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {

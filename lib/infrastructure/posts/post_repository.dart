@@ -109,7 +109,7 @@ class PostRepository implements IPostRepository {
             (QueryDocumentSnapshot<Object?> doc) =>
                 PostDto.fromFirestore(doc).toDomain()))
         .map((Iterable<Post> post) => right<PostFailure, KtList<Post>>(post
-            .where((Post pt) => pt.option.getOrCrash().contains('Free'))
+          
             .toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&

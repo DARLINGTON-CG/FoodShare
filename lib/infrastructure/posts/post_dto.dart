@@ -14,12 +14,15 @@ class PostDto with _$PostDto {
   const PostDto._();
 
   const factory PostDto(
-      // ignore: invalid_annotation_target
-      {@JsonKey(ignore: true) String? id,
-      required String body,
-      required String name,
-      required String option,
-      @ServerTimestampConverter() required  FieldValue serverTimeStamp}) = _PostDto;
+          // ignore: invalid_annotation_target
+          {@JsonKey(ignore: true) String? id,
+          required String imageUrl,
+          required String pickupTime,
+          required String description,
+          required int quantity,
+          required String title,
+          @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
+      _PostDto;
 
   factory PostDto.fromJson(Map<String, dynamic> json) =>
       _$PostDtoFromJson(json);
@@ -27,18 +30,22 @@ class PostDto with _$PostDto {
   factory PostDto.fromDomain(Post post) {
     return PostDto(
         id: post.id.getOrCrash(),
-        body: post.body.getOrCrash(),
-        name: post.name.getOrCrash(),
-        option: post.option.getOrCrash(),
+        description: post.description.getOrCrash(),
+        imageUrl: post.imageUrl.getOrCrash(),
+        pickupTime: post.pickupTime.getOrCrash(),
+        quantity: post.quantity.getOrCrash(),
+        title: post.title.getOrCrash(),
         serverTimeStamp: FieldValue.serverTimestamp());
   }
 
   Post toDomain() {
     return Post(
         id: UniqueId.fromUniqueString(id!),
-        name: PostName(body),
-        body: PostBody(body),
-        option: PostOption(option));
+        description: PostDescription(description),
+        imageUrl: PostImageUrl(imageUrl),
+        pickupTime: PickupTime(pickupTime),
+        quantity: PostQuantity(quantity),
+        title: PostTitle(title));
   }
 
   // ignore: always_specify_types

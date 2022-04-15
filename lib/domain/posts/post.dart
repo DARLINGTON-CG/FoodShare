@@ -13,18 +13,25 @@ abstract class Post implements _$Post {
 
   const factory Post(
       {required UniqueId id,
-      required PostBody body,
-      required PostOption option,
-      required PostName name}) = _Post;
+      required PostDescription description,
+      required PostQuantity quantity,
+      required PostTitle title,
+      required PostImageUrl imageUrl,
+      required PickupTime pickupTime,
+
+      }) = _Post;
 
   factory Post.empty() => Post(
       id: UniqueId(),
-      body: PostBody(''),
-      option: PostOption(PostOption.userOptions[0]),
-      name: PostName(''));
+     description: PostDescription(''),
+      quantity: PostQuantity(PostQuantity.quantity[0]),
+      imageUrl: PostImageUrl(''),
+      pickupTime: PickupTime(''),
+      title: PostTitle('')
+      );
 
   Option<ValueFailure<dynamic>> get failureOption {
     // ignore: always_specify_types
-    return body.failureOrUnit.fold((ValueFailure f) => some(f), (_) => none());
+    return description.failureOrUnit.fold((ValueFailure f) => some(f), (_) => none());
   }
 }

@@ -20,14 +20,18 @@ class _$PostTearOff {
 
   _Post call(
       {required UniqueId id,
-      required PostBody body,
-      required PostOption option,
-      required PostName name}) {
+      required PostDescription description,
+      required PostQuantity quantity,
+      required PostTitle title,
+      required PostImageUrl imageUrl,
+      required PickupTime pickupTime}) {
     return _Post(
       id: id,
-      body: body,
-      option: option,
-      name: name,
+      description: description,
+      quantity: quantity,
+      title: title,
+      imageUrl: imageUrl,
+      pickupTime: pickupTime,
     );
   }
 }
@@ -38,9 +42,11 @@ const $Post = _$PostTearOff();
 /// @nodoc
 mixin _$Post {
   UniqueId get id => throw _privateConstructorUsedError;
-  PostBody get body => throw _privateConstructorUsedError;
-  PostOption get option => throw _privateConstructorUsedError;
-  PostName get name => throw _privateConstructorUsedError;
+  PostDescription get description => throw _privateConstructorUsedError;
+  PostQuantity get quantity => throw _privateConstructorUsedError;
+  PostTitle get title => throw _privateConstructorUsedError;
+  PostImageUrl get imageUrl => throw _privateConstructorUsedError;
+  PickupTime get pickupTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +56,13 @@ mixin _$Post {
 abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res>;
-  $Res call({UniqueId id, PostBody body, PostOption option, PostName name});
+  $Res call(
+      {UniqueId id,
+      PostDescription description,
+      PostQuantity quantity,
+      PostTitle title,
+      PostImageUrl imageUrl,
+      PickupTime pickupTime});
 }
 
 /// @nodoc
@@ -64,27 +76,37 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? body = freezed,
-    Object? option = freezed,
-    Object? name = freezed,
+    Object? description = freezed,
+    Object? quantity = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
+    Object? pickupTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as PostBody,
-      option: option == freezed
-          ? _value.option
-          : option // ignore: cast_nullable_to_non_nullable
-              as PostOption,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as PostName,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as PostDescription,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as PostQuantity,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as PostTitle,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as PostImageUrl,
+      pickupTime: pickupTime == freezed
+          ? _value.pickupTime
+          : pickupTime // ignore: cast_nullable_to_non_nullable
+              as PickupTime,
     ));
   }
 }
@@ -94,7 +116,13 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
   factory _$PostCopyWith(_Post value, $Res Function(_Post) then) =
       __$PostCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, PostBody body, PostOption option, PostName name});
+  $Res call(
+      {UniqueId id,
+      PostDescription description,
+      PostQuantity quantity,
+      PostTitle title,
+      PostImageUrl imageUrl,
+      PickupTime pickupTime});
 }
 
 /// @nodoc
@@ -109,27 +137,37 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? body = freezed,
-    Object? option = freezed,
-    Object? name = freezed,
+    Object? description = freezed,
+    Object? quantity = freezed,
+    Object? title = freezed,
+    Object? imageUrl = freezed,
+    Object? pickupTime = freezed,
   }) {
     return _then(_Post(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as PostBody,
-      option: option == freezed
-          ? _value.option
-          : option // ignore: cast_nullable_to_non_nullable
-              as PostOption,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as PostName,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as PostDescription,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as PostQuantity,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as PostTitle,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as PostImageUrl,
+      pickupTime: pickupTime == freezed
+          ? _value.pickupTime
+          : pickupTime // ignore: cast_nullable_to_non_nullable
+              as PickupTime,
     ));
   }
 }
@@ -139,23 +177,29 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
 class _$_Post extends _Post {
   const _$_Post(
       {required this.id,
-      required this.body,
-      required this.option,
-      required this.name})
+      required this.description,
+      required this.quantity,
+      required this.title,
+      required this.imageUrl,
+      required this.pickupTime})
       : super._();
 
   @override
   final UniqueId id;
   @override
-  final PostBody body;
+  final PostDescription description;
   @override
-  final PostOption option;
+  final PostQuantity quantity;
   @override
-  final PostName name;
+  final PostTitle title;
+  @override
+  final PostImageUrl imageUrl;
+  @override
+  final PickupTime pickupTime;
 
   @override
   String toString() {
-    return 'Post(id: $id, body: $body, option: $option, name: $name)';
+    return 'Post(id: $id, description: $description, quantity: $quantity, title: $title, imageUrl: $imageUrl, pickupTime: $pickupTime)';
   }
 
   @override
@@ -164,18 +208,24 @@ class _$_Post extends _Post {
         (other.runtimeType == runtimeType &&
             other is _Post &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.option, option) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.pickupTime, pickupTime));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(option),
-      const DeepCollectionEquality().hash(name));
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(pickupTime));
 
   @JsonKey(ignore: true)
   @override
@@ -186,19 +236,25 @@ class _$_Post extends _Post {
 abstract class _Post extends Post {
   const factory _Post(
       {required UniqueId id,
-      required PostBody body,
-      required PostOption option,
-      required PostName name}) = _$_Post;
+      required PostDescription description,
+      required PostQuantity quantity,
+      required PostTitle title,
+      required PostImageUrl imageUrl,
+      required PickupTime pickupTime}) = _$_Post;
   const _Post._() : super._();
 
   @override
   UniqueId get id;
   @override
-  PostBody get body;
+  PostDescription get description;
   @override
-  PostOption get option;
+  PostQuantity get quantity;
   @override
-  PostName get name;
+  PostTitle get title;
+  @override
+  PostImageUrl get imageUrl;
+  @override
+  PickupTime get pickupTime;
   @override
   @JsonKey(ignore: true)
   _$PostCopyWith<_Post> get copyWith => throw _privateConstructorUsedError;
