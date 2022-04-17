@@ -8,14 +8,17 @@ import '../../domain/auth/i_auth_facade.dart';
 
 extension FirestoreX on FirebaseFirestore {
   // ignore: always_specify_types
-  Future<DocumentReference> userDocument() async {
-    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
-    final LocalUser user =
-        userOption.getOrElse(() => throw NotAuthenticatedError());
+  Future<CollectionReference> userDocument() async {
+    //final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    // final LocalUser user =
+    //     userOption.getOrElse(() => throw NotAuthenticatedError());
     
+    // return FirebaseFirestore.instance
+    //     .collection('users')
+    //     .doc(user.id.getOrCrash());
+     
     return FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.id.getOrCrash());
+        .collection('posts');
   }
 }
 

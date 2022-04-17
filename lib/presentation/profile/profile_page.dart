@@ -24,7 +24,6 @@ class ProfilePage extends StatelessWidget {
                   // ignore: always_specify_types
                   (Route route) => false,
                 )
-       
             );
      
       },
