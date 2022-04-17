@@ -26,14 +26,12 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   void _onPostFormEvent(PostFormEvent event, Emitter<PostFormState> emit) {
     event.map(
       initialized: (_Initialized e) {
-        emit(e.intialPostOption.fold(
-            () => state,
-            (Post initialPost) =>
-                state.copyWith(post: initialPost, isEditing: true)));
+        emit(state.copyWith(post: Post.empty()));
       },
       descriptionChanged: (_DescriptionChanged e) {
         emit(state.copyWith(
-            post: state.post.copyWith(description: PostDescription(e.description)),
+            post: state.post
+                .copyWith(description: PostDescription(e.description)),
             successOrFailure: none()));
       },
       quantityChanged: (_QuantityChanged e) {

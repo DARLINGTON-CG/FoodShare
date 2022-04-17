@@ -18,10 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PostFormEventTearOff {
   const _$PostFormEventTearOff();
 
-  _Initialized initialized(Option<Post> intialPostOption) {
-    return _Initialized(
-      intialPostOption,
-    );
+  _Initialized initialized() {
+    return const _Initialized();
   }
 
   _DescriptionChanged descriptionChanged(String description) {
@@ -54,7 +52,7 @@ const $PostFormEvent = _$PostFormEventTearOff();
 mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
@@ -63,7 +61,7 @@ mixin _$PostFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -72,7 +70,7 @@ mixin _$PostFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -132,7 +130,6 @@ abstract class _$InitializedCopyWith<$Res> {
   factory _$InitializedCopyWith(
           _Initialized value, $Res Function(_Initialized) then) =
       __$InitializedCopyWithImpl<$Res>;
-  $Res call({Option<Post> intialPostOption});
 }
 
 /// @nodoc
@@ -144,79 +141,55 @@ class __$InitializedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
 
   @override
   _Initialized get _value => super._value as _Initialized;
-
-  @override
-  $Res call({
-    Object? intialPostOption = freezed,
-  }) {
-    return _then(_Initialized(
-      intialPostOption == freezed
-          ? _value.intialPostOption
-          : intialPostOption // ignore: cast_nullable_to_non_nullable
-              as Option<Post>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_Initialized implements _Initialized {
-  const _$_Initialized(this.intialPostOption);
-
-  @override
-  final Option<Post> intialPostOption;
+  const _$_Initialized();
 
   @override
   String toString() {
-    return 'PostFormEvent.initialized(intialPostOption: $intialPostOption)';
+    return 'PostFormEvent.initialized()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Initialized &&
-            const DeepCollectionEquality()
-                .equals(other.intialPostOption, intialPostOption));
+        (other.runtimeType == runtimeType && other is _Initialized);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(intialPostOption));
-
-  @JsonKey(ignore: true)
-  @override
-  _$InitializedCopyWith<_Initialized> get copyWith =>
-      __$InitializedCopyWithImpl<_Initialized>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
     required TResult Function() saved,
   }) {
-    return initialized(intialPostOption);
+    return initialized();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
     TResult Function()? saved,
   }) {
-    return initialized?.call(intialPostOption);
+    return initialized?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -224,7 +197,7 @@ class _$_Initialized implements _Initialized {
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(intialPostOption);
+      return initialized();
     }
     return orElse();
   }
@@ -271,12 +244,7 @@ class _$_Initialized implements _Initialized {
 }
 
 abstract class _Initialized implements PostFormEvent {
-  const factory _Initialized(Option<Post> intialPostOption) = _$_Initialized;
-
-  Option<Post> get intialPostOption;
-  @JsonKey(ignore: true)
-  _$InitializedCopyWith<_Initialized> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Initialized() = _$_Initialized;
 }
 
 /// @nodoc
@@ -345,7 +313,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
@@ -357,7 +325,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -369,7 +337,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -497,7 +465,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
@@ -509,7 +477,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -521,7 +489,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -649,7 +617,7 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
@@ -661,7 +629,7 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -673,7 +641,7 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -774,7 +742,7 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Post> intialPostOption) initialized,
+    required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
@@ -786,7 +754,7 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
@@ -798,7 +766,7 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Post> intialPostOption)? initialized,
+    TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,

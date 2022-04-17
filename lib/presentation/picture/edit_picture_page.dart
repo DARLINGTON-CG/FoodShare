@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_editor/image_editor.dart' hide ImageSource;
-
+import 'dart:io';
 
 class EditPicturePage extends StatefulWidget {
   final File? picture;
@@ -74,9 +74,9 @@ class _EditPicturePageState extends State<EditPicturePage> {
           fit: BoxFit.contain,
           initEditorConfigHandler: (ExtendedImageState? state) {
             return EditorConfig(
-              maxScale: 8.0,
-              cropAspectRatio: 1,
-            );
+                maxScale: 8.0,
+                cropAspectRatio: 1,
+                cornerColor: const Color(0xFF3212F1));
           },
         ),
       ),
@@ -106,27 +106,27 @@ class _EditPicturePageState extends State<EditPicturePage> {
                       onPressed: flip,
                       icon: const Icon(
                         Icons.flip,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                   IconButton(
                       onPressed: () => rotate(false),
                       icon: const Icon(
                         Icons.rotate_left,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                   IconButton(
                       onPressed: () => rotate(true),
                       icon: const Icon(
                         Icons.rotate_right,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                   TextButton(
                     onPressed: () async {
                       await crop(context);
                     },
                     child: Text('DONE',
-                        style:
-                            GoogleFonts.lato(color: Colors.blue, fontSize: 13)),
+                        style: GoogleFonts.lato(
+                            color: const Color(0xFF3212F1), fontSize: 13)),
                   ),
                 ],
               )),
