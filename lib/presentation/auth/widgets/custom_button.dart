@@ -28,7 +28,10 @@ class CustomButton extends StatelessWidget {
         constraints: const BoxConstraints(
           minWidth: double.infinity,
         ),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 100),
+          
+          curve: Curves.easeInOut,
             padding: const EdgeInsets.symmetric(vertical: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
