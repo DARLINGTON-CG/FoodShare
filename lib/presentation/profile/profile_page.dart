@@ -11,27 +11,22 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-    
-    
-    BlocListener<AuthBloc, AuthState>(
+    return BlocListener<AuthBloc, AuthState>(
       listener: (BuildContext context, AuthState state) {
-        // state.map(
-        //     initial: (_) {},
-        //     authenticated: (_) =>
-        //         print("till shits")
-        //     ,
-        //     unauthenticated: (_) =>
-        //         print("Aunthenticated")
-        //     ,);
-        // print("Listening to the state");
-        // state.maybeMap(unauthenticated: (_) {
-        //   print("Signed out true");
-        //   Navigator.of(context)
-        //       .pushReplacement(SlideIn(page: const SignInPage()));
-        // }, orElse: () {
-        //   print("Signed out false");
-        // });
+        state.map(
+            // ignore: always_specify_types
+            authenticated: (_) => {},
+            // ignore: always_specify_types
+            initial: (_) => {},
+            unauthenticated: (_) => Navigator.pushAndRemoveUntil(
+                  context,
+                  SlideIn(page: const SignInPage()),
+                  // ignore: always_specify_types
+                  (Route route) => false,
+                )
+       
+            );
+     
       },
       child: Scaffold(
         body: CustomScrollView(
@@ -305,11 +300,14 @@ class ProfilePage extends StatelessWidget {
                         );
                       },
                     );
+
+
                   },
                   title: Text(
                     "Sign out",
                     style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
                   ),
+                
                 ),
               ),
             ),

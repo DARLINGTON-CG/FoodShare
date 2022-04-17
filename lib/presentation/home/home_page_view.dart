@@ -33,6 +33,7 @@ class _HomePageViewState extends State<HomePageView>
         length: _tabs.length,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+      
             return <Widget>[
               SliverOverlapAbsorber(
                 handle:
