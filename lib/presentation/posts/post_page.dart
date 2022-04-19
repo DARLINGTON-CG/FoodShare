@@ -83,7 +83,7 @@ class _PostPageState extends State<PostPage> {
                   BlocProvider.of<PostFormBloc>(context)
                       .add( PostFormEvent.saved(_foodImage!));
                 },
-                child: const Icon(Icons.post_add)),
+                child: state.isSaving ? const CircularProgressIndicator(): const Icon(Icons.post_add)),
             body: Form(
               autovalidateMode: state.showErrorMessages
                   ? AutovalidateMode.always

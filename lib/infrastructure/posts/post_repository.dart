@@ -25,31 +25,24 @@ class PostRepository implements IPostRepository {
 
   @override
   Future<Either<PostFailure, Unit>> create(Post post, File file) async {
-    try {  
-         final Post postForUpload = await getIt<IStorageRepository>().upload(file).then((Either<StorageFailure, String> imageUrl) => 
-                 Post(
-          id: post.id,
-          description: post.description,
-          quantity: post.quantity,
-          title: post.title,
-          imageUrl: PostImageUrl(imageUrl.getOrElse(() => throw Exception())),
-          pickupTime: post.pickupTime)
-          );
-   
+    try {
+      final Post postForUpload = await getIt<IStorageRepository>()
+          .upload(file)
+          .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
+              imageUrl:
+                  PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
+
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.userDocument();
 
       final PostDto postDto = PostDto.fromDomain(postForUpload);
-      await userDoc
-          .doc(postDto.id)
-          .set(postDto.toJson());
+      await userDoc.doc(postDto.id).set(postDto.toJson());
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
-       
         return left(const PostFailure.insufficientPermissions());
       } else {
-          return left(const PostFailure.unexpected());
+        return left(const PostFailure.unexpected());
       }
     }
   }
