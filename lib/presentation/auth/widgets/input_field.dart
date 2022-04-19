@@ -8,6 +8,7 @@ class InputField extends StatefulWidget {
   final bool passwordField;
   final Function()? forgotPasswordFunc;
   final Function(String)? onChangedFunc;
+  
   final String? Function(String?)? validator;
   final bool? hideForgot;
   const InputField({

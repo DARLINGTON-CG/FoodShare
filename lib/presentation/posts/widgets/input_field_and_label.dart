@@ -1,19 +1,27 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InputFieldAndLabel extends StatelessWidget {
   final String label;
-  const InputFieldAndLabel({Key? key,required this.label}) : super(key: key);
+  final String? Function(String?)? validateFunc;
+  
+   final Function(String)? onChangedFunc;
+  
+  const InputFieldAndLabel(
+      {Key? key,
+      required this.label,
+      required this.validateFunc,
+      required this.onChangedFunc})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       autocorrect: false,
-    
-    
+      validator: validateFunc,
+      onChanged: onChangedFunc,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(top: 25,left:10,bottom:3),
+        contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
         isCollapsed: true,
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -41,14 +49,12 @@ class InputFieldAndLabel extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
           ),
         ),
-       // hintText: widget.label,
+        // hintText: widget.label,
         hintStyle: GoogleFonts.lato(
           color: Colors.black.withOpacity(0.7),
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
-       
-        
       ),
     );
   }

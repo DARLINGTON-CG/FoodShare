@@ -6,6 +6,8 @@ import 'dart:io';
 
 import '../../application/posts/post_form/post_form_bloc.dart';
 import '../../application/posts/post_watcher/post_watcher_bloc.dart';
+import '../../domain/core/failures.dart';
+import '../../domain/posts/post_failure.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../picture/edit_picture_page.dart';
@@ -22,7 +24,7 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  File? _wallpaper;
+  File? _foodImage;
 
   final ImagePicker _imagePicker = ImagePicker();
 
@@ -34,12 +36,17 @@ class _PostPageState extends State<PostPage> {
       child: BlocConsumer<PostFormBloc, PostFormState>(
         listenWhen: (PostFormState previous, PostFormState current) =>
             previous.successOrFailure != current.successOrFailure,
+        buildWhen: (PostFormState previous, PostFormState current) =>
+            (previous.post.title != current.post.title) ||
+            (previous.post.description != current.post.description) ||
+            (previous.post.pickupTime != current.post.pickupTime) ||
+            (previous.post.quantity != current.post.quantity),
         listener: (BuildContext context, PostFormState state) {
           state.successOrFailure.fold(
             () {},
             (either) {
               either.fold(
-                (failure) {
+                (PostFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(failure.map(
                     insufficientPermissions: (_) =>
@@ -72,120 +79,186 @@ class _PostPageState extends State<PostPage> {
             ),
             floatingActionButton: FloatingActionButton(
                 backgroundColor: const Color(0xFF3212F1),
-                onPressed: () {},
+                onPressed: () {
+                  BlocProvider.of<PostFormBloc>(context)
+                      .add( PostFormEvent.saved(_foodImage!));
+                },
                 child: const Icon(Icons.post_add)),
-            body: ListView(physics: const BouncingScrollPhysics(), children: <
-                Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 1,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                decoration:
-                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
-                child: ListTile(
-                  title: Text(
-                    "Add Image",
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+            body: Form(
+              autovalidateMode: state.showErrorMessages
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+              child:
+                  ListView(physics: const BouncingScrollPhysics(), children: <
+                      Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 1,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.1),
                   ),
                 ),
-              ),
-              _wallpaper == null
-                  ? SizedBox(
-                      height: 110,
-                      child: IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () async {
-                          final XFile? _imageFilePicked = await _imagePicker
-                              .pickImage(source: ImageSource.gallery);
-                          if (_imageFilePicked == null) return;
-                          final File? _converted =
-                              File((_imageFilePicked).path);
-                          Future<void>.delayed(const Duration()).then((_) =>
-                              Navigator.of(context)
-                                  .push(SlideUpAnim(
-                                      page:
-                                          EditPicturePage(picture: _converted)))
-                                  // ignore: always_specify_types
-                                  .then((value) {
-                                setState(() {
-                                  _wallpaper = value;
-                                });
-                              }));
-                        },
-                      ))
-                  : Center(
-                      child: ImageContainer(
-                        file: _wallpaper,
-                      ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  decoration:
+                      BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                  child: ListTile(
+                    title: Text(
+                      "Add Image",
+                      style:
+                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
                     ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                decoration:
-                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
-                child: ListTile(
-                  title: Text(
-                    "Title",
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
                   ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                child: InputFieldAndLabel(label: 'Add a title...'),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                decoration:
-                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
-                child: ListTile(
-                  title: Text(
-                    'Description',
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                _foodImage == null
+                    ? SizedBox(
+                        height: 110,
+                        child: IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () async {
+                            final XFile? _imageFilePicked = await _imagePicker
+                                .pickImage(source: ImageSource.gallery);
+                            if (_imageFilePicked == null) return;
+                            final File? _converted =
+                                File((_imageFilePicked).path);
+                            Future<void>.delayed(const Duration()).then((_) =>
+                                Navigator.of(context)
+                                    .push(SlideUpAnim(
+                                        page: EditPicturePage(
+                                            picture: _converted)))
+                                    // ignore: always_specify_types
+                                    .then((value) {
+                                  setState(() {
+                                    _foodImage = value;
+                                  });
+                                }));
+                          },
+                        ))
+                    : Center(
+                        child: ImageContainer(
+                          file: _foodImage,
+                        ),
+                      ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  decoration:
+                      BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                  child: ListTile(
+                    title: Text(
+                      "Title",
+                      style:
+                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: InputFieldAndLabel(
-                      label: 'Describe what is being given away....')),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                decoration:
-                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
-                child: ListTile(
-                  title: Text(
-                    'Quantity',
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      onChangedFunc: (String value) =>
+                          BlocProvider.of<PostFormBloc>(context)
+                              .add(PostFormEvent.titleChanged(value)),
+                      validateFunc: (_) =>
+                          BlocProvider.of<PostFormBloc>(context)
+                              .state
+                              .post
+                              .title
+                              .value
+                              .fold(
+                                  (ValueFailure<String> f) => f.maybeMap(
+                                      empty: (_) => "This can't be empty",
+                                      exceedingLength:
+                                          (ExceedingLength<String> f) =>
+                                              "This is too long",
+                                      orElse: () => null),
+                                  (_) => null),
+                      label: 'Add a title...'),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  decoration:
+                      BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                  child: ListTile(
+                    title: Text(
+                      'Description',
+                      style:
+                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
-              const QuantityField(),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                decoration:
-                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
-                child: ListTile(
-                  title: Text(
-                    'Pick up times',
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: InputFieldAndLabel(
+                        onChangedFunc: (String value) =>
+                            BlocProvider.of<PostFormBloc>(context)
+                                .add(PostFormEvent.descriptionChanged(value)),
+                        validateFunc: (_) =>
+                            BlocProvider.of<PostFormBloc>(context)
+                                .state
+                                .post
+                                .description
+                                .value
+                                .fold(
+                                    (ValueFailure<String> f) => f.maybeMap(
+                                        empty: (_) => "This can't be empty",
+                                        exceedingLength:
+                                            (ExceedingLength<String> f) =>
+                                                "This is too long",
+                                        orElse: () => null),
+                                    (_) => null),
+                        label: 'Describe what is being given away....')),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  decoration:
+                      BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                  child: ListTile(
+                    title: Text(
+                      'Quantity',
+                      style:
+                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: InputFieldAndLabel(
-                      label: 'What time should the person pick it up?...')),
-            ]),
+                const QuantityField(),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  decoration:
+                      BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                  child: ListTile(
+                    title: Text(
+                      'Pick up times',
+                      style:
+                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    ),
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: InputFieldAndLabel(
+                        onChangedFunc: (String value) =>
+                            BlocProvider.of<PostFormBloc>(context)
+                                .add(PostFormEvent.pickupTimeChanged(value)),
+                        validateFunc: (_) =>
+                            BlocProvider.of<PostFormBloc>(context)
+                                .state
+                                .post
+                                .pickupTime
+                                .value
+                                .fold(
+                                    (ValueFailure<String> f) => f.maybeMap(
+                                        empty: (_) => "This can't be empty",
+                                        exceedingLength:
+                                            (ExceedingLength<String> f) =>
+                                                "This is too long",
+                                        orElse: () => null),
+                                    (_) => null),
+                        label: 'What time should the person pick it up?...')),
+              ]),
+            ),
           );
         },
       ),

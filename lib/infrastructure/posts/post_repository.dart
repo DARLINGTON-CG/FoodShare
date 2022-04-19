@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
+import '../../domain/posts/value_objects.dart';
+import '../../domain/storage/i_storage_repository.dart';
+import '../../domain/storage/storage_failure.dart';
+import '../../injector.dart';
 import 'post_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -18,22 +24,32 @@ class PostRepository implements IPostRepository {
   PostRepository(this._firebaseFirestore);
 
   @override
-  Future<Either<PostFailure, Unit>> create(Post post) async {
-    try {
+  Future<Either<PostFailure, Unit>> create(Post post, File file) async {
+    try {  
+         final Post postForUpload = await getIt<IStorageRepository>().upload(file).then((Either<StorageFailure, String> imageUrl) => 
+                 Post(
+          id: post.id,
+          description: post.description,
+          quantity: post.quantity,
+          title: post.title,
+          imageUrl: PostImageUrl(imageUrl.getOrElse(() => throw Exception())),
+          pickupTime: post.pickupTime)
+          );
+   
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.userDocument();
-      final PostDto postDto = PostDto.fromDomain(post);
 
+      final PostDto postDto = PostDto.fromDomain(postForUpload);
       await userDoc
-      //USER ID FOR CREATION WILL BE FIXED
-      //.postCollection
-      .doc(postDto.id).set(postDto.toJson());
+          .doc(postDto.id)
+          .set(postDto.toJson());
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
+       
         return left(const PostFailure.insufficientPermissions());
       } else {
-        return left(const PostFailure.unexpected());
+          return left(const PostFailure.unexpected());
       }
     }
   }
@@ -46,9 +62,10 @@ class PostRepository implements IPostRepository {
       final String postId = post.id.getOrCrash();
 
       await userDoc
-      //FIXING RECTIFY POST ID
-     // .postCollection
-      .doc(postId).delete();
+          //FIXING RECTIFY POST ID
+          // .postCollection
+          .doc(postId)
+          .delete();
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
@@ -69,9 +86,10 @@ class PostRepository implements IPostRepository {
       final PostDto postDto = PostDto.fromDomain(post);
 
       await userDoc
-      //FIXING HOW USER UPDATES DOCUMENT NOW
-      //.postCollection
-      .doc(postDto.id).update(postDto.toJson());
+          //FIXING HOW USER UPDATES DOCUMENT NOW
+          //.postCollection
+          .doc(postDto.id)
+          .update(postDto.toJson());
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
@@ -88,9 +106,9 @@ class PostRepository implements IPostRepository {
   Stream<Either<PostFailure, KtList<Post>>> watchAll() async* {
     final CollectionReference<Object?> userDoc =
         await _firebaseFirestore.userDocument();
-    
+
     yield* userDoc
-    //.postCollection
+        //.postCollection
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) =>
@@ -130,7 +148,7 @@ class PostRepository implements IPostRepository {
     final CollectionReference<Object?> userDoc =
         await _firebaseFirestore.userDocument();
     yield* userDoc
-    //.postCollection
+        //.postCollection
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(

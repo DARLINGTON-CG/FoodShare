@@ -28,6 +28,12 @@ class _$PostFormEventTearOff {
     );
   }
 
+  _PickupTimeChanged pickupTimeChanged(String pickupTime) {
+    return _PickupTimeChanged(
+      pickupTime,
+    );
+  }
+
   _QuantityChanged quantityChanged(int quantity) {
     return _QuantityChanged(
       quantity,
@@ -40,8 +46,10 @@ class _$PostFormEventTearOff {
     );
   }
 
-  _Saved saved() {
-    return const _Saved();
+  _Saved saved(File image) {
+    return _Saved(
+      image,
+    );
   }
 }
 
@@ -54,27 +62,30 @@ mixin _$PostFormEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +93,7 @@ mixin _$PostFormEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -91,6 +103,7 @@ mixin _$PostFormEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -100,6 +113,7 @@ mixin _$PostFormEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -167,9 +181,10 @@ class _$_Initialized implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) {
     return initialized();
   }
@@ -179,9 +194,10 @@ class _$_Initialized implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) {
     return initialized?.call();
   }
@@ -191,9 +207,10 @@ class _$_Initialized implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -207,6 +224,7 @@ class _$_Initialized implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -219,6 +237,7 @@ class _$_Initialized implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -231,6 +250,7 @@ class _$_Initialized implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -315,9 +335,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) {
     return descriptionChanged(description);
   }
@@ -327,9 +348,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -339,9 +361,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -355,6 +378,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -367,6 +391,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -379,6 +404,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -397,6 +423,165 @@ abstract class _DescriptionChanged implements PostFormEvent {
   String get description;
   @JsonKey(ignore: true)
   _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PickupTimeChangedCopyWith<$Res> {
+  factory _$PickupTimeChangedCopyWith(
+          _PickupTimeChanged value, $Res Function(_PickupTimeChanged) then) =
+      __$PickupTimeChangedCopyWithImpl<$Res>;
+  $Res call({String pickupTime});
+}
+
+/// @nodoc
+class __$PickupTimeChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$PickupTimeChangedCopyWith<$Res> {
+  __$PickupTimeChangedCopyWithImpl(
+      _PickupTimeChanged _value, $Res Function(_PickupTimeChanged) _then)
+      : super(_value, (v) => _then(v as _PickupTimeChanged));
+
+  @override
+  _PickupTimeChanged get _value => super._value as _PickupTimeChanged;
+
+  @override
+  $Res call({
+    Object? pickupTime = freezed,
+  }) {
+    return _then(_PickupTimeChanged(
+      pickupTime == freezed
+          ? _value.pickupTime
+          : pickupTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PickupTimeChanged implements _PickupTimeChanged {
+  const _$_PickupTimeChanged(this.pickupTime);
+
+  @override
+  final String pickupTime;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.pickupTimeChanged(pickupTime: $pickupTime)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PickupTimeChanged &&
+            const DeepCollectionEquality()
+                .equals(other.pickupTime, pickupTime));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pickupTime));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PickupTimeChangedCopyWith<_PickupTimeChanged> get copyWith =>
+      __$PickupTimeChangedCopyWithImpl<_PickupTimeChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(File image) saved,
+  }) {
+    return pickupTimeChanged(pickupTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(File image)? saved,
+  }) {
+    return pickupTimeChanged?.call(pickupTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(File image)? saved,
+    required TResult orElse(),
+  }) {
+    if (pickupTimeChanged != null) {
+      return pickupTimeChanged(pickupTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
+    required TResult Function(_QuantityChanged value) quantityChanged,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return pickupTimeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return pickupTimeChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
+    TResult Function(_QuantityChanged value)? quantityChanged,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (pickupTimeChanged != null) {
+      return pickupTimeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickupTimeChanged implements PostFormEvent {
+  const factory _PickupTimeChanged(String pickupTime) = _$_PickupTimeChanged;
+
+  String get pickupTime;
+  @JsonKey(ignore: true)
+  _$PickupTimeChangedCopyWith<_PickupTimeChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -467,9 +652,10 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) {
     return quantityChanged(quantity);
   }
@@ -479,9 +665,10 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) {
     return quantityChanged?.call(quantity);
   }
@@ -491,9 +678,10 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) {
     if (quantityChanged != null) {
@@ -507,6 +695,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -519,6 +708,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -531,6 +721,7 @@ class _$_QuantityChanged implements _QuantityChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -619,9 +810,10 @@ class _$_TitleChanged implements _TitleChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) {
     return titleChanged(title);
   }
@@ -631,9 +823,10 @@ class _$_TitleChanged implements _TitleChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) {
     return titleChanged?.call(title);
   }
@@ -643,9 +836,10 @@ class _$_TitleChanged implements _TitleChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -659,6 +853,7 @@ class _$_TitleChanged implements _TitleChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -671,6 +866,7 @@ class _$_TitleChanged implements _TitleChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -683,6 +879,7 @@ class _$_TitleChanged implements _TitleChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -708,6 +905,7 @@ abstract class _TitleChanged implements PostFormEvent {
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
+  $Res call({File image});
 }
 
 /// @nodoc
@@ -718,37 +916,61 @@ class __$SavedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
 
   @override
   _Saved get _value => super._value as _Saved;
+
+  @override
+  $Res call({
+    Object? image = freezed,
+  }) {
+    return _then(_Saved(
+      image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Saved implements _Saved {
-  const _$_Saved();
+  const _$_Saved(this.image);
+
+  @override
+  final File image;
 
   @override
   String toString() {
-    return 'PostFormEvent.saved()';
+    return 'PostFormEvent.saved(image: $image)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Saved);
+        (other.runtimeType == runtimeType &&
+            other is _Saved &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(image));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SavedCopyWith<_Saved> get copyWith =>
+      __$SavedCopyWithImpl<_Saved>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function() saved,
+    required TResult Function(File image) saved,
   }) {
-    return saved();
+    return saved(image);
   }
 
   @override
@@ -756,11 +978,12 @@ class _$_Saved implements _Saved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
   }) {
-    return saved?.call();
+    return saved?.call(image);
   }
 
   @override
@@ -768,13 +991,14 @@ class _$_Saved implements _Saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function()? saved,
+    TResult Function(File image)? saved,
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved();
+      return saved(image);
     }
     return orElse();
   }
@@ -784,6 +1008,7 @@ class _$_Saved implements _Saved {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(_QuantityChanged value) quantityChanged,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_Saved value) saved,
@@ -796,6 +1021,7 @@ class _$_Saved implements _Saved {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -808,6 +1034,7 @@ class _$_Saved implements _Saved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(_QuantityChanged value)? quantityChanged,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_Saved value)? saved,
@@ -821,7 +1048,11 @@ class _$_Saved implements _Saved {
 }
 
 abstract class _Saved implements PostFormEvent {
-  const factory _Saved() = _$_Saved;
+  const factory _Saved(File image) = _$_Saved;
+
+  File get image;
+  @JsonKey(ignore: true)
+  _$SavedCopyWith<_Saved> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,6 +30,13 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
       initialized: (_Initialized e) {
         emit(state.copyWith(post: Post.empty()));
       },
+      pickupTimeChanged:(_PickupTimeChanged e)
+      {
+         emit(state.copyWith(
+            post: state.post
+                .copyWith(pickupTime: PickupTime(e.pickupTime)),
+            successOrFailure: none()));
+      },
       descriptionChanged: (_DescriptionChanged e) {
         emit(state.copyWith(
             post: state.post
@@ -46,13 +55,14 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
       },
       saved: (_Saved e) async {
         Either<PostFailure, Unit>? failureOrSuccess;
-
+       
         emit(state.copyWith(isSaving: true, successOrFailure: none()));
 
         if (state.post.failureOption.isNone()) {
-          failureOrSuccess = state.isEditing
-              ? await _postRepository.update(state.post)
-              : await _postRepository.create(state.post);
+          failureOrSuccess = await _postRepository.create(state.post,e.image);
+        }
+        {
+          
         }
         emit(state.copyWith(
             isSaving: false,
