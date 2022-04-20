@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
+import '../../domain/auth/i_auth_facade.dart';
+import '../../domain/auth/user.dart';
+import '../../domain/core/errors.dart';
 import '../../domain/posts/value_objects.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
@@ -26,6 +29,11 @@ class PostRepository implements IPostRepository {
   @override
   Future<Either<PostFailure, Unit>> create(Post post, File file) async {
     try {
+      //  final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+      //   final LocalUser user =
+      //   userOption.getOrElse(() => throw NotAuthenticatedError());
+
+
       final Post postForUpload = await getIt<IStorageRepository>()
           .upload(file)
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(

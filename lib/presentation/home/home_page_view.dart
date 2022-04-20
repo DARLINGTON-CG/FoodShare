@@ -120,14 +120,15 @@ class _HomePageViewState extends State<HomePageView>
                             sliver: state.map(initial: (_) {
                               return SliverToBoxAdapter(child: Container());
                             }, loadingProgress: (_) {
-                              return const SliverToBoxAdapter(
+                              return const SliverFillRemaining(
                                 child: Center(
                                     child:
-                                        ThreeDotIndicator(color: Colors.black)),
+                                        ThreeDotIndicator(color: Colors.black,size:25)),
                               );
                             },
                                 // ignore: always_specify_types
                                 loadSuccess: (state) {
+                                
                               return SliverList(
                                 delegate: SliverChildBuilderDelegate(
                                   (BuildContext context, int index) {
@@ -151,12 +152,8 @@ class _HomePageViewState extends State<HomePageView>
                             },
                                 // ignore: always_specify_types
                                 loadFailure: (state) {
-                              return SliverToBoxAdapter(
-                                child: Container(
-                                  color: Colors.black,
-                                  width: 200,
-                                  height: 200,
-                                ),
+                              return SliverFillRemaining(
+                                child: Center(child: Text("Error occured.....",style:GoogleFonts.lato(fontSize:15,color:Colors.red,fontWeight:FontWeight.bold))),
                               );
                             })),
                       ],

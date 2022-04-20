@@ -10,6 +10,7 @@ import '../../domain/core/failures.dart';
 import '../../domain/posts/post_failure.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
+import '../anim/widgets/three_dot_indicator.dart';
 import '../picture/edit_picture_page.dart';
 import 'widgets/circular_selector.dart';
 import 'widgets/image_container.dart';
@@ -40,7 +41,7 @@ class _PostPageState extends State<PostPage> {
             (previous.post.title != current.post.title) ||
             (previous.post.description != current.post.description) ||
             (previous.post.pickupTime != current.post.pickupTime) ||
-            (previous.post.quantity != current.post.quantity),
+            (previous.post.quantity != current.post.quantity) || (previous.isSaving != current.isSaving)  ,
         listener: (BuildContext context, PostFormState state) {
           state.successOrFailure.fold(
             () {},
@@ -83,7 +84,7 @@ class _PostPageState extends State<PostPage> {
                   BlocProvider.of<PostFormBloc>(context)
                       .add( PostFormEvent.saved(_foodImage!));
                 },
-                child: state.isSaving ? const CircularProgressIndicator(): const Icon(Icons.post_add)),
+                child: !state.isSaving ?const Center(child:  ThreeDotIndicator(color: Colors.white,size:14)): const Icon(Icons.post_add)),
             body: Form(
               autovalidateMode: state.showErrorMessages
                   ? AutovalidateMode.always
