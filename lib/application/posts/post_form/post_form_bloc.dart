@@ -80,46 +80,4 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
             successOrFailure: none()));
   }
 
-  // void _onPostFormEvent(PostFormEvent event, Emitter<PostFormState> emit) {
-  //   event.map(
-  //     initialized: (_Initialized e) {
-  //       emit(state.copyWith(post: Post.empty()));
-  //     },
-  //     pickupTimeChanged: (_PickupTimeChanged e) {
-  //       emit(state.copyWith(
-  //           post: state.post.copyWith(pickupTime: PickupTime(e.pickupTime)),
-  //           successOrFailure: none()));
-  //     },
-  //     descriptionChanged: (_DescriptionChanged e) {
-  //       emit(state.copyWith(
-  //           post: state.post
-  //               .copyWith(description: PostDescription(e.description)),
-  //           successOrFailure: none()));
-  //     },
-  //     quantityChanged: (_QuantityChanged e) {
-  //       emit(state.copyWith(
-  //           post: state.post.copyWith(quantity: PostQuantity(e.quantity)),
-  //           successOrFailure: none()));
-  //     },
-  //     titleChanged: (_TitleChanged e) {
-  //       emit(state.copyWith(
-  //           post: state.post.copyWith(title: PostTitle(e.title)),
-  //           successOrFailure: none()));
-  //     },
-  //     saved: (_Saved e) async {
-  //       Either<PostFailure, Unit>? failureOrSuccess;
-
-  //       emit(state.copyWith(isSaving: true, successOrFailure: none()));
-
-  //       if (state.post.failureOption.isNone()) {
-  //         failureOrSuccess = await _postRepository.create(state.post, e.image);
-  //       }
-
-  //       emit(state.copyWith(
-  //           isSaving: false,
-  //           showErrorMessages: true,
-  //           successOrFailure: optionOf(failureOrSuccess)));
-  //     },
-  //   );
-  // }
 }

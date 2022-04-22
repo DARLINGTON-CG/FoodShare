@@ -19,15 +19,15 @@ class StorageRepository implements IStorageRepository {
   StorageRepository(this._firebaseStorage);
 
   @override
-  Future<Either<StorageFailure, String>> upload(File file) async {
+  Future<Either<StorageFailure, String>> upload(File file,String fileId) async {
     final Reference storageRef = _firebaseStorage.ref();
     final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
     final LocalUser user =
         userOption.getOrElse(() => throw NotAuthenticatedError());
-
+     
     try {
-      await storageRef.child(user.id.getOrCrash()).putFile(file);
-      final String downloadUrl = await storageRef.child(user.id.getOrCrash()).getDownloadURL();
+      await storageRef.child(user.id.getOrCrash()).child(fileId).putFile(file);
+      final String downloadUrl = await storageRef.child(user.id.getOrCrash()).child(fileId).getDownloadURL();
       print(downloadUrl);
       print("THISIS THE DOWNLOAD URL OKAY");
       return right(downloadUrl);

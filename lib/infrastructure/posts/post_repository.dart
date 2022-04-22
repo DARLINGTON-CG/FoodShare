@@ -33,9 +33,8 @@ class PostRepository implements IPostRepository {
       //   final LocalUser user =
       //   userOption.getOrElse(() => throw NotAuthenticatedError());
 
-
       final Post postForUpload = await getIt<IStorageRepository>()
-          .upload(file)
+          .upload(file,post.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
               imageUrl:
                   PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));

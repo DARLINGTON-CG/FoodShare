@@ -16,6 +16,16 @@ import '../profile/profile_page.dart';
 import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
+
+/*
+Deal with storage exceptions.
+fIX nULL CHECK OPERATOR USED ON NULL.
+Store user id in post document for tasks like update and delete.
+Last navigation bar button for user to delete and update data.
+Add dark mode.
+Deal with big image sizes.
+*/
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 

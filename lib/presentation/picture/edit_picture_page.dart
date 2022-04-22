@@ -56,7 +56,7 @@ class _EditPicturePageState extends State<EditPicturePage> {
       image: img,
       imageEditorOption: option,
     );
-    image!.writeAsBytesSync(result!);
+    image?.writeAsBytesSync(result!);
 
     Navigator.of(context).pop(image);
   }
