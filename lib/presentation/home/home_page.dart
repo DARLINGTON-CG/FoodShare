@@ -18,9 +18,10 @@ import 'widgets/nav_bar_item.dart';
 
 
 /*
-Deal with storage exceptions.
 fIX nULL CHECK OPERATOR USED ON NULL.
 Store user id in post document for tasks like update and delete.
+Don't allow user to view his own post in the first navigation bar item
+Add a slider to the post page for user to create time slider.
 Last navigation bar button for user to delete and update data.
 Add dark mode.
 Deal with big image sizes.
@@ -128,6 +129,7 @@ class _HomePageState extends State<HomePage> {
                         iconName: Icons.chat_bubble_rounded,
                         isSelected: index == 1),
                     InkWell(
+                      highlightColor: Colors.transparent,
                         onTap: () {
                           showModalBottomSheet<void>(
                             context: context,

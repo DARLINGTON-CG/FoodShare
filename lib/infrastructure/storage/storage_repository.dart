@@ -19,24 +19,27 @@ class StorageRepository implements IStorageRepository {
   StorageRepository(this._firebaseStorage);
 
   @override
-  Future<Either<StorageFailure, String>> upload(File file,String fileId) async {
+  Future<Either<StorageFailure, String>> upload(
+      File file, String fileId) async {
     final Reference storageRef = _firebaseStorage.ref();
     final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
     final LocalUser user =
         userOption.getOrElse(() => throw NotAuthenticatedError());
-     
+
     try {
       await storageRef.child(user.id.getOrCrash()).child(fileId).putFile(file);
-      final String downloadUrl = await storageRef.child(user.id.getOrCrash()).child(fileId).getDownloadURL();
-      print(downloadUrl);
-      print("THISIS THE DOWNLOAD URL OKAY");
+      final String downloadUrl = await storageRef
+          .child(user.id.getOrCrash())
+          .child(fileId)
+          .getDownloadURL();
       return right(downloadUrl);
     } on firebase_core.FirebaseException catch (e) {
-      print("AN ERROR OCCURED");
-      print(e.toString());
-      return left(const StorageFailure.insufficientPermissions());
-    } catch (e) {
-      print("UNEXPECTED ERROR OCCURED");
+      if (e.toString().contains("unauthorized")) {
+        return left(const StorageFailure.insufficientPermissions());
+      } else {
+        return left(const StorageFailure.unexpected());
+      }
+    } catch (_) {
       return left(const StorageFailure.unexpected());
     }
   }

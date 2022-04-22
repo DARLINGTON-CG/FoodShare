@@ -34,7 +34,7 @@ class PostRepository implements IPostRepository {
       //   userOption.getOrElse(() => throw NotAuthenticatedError());
 
       final Post postForUpload = await getIt<IStorageRepository>()
-          .upload(file,post.id.getOrCrash())
+          .upload(file, post.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
               imageUrl:
                   PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
@@ -47,8 +47,10 @@ class PostRepository implements IPostRepository {
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
+        print("NO EXCEPTION CATCHING FIREBASE SHIT");
         return left(const PostFailure.insufficientPermissions());
       } else {
+        print("EXCEPTION CATCHING");
         return left(const PostFailure.unexpected());
       }
     }
