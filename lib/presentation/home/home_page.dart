@@ -18,10 +18,10 @@ import 'widgets/nav_bar_item.dart';
 
 
 /*
+Add a slider to the post page for user to create time slider.
 fIX nULL CHECK OPERATOR USED ON NULL.
 Store user id in post document for tasks like update and delete.
 Don't allow user to view his own post in the first navigation bar item
-Add a slider to the post page for user to create time slider.
 Last navigation bar button for user to delete and update data.
 Add dark mode.
 Deal with big image sizes.
@@ -198,10 +198,7 @@ class _HomePageState extends State<HomePage> {
                                         height: 55,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            border: Border(
-                                                bottom: BorderSide(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.1)))),
+                                          ),
                                         child: ListTile(
                                           trailing: const Icon(
                                             Icons.account_balance_wallet,

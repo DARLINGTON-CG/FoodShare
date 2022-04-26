@@ -26,7 +26,7 @@ abstract class Post implements _$Post {
      description: PostDescription(''),
       quantity: PostQuantity(PostQuantity.quantity[0]),
       imageUrl: PostImageUrl(''),
-      pickupTime: PickupTime(''),
+      pickupTime: PickupTime('7:00-9:00am'),
       title: PostTitle('')
       );
 

@@ -34,15 +34,16 @@ class AppWidget extends StatelessWidget {
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
+          sliderTheme:const SliderThemeData(
+              rangeThumbShape: RoundRangeSliderThumbShape(
+            enabledThumbRadius: 7,
+          )),
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          
           navigationBarTheme: const NavigationBarThemeData(
-              
               backgroundColor: Colors.white,
               indicatorColor: Colors.transparent,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-
               height: 60),
           splashColor: Colors.transparent,
           useMaterial3: true,

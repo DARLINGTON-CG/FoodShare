@@ -47,10 +47,8 @@ class PostRepository implements IPostRepository {
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
-        print("NO EXCEPTION CATCHING FIREBASE SHIT");
         return left(const PostFailure.insufficientPermissions());
       } else {
-        print("EXCEPTION CATCHING");
         return left(const PostFailure.unexpected());
       }
     }

@@ -29,6 +29,9 @@ class _PostPageState extends State<PostPage> {
 
   final ImagePicker _imagePicker = ImagePicker();
 
+  double min = 7.0;
+  double max = 9.0;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PostFormBloc>(
@@ -41,7 +44,8 @@ class _PostPageState extends State<PostPage> {
             (previous.post.title != current.post.title) ||
             (previous.post.description != current.post.description) ||
             (previous.post.pickupTime != current.post.pickupTime) ||
-            (previous.post.quantity != current.post.quantity) || (previous.isSaving != current.isSaving)  ,
+            (previous.post.quantity != current.post.quantity) ||
+            (previous.isSaving != current.isSaving),
         listener: (BuildContext context, PostFormState state) {
           state.successOrFailure.fold(
             () {},
@@ -66,6 +70,17 @@ class _PostPageState extends State<PostPage> {
           );
         },
         builder: (BuildContext context, PostFormState state) {
+          String regExp = r"""am|pm""";
+          final String? amOrPm =
+              RegExp(regExp).stringMatch(state.post.pickupTime.getOrCrash());
+          final rangeValues = state.post.pickupTime.getOrCrash();
+          double minSliderValue =
+              double.tryParse(rangeValues.split('-')[0].split(':')[0].toString())!;
+          double maxSliderValue =
+              double.tryParse(rangeValues.split('-')[1].split(':')[0].toString())!;
+
+          print(amOrPm);
+
           return Scaffold(
             appBar: AppBar(
               title: Text('Post Food',
@@ -82,9 +97,12 @@ class _PostPageState extends State<PostPage> {
                 backgroundColor: const Color(0xFF3212F1),
                 onPressed: () {
                   BlocProvider.of<PostFormBloc>(context)
-                      .add( PostFormEvent.saved(_foodImage!));
+                      .add(PostFormEvent.saved(_foodImage!));
                 },
-                child: state.isSaving ?const Center(child:  ThreeDotIndicator(color: Colors.white,size:14)): const Icon(Icons.post_add)),
+                child: state.isSaving
+                    ? const Center(
+                        child: ThreeDotIndicator(color: Colors.white, size: 14))
+                    : const Icon(Icons.post_add)),
             body: Form(
               autovalidateMode: state.showErrorMessages
                   ? AutovalidateMode.always
@@ -230,34 +248,71 @@ class _PostPageState extends State<PostPage> {
                   decoration:
                       BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
                   child: ListTile(
-                    title: Text(
-                      'Pick up times',
-                      style:
-                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
-                    ),
-                  ),
+                      title: Text(
+                        'Pick up times',
+                        style:
+                            GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      ),
+                      trailing: TextButton(
+                        onPressed: () {
+                          String changedValue = amOrPm == "am" ? "pm" : "am";
+                          String min =
+                              minSliderValue.toString().replaceAll(".0", "");
+                          String max =
+                              maxSliderValue.toString().replaceAll(".0", "");
+                          BlocProvider.of<PostFormBloc>(context).add(
+                              PostFormEvent.pickupTimeChanged(
+                                  "$min:00-$max:00 $changedValue"));
+                          print(state.post.pickupTime.getOrCrash());
+                        },
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 300),
+                          child: Text(
+                            state.post.pickupTime.getOrCrash(),//amOrPm ?? "",
+                            key: Key(amOrPm ?? ""),
+                            style: GoogleFonts.lato(
+                                fontSize: 12, color: const Color(0xFF3212F1)),
+                          ),
+                        ),
+                      )),
                 ),
-                Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: InputFieldAndLabel(
-                        onChangedFunc: (String value) =>
-                            BlocProvider.of<PostFormBloc>(context)
-                                .add(PostFormEvent.pickupTimeChanged(value)),
-                        validateFunc: (_) =>
-                            BlocProvider.of<PostFormBloc>(context)
-                                .state
-                                .post
-                                .pickupTime
-                                .value
-                                .fold(
-                                    (ValueFailure<String> f) => f.maybeMap(
-                                        empty: (_) => "This can't be empty",
-                                        exceedingLength:
-                                            (ExceedingLength<String> f) =>
-                                                "This is too long",
-                                        orElse: () => null),
-                                    (_) => null),
-                        label: 'What time should the person pick it up?...')),
+                const SizedBox(height: 10),
+                RangeSlider(
+                  min: 0.0,
+                  max: 12,
+                  activeColor: const Color(0xFF3212F1),
+                  inactiveColor: const Color(0xFF3212F1).withOpacity(0.1),
+                  divisions: 12,
+                  onChanged: (RangeValues values) {
+                    String min = values.start.toString().replaceAll(".0", "");
+                    String max = values.end.toString().replaceAll(".0", "");
+                    BlocProvider.of<PostFormBloc>(context).add(
+                        PostFormEvent.pickupTimeChanged(
+                            "$min:00-$max:00 $amOrPm"));
+                  },
+                  values: RangeValues(minSliderValue, maxSliderValue),
+                ),
+                // Padding(
+                //     padding: const EdgeInsets.symmetric(horizontal: 5),
+                //     child: InputFieldAndLabel(
+                //         onChangedFunc: (String value) =>
+                //             BlocProvider.of<PostFormBloc>(context)
+                //                 .add(PostFormEvent.pickupTimeChanged(value)),
+                //         validateFunc: (_) =>
+                //             BlocProvider.of<PostFormBloc>(context)
+                //                 .state
+                //                 .post
+                //                 .pickupTime
+                //                 .value
+                //                 .fold(
+                //                     (ValueFailure<String> f) => f.maybeMap(
+                //                         empty: (_) => "This can't be empty",
+                //                         exceedingLength:
+                //                             (ExceedingLength<String> f) =>
+                //                                 "This is too long",
+                //                         orElse: () => null),
+                //                     (_) => null),
+                //         label: 'What time should the person pick it up?...')),
               ]),
             ),
           );
