@@ -12,6 +12,7 @@ _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
       description: json['description'] as String,
       quantity: json['quantity'] as int,
       title: json['title'] as String,
+      postUserId: json['postUserId'] as String,
       serverTimeStamp: const ServerTimestampConverter()
           .fromJson(json['serverTimeStamp'] as Object),
     );
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
       'description': instance.description,
       'quantity': instance.quantity,
       'title': instance.title,
+      'postUserId': instance.postUserId,
       'serverTimeStamp':
           const ServerTimestampConverter().toJson(instance.serverTimeStamp),
     };

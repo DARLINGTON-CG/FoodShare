@@ -21,6 +21,7 @@ class PostDto with _$PostDto {
           required String description,
           required int quantity,
           required String title,
+          required String postUserId,
           @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
       _PostDto;
 
@@ -30,6 +31,7 @@ class PostDto with _$PostDto {
   factory PostDto.fromDomain(Post post) {
     return PostDto(
         id: post.id.getOrCrash(),
+        postUserId: post.postUserId.getOrCrash(),
         description: post.description.getOrCrash(),
         imageUrl: post.imageUrl.getOrCrash(),
         pickupTime: post.pickupTime.getOrCrash(),
@@ -45,6 +47,7 @@ class PostDto with _$PostDto {
         imageUrl: PostImageUrl(imageUrl),
         pickupTime: PickupTime(pickupTime),
         quantity: PostQuantity(quantity),
+        postUserId: PostUserId(postUserId),
         title: PostTitle(title));
   }
 

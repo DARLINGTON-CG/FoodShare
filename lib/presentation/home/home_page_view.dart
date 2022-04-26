@@ -60,8 +60,9 @@ class _HomePageViewState extends State<HomePageView>
                     ),
                   ),
                   elevation: 0.5,
-                  title: const Text(
-                    "----------------",
+                  title: Text(
+                    "Home",
+                    style: GoogleFonts.lato(fontSize: 17),
                   ),
                   pinned: true,
                   centerTitle: true,

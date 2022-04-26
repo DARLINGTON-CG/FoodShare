@@ -18,11 +18,10 @@ import 'widgets/nav_bar_item.dart';
 
 
 /*
-Add a slider to the post page for user to create time slider.
-fIX nULL CHECK OPERATOR USED ON NULL.
-Store user id in post document for tasks like update and delete.
 Don't allow user to view his own post in the first navigation bar item
 Last navigation bar button for user to delete and update data.
+Add functionality for user to delete account.
+Add paid tab.
 Add dark mode.
 Deal with big image sizes.
 */

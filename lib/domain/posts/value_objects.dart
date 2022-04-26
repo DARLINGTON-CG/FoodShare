@@ -2,7 +2,6 @@ import '../core/failures.dart';
 import 'package:dartz/dartz.dart';
 import '../core/value_objects.dart';
 import '../core/value_validators.dart';
-import 'package:kt_dart/collection.dart';
 
 class PostDescription extends ValueObject<String> {
   @override
@@ -61,22 +60,6 @@ class PickupTime extends ValueObject<String> {
   }
 }
 
-class List3<T> extends ValueObject<KtList<T>> {
-  @override
-  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
-
-  static const int maxLength = 3;
-
-  const List3._(this.value);
-
-  factory List3(KtList<T> input) {
-    return List3<T>._(validateMaxListLength(input, maxLength));
-  }
-
-  int get length => value.getOrElse(() => emptyList()).size;
-
-  bool get isFull => length == maxLength;
-}
 
 class PostQuantity extends ValueObject<int> {
   @override
@@ -88,5 +71,16 @@ class PostQuantity extends ValueObject<int> {
 
   factory PostQuantity(int input) {
     return PostQuantity._(right(input));
+  }
+}
+
+class PostUserId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>,String> value;
+
+  const PostUserId._(this.value);
+
+  factory PostUserId(String input) {
+    return PostUserId._(right(input));
   }
 }

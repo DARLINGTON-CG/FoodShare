@@ -29,13 +29,14 @@ class PostRepository implements IPostRepository {
   @override
   Future<Either<PostFailure, Unit>> create(Post post, File file) async {
     try {
-      //  final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
-      //   final LocalUser user =
-      //   userOption.getOrElse(() => throw NotAuthenticatedError());
+       final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+        final LocalUser user =
+        userOption.getOrElse(() => throw NotAuthenticatedError());
 
       final Post postForUpload = await getIt<IStorageRepository>()
           .upload(file, post.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
+              postUserId: PostUserId(user.id.getOrCrash()),
               imageUrl:
                   PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
