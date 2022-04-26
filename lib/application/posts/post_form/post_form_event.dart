@@ -8,5 +8,5 @@ class PostFormEvent with _$PostFormEvent
   const factory PostFormEvent.pickupTimeChanged(String pickupTime) = PickupTimeChanged;
   const factory PostFormEvent.quantityChanged(int quantity) = QuantityChanged;
   const factory PostFormEvent.titleChanged(String title) = TitleChanged;
-  const factory PostFormEvent.saved(File image) = Saved;
+  const factory PostFormEvent.saved(File? image) = Saved;
 }

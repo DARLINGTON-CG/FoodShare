@@ -74,10 +74,10 @@ class _PostPageState extends State<PostPage> {
           final String? amOrPm =
               RegExp(regExp).stringMatch(state.post.pickupTime.getOrCrash());
           final rangeValues = state.post.pickupTime.getOrCrash();
-          double minSliderValue =
-              double.tryParse(rangeValues.split('-')[0].split(':')[0].toString())!;
-          double maxSliderValue =
-              double.tryParse(rangeValues.split('-')[1].split(':')[0].toString())!;
+          double minSliderValue = double.tryParse(
+              rangeValues.split('-')[0].split(':')[0].toString())!;
+          double maxSliderValue = double.tryParse(
+              rangeValues.split('-')[1].split(':')[0].toString())!;
 
           print(amOrPm);
 
@@ -97,16 +97,14 @@ class _PostPageState extends State<PostPage> {
                 backgroundColor: const Color(0xFF3212F1),
                 onPressed: () {
                   BlocProvider.of<PostFormBloc>(context)
-                      .add(PostFormEvent.saved(_foodImage!));
+                      .add(PostFormEvent.saved(_foodImage));
                 },
                 child: state.isSaving
                     ? const Center(
                         child: ThreeDotIndicator(color: Colors.white, size: 14))
                     : const Icon(Icons.post_add)),
             body: Form(
-              autovalidateMode: state.showErrorMessages
-                  ? AutovalidateMode.always
-                  : AutovalidateMode.disabled,
+              autovalidateMode: AutovalidateMode.disabled,
               child:
                   ListView(physics: const BouncingScrollPhysics(), children: <
                       Widget>[
@@ -127,6 +125,12 @@ class _PostPageState extends State<PostPage> {
                       "Add Image",
                       style:
                           GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    ),
+                    trailing: Text(
+                      state.showErrorMessages && _foodImage == null
+                          ? "Add an image"
+                          : "",
+                      style: GoogleFonts.lato(fontSize: 13, color: Colors.red),
                     ),
                   ),
                 ),
@@ -170,6 +174,24 @@ class _PostPageState extends State<PostPage> {
                       style:
                           GoogleFonts.lato(fontSize: 14, color: Colors.black),
                     ),
+                    trailing: Text(
+                      state.showErrorMessages
+                          ? BlocProvider.of<PostFormBloc>(context)
+                              .state
+                              .post
+                              .title
+                              .value
+                              .fold(
+                                  (ValueFailure<String> f) => f.maybeMap(
+                                      empty: (_) => "Add a title",
+                                      exceedingLength:
+                                          (ExceedingLength<String> f) =>
+                                              "This is too long",
+                                      orElse: () => ""),
+                                  (_) => "")
+                          : "",
+                      style: GoogleFonts.lato(fontSize: 13, color: Colors.red),
+                    ),
                   ),
                 ),
                 Padding(
@@ -178,20 +200,6 @@ class _PostPageState extends State<PostPage> {
                       onChangedFunc: (String value) =>
                           BlocProvider.of<PostFormBloc>(context)
                               .add(PostFormEvent.titleChanged(value)),
-                      validateFunc: (_) =>
-                          BlocProvider.of<PostFormBloc>(context)
-                              .state
-                              .post
-                              .title
-                              .value
-                              .fold(
-                                  (ValueFailure<String> f) => f.maybeMap(
-                                      empty: (_) => "This can't be empty",
-                                      exceedingLength:
-                                          (ExceedingLength<String> f) =>
-                                              "This is too long",
-                                      orElse: () => null),
-                                  (_) => null),
                       label: 'Add a title...'),
                 ),
                 Container(
@@ -205,6 +213,24 @@ class _PostPageState extends State<PostPage> {
                       style:
                           GoogleFonts.lato(fontSize: 14, color: Colors.black),
                     ),
+                    trailing: Text(
+                      state.showErrorMessages
+                          ? BlocProvider.of<PostFormBloc>(context)
+                              .state
+                              .post
+                              .description
+                              .value
+                              .fold(
+                                  (ValueFailure<String> f) => f.maybeMap(
+                                      empty: (_) => "Add description",
+                                      exceedingLength:
+                                          (ExceedingLength<String> f) =>
+                                              "This is too long",
+                                      orElse: () => ""),
+                                  (_) => "")
+                          : "",
+                      style: GoogleFonts.lato(fontSize: 13, color: Colors.red),
+                    ),
                   ),
                 ),
                 Padding(
@@ -213,20 +239,6 @@ class _PostPageState extends State<PostPage> {
                         onChangedFunc: (String value) =>
                             BlocProvider.of<PostFormBloc>(context)
                                 .add(PostFormEvent.descriptionChanged(value)),
-                        validateFunc: (_) =>
-                            BlocProvider.of<PostFormBloc>(context)
-                                .state
-                                .post
-                                .description
-                                .value
-                                .fold(
-                                    (ValueFailure<String> f) => f.maybeMap(
-                                        empty: (_) => "This can't be empty",
-                                        exceedingLength:
-                                            (ExceedingLength<String> f) =>
-                                                "This is too long",
-                                        orElse: () => null),
-                                    (_) => null),
                         label: 'Describe what is being given away....')),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -263,12 +275,11 @@ class _PostPageState extends State<PostPage> {
                           BlocProvider.of<PostFormBloc>(context).add(
                               PostFormEvent.pickupTimeChanged(
                                   "$min:00-$max:00 $changedValue"));
-                          print(state.post.pickupTime.getOrCrash());
                         },
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
                           child: Text(
-                            state.post.pickupTime.getOrCrash(),//amOrPm ?? "",
+                            state.post.pickupTime.getOrCrash(), //amOrPm ?? "",
                             key: Key(amOrPm ?? ""),
                             style: GoogleFonts.lato(
                                 fontSize: 12, color: const Color(0xFF3212F1)),
@@ -292,27 +303,6 @@ class _PostPageState extends State<PostPage> {
                   },
                   values: RangeValues(minSliderValue, maxSliderValue),
                 ),
-                // Padding(
-                //     padding: const EdgeInsets.symmetric(horizontal: 5),
-                //     child: InputFieldAndLabel(
-                //         onChangedFunc: (String value) =>
-                //             BlocProvider.of<PostFormBloc>(context)
-                //                 .add(PostFormEvent.pickupTimeChanged(value)),
-                //         validateFunc: (_) =>
-                //             BlocProvider.of<PostFormBloc>(context)
-                //                 .state
-                //                 .post
-                //                 .pickupTime
-                //                 .value
-                //                 .fold(
-                //                     (ValueFailure<String> f) => f.maybeMap(
-                //                         empty: (_) => "This can't be empty",
-                //                         exceedingLength:
-                //                             (ExceedingLength<String> f) =>
-                //                                 "This is too long",
-                //                         orElse: () => null),
-                //                     (_) => null),
-                //         label: 'What time should the person pick it up?...')),
               ]),
             ),
           );

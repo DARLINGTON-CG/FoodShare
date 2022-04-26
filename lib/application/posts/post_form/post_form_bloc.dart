@@ -66,8 +66,8 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
 
         emit(state.copyWith(isSaving: true, successOrFailure: none()));
 
-        if (state.post.failureOption.isNone()) {
-          final  Either<PostFailure, Unit>? failureOrSuccess  = await _postRepository.create(state.post, event.image);
+        if (state.post.failureOption.isNone() && (event.image != null)) {
+          final  Either<PostFailure, Unit>? failureOrSuccess  = await _postRepository.create(state.post, event.image!);
            emit(state.copyWith(
             isSaving: false,
             showErrorMessages: true,

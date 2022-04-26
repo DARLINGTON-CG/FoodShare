@@ -46,7 +46,7 @@ class _$PostFormEventTearOff {
     );
   }
 
-  Saved saved(File image) {
+  Saved saved(File? image) {
     return Saved(
       image,
     );
@@ -65,7 +65,7 @@ mixin _$PostFormEvent {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,7 +75,7 @@ mixin _$PostFormEvent {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,7 +85,7 @@ mixin _$PostFormEvent {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +184,7 @@ class _$Initialized implements Initialized {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return initialized();
   }
@@ -197,7 +197,7 @@ class _$Initialized implements Initialized {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return initialized?.call();
   }
@@ -210,7 +210,7 @@ class _$Initialized implements Initialized {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -338,7 +338,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return descriptionChanged(description);
   }
@@ -351,7 +351,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -364,7 +364,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -497,7 +497,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return pickupTimeChanged(pickupTime);
   }
@@ -510,7 +510,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return pickupTimeChanged?.call(pickupTime);
   }
@@ -523,7 +523,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (pickupTimeChanged != null) {
@@ -655,7 +655,7 @@ class _$QuantityChanged implements QuantityChanged {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return quantityChanged(quantity);
   }
@@ -668,7 +668,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return quantityChanged?.call(quantity);
   }
@@ -681,7 +681,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (quantityChanged != null) {
@@ -812,7 +812,7 @@ class _$TitleChanged implements TitleChanged {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return titleChanged(title);
   }
@@ -825,7 +825,7 @@ class _$TitleChanged implements TitleChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return titleChanged?.call(title);
   }
@@ -838,7 +838,7 @@ class _$TitleChanged implements TitleChanged {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -904,7 +904,7 @@ abstract class TitleChanged implements PostFormEvent {
 abstract class $SavedCopyWith<$Res> {
   factory $SavedCopyWith(Saved value, $Res Function(Saved) then) =
       _$SavedCopyWithImpl<$Res>;
-  $Res call({File image});
+  $Res call({File? image});
 }
 
 /// @nodoc
@@ -924,7 +924,7 @@ class _$SavedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
       image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File,
+              as File?,
     ));
   }
 }
@@ -935,7 +935,7 @@ class _$Saved implements Saved {
   const _$Saved(this.image);
 
   @override
-  final File image;
+  final File? image;
 
   @override
   String toString() {
@@ -967,7 +967,7 @@ class _$Saved implements Saved {
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(File image) saved,
+    required TResult Function(File? image) saved,
   }) {
     return saved(image);
   }
@@ -980,7 +980,7 @@ class _$Saved implements Saved {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
   }) {
     return saved?.call(image);
   }
@@ -993,7 +993,7 @@ class _$Saved implements Saved {
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(File image)? saved,
+    TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -1047,9 +1047,9 @@ class _$Saved implements Saved {
 }
 
 abstract class Saved implements PostFormEvent {
-  const factory Saved(File image) = _$Saved;
+  const factory Saved(File? image) = _$Saved;
 
-  File get image;
+  File? get image;
   @JsonKey(ignore: true)
   $SavedCopyWith<Saved> get copyWith => throw _privateConstructorUsedError;
 }

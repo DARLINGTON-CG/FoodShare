@@ -3,14 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class InputFieldAndLabel extends StatelessWidget {
   final String label;
-  final String? Function(String?)? validateFunc;
   
    final Function(String)? onChangedFunc;
   
   const InputFieldAndLabel(
       {Key? key,
       required this.label,
-      required this.validateFunc,
       required this.onChangedFunc})
       : super(key: key);
 
@@ -18,7 +16,6 @@ class InputFieldAndLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       autocorrect: false,
-      validator: validateFunc,
       onChanged: onChangedFunc,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
