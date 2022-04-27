@@ -79,7 +79,6 @@ class _PostPageState extends State<PostPage> {
           double maxSliderValue = double.tryParse(
               rangeValues.split('-')[1].split(':')[0].toString())!;
 
-          print(amOrPm);
 
           return Scaffold(
             appBar: AppBar(

@@ -29,9 +29,10 @@ class PostRepository implements IPostRepository {
   @override
   Future<Either<PostFailure, Unit>> create(Post post, File file) async {
     try {
-       final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
-        final LocalUser user =
-        userOption.getOrElse(() => throw NotAuthenticatedError());
+      final Option<LocalUser> userOption =
+          getIt<IAuthFacade>().getSignedInUser();
+      final LocalUser user =
+          userOption.getOrElse(() => throw NotAuthenticatedError());
 
       final Post postForUpload = await getIt<IStorageRepository>()
           .upload(file, post.id.getOrCrash())
@@ -41,7 +42,7 @@ class PostRepository implements IPostRepository {
                   PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =
-          await _firebaseFirestore.userDocument();
+          await _firebaseFirestore.postDocuments();
 
       final PostDto postDto = PostDto.fromDomain(postForUpload);
       await userDoc.doc(postDto.id).set(postDto.toJson());
@@ -59,7 +60,7 @@ class PostRepository implements IPostRepository {
   Future<Either<PostFailure, Unit>> delete(Post post) async {
     try {
       final CollectionReference<Object?> userDoc =
-          await _firebaseFirestore.userDocument();
+          await _firebaseFirestore.postDocuments();
       final String postId = post.id.getOrCrash();
 
       await userDoc
@@ -83,7 +84,7 @@ class PostRepository implements IPostRepository {
   Future<Either<PostFailure, Unit>> update(Post post) async {
     try {
       final CollectionReference<Object?> userDoc =
-          await _firebaseFirestore.userDocument();
+          await _firebaseFirestore.postDocuments();
       final PostDto postDto = PostDto.fromDomain(post);
 
       await userDoc
@@ -106,17 +107,34 @@ class PostRepository implements IPostRepository {
   @override
   Stream<Either<PostFailure, KtList<Post>>> watchAll() async* {
     final CollectionReference<Object?> userDoc =
-        await _firebaseFirestore.userDocument();
+        await _firebaseFirestore.postDocuments();
+
+    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    final LocalUser user =
+        userOption.getOrElse(() => throw NotAuthenticatedError());
 
     yield* userDoc
-        //.postCollection
-        .orderBy('serverTimeStamp', descending: true)
+       //.where('postUserId', isEqualTo: user.id.getOrCrash())
+         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
-        .map((QuerySnapshot<Object?> snapshots) =>
-            right<PostFailure, KtList<Post>>(snapshots.docs
-                .map((QueryDocumentSnapshot<Object?> doc) =>
-                    PostDto.fromFirestore(doc).toDomain())
-                .toImmutableList()))
+        .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
+            (QueryDocumentSnapshot<Object?> doc) =>
+                PostDto.fromFirestore(doc).toDomain()))
+        .map((Iterable<Post> posts) =>
+            right<PostFailure, KtList<Post>>(posts.
+            where((Post post) => post.postUserId.value.getOrElse(() => throw Exception()) != user.id.getOrCrash()).
+            toImmutableList()))
+        // .orderBy(
+        //   'serverTimeStamp',
+        //   descending: true,
+        // )
+        // .snapshots()
+        // .map((QuerySnapshot<Object?> snapshots) =>
+        //     right<PostFailure, KtList<Post>>(snapshots.docs
+        //         .map((QueryDocumentSnapshot<Object?> doc) =>
+        //             PostDto.fromFirestore(doc).toDomain())
+                    
+        //         .toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
           error.message!.contains("PERMISSION_DENIED")) {
@@ -147,7 +165,7 @@ class PostRepository implements IPostRepository {
   @override
   Stream<Either<PostFailure, KtList<Post>>> watchAllUncompleted() async* {
     final CollectionReference<Object?> userDoc =
-        await _firebaseFirestore.userDocument();
+        await _firebaseFirestore.postDocuments();
     yield* userDoc
         //.postCollection
         .orderBy('serverTimeStamp', descending: true)

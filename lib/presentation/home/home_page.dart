@@ -18,7 +18,6 @@ import 'widgets/nav_bar_item.dart';
 
 
 /*
-Don't allow user to view his own post in the first navigation bar item
 Last navigation bar button for user to delete and update data.
 Add functionality for user to delete account.
 Add paid tab.
