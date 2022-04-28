@@ -30,6 +30,7 @@ class _$PostDtoTearOff {
       required int quantity,
       required String title,
       required String postUserId,
+      required String postPrice,
       @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
     return _PostDto(
       id: id,
@@ -39,6 +40,7 @@ class _$PostDtoTearOff {
       quantity: quantity,
       title: title,
       postUserId: postUserId,
+      postPrice: postPrice,
       serverTimeStamp: serverTimeStamp,
     );
   }
@@ -61,6 +63,7 @@ mixin _$PostDto {
   int get quantity => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get postUserId => throw _privateConstructorUsedError;
+  String get postPrice => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
@@ -81,6 +84,7 @@ abstract class $PostDtoCopyWith<$Res> {
       int quantity,
       String title,
       String postUserId,
+      String postPrice,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -101,6 +105,7 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object? quantity = freezed,
     Object? title = freezed,
     Object? postUserId = freezed,
+    Object? postPrice = freezed,
     Object? serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
@@ -132,6 +137,10 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
           ? _value.postUserId
           : postUserId // ignore: cast_nullable_to_non_nullable
               as String,
+      postPrice: postPrice == freezed
+          ? _value.postPrice
+          : postPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -153,6 +162,7 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       int quantity,
       String title,
       String postUserId,
+      String postPrice,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -174,6 +184,7 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object? quantity = freezed,
     Object? title = freezed,
     Object? postUserId = freezed,
+    Object? postPrice = freezed,
     Object? serverTimeStamp = freezed,
   }) {
     return _then(_PostDto(
@@ -205,6 +216,10 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
           ? _value.postUserId
           : postUserId // ignore: cast_nullable_to_non_nullable
               as String,
+      postPrice: postPrice == freezed
+          ? _value.postPrice
+          : postPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -224,6 +239,7 @@ class _$_PostDto extends _PostDto {
       required this.quantity,
       required this.title,
       required this.postUserId,
+      required this.postPrice,
       @ServerTimestampConverter() required this.serverTimeStamp})
       : super._();
 
@@ -246,12 +262,14 @@ class _$_PostDto extends _PostDto {
   @override
   final String postUserId;
   @override
+  final String postPrice;
+  @override
   @ServerTimestampConverter()
   final FieldValue serverTimeStamp;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, imageUrl: $imageUrl, pickupTime: $pickupTime, description: $description, quantity: $quantity, title: $title, postUserId: $postUserId, serverTimeStamp: $serverTimeStamp)';
+    return 'PostDto(id: $id, imageUrl: $imageUrl, pickupTime: $pickupTime, description: $description, quantity: $quantity, title: $title, postUserId: $postUserId, postPrice: $postPrice, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -269,6 +287,7 @@ class _$_PostDto extends _PostDto {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.postUserId, postUserId) &&
+            const DeepCollectionEquality().equals(other.postPrice, postPrice) &&
             const DeepCollectionEquality()
                 .equals(other.serverTimeStamp, serverTimeStamp));
   }
@@ -283,6 +302,7 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(postUserId),
+      const DeepCollectionEquality().hash(postPrice),
       const DeepCollectionEquality().hash(serverTimeStamp));
 
   @JsonKey(ignore: true)
@@ -305,6 +325,7 @@ abstract class _PostDto extends PostDto {
           required int quantity,
           required String title,
           required String postUserId,
+          required String postPrice,
           @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
       _$_PostDto;
   const _PostDto._() : super._();
@@ -326,6 +347,8 @@ abstract class _PostDto extends PostDto {
   String get title;
   @override
   String get postUserId;
+  @override
+  String get postPrice;
   @override
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp;

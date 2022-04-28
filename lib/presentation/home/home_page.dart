@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
+import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
+import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_in.dart';
 import '../notification/notification_page.dart';
 import '../posts/post_page.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
-import '../../application/posts/post_watcher/post_watcher_bloc.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../map/maps_page_view.dart';
@@ -16,13 +18,13 @@ import '../profile/profile_page.dart';
 import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
-
 /*
 Last navigation bar button for user to delete and update data.
-Add functionality for user to delete account.
-Add paid tab.
+
+Validate amount changed being a digit
 Add dark mode.
 Deal with big image sizes.
+Add functionality for user to delete account.
 */
 
 class HomePage extends StatefulWidget {
@@ -56,9 +58,12 @@ class _HomePageState extends State<HomePage> {
     return MultiBlocProvider(
         // ignore: always_specify_types
         providers: [
-          BlocProvider<PostWatcherBloc>(
-              create: (BuildContext context) => getIt<PostWatcherBloc>()
-                ..add(const PostWatcherEvent.watchAllStarted())),
+          BlocProvider<PostFreeWatcherBloc>(
+              create: (BuildContext context) => getIt<PostFreeWatcherBloc>()
+                ..add(const PostFreeWatcherEvent.watchAllFreeStarted())),
+          BlocProvider<PostPaidWatcherBloc>(
+              create: (BuildContext context) => getIt<PostPaidWatcherBloc>()
+                ..add(const PostWatcherPaidEvent.watchAllPaidStarted())),
           BlocProvider<PostActorBloc>(
               create: (BuildContext context) => getIt<PostActorBloc>())
         ],
@@ -127,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                         iconName: Icons.chat_bubble_rounded,
                         isSelected: index == 1),
                     InkWell(
-                      highlightColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () {
                           showModalBottomSheet<void>(
                             context: context,
@@ -174,9 +179,11 @@ class _HomePageState extends State<HomePage> {
                                           onTap: () {
                                             Navigator.of(context).pop();
 
-                                            Navigator.of(context).push(
-                                                SlideUpAnim(
-                                                    page: const PostPage()));
+                                            Navigator.of(context)
+                                                .push(SlideUpAnim(
+                                                    page: const PostPage(
+                                              type: PostType.free,
+                                            )));
                                           },
                                           trailing: const Icon(
                                             Icons.free_breakfast_rounded,
@@ -194,10 +201,19 @@ class _HomePageState extends State<HomePage> {
                                         width:
                                             MediaQuery.of(context).size.width,
                                         height: 55,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                          ),
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                        ),
                                         child: ListTile(
+                                          onTap: () {
+                                            Navigator.of(context).pop();
+
+                                            Navigator.of(context)
+                                                .push(SlideUpAnim(
+                                                    page: const PostPage(
+                                              type: PostType.paid,
+                                            )));
+                                          },
                                           trailing: const Icon(
                                             Icons.account_balance_wallet,
                                             color: Colors.black,

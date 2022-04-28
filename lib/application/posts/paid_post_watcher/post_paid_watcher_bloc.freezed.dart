@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'post_watcher_bloc.dart';
+part of 'post_paid_watcher_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,138 +15,103 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$PostWatcherEventTearOff {
-  const _$PostWatcherEventTearOff();
+class _$PostWatcherPaidEventTearOff {
+  const _$PostWatcherPaidEventTearOff();
 
-  _WatchAllStarted watchAllStarted() {
-    return const _WatchAllStarted();
-  }
-
-  _WatchUncompletedStarted watchUncompletedStarted() {
-    return const _WatchUncompletedStarted();
-  }
-
-  _PostReceived postReceived(Either<PostFailure, KtList<Post>> failureOrPost) {
-    return _PostReceived(
-      failureOrPost,
-    );
+  WatchAllPaidStarted watchAllPaidStarted() {
+    return const WatchAllPaidStarted();
   }
 }
 
 /// @nodoc
-const $PostWatcherEvent = _$PostWatcherEventTearOff();
+const $PostWatcherPaidEvent = _$PostWatcherPaidEventTearOff();
 
 /// @nodoc
-mixin _$PostWatcherEvent {
+mixin _$PostWatcherPaidEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
-    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
-        postReceived,
+    required TResult Function() watchAllPaidStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
+    TResult Function()? watchAllPaidStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
+    TResult Function()? watchAllPaidStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
-    required TResult Function(_PostReceived value) postReceived,
+    required TResult Function(WatchAllPaidStarted value) watchAllPaidStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
+    TResult Function(WatchAllPaidStarted value)? watchAllPaidStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
+    TResult Function(WatchAllPaidStarted value)? watchAllPaidStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PostWatcherEventCopyWith<$Res> {
-  factory $PostWatcherEventCopyWith(
-          PostWatcherEvent value, $Res Function(PostWatcherEvent) then) =
-      _$PostWatcherEventCopyWithImpl<$Res>;
+abstract class $PostWatcherPaidEventCopyWith<$Res> {
+  factory $PostWatcherPaidEventCopyWith(PostWatcherPaidEvent value,
+          $Res Function(PostWatcherPaidEvent) then) =
+      _$PostWatcherPaidEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PostWatcherEventCopyWithImpl<$Res>
-    implements $PostWatcherEventCopyWith<$Res> {
-  _$PostWatcherEventCopyWithImpl(this._value, this._then);
+class _$PostWatcherPaidEventCopyWithImpl<$Res>
+    implements $PostWatcherPaidEventCopyWith<$Res> {
+  _$PostWatcherPaidEventCopyWithImpl(this._value, this._then);
 
-  final PostWatcherEvent _value;
+  final PostWatcherPaidEvent _value;
   // ignore: unused_field
-  final $Res Function(PostWatcherEvent) _then;
+  final $Res Function(PostWatcherPaidEvent) _then;
 }
 
 /// @nodoc
-abstract class _$WatchAllStartedCopyWith<$Res> {
-  factory _$WatchAllStartedCopyWith(
-          _WatchAllStarted value, $Res Function(_WatchAllStarted) then) =
-      __$WatchAllStartedCopyWithImpl<$Res>;
+abstract class $WatchAllPaidStartedCopyWith<$Res> {
+  factory $WatchAllPaidStartedCopyWith(
+          WatchAllPaidStarted value, $Res Function(WatchAllPaidStarted) then) =
+      _$WatchAllPaidStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$WatchAllStartedCopyWithImpl<$Res>
-    extends _$PostWatcherEventCopyWithImpl<$Res>
-    implements _$WatchAllStartedCopyWith<$Res> {
-  __$WatchAllStartedCopyWithImpl(
-      _WatchAllStarted _value, $Res Function(_WatchAllStarted) _then)
-      : super(_value, (v) => _then(v as _WatchAllStarted));
+class _$WatchAllPaidStartedCopyWithImpl<$Res>
+    extends _$PostWatcherPaidEventCopyWithImpl<$Res>
+    implements $WatchAllPaidStartedCopyWith<$Res> {
+  _$WatchAllPaidStartedCopyWithImpl(
+      WatchAllPaidStarted _value, $Res Function(WatchAllPaidStarted) _then)
+      : super(_value, (v) => _then(v as WatchAllPaidStarted));
 
   @override
-  _WatchAllStarted get _value => super._value as _WatchAllStarted;
+  WatchAllPaidStarted get _value => super._value as WatchAllPaidStarted;
 }
 
 /// @nodoc
 
-class _$_WatchAllStarted
-    with DiagnosticableTreeMixin
-    implements _WatchAllStarted {
-  const _$_WatchAllStarted();
+class _$WatchAllPaidStarted implements WatchAllPaidStarted {
+  const _$WatchAllPaidStarted();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherEvent.watchAllStarted()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherEvent.watchAllStarted'));
+  String toString() {
+    return 'PostWatcherPaidEvent.watchAllPaidStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _WatchAllStarted);
+        (other.runtimeType == runtimeType && other is WatchAllPaidStarted);
   }
 
   @override
@@ -155,36 +120,27 @@ class _$_WatchAllStarted
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
-    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
-        postReceived,
+    required TResult Function() watchAllPaidStarted,
   }) {
-    return watchAllStarted();
+    return watchAllPaidStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
+    TResult Function()? watchAllPaidStarted,
   }) {
-    return watchAllStarted?.call();
+    return watchAllPaidStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
+    TResult Function()? watchAllPaidStarted,
     required TResult orElse(),
   }) {
-    if (watchAllStarted != null) {
-      return watchAllStarted();
+    if (watchAllPaidStarted != null) {
+      return watchAllPaidStarted();
     }
     return orElse();
   }
@@ -192,326 +148,39 @@ class _$_WatchAllStarted
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
-    required TResult Function(_PostReceived value) postReceived,
+    required TResult Function(WatchAllPaidStarted value) watchAllPaidStarted,
   }) {
-    return watchAllStarted(this);
+    return watchAllPaidStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
+    TResult Function(WatchAllPaidStarted value)? watchAllPaidStarted,
   }) {
-    return watchAllStarted?.call(this);
+    return watchAllPaidStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
+    TResult Function(WatchAllPaidStarted value)? watchAllPaidStarted,
     required TResult orElse(),
   }) {
-    if (watchAllStarted != null) {
-      return watchAllStarted(this);
+    if (watchAllPaidStarted != null) {
+      return watchAllPaidStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _WatchAllStarted implements PostWatcherEvent {
-  const factory _WatchAllStarted() = _$_WatchAllStarted;
+abstract class WatchAllPaidStarted implements PostWatcherPaidEvent {
+  const factory WatchAllPaidStarted() = _$WatchAllPaidStarted;
 }
 
 /// @nodoc
-abstract class _$WatchUncompletedStartedCopyWith<$Res> {
-  factory _$WatchUncompletedStartedCopyWith(_WatchUncompletedStarted value,
-          $Res Function(_WatchUncompletedStarted) then) =
-      __$WatchUncompletedStartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$WatchUncompletedStartedCopyWithImpl<$Res>
-    extends _$PostWatcherEventCopyWithImpl<$Res>
-    implements _$WatchUncompletedStartedCopyWith<$Res> {
-  __$WatchUncompletedStartedCopyWithImpl(_WatchUncompletedStarted _value,
-      $Res Function(_WatchUncompletedStarted) _then)
-      : super(_value, (v) => _then(v as _WatchUncompletedStarted));
-
-  @override
-  _WatchUncompletedStarted get _value =>
-      super._value as _WatchUncompletedStarted;
-}
-
-/// @nodoc
-
-class _$_WatchUncompletedStarted
-    with DiagnosticableTreeMixin
-    implements _WatchUncompletedStarted {
-  const _$_WatchUncompletedStarted();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherEvent.watchUncompletedStarted()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'PostWatcherEvent.watchUncompletedStarted'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _WatchUncompletedStarted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
-    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
-        postReceived,
-  }) {
-    return watchUncompletedStarted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
-  }) {
-    return watchUncompletedStarted?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
-    required TResult orElse(),
-  }) {
-    if (watchUncompletedStarted != null) {
-      return watchUncompletedStarted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
-    required TResult Function(_PostReceived value) postReceived,
-  }) {
-    return watchUncompletedStarted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
-  }) {
-    return watchUncompletedStarted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
-    required TResult orElse(),
-  }) {
-    if (watchUncompletedStarted != null) {
-      return watchUncompletedStarted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WatchUncompletedStarted implements PostWatcherEvent {
-  const factory _WatchUncompletedStarted() = _$_WatchUncompletedStarted;
-}
-
-/// @nodoc
-abstract class _$PostReceivedCopyWith<$Res> {
-  factory _$PostReceivedCopyWith(
-          _PostReceived value, $Res Function(_PostReceived) then) =
-      __$PostReceivedCopyWithImpl<$Res>;
-  $Res call({Either<PostFailure, KtList<Post>> failureOrPost});
-}
-
-/// @nodoc
-class __$PostReceivedCopyWithImpl<$Res>
-    extends _$PostWatcherEventCopyWithImpl<$Res>
-    implements _$PostReceivedCopyWith<$Res> {
-  __$PostReceivedCopyWithImpl(
-      _PostReceived _value, $Res Function(_PostReceived) _then)
-      : super(_value, (v) => _then(v as _PostReceived));
-
-  @override
-  _PostReceived get _value => super._value as _PostReceived;
-
-  @override
-  $Res call({
-    Object? failureOrPost = freezed,
-  }) {
-    return _then(_PostReceived(
-      failureOrPost == freezed
-          ? _value.failureOrPost
-          : failureOrPost // ignore: cast_nullable_to_non_nullable
-              as Either<PostFailure, KtList<Post>>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PostReceived with DiagnosticableTreeMixin implements _PostReceived {
-  const _$_PostReceived(this.failureOrPost);
-
-  @override
-  final Either<PostFailure, KtList<Post>> failureOrPost;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherEvent.postReceived(failureOrPost: $failureOrPost)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherEvent.postReceived'))
-      ..add(DiagnosticsProperty('failureOrPost', failureOrPost));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _PostReceived &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrPost, failureOrPost));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failureOrPost));
-
-  @JsonKey(ignore: true)
-  @override
-  _$PostReceivedCopyWith<_PostReceived> get copyWith =>
-      __$PostReceivedCopyWithImpl<_PostReceived>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
-    required TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)
-        postReceived,
-  }) {
-    return postReceived(failureOrPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
-  }) {
-    return postReceived?.call(failureOrPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
-    TResult Function(Either<PostFailure, KtList<Post>> failureOrPost)?
-        postReceived,
-    required TResult orElse(),
-  }) {
-    if (postReceived != null) {
-      return postReceived(failureOrPost);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
-    required TResult Function(_PostReceived value) postReceived,
-  }) {
-    return postReceived(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
-  }) {
-    return postReceived?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
-    TResult Function(_PostReceived value)? postReceived,
-    required TResult orElse(),
-  }) {
-    if (postReceived != null) {
-      return postReceived(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PostReceived implements PostWatcherEvent {
-  const factory _PostReceived(Either<PostFailure, KtList<Post>> failureOrPost) =
-      _$_PostReceived;
-
-  Either<PostFailure, KtList<Post>> get failureOrPost;
-  @JsonKey(ignore: true)
-  _$PostReceivedCopyWith<_PostReceived> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-class _$PostWatcherStateTearOff {
-  const _$PostWatcherStateTearOff();
+class _$PostPaidWatcherStateTearOff {
+  const _$PostPaidWatcherStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -535,10 +204,10 @@ class _$PostWatcherStateTearOff {
 }
 
 /// @nodoc
-const $PostWatcherState = _$PostWatcherStateTearOff();
+const $PostPaidWatcherState = _$PostPaidWatcherStateTearOff();
 
 /// @nodoc
-mixin _$PostWatcherState {
+mixin _$PostPaidWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -592,20 +261,20 @@ mixin _$PostWatcherState {
 }
 
 /// @nodoc
-abstract class $PostWatcherStateCopyWith<$Res> {
-  factory $PostWatcherStateCopyWith(
-          PostWatcherState value, $Res Function(PostWatcherState) then) =
-      _$PostWatcherStateCopyWithImpl<$Res>;
+abstract class $PostPaidWatcherStateCopyWith<$Res> {
+  factory $PostPaidWatcherStateCopyWith(PostPaidWatcherState value,
+          $Res Function(PostPaidWatcherState) then) =
+      _$PostPaidWatcherStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PostWatcherStateCopyWithImpl<$Res>
-    implements $PostWatcherStateCopyWith<$Res> {
-  _$PostWatcherStateCopyWithImpl(this._value, this._then);
+class _$PostPaidWatcherStateCopyWithImpl<$Res>
+    implements $PostPaidWatcherStateCopyWith<$Res> {
+  _$PostPaidWatcherStateCopyWithImpl(this._value, this._then);
 
-  final PostWatcherState _value;
+  final PostPaidWatcherState _value;
   // ignore: unused_field
-  final $Res Function(PostWatcherState) _then;
+  final $Res Function(PostPaidWatcherState) _then;
 }
 
 /// @nodoc
@@ -615,7 +284,8 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$PostWatcherStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res>
+    extends _$PostPaidWatcherStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -626,18 +296,12 @@ class __$InitialCopyWithImpl<$Res> extends _$PostWatcherStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
+class _$_Initial implements _Initial {
   const _$_Initial();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'PostWatcherState.initial'));
+  String toString() {
+    return 'PostPaidWatcherState.initial()';
   }
 
   @override
@@ -724,7 +388,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements PostWatcherState {
+abstract class _Initial implements PostPaidWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -737,7 +401,7 @@ abstract class _$LoadingProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadingProgressCopyWithImpl<$Res>
-    extends _$PostWatcherStateCopyWithImpl<$Res>
+    extends _$PostPaidWatcherStateCopyWithImpl<$Res>
     implements _$LoadingProgressCopyWith<$Res> {
   __$LoadingProgressCopyWithImpl(
       _LoadingProgress _value, $Res Function(_LoadingProgress) _then)
@@ -749,21 +413,12 @@ class __$LoadingProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingProgress
-    with DiagnosticableTreeMixin
-    implements _LoadingProgress {
+class _$_LoadingProgress implements _LoadingProgress {
   const _$_LoadingProgress();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherState.loadingProgress()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherState.loadingProgress'));
+  String toString() {
+    return 'PostPaidWatcherState.loadingProgress()';
   }
 
   @override
@@ -850,7 +505,7 @@ class _$_LoadingProgress
   }
 }
 
-abstract class _LoadingProgress implements PostWatcherState {
+abstract class _LoadingProgress implements PostPaidWatcherState {
   const factory _LoadingProgress() = _$_LoadingProgress;
 }
 
@@ -864,7 +519,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
-    extends _$PostWatcherStateCopyWithImpl<$Res>
+    extends _$PostPaidWatcherStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
   __$LoadSuccessCopyWithImpl(
       _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
@@ -888,23 +543,15 @@ class __$LoadSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
+class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.posts);
 
   @override
   final KtList<Post> posts;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherState.loadSuccess(posts: $posts)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherState.loadSuccess'))
-      ..add(DiagnosticsProperty('posts', posts));
+  String toString() {
+    return 'PostPaidWatcherState.loadSuccess(posts: $posts)';
   }
 
   @override
@@ -999,7 +646,7 @@ class _$_LoadSuccess with DiagnosticableTreeMixin implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements PostWatcherState {
+abstract class _LoadSuccess implements PostPaidWatcherState {
   const factory _LoadSuccess(KtList<Post> posts) = _$_LoadSuccess;
 
   KtList<Post> get posts;
@@ -1020,7 +667,7 @@ abstract class _$LoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
-    extends _$PostWatcherStateCopyWithImpl<$Res>
+    extends _$PostPaidWatcherStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
   __$LoadFailureCopyWithImpl(
       _LoadFailure _value, $Res Function(_LoadFailure) _then)
@@ -1051,23 +698,15 @@ class __$LoadFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
+class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.postFailure);
 
   @override
   final PostFailure postFailure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostWatcherState.loadFailure(postFailure: $postFailure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PostWatcherState.loadFailure'))
-      ..add(DiagnosticsProperty('postFailure', postFailure));
+  String toString() {
+    return 'PostPaidWatcherState.loadFailure(postFailure: $postFailure)';
   }
 
   @override
@@ -1163,7 +802,7 @@ class _$_LoadFailure with DiagnosticableTreeMixin implements _LoadFailure {
   }
 }
 
-abstract class _LoadFailure implements PostWatcherState {
+abstract class _LoadFailure implements PostPaidWatcherState {
   const factory _LoadFailure(PostFailure postFailure) = _$_LoadFailure;
 
   PostFailure get postFailure;

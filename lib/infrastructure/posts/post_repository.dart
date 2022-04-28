@@ -105,7 +105,7 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<Either<PostFailure, KtList<Post>>> watchAll() async* {
+  Stream<Either<PostFailure, KtList<Post>>> watchAllFree() async* {
     final CollectionReference<Object?> userDoc =
         await _firebaseFirestore.postDocuments();
 
@@ -114,16 +114,18 @@ class PostRepository implements IPostRepository {
         userOption.getOrElse(() => throw NotAuthenticatedError());
 
     yield* userDoc
-       //.where('postUserId', isEqualTo: user.id.getOrCrash())
-         .orderBy('serverTimeStamp', descending: true)
+        //.where('postUserId', isEqualTo: user.id.getOrCrash())
+        .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
             (QueryDocumentSnapshot<Object?> doc) =>
                 PostDto.fromFirestore(doc).toDomain()))
-        .map((Iterable<Post> posts) =>
-            right<PostFailure, KtList<Post>>(posts.
-            where((Post post) => post.postUserId.value.getOrElse(() => throw Exception()) != user.id.getOrCrash()).
-            toImmutableList()))
+        .map((Iterable<Post> posts) => right<PostFailure, KtList<Post>>(posts
+            .where((Post post) =>
+                (post.postUserId.value.getOrElse(() => throw Exception()) !=
+                user.id.getOrCrash()) &&  double.tryParse(post.postPrice.getOrCrash().toString())! == 0.0)
+            .toImmutableList()))
+
         // .orderBy(
         //   'serverTimeStamp',
         //   descending: true,
@@ -133,7 +135,7 @@ class PostRepository implements IPostRepository {
         //     right<PostFailure, KtList<Post>>(snapshots.docs
         //         .map((QueryDocumentSnapshot<Object?> doc) =>
         //             PostDto.fromFirestore(doc).toDomain())
-                    
+
         //         .toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
@@ -163,18 +165,36 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<Either<PostFailure, KtList<Post>>> watchAllUncompleted() async* {
+  Stream<Either<PostFailure, KtList<Post>>> watchAllPaid() async* {
     final CollectionReference<Object?> userDoc =
         await _firebaseFirestore.postDocuments();
+
+    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    final LocalUser user =
+        userOption.getOrElse(() => throw NotAuthenticatedError());
+
+
     yield* userDoc
-        //.postCollection
+        //.where('postUserId', isEqualTo: user.id.getOrCrash())
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
             (QueryDocumentSnapshot<Object?> doc) =>
                 PostDto.fromFirestore(doc).toDomain()))
-        .map((Iterable<Post> post) =>
-            right<PostFailure, KtList<Post>>(post.toImmutableList()))
+        .map((Iterable<Post> posts) => right<PostFailure, KtList<Post>>(posts
+            .where((Post post) =>
+                (post.postUserId.value.getOrElse(() => throw Exception()) !=
+                user.id.getOrCrash()) &&  double.tryParse(post.postPrice.getOrCrash().toString())! > 0.0 ) 
+            .toImmutableList()))
+    // yield* userDoc
+    //     //.postCollection
+    //     .orderBy('serverTimeStamp', descending: true)
+    //     .snapshots()
+    //     .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
+    //         (QueryDocumentSnapshot<Object?> doc) =>
+    //             PostDto.fromFirestore(doc).toDomain()))
+    //     .map((Iterable<Post> post) =>
+    //         right<PostFailure, KtList<Post>>(post.toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
           error.message!.contains("PERMISSION_DENIED")) {

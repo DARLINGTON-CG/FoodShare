@@ -6,6 +6,7 @@ part of 'post_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
       imageUrl: json['imageUrl'] as String,
       pickupTime: json['pickupTime'] as String,
@@ -13,10 +14,12 @@ _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
       quantity: json['quantity'] as int,
       title: json['title'] as String,
       postUserId: json['postUserId'] as String,
+      postPrice: json['postPrice'] as String,
       serverTimeStamp: const ServerTimestampConverter()
           .fromJson(json['serverTimeStamp'] as Object),
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
     <String, dynamic>{
       'imageUrl': instance.imageUrl,
@@ -25,6 +28,7 @@ Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
       'quantity': instance.quantity,
       'title': instance.title,
       'postUserId': instance.postUserId,
+      'postPrice': instance.postPrice,
       'serverTimeStamp':
           const ServerTimestampConverter().toJson(instance.serverTimeStamp),
     };

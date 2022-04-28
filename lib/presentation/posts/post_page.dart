@@ -5,20 +5,21 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 import '../../application/posts/post_form/post_form_bloc.dart';
-import '../../application/posts/post_watcher/post_watcher_bloc.dart';
 import '../../domain/core/failures.dart';
 import '../../domain/posts/post_failure.dart';
+import '../../domain/utility/important_enums.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../anim/widgets/three_dot_indicator.dart';
 import '../picture/edit_picture_page.dart';
-import 'widgets/circular_selector.dart';
 import 'widgets/image_container.dart';
 import 'widgets/input_field_and_label.dart';
 import 'widgets/quantity_field.dart';
 
 class PostPage extends StatefulWidget {
-  const PostPage({Key? key}) : super(key: key);
+  final PostType type;
+
+  const PostPage({Key? key, required this.type}) : super(key: key);
 
   @override
   State<PostPage> createState() => _PostPageState();
@@ -28,9 +29,6 @@ class _PostPageState extends State<PostPage> {
   File? _foodImage;
 
   final ImagePicker _imagePicker = ImagePicker();
-
-  double min = 7.0;
-  double max = 9.0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +47,7 @@ class _PostPageState extends State<PostPage> {
         listener: (BuildContext context, PostFormState state) {
           state.successOrFailure.fold(
             () {},
+            // ignore: always_specify_types
             (either) {
               either.fold(
                 (PostFailure failure) {
@@ -73,12 +72,11 @@ class _PostPageState extends State<PostPage> {
           String regExp = r"""am|pm""";
           final String? amOrPm =
               RegExp(regExp).stringMatch(state.post.pickupTime.getOrCrash());
-          final rangeValues = state.post.pickupTime.getOrCrash();
+          final String rangeValues = state.post.pickupTime.getOrCrash();
           double minSliderValue = double.tryParse(
               rangeValues.split('-')[0].split(':')[0].toString())!;
           double maxSliderValue = double.tryParse(
               rangeValues.split('-')[1].split(':')[0].toString())!;
-
 
           return Scaffold(
             appBar: AppBar(
@@ -302,6 +300,38 @@ class _PostPageState extends State<PostPage> {
                   },
                   values: RangeValues(minSliderValue, maxSliderValue),
                 ),
+                Visibility(
+                  visible: widget.type == PostType.paid,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 55,
+                    decoration:
+                        BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
+                    child: ListTile(
+                      title: Text(
+                        'Amount \$',
+                        style:
+                            GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.type == PostType.paid,
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: InputFieldAndLabel(
+                          isDigit: true,
+                          onChangedFunc: (String value) =>
+                              BlocProvider.of<PostFormBloc>(context)
+                                  .add(PostFormEvent.amountChanged(value)),
+                          label:
+                              'A \$0.00 amount will be posted as free food...')),
+                ),
+                const SizedBox(height: 80),
+                Container(
+                  height: 10,
+                )
               ]),
             ),
           );

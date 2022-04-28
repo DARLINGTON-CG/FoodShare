@@ -23,9 +23,7 @@ class ProfilePage extends StatelessWidget {
                   SlideIn(page: const SignInPage()),
                   // ignore: always_specify_types
                   (Route route) => false,
-                )
-            );
-     
+                ));
       },
       child: Scaffold(
         body: CustomScrollView(
@@ -249,6 +247,7 @@ class ProfilePage extends StatelessWidget {
                                       Navigator.pushAndRemoveUntil(
                                         context,
                                         SlideIn(page: const SignInPage()),
+                                        // ignore: always_specify_types
                                         (Route route) => false,
                                       );
                                     },
@@ -276,6 +275,7 @@ class ProfilePage extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                   child: ListTile(
+                                    onTap: () => Navigator.of(context).pop(),
                                     trailing: const Icon(
                                       Icons.close,
                                       color: Colors.black,
@@ -299,14 +299,11 @@ class ProfilePage extends StatelessWidget {
                         );
                       },
                     );
-
-
                   },
                   title: Text(
                     "Sign out",
                     style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
                   ),
-                
                 ),
               ),
             ),

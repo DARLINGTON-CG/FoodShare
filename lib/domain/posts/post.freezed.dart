@@ -25,7 +25,8 @@ class _$PostTearOff {
       required PostTitle title,
       required PostImageUrl imageUrl,
       required PickupTime pickupTime,
-      required PostUserId postUserId}) {
+      required PostUserId postUserId,
+      required PostPrice postPrice}) {
     return _Post(
       id: id,
       description: description,
@@ -34,6 +35,7 @@ class _$PostTearOff {
       imageUrl: imageUrl,
       pickupTime: pickupTime,
       postUserId: postUserId,
+      postPrice: postPrice,
     );
   }
 }
@@ -50,6 +52,7 @@ mixin _$Post {
   PostImageUrl get imageUrl => throw _privateConstructorUsedError;
   PickupTime get pickupTime => throw _privateConstructorUsedError;
   PostUserId get postUserId => throw _privateConstructorUsedError;
+  PostPrice get postPrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
@@ -66,7 +69,8 @@ abstract class $PostCopyWith<$Res> {
       PostTitle title,
       PostImageUrl imageUrl,
       PickupTime pickupTime,
-      PostUserId postUserId});
+      PostUserId postUserId,
+      PostPrice postPrice});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? pickupTime = freezed,
     Object? postUserId = freezed,
+    Object? postPrice = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -116,6 +121,10 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.postUserId
           : postUserId // ignore: cast_nullable_to_non_nullable
               as PostUserId,
+      postPrice: postPrice == freezed
+          ? _value.postPrice
+          : postPrice // ignore: cast_nullable_to_non_nullable
+              as PostPrice,
     ));
   }
 }
@@ -132,7 +141,8 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostTitle title,
       PostImageUrl imageUrl,
       PickupTime pickupTime,
-      PostUserId postUserId});
+      PostUserId postUserId,
+      PostPrice postPrice});
 }
 
 /// @nodoc
@@ -153,6 +163,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? pickupTime = freezed,
     Object? postUserId = freezed,
+    Object? postPrice = freezed,
   }) {
     return _then(_Post(
       id: id == freezed
@@ -183,6 +194,10 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.postUserId
           : postUserId // ignore: cast_nullable_to_non_nullable
               as PostUserId,
+      postPrice: postPrice == freezed
+          ? _value.postPrice
+          : postPrice // ignore: cast_nullable_to_non_nullable
+              as PostPrice,
     ));
   }
 }
@@ -197,7 +212,8 @@ class _$_Post extends _Post {
       required this.title,
       required this.imageUrl,
       required this.pickupTime,
-      required this.postUserId})
+      required this.postUserId,
+      required this.postPrice})
       : super._();
 
   @override
@@ -214,10 +230,12 @@ class _$_Post extends _Post {
   final PickupTime pickupTime;
   @override
   final PostUserId postUserId;
+  @override
+  final PostPrice postPrice;
 
   @override
   String toString() {
-    return 'Post(id: $id, description: $description, quantity: $quantity, title: $title, imageUrl: $imageUrl, pickupTime: $pickupTime, postUserId: $postUserId)';
+    return 'Post(id: $id, description: $description, quantity: $quantity, title: $title, imageUrl: $imageUrl, pickupTime: $pickupTime, postUserId: $postUserId, postPrice: $postPrice)';
   }
 
   @override
@@ -234,7 +252,8 @@ class _$_Post extends _Post {
             const DeepCollectionEquality()
                 .equals(other.pickupTime, pickupTime) &&
             const DeepCollectionEquality()
-                .equals(other.postUserId, postUserId));
+                .equals(other.postUserId, postUserId) &&
+            const DeepCollectionEquality().equals(other.postPrice, postPrice));
   }
 
   @override
@@ -246,7 +265,8 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(pickupTime),
-      const DeepCollectionEquality().hash(postUserId));
+      const DeepCollectionEquality().hash(postUserId),
+      const DeepCollectionEquality().hash(postPrice));
 
   @JsonKey(ignore: true)
   @override
@@ -262,7 +282,8 @@ abstract class _Post extends Post {
       required PostTitle title,
       required PostImageUrl imageUrl,
       required PickupTime pickupTime,
-      required PostUserId postUserId}) = _$_Post;
+      required PostUserId postUserId,
+      required PostPrice postPrice}) = _$_Post;
   const _Post._() : super._();
 
   @override
@@ -279,6 +300,8 @@ abstract class _Post extends Post {
   PickupTime get pickupTime;
   @override
   PostUserId get postUserId;
+  @override
+  PostPrice get postPrice;
   @override
   @JsonKey(ignore: true)
   _$PostCopyWith<_Post> get copyWith => throw _privateConstructorUsedError;

@@ -19,6 +19,7 @@ abstract class Post implements _$Post {
       required PostImageUrl imageUrl,
       required PickupTime pickupTime,
       required PostUserId postUserId,
+      required PostPrice postPrice,
       }) = _Post;
 
   factory Post.empty() => Post(
@@ -28,7 +29,8 @@ abstract class Post implements _$Post {
       imageUrl: PostImageUrl(''),
       pickupTime: PickupTime('7:00-9:00am'),
       title: PostTitle(''),
-      postUserId: PostUserId('')
+      postUserId: PostUserId(''),
+      postPrice: PostPrice('0.0')
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

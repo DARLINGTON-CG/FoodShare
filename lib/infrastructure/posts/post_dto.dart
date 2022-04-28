@@ -9,6 +9,7 @@ part 'post_dto.freezed.dart';
 
 part 'post_dto.g.dart';
 
+
 @freezed
 class PostDto with _$PostDto {
   const PostDto._();
@@ -22,6 +23,7 @@ class PostDto with _$PostDto {
           required int quantity,
           required String title,
           required String postUserId,
+          required String postPrice,
           @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
       _PostDto;
 
@@ -37,12 +39,14 @@ class PostDto with _$PostDto {
         pickupTime: post.pickupTime.getOrCrash(),
         quantity: post.quantity.getOrCrash(),
         title: post.title.getOrCrash(),
+        postPrice: post.postPrice.getOrCrash(),
         serverTimeStamp: FieldValue.serverTimestamp());
   }
 
   Post toDomain() {
     return Post(
         id: UniqueId.fromUniqueString(id!),
+        postPrice: PostPrice(postPrice),
         description: PostDescription(description),
         imageUrl: PostImageUrl(imageUrl),
         pickupTime: PickupTime(pickupTime),

@@ -22,6 +22,12 @@ class _$PostFormEventTearOff {
     return const Initialized();
   }
 
+  AmountChanged amountChanged(String amountChanged) {
+    return AmountChanged(
+      amountChanged,
+    );
+  }
+
   DescriptionChanged descriptionChanged(String description) {
     return DescriptionChanged(
       description,
@@ -61,6 +67,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -71,6 +78,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -81,6 +89,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -92,6 +101,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -102,6 +112,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -112,6 +123,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -180,6 +192,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -193,6 +206,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -206,6 +220,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -223,6 +238,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -236,6 +252,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -249,6 +266,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -265,6 +283,171 @@ class _$Initialized implements Initialized {
 
 abstract class Initialized implements PostFormEvent {
   const factory Initialized() = _$Initialized;
+}
+
+/// @nodoc
+abstract class $AmountChangedCopyWith<$Res> {
+  factory $AmountChangedCopyWith(
+          AmountChanged value, $Res Function(AmountChanged) then) =
+      _$AmountChangedCopyWithImpl<$Res>;
+  $Res call({String amountChanged});
+}
+
+/// @nodoc
+class _$AmountChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements $AmountChangedCopyWith<$Res> {
+  _$AmountChangedCopyWithImpl(
+      AmountChanged _value, $Res Function(AmountChanged) _then)
+      : super(_value, (v) => _then(v as AmountChanged));
+
+  @override
+  AmountChanged get _value => super._value as AmountChanged;
+
+  @override
+  $Res call({
+    Object? amountChanged = freezed,
+  }) {
+    return _then(AmountChanged(
+      amountChanged == freezed
+          ? _value.amountChanged
+          : amountChanged // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AmountChanged implements AmountChanged {
+  const _$AmountChanged(this.amountChanged);
+
+  @override
+  final String amountChanged;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.amountChanged(amountChanged: $amountChanged)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AmountChanged &&
+            const DeepCollectionEquality()
+                .equals(other.amountChanged, amountChanged));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(amountChanged));
+
+  @JsonKey(ignore: true)
+  @override
+  $AmountChangedCopyWith<AmountChanged> get copyWith =>
+      _$AmountChangedCopyWithImpl<AmountChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(String pickupTime) pickupTimeChanged,
+    required TResult Function(int quantity) quantityChanged,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(File? image) saved,
+  }) {
+    return amountChanged(this.amountChanged);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(File? image)? saved,
+  }) {
+    return amountChanged?.call(this.amountChanged);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(String pickupTime)? pickupTimeChanged,
+    TResult Function(int quantity)? quantityChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(File? image)? saved,
+    required TResult orElse(),
+  }) {
+    if (amountChanged != null) {
+      return amountChanged(this.amountChanged);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
+    required TResult Function(DescriptionChanged value) descriptionChanged,
+    required TResult Function(PickupTimeChanged value) pickupTimeChanged,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(TitleChanged value) titleChanged,
+    required TResult Function(Saved value) saved,
+  }) {
+    return amountChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
+    TResult Function(DescriptionChanged value)? descriptionChanged,
+    TResult Function(PickupTimeChanged value)? pickupTimeChanged,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(TitleChanged value)? titleChanged,
+    TResult Function(Saved value)? saved,
+  }) {
+    return amountChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
+    TResult Function(DescriptionChanged value)? descriptionChanged,
+    TResult Function(PickupTimeChanged value)? pickupTimeChanged,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(TitleChanged value)? titleChanged,
+    TResult Function(Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (amountChanged != null) {
+      return amountChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AmountChanged implements PostFormEvent {
+  const factory AmountChanged(String amountChanged) = _$AmountChanged;
+
+  String get amountChanged;
+  @JsonKey(ignore: true)
+  $AmountChangedCopyWith<AmountChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -334,6 +517,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -347,6 +531,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -360,6 +545,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -377,6 +563,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -390,6 +577,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -403,6 +591,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -493,6 +682,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -506,6 +696,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -519,6 +710,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -536,6 +728,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -549,6 +742,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -562,6 +756,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -651,6 +846,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -664,6 +860,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -677,6 +874,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -694,6 +892,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -707,6 +906,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -720,6 +920,7 @@ class _$QuantityChanged implements QuantityChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -808,6 +1009,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -821,6 +1023,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -834,6 +1037,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -851,6 +1055,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -864,6 +1069,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -877,6 +1083,7 @@ class _$TitleChanged implements TitleChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -963,6 +1170,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function(String amountChanged) amountChanged,
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String pickupTime) pickupTimeChanged,
     required TResult Function(int quantity) quantityChanged,
@@ -976,6 +1184,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -989,6 +1198,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function(String amountChanged)? amountChanged,
     TResult Function(String description)? descriptionChanged,
     TResult Function(String pickupTime)? pickupTimeChanged,
     TResult Function(int quantity)? quantityChanged,
@@ -1006,6 +1216,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
+    required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(DescriptionChanged value) descriptionChanged,
     required TResult Function(PickupTimeChanged value) pickupTimeChanged,
     required TResult Function(QuantityChanged value) quantityChanged,
@@ -1019,6 +1230,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,
@@ -1032,6 +1244,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
+    TResult Function(AmountChanged value)? amountChanged,
     TResult Function(DescriptionChanged value)? descriptionChanged,
     TResult Function(PickupTimeChanged value)? pickupTimeChanged,
     TResult Function(QuantityChanged value)? quantityChanged,

@@ -24,6 +24,7 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   ) : super(PostFormState.initial()) {
     on<Initialized>(_onInitialized);
     on<PickupTimeChanged>(_onPickupTimeChanged);
+    on<AmountChanged>(_onAmountChanged);
     on<DescriptionChanged>(_onDescriptionChanged);
     on<QuantityChanged>(_onQuantityChanged);
     on<TitleChanged>(_onTitleChanged);
@@ -49,6 +50,12 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
         successOrFailure: none()));
   }
 
+  void _onAmountChanged(AmountChanged event, Emitter<PostFormState> emit) {
+    emit(state.copyWith(
+        post: state.post.copyWith(postPrice: PostPrice(event.amountChanged)),
+        successOrFailure: none()));
+  }
+
   void _onQuantityChanged(QuantityChanged event, Emitter<PostFormState> emit) {
     emit(state.copyWith(
         post: state.post.copyWith(quantity: PostQuantity(event.quantity)),
@@ -56,28 +63,23 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   }
 
   void _onTitleChanged(TitleChanged event, Emitter<PostFormState> emit) {
+    emit(state.copyWith(
+        post: state.post.copyWith(title: PostTitle(event.title)),
+        successOrFailure: none()));
+  }
+
+  void _onSaved(Saved event, Emitter<PostFormState> emit) async {
+    emit(state.copyWith(isSaving: true, successOrFailure: none()));
+    if (state.post.failureOption.isNone() && (event.image != null)) {
+      final Either<PostFailure, Unit>? failureOrSuccess =
+          await _postRepository.create(state.post, event.image!);
       emit(state.copyWith(
-            post: state.post.copyWith(title: PostTitle(event.title)),
-            successOrFailure: none()));
+          isSaving: false,
+          showErrorMessages: true,
+          successOrFailure: optionOf(failureOrSuccess)));
+    }
+
+    emit(state.copyWith(
+        isSaving: false, showErrorMessages: true, successOrFailure: none()));
   }
-
-  void _onSaved(Saved event, Emitter<PostFormState> emit) async{
- 
-
-        emit(state.copyWith(isSaving: true, successOrFailure: none()));
-
-        if (state.post.failureOption.isNone() && (event.image != null)) {
-          final  Either<PostFailure, Unit>? failureOrSuccess  = await _postRepository.create(state.post, event.image!);
-           emit(state.copyWith(
-            isSaving: false,
-            showErrorMessages: true,
-            successOrFailure: optionOf(failureOrSuccess)));
-        }
-
-        emit(state.copyWith(
-            isSaving: false,
-            showErrorMessages: true,
-            successOrFailure: none()));
-  }
-
 }

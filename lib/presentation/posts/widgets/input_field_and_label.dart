@@ -3,13 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class InputFieldAndLabel extends StatelessWidget {
   final String label;
-  
-   final Function(String)? onChangedFunc;
-  
+  final bool isDigit;
+
+  final Function(String)? onChangedFunc;
+
   const InputFieldAndLabel(
-      {Key? key,
-      required this.label,
-      required this.onChangedFunc})
+      {Key? key, required this.label, required this.onChangedFunc, this.isDigit = false})
       : super(key: key);
 
   @override
@@ -17,9 +16,11 @@ class InputFieldAndLabel extends StatelessWidget {
     return TextFormField(
       autocorrect: false,
       onChanged: onChangedFunc,
+      keyboardType: isDigit ?const TextInputType.numberWithOptions(signed: false,) : TextInputType.text,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
         isCollapsed: true,
+
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(

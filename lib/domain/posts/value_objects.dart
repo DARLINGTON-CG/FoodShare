@@ -84,3 +84,14 @@ class PostUserId extends ValueObject<String> {
     return PostUserId._(right(input));
   }
 }
+
+class PostPrice extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>,String> value;
+
+  const PostPrice._(this.value);
+
+  factory PostPrice(String input) {
+    return PostPrice._(right(input));
+  }
+}
