@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
+import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
 import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_in.dart';
 import '../notification/notification_page.dart';
@@ -12,19 +13,21 @@ import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../map/maps_page_view.dart';
-import '../payments/payments_page_view.dart';
 import '../messages/messages_page_view.dart';
 import '../profile/profile_page.dart';
+import '../transactions/transactions_page_view.dart';
 import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
 Last navigation bar button for user to delete and update data.
-
-Validate amount changed being a digit
+ Add null check to make sure no null exception value occurs in edit page
+Validate amount changed being a digit.
 Add dark mode.
+Work on chat page functionality
 Deal with big image sizes.
 Add functionality for user to delete account.
+Add state management functionality for navigation bar.
 */
 
 class HomePage extends StatefulWidget {
@@ -50,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     const HomePageView(),
     const MessagesPageView(),
     const MapPageView(),
-    const PaymentsPageView(),
+    const TransactionsPageView(),
   ];
 
   @override
@@ -64,6 +67,9 @@ class _HomePageState extends State<HomePage> {
           BlocProvider<PostPaidWatcherBloc>(
               create: (BuildContext context) => getIt<PostPaidWatcherBloc>()
                 ..add(const PostWatcherPaidEvent.watchAllPaidStarted())),
+          BlocProvider<UserPostBloc>(
+              create: (BuildContext context) => getIt<UserPostBloc>()
+                ..add(const UserPostEvent.watchAllStarted())),
           BlocProvider<PostActorBloc>(
               create: (BuildContext context) => getIt<PostActorBloc>())
         ],
@@ -83,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 appBar: pageIndex == 0
                     ? null
                     : AppBar(
-                        elevation: 1.0,
+                        elevation: 0.5,
                         title: Text(
                           appBarTitle[pageIndex],
                           style: GoogleFonts.alegreya(
@@ -104,10 +110,22 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         actions: <Widget>[
-                          IconButton(
-                              onPressed: () => Navigator.of(context).push(
-                                  SlideIn(page: const NotificationPage())),
-                              icon: const Icon(Icons.notifications))
+                           Container(
+                       width: 38,
+                        height: 38,
+                        margin: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                        border: Border.all(color:  Colors.black.withOpacity(0.3),width: 0.5)
+                      ),
+                      child: IconButton(
+                          onPressed: () =>
+                              Navigator.of(context, rootNavigator: true)
+                                  .push(SlideIn(page: const NotificationPage())),
+                          icon: const Icon(Icons.notifications)),
+                    )
+                          
                         ],
                       ),
                 bottomNavigationBar: NavigationBar(
