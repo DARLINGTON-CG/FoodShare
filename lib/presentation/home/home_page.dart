@@ -20,7 +20,7 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
-Last navigation bar button for user to delete and update data.
+Last navigation bar button for user to delete and update data (Some work on the repository needed).
  Add null check to make sure no null exception value occurs in edit page
 Validate amount changed being a digit.
 Add dark mode.

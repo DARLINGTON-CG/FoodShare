@@ -64,8 +64,6 @@ class PostRepository implements IPostRepository {
       final String postId = post.id.getOrCrash();
 
       await userDoc
-          //FIXING RECTIFY POST ID
-          // .postCollection
           .doc(postId)
           .delete();
       return right(unit);
@@ -88,8 +86,6 @@ class PostRepository implements IPostRepository {
       final PostDto postDto = PostDto.fromDomain(post);
 
       await userDoc
-          //FIXING HOW USER UPDATES DOCUMENT NOW
-          //.postCollection
           .doc(postDto.id)
           .update(postDto.toJson());
       return right(unit);
@@ -114,7 +110,6 @@ class PostRepository implements IPostRepository {
         userOption.getOrElse(() => throw NotAuthenticatedError());
 
     yield* userDoc
-        //.where('postUserId', isEqualTo: user.id.getOrCrash())
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
@@ -126,18 +121,6 @@ class PostRepository implements IPostRepository {
                     user.id.getOrCrash()) &&
                 double.tryParse(post.postPrice.getOrCrash().toString())! == 0.0)
             .toImmutableList()))
-
-        // .orderBy(
-        //   'serverTimeStamp',
-        //   descending: true,
-        // )
-        // .snapshots()
-        // .map((QuerySnapshot<Object?> snapshots) =>
-        //     right<PostFailure, KtList<Post>>(snapshots.docs
-        //         .map((QueryDocumentSnapshot<Object?> doc) =>
-        //             PostDto.fromFirestore(doc).toDomain())
-
-        //         .toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
           error.message!.contains("PERMISSION_DENIED")) {
@@ -146,23 +129,6 @@ class PostRepository implements IPostRepository {
         return left(const PostFailure.unexpected());
       }
     });
-    // yield* userDoc.postCollection
-    //     .orderBy('serverTimeStamp', descending: true)
-    //     .snapshots()
-    //     .map((QuerySnapshot<Object?> snapshots) =>
-    //         right<PostFailure, KtList<Post>>(snapshots.docs
-    //             .map((QueryDocumentSnapshot<Object?> doc) =>
-    //                 PostDto.fromFirestore(doc).toDomain())
-    //             .toImmutableList()))
-    //     .onErrorReturnWith((Object error, StackTrace stackTrace) {
-
-    //   if (error is PlatformException &&
-    //       error.message!.contains("PERMISSION_DENIED")) {
-    //     return left(const PostFailure.insufficientPermissions());
-    //   } else {
-    //     return left(const PostFailure.unexpected());
-    //   }
-    // });
   }
 
   @override
@@ -175,7 +141,6 @@ class PostRepository implements IPostRepository {
         userOption.getOrElse(() => throw NotAuthenticatedError());
 
     yield* userDoc
-        //.where('postUserId', isEqualTo: user.id.getOrCrash())
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
@@ -187,15 +152,6 @@ class PostRepository implements IPostRepository {
                     user.id.getOrCrash()) &&
                 double.tryParse(post.postPrice.getOrCrash().toString())! > 0.0)
             .toImmutableList()))
-        // yield* userDoc
-        //     //.postCollection
-        //     .orderBy('serverTimeStamp', descending: true)
-        //     .snapshots()
-        //     .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(
-        //         (QueryDocumentSnapshot<Object?> doc) =>
-        //             PostDto.fromFirestore(doc).toDomain()))
-        //     .map((Iterable<Post> post) =>
-        //         right<PostFailure, KtList<Post>>(post.toImmutableList()))
         .onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
           error.message!.contains("PERMISSION_DENIED")) {
