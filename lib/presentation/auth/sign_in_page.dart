@@ -9,10 +9,7 @@ import '../core/constants.dart';
 import 'widgets/login_form.dart';
 
 class SignInPage extends StatefulWidget {
-
-
   const SignInPage({
-  
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +17,8 @@ class SignInPage extends StatefulWidget {
   _SignInPageState createState() => _SignInPageState();
 }
 
-class _SignInPageState extends State<SignInPage> with SingleTickerProviderStateMixin {
+class _SignInPageState extends State<SignInPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _headerTextAnimation;
   late Animation<double> _formElementAnimation;
@@ -62,36 +60,44 @@ class _SignInPageState extends State<SignInPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: kWhite,
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        actionsIconTheme: const IconThemeData(color: Colors.black),
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: FadeSlideTransition(
-          animation: _headerTextAnimation,
-          additionalOffset: 0,
-          child: Text("Welcome Back",
-              style: GoogleFonts.alegreya(
-                  fontSize: 21,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold)),
-        ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: kPaddingL,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: kWhite,
+        appBar: AppBar(
+          elevation: 0.0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          actionsIconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: FadeSlideTransition(
+            animation: _headerTextAnimation,
+            additionalOffset: 0,
+            child: Text("Welcome Back",
+                style: GoogleFonts.alegreya(
+                    fontSize: 21,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold)),
           ),
-          child: BlocProvider<SignInFormBloc>(
-            create: (BuildContext context) => getIt<SignInFormBloc>(),
-            child: LoginForm(
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: kPaddingL,
+            ),
+            child: BlocProvider<SignInFormBloc>(
+              create: (BuildContext context) => getIt<SignInFormBloc>(),
+              child: LoginForm(
                 animation: _formElementAnimation,
-              ) ,
-          
+              ),
+            ),
           ),
         ),
       ),

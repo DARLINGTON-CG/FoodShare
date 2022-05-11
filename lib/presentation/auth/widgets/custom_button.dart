@@ -22,26 +22,38 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
+    return GestureDetector(
+      onTap: () {
+        onPressed?.call();
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
       child: ConstrainedBox(
         constraints: const BoxConstraints(
           minWidth: double.infinity,
         ),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          
-          curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 100),
+            curve: Curves.easeInOut,
             padding: const EdgeInsets.symmetric(vertical: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: color,
             ),
-            child: isSubmitting ? const ThreeDotIndicator(color: Colors.white,size: 15,):  Center(
-                child: Text(
-              text,
-              style: GoogleFonts.alegreya(fontSize: 17, color: Colors.white),
-            ))),
+            child: isSubmitting
+                ? const ThreeDotIndicator(
+                    color: Colors.white,
+                    size: 15,
+                  )
+                : Center(
+                    child: Text(
+                    text,
+                    style:
+                        GoogleFonts.alegreya(fontSize: 17, color: Colors.white),
+                  ))),
       ),
     );
   }

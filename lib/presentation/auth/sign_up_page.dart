@@ -9,21 +9,20 @@ import '../core/constants.dart';
 import 'widgets/sign_up_form.dart';
 
 class SignUpPage extends StatefulWidget {
- 
   const SignUpPage({
     Key? key,
-   
   }) : super(key: key);
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMixin {
+class _SignUpPageState extends State<SignUpPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _headerTextAnimation;
   late Animation<double> _formElementAnimation;
- 
+
   @override
   void initState() {
     super.initState();
@@ -50,9 +49,6 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
       ),
     ));
 
-  
-  
-
     _animationController.forward();
   }
 
@@ -64,10 +60,17 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: kWhite,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: kWhite,
+        appBar: AppBar(
           elevation: 0.0,
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -83,20 +86,23 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                     fontWeight: FontWeight.bold)),
           ),
         ),
-      body:  SafeArea(
-            child: Stack(
-              children:<Widget> [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: kPaddingL,),
-                  child:  BlocProvider<SignInFormBloc>(
-                create: (BuildContext context) => getIt<SignInFormBloc>(),
-                child:SignupForm(
-                        animation: _formElementAnimation,
-                      )), 
+        body: SafeArea(
+          child: Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: kPaddingL,
                 ),
-              ],
-            ),
+                child: BlocProvider<SignInFormBloc>(
+                    create: (BuildContext context) => getIt<SignInFormBloc>(),
+                    child: SignupForm(
+                      animation: _formElementAnimation,
+                    )),
+              ),
+            ],
           ),
+        ),
+      ),
     );
   }
 }

@@ -13,6 +13,7 @@ import '../../core/constants.dart';
 import '../../home/home_page.dart';
 import '../sign_in_page.dart';
 import 'custom_button.dart';
+import 'custom_error_bar.dart';
 import 'input_field.dart';
 
 class SignupForm extends StatelessWidget {
@@ -35,14 +36,19 @@ class SignupForm extends StatelessWidget {
             () {},
             (Either<AuthFailure, Unit> either) => either.fold(
                     (AuthFailure failure) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(failure.map(
+
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      behavior: SnackBarBehavior.floating,
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        padding: const EdgeInsets.all(16),
+                        content: CustomErrorBar(errorMessage:(failure.map(
                           cancelledByUser: (_) => "Cancelled",
-                          invalidEmailProvided: (_) => "Invalid email provided",
                           serverError: (_) => "Server Error",
                           emailAlreadyInUse: (_) => "Email already in use",
+                          invalidEmailProvided: (_) => "Invalid email provided",
                           invalidEmailAndPasswordCombination: (_) =>
-                              "Invalid email and password combination"))));
+                              "Invalid details combination")))));
                 },
                     (Unit success) =>  Navigator.of(context).pushReplacement( SlideIn(page:const HomePage() ) )));
       },

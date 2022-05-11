@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../anim/page/slide_in.dart';
 import '../../home/home_page.dart';
 import '../sign_up_page.dart';
+import 'custom_error_bar.dart';
 import 'input_field.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../../domain/auth/auth_failure.dart';
@@ -39,16 +40,20 @@ class LoginForm extends StatelessWidget {
                     (AuthFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       behavior: SnackBarBehavior.floating,
-                      content: Text(failure.map(
+                      
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        padding: const EdgeInsets.all(16),
+                        content: CustomErrorBar(errorMessage:(failure.map(
                           cancelledByUser: (_) => "Cancelled",
                           serverError: (_) => "Server Error",
                           emailAlreadyInUse: (_) => "Email already in use",
                           invalidEmailProvided: (_) => "Invalid email provided",
                           invalidEmailAndPasswordCombination: (_) =>
-                              "Invalid email and password combination"))));
+                              "Invalid details combination")))));
                 },
-                    (Unit success) =>
-                         Navigator.of(context).pushReplacement( SlideIn(page:const HomePage() ) )));
+                    (Unit success) => Navigator.of(context)
+                        .pushReplacement(SlideIn(page: const HomePage()))));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -97,8 +102,8 @@ class LoginForm extends StatelessWidget {
                       onChangedFunc: (String value) =>
                           BlocProvider.of<SignInFormBloc>(context)
                               .add(SignInFormEvent.passwordChanged(value)),
-                     forgotPasswordFunc:  () => Navigator.of(context)
-                        .push(SlideUpAnim(page:const ResetPasswordPage())),
+                      forgotPasswordFunc: () => Navigator.of(context)
+                          .push(SlideUpAnim(page: const ResetPasswordPage())),
                     )),
                 SizedBox(height: space),
                 FadeSlideTransition(
@@ -120,8 +125,8 @@ class LoginForm extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: const Color(0xFF000000)),
                       ),
-                      onPressed: () =>
-                           Navigator.of(context).pushReplacement( SlideUpAnim(page:const SignUpPage() ) ),
+                      onPressed: () => Navigator.of(context).pushReplacement(
+                          SlideUpAnim(page: const SignUpPage())),
                     )),
                 const SizedBox(height: 10),
                 FadeSlideTransition(
@@ -136,6 +141,8 @@ class LoginForm extends StatelessWidget {
                       BlocProvider.of<SignInFormBloc>(context).add(
                           const SignInFormEvent
                               .signInWithEmailAndPasswordPressed());
+
+                     
                     },
                   ),
                 ),
