@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../anim/page/slide_in.dart';
 import '../../home/home_page.dart';
 import '../sign_up_page.dart';

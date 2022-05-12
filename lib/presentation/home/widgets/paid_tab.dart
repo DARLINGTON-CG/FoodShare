@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../../domain/posts/post.dart';
+import '../../../domain/utility/important_enums.dart';
 import '../../anim/widgets/three_dot_indicator.dart';
 import 'post_item.dart';
 
@@ -68,6 +69,7 @@ class _PaidTabWidgetState extends State<PaidTabWidget> {
                                   } else {
                                     return PostItem(
                                       post: post,
+                                      postItemType: PostItemType.externalPost,
                                     );
                                   }
                                 },

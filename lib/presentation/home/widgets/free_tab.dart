@@ -4,13 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../../domain/posts/post.dart';
+import '../../../domain/utility/important_enums.dart';
 import '../../anim/widgets/three_dot_indicator.dart';
 import 'post_item.dart';
 
 class FreeTabWidget extends StatelessWidget {
-   final String name;
-  const FreeTabWidget({Key? key,required this.name}) : super(key: key);
-
+  final String name;
+  const FreeTabWidget({Key? key, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +40,10 @@ class FreeTabWidget extends StatelessWidget {
                       SliverPadding(
                           padding: const EdgeInsets.only(top: 10),
                           sliver: state.map(initial: (_) {
+                           
                             return SliverToBoxAdapter(child: Container());
                           }, loadingProgress: (_) {
+                          
                             return const SliverFillRemaining(
                               child: Center(
                                   child: ThreeDotIndicator(
@@ -50,6 +52,7 @@ class FreeTabWidget extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadSuccess: (state) {
+                           
                             return SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int index) {
@@ -64,6 +67,7 @@ class FreeTabWidget extends StatelessWidget {
                                   } else {
                                     return PostItem(
                                       post: post,
+                                      postItemType: PostItemType.externalPost,
                                     );
                                   }
                                 },
@@ -73,6 +77,7 @@ class FreeTabWidget extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
+                            
                             return SliverFillRemaining(
                               child: Center(
                                   child: Text("Error occured.....",

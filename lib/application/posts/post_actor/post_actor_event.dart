@@ -2,5 +2,5 @@ part of 'post_actor_bloc.dart';
 
 @freezed
 class PostActorEvent with _$PostActorEvent {
-  const factory PostActorEvent.actionPerformed(Post post) = _ActionPerformed;
+  const factory PostActorEvent.deleteActionPerformed(Post post) = DeleteActionPerformed;
 }

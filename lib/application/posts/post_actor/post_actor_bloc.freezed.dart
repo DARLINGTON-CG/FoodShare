@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PostActorEventTearOff {
   const _$PostActorEventTearOff();
 
-  _ActionPerformed actionPerformed(Post post) {
-    return _ActionPerformed(
+  DeleteActionPerformed deleteActionPerformed(Post post) {
+    return DeleteActionPerformed(
       post,
     );
   }
@@ -34,33 +34,34 @@ mixin _$PostActorEvent {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Post post) actionPerformed,
+    required TResult Function(Post post) deleteActionPerformed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Post post)? actionPerformed,
+    TResult Function(Post post)? deleteActionPerformed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Post post)? actionPerformed,
+    TResult Function(Post post)? deleteActionPerformed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ActionPerformed value) actionPerformed,
+    required TResult Function(DeleteActionPerformed value)
+        deleteActionPerformed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ActionPerformed value)? actionPerformed,
+    TResult Function(DeleteActionPerformed value)? deleteActionPerformed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ActionPerformed value)? actionPerformed,
+    TResult Function(DeleteActionPerformed value)? deleteActionPerformed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,11 +111,11 @@ class _$PostActorEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ActionPerformedCopyWith<$Res>
+abstract class $DeleteActionPerformedCopyWith<$Res>
     implements $PostActorEventCopyWith<$Res> {
-  factory _$ActionPerformedCopyWith(
-          _ActionPerformed value, $Res Function(_ActionPerformed) then) =
-      __$ActionPerformedCopyWithImpl<$Res>;
+  factory $DeleteActionPerformedCopyWith(DeleteActionPerformed value,
+          $Res Function(DeleteActionPerformed) then) =
+      _$DeleteActionPerformedCopyWithImpl<$Res>;
   @override
   $Res call({Post post});
 
@@ -123,21 +124,21 @@ abstract class _$ActionPerformedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ActionPerformedCopyWithImpl<$Res>
+class _$DeleteActionPerformedCopyWithImpl<$Res>
     extends _$PostActorEventCopyWithImpl<$Res>
-    implements _$ActionPerformedCopyWith<$Res> {
-  __$ActionPerformedCopyWithImpl(
-      _ActionPerformed _value, $Res Function(_ActionPerformed) _then)
-      : super(_value, (v) => _then(v as _ActionPerformed));
+    implements $DeleteActionPerformedCopyWith<$Res> {
+  _$DeleteActionPerformedCopyWithImpl(
+      DeleteActionPerformed _value, $Res Function(DeleteActionPerformed) _then)
+      : super(_value, (v) => _then(v as DeleteActionPerformed));
 
   @override
-  _ActionPerformed get _value => super._value as _ActionPerformed;
+  DeleteActionPerformed get _value => super._value as DeleteActionPerformed;
 
   @override
   $Res call({
     Object? post = freezed,
   }) {
-    return _then(_ActionPerformed(
+    return _then(DeleteActionPerformed(
       post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
@@ -148,22 +149,22 @@ class __$ActionPerformedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionPerformed implements _ActionPerformed {
-  const _$_ActionPerformed(this.post);
+class _$DeleteActionPerformed implements DeleteActionPerformed {
+  const _$DeleteActionPerformed(this.post);
 
   @override
   final Post post;
 
   @override
   String toString() {
-    return 'PostActorEvent.actionPerformed(post: $post)';
+    return 'PostActorEvent.deleteActionPerformed(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ActionPerformed &&
+            other is DeleteActionPerformed &&
             const DeepCollectionEquality().equals(other.post, post));
   }
 
@@ -173,33 +174,34 @@ class _$_ActionPerformed implements _ActionPerformed {
 
   @JsonKey(ignore: true)
   @override
-  _$ActionPerformedCopyWith<_ActionPerformed> get copyWith =>
-      __$ActionPerformedCopyWithImpl<_ActionPerformed>(this, _$identity);
+  $DeleteActionPerformedCopyWith<DeleteActionPerformed> get copyWith =>
+      _$DeleteActionPerformedCopyWithImpl<DeleteActionPerformed>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Post post) actionPerformed,
+    required TResult Function(Post post) deleteActionPerformed,
   }) {
-    return actionPerformed(post);
+    return deleteActionPerformed(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Post post)? actionPerformed,
+    TResult Function(Post post)? deleteActionPerformed,
   }) {
-    return actionPerformed?.call(post);
+    return deleteActionPerformed?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Post post)? actionPerformed,
+    TResult Function(Post post)? deleteActionPerformed,
     required TResult orElse(),
   }) {
-    if (actionPerformed != null) {
-      return actionPerformed(post);
+    if (deleteActionPerformed != null) {
+      return deleteActionPerformed(post);
     }
     return orElse();
   }
@@ -207,40 +209,41 @@ class _$_ActionPerformed implements _ActionPerformed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ActionPerformed value) actionPerformed,
+    required TResult Function(DeleteActionPerformed value)
+        deleteActionPerformed,
   }) {
-    return actionPerformed(this);
+    return deleteActionPerformed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ActionPerformed value)? actionPerformed,
+    TResult Function(DeleteActionPerformed value)? deleteActionPerformed,
   }) {
-    return actionPerformed?.call(this);
+    return deleteActionPerformed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ActionPerformed value)? actionPerformed,
+    TResult Function(DeleteActionPerformed value)? deleteActionPerformed,
     required TResult orElse(),
   }) {
-    if (actionPerformed != null) {
-      return actionPerformed(this);
+    if (deleteActionPerformed != null) {
+      return deleteActionPerformed(this);
     }
     return orElse();
   }
 }
 
-abstract class _ActionPerformed implements PostActorEvent {
-  const factory _ActionPerformed(Post post) = _$_ActionPerformed;
+abstract class DeleteActionPerformed implements PostActorEvent {
+  const factory DeleteActionPerformed(Post post) = _$DeleteActionPerformed;
 
   @override
   Post get post;
   @override
   @JsonKey(ignore: true)
-  _$ActionPerformedCopyWith<_ActionPerformed> get copyWith =>
+  $DeleteActionPerformedCopyWith<DeleteActionPerformed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -248,22 +251,22 @@ abstract class _ActionPerformed implements PostActorEvent {
 class _$PostActorStateTearOff {
   const _$PostActorStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  Initial initial() {
+    return const Initial();
   }
 
-  _ActionProgress actionProgress() {
-    return const _ActionProgress();
+  DeletionProgress deletionProgress() {
+    return const DeletionProgress();
   }
 
-  _ActionFailure actionFailure(PostFailure postFailure) {
-    return _ActionFailure(
+  DeletionFailure deletionFailure(PostFailure postFailure) {
+    return DeletionFailure(
       postFailure,
     );
   }
 
-  _ActionSuccess actionSuccess() {
-    return const _ActionSuccess();
+  DeletionSuccess deletionSuccess() {
+    return const DeletionSuccess();
   }
 }
 
@@ -275,50 +278,50 @@ mixin _$PostActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() actionProgress,
-    required TResult Function(PostFailure postFailure) actionFailure,
-    required TResult Function() actionSuccess,
+    required TResult Function() deletionProgress,
+    required TResult Function(PostFailure postFailure) deletionFailure,
+    required TResult Function() deletionSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ActionProgress value) actionProgress,
-    required TResult Function(_ActionFailure value) actionFailure,
-    required TResult Function(_ActionSuccess value) actionSuccess,
+    required TResult Function(Initial value) initial,
+    required TResult Function(DeletionProgress value) deletionProgress,
+    required TResult Function(DeletionFailure value) deletionFailure,
+    required TResult Function(DeletionSuccess value) deletionSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -342,25 +345,25 @@ class _$PostActorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class $InitialCopyWith<$Res> {
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class _$InitialCopyWithImpl<$Res> extends _$PostActorStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  Initial get _value => super._value as Initial;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$Initial implements Initial {
+  const _$Initial();
 
   @override
   String toString() {
@@ -370,7 +373,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is Initial);
   }
 
   @override
@@ -380,9 +383,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() actionProgress,
-    required TResult Function(PostFailure postFailure) actionFailure,
-    required TResult Function() actionSuccess,
+    required TResult Function() deletionProgress,
+    required TResult Function(PostFailure postFailure) deletionFailure,
+    required TResult Function() deletionSuccess,
   }) {
     return initial();
   }
@@ -391,9 +394,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
   }) {
     return initial?.call();
   }
@@ -402,9 +405,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -416,10 +419,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ActionProgress value) actionProgress,
-    required TResult Function(_ActionFailure value) actionFailure,
-    required TResult Function(_ActionSuccess value) actionSuccess,
+    required TResult Function(Initial value) initial,
+    required TResult Function(DeletionProgress value) deletionProgress,
+    required TResult Function(DeletionFailure value) deletionFailure,
+    required TResult Function(DeletionSuccess value) deletionSuccess,
   }) {
     return initial(this);
   }
@@ -427,10 +430,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
   }) {
     return initial?.call(this);
   }
@@ -438,10 +441,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -451,43 +454,43 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements PostActorState {
-  const factory _Initial() = _$_Initial;
+abstract class Initial implements PostActorState {
+  const factory Initial() = _$Initial;
 }
 
 /// @nodoc
-abstract class _$ActionProgressCopyWith<$Res> {
-  factory _$ActionProgressCopyWith(
-          _ActionProgress value, $Res Function(_ActionProgress) then) =
-      __$ActionProgressCopyWithImpl<$Res>;
+abstract class $DeletionProgressCopyWith<$Res> {
+  factory $DeletionProgressCopyWith(
+          DeletionProgress value, $Res Function(DeletionProgress) then) =
+      _$DeletionProgressCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ActionProgressCopyWithImpl<$Res>
+class _$DeletionProgressCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$ActionProgressCopyWith<$Res> {
-  __$ActionProgressCopyWithImpl(
-      _ActionProgress _value, $Res Function(_ActionProgress) _then)
-      : super(_value, (v) => _then(v as _ActionProgress));
+    implements $DeletionProgressCopyWith<$Res> {
+  _$DeletionProgressCopyWithImpl(
+      DeletionProgress _value, $Res Function(DeletionProgress) _then)
+      : super(_value, (v) => _then(v as DeletionProgress));
 
   @override
-  _ActionProgress get _value => super._value as _ActionProgress;
+  DeletionProgress get _value => super._value as DeletionProgress;
 }
 
 /// @nodoc
 
-class _$_ActionProgress implements _ActionProgress {
-  const _$_ActionProgress();
+class _$DeletionProgress implements DeletionProgress {
+  const _$DeletionProgress();
 
   @override
   String toString() {
-    return 'PostActorState.actionProgress()';
+    return 'PostActorState.deletionProgress()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ActionProgress);
+        (other.runtimeType == runtimeType && other is DeletionProgress);
   }
 
   @override
@@ -497,35 +500,35 @@ class _$_ActionProgress implements _ActionProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() actionProgress,
-    required TResult Function(PostFailure postFailure) actionFailure,
-    required TResult Function() actionSuccess,
+    required TResult Function() deletionProgress,
+    required TResult Function(PostFailure postFailure) deletionFailure,
+    required TResult Function() deletionSuccess,
   }) {
-    return actionProgress();
+    return deletionProgress();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
   }) {
-    return actionProgress?.call();
+    return deletionProgress?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionProgress != null) {
-      return actionProgress();
+    if (deletionProgress != null) {
+      return deletionProgress();
     }
     return orElse();
   }
@@ -533,71 +536,71 @@ class _$_ActionProgress implements _ActionProgress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ActionProgress value) actionProgress,
-    required TResult Function(_ActionFailure value) actionFailure,
-    required TResult Function(_ActionSuccess value) actionSuccess,
+    required TResult Function(Initial value) initial,
+    required TResult Function(DeletionProgress value) deletionProgress,
+    required TResult Function(DeletionFailure value) deletionFailure,
+    required TResult Function(DeletionSuccess value) deletionSuccess,
   }) {
-    return actionProgress(this);
+    return deletionProgress(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
   }) {
-    return actionProgress?.call(this);
+    return deletionProgress?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionProgress != null) {
-      return actionProgress(this);
+    if (deletionProgress != null) {
+      return deletionProgress(this);
     }
     return orElse();
   }
 }
 
-abstract class _ActionProgress implements PostActorState {
-  const factory _ActionProgress() = _$_ActionProgress;
+abstract class DeletionProgress implements PostActorState {
+  const factory DeletionProgress() = _$DeletionProgress;
 }
 
 /// @nodoc
-abstract class _$ActionFailureCopyWith<$Res> {
-  factory _$ActionFailureCopyWith(
-          _ActionFailure value, $Res Function(_ActionFailure) then) =
-      __$ActionFailureCopyWithImpl<$Res>;
+abstract class $DeletionFailureCopyWith<$Res> {
+  factory $DeletionFailureCopyWith(
+          DeletionFailure value, $Res Function(DeletionFailure) then) =
+      _$DeletionFailureCopyWithImpl<$Res>;
   $Res call({PostFailure postFailure});
 
   $PostFailureCopyWith<$Res> get postFailure;
 }
 
 /// @nodoc
-class __$ActionFailureCopyWithImpl<$Res>
+class _$DeletionFailureCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$ActionFailureCopyWith<$Res> {
-  __$ActionFailureCopyWithImpl(
-      _ActionFailure _value, $Res Function(_ActionFailure) _then)
-      : super(_value, (v) => _then(v as _ActionFailure));
+    implements $DeletionFailureCopyWith<$Res> {
+  _$DeletionFailureCopyWithImpl(
+      DeletionFailure _value, $Res Function(DeletionFailure) _then)
+      : super(_value, (v) => _then(v as DeletionFailure));
 
   @override
-  _ActionFailure get _value => super._value as _ActionFailure;
+  DeletionFailure get _value => super._value as DeletionFailure;
 
   @override
   $Res call({
     Object? postFailure = freezed,
   }) {
-    return _then(_ActionFailure(
+    return _then(DeletionFailure(
       postFailure == freezed
           ? _value.postFailure
           : postFailure // ignore: cast_nullable_to_non_nullable
@@ -615,22 +618,22 @@ class __$ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.postFailure);
+class _$DeletionFailure implements DeletionFailure {
+  const _$DeletionFailure(this.postFailure);
 
   @override
   final PostFailure postFailure;
 
   @override
   String toString() {
-    return 'PostActorState.actionFailure(postFailure: $postFailure)';
+    return 'PostActorState.deletionFailure(postFailure: $postFailure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ActionFailure &&
+            other is DeletionFailure &&
             const DeepCollectionEquality()
                 .equals(other.postFailure, postFailure));
   }
@@ -641,42 +644,42 @@ class _$_ActionFailure implements _ActionFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$ActionFailureCopyWith<_ActionFailure> get copyWith =>
-      __$ActionFailureCopyWithImpl<_ActionFailure>(this, _$identity);
+  $DeletionFailureCopyWith<DeletionFailure> get copyWith =>
+      _$DeletionFailureCopyWithImpl<DeletionFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() actionProgress,
-    required TResult Function(PostFailure postFailure) actionFailure,
-    required TResult Function() actionSuccess,
+    required TResult Function() deletionProgress,
+    required TResult Function(PostFailure postFailure) deletionFailure,
+    required TResult Function() deletionSuccess,
   }) {
-    return actionFailure(postFailure);
+    return deletionFailure(postFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
   }) {
-    return actionFailure?.call(postFailure);
+    return deletionFailure?.call(postFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionFailure != null) {
-      return actionFailure(postFailure);
+    if (deletionFailure != null) {
+      return deletionFailure(postFailure);
     }
     return orElse();
   }
@@ -684,83 +687,83 @@ class _$_ActionFailure implements _ActionFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ActionProgress value) actionProgress,
-    required TResult Function(_ActionFailure value) actionFailure,
-    required TResult Function(_ActionSuccess value) actionSuccess,
+    required TResult Function(Initial value) initial,
+    required TResult Function(DeletionProgress value) deletionProgress,
+    required TResult Function(DeletionFailure value) deletionFailure,
+    required TResult Function(DeletionSuccess value) deletionSuccess,
   }) {
-    return actionFailure(this);
+    return deletionFailure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
   }) {
-    return actionFailure?.call(this);
+    return deletionFailure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionFailure != null) {
-      return actionFailure(this);
+    if (deletionFailure != null) {
+      return deletionFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class _ActionFailure implements PostActorState {
-  const factory _ActionFailure(PostFailure postFailure) = _$_ActionFailure;
+abstract class DeletionFailure implements PostActorState {
+  const factory DeletionFailure(PostFailure postFailure) = _$DeletionFailure;
 
   PostFailure get postFailure;
   @JsonKey(ignore: true)
-  _$ActionFailureCopyWith<_ActionFailure> get copyWith =>
+  $DeletionFailureCopyWith<DeletionFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ActionSuccessCopyWith<$Res> {
-  factory _$ActionSuccessCopyWith(
-          _ActionSuccess value, $Res Function(_ActionSuccess) then) =
-      __$ActionSuccessCopyWithImpl<$Res>;
+abstract class $DeletionSuccessCopyWith<$Res> {
+  factory $DeletionSuccessCopyWith(
+          DeletionSuccess value, $Res Function(DeletionSuccess) then) =
+      _$DeletionSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ActionSuccessCopyWithImpl<$Res>
+class _$DeletionSuccessCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$ActionSuccessCopyWith<$Res> {
-  __$ActionSuccessCopyWithImpl(
-      _ActionSuccess _value, $Res Function(_ActionSuccess) _then)
-      : super(_value, (v) => _then(v as _ActionSuccess));
+    implements $DeletionSuccessCopyWith<$Res> {
+  _$DeletionSuccessCopyWithImpl(
+      DeletionSuccess _value, $Res Function(DeletionSuccess) _then)
+      : super(_value, (v) => _then(v as DeletionSuccess));
 
   @override
-  _ActionSuccess get _value => super._value as _ActionSuccess;
+  DeletionSuccess get _value => super._value as DeletionSuccess;
 }
 
 /// @nodoc
 
-class _$_ActionSuccess implements _ActionSuccess {
-  const _$_ActionSuccess();
+class _$DeletionSuccess implements DeletionSuccess {
+  const _$DeletionSuccess();
 
   @override
   String toString() {
-    return 'PostActorState.actionSuccess()';
+    return 'PostActorState.deletionSuccess()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ActionSuccess);
+        (other.runtimeType == runtimeType && other is DeletionSuccess);
   }
 
   @override
@@ -770,35 +773,35 @@ class _$_ActionSuccess implements _ActionSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() actionProgress,
-    required TResult Function(PostFailure postFailure) actionFailure,
-    required TResult Function() actionSuccess,
+    required TResult Function() deletionProgress,
+    required TResult Function(PostFailure postFailure) deletionFailure,
+    required TResult Function() deletionSuccess,
   }) {
-    return actionSuccess();
+    return deletionSuccess();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
   }) {
-    return actionSuccess?.call();
+    return deletionSuccess?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? actionProgress,
-    TResult Function(PostFailure postFailure)? actionFailure,
-    TResult Function()? actionSuccess,
+    TResult Function()? deletionProgress,
+    TResult Function(PostFailure postFailure)? deletionFailure,
+    TResult Function()? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionSuccess != null) {
-      return actionSuccess();
+    if (deletionSuccess != null) {
+      return deletionSuccess();
     }
     return orElse();
   }
@@ -806,41 +809,41 @@ class _$_ActionSuccess implements _ActionSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ActionProgress value) actionProgress,
-    required TResult Function(_ActionFailure value) actionFailure,
-    required TResult Function(_ActionSuccess value) actionSuccess,
+    required TResult Function(Initial value) initial,
+    required TResult Function(DeletionProgress value) deletionProgress,
+    required TResult Function(DeletionFailure value) deletionFailure,
+    required TResult Function(DeletionSuccess value) deletionSuccess,
   }) {
-    return actionSuccess(this);
+    return deletionSuccess(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
   }) {
-    return actionSuccess?.call(this);
+    return deletionSuccess?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionProgress value)? actionProgress,
-    TResult Function(_ActionFailure value)? actionFailure,
-    TResult Function(_ActionSuccess value)? actionSuccess,
+    TResult Function(Initial value)? initial,
+    TResult Function(DeletionProgress value)? deletionProgress,
+    TResult Function(DeletionFailure value)? deletionFailure,
+    TResult Function(DeletionSuccess value)? deletionSuccess,
     required TResult orElse(),
   }) {
-    if (actionSuccess != null) {
-      return actionSuccess(this);
+    if (deletionSuccess != null) {
+      return deletionSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _ActionSuccess implements PostActorState {
-  const factory _ActionSuccess() = _$_ActionSuccess;
+abstract class DeletionSuccess implements PostActorState {
+  const factory DeletionSuccess() = _$DeletionSuccess;
 }

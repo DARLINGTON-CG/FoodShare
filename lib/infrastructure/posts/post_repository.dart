@@ -62,10 +62,9 @@ class PostRepository implements IPostRepository {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.postDocuments();
       final String postId = post.id.getOrCrash();
+      await getIt<IStorageRepository>().delete(post.imageUrl.getOrCrash());
 
-      await userDoc
-          .doc(postId)
-          .delete();
+      await userDoc.doc(postId).delete();
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
@@ -78,6 +77,8 @@ class PostRepository implements IPostRepository {
     }
   }
 
+  
+
   @override
   Future<Either<PostFailure, Unit>> update(Post post) async {
     try {
@@ -85,9 +86,7 @@ class PostRepository implements IPostRepository {
           await _firebaseFirestore.postDocuments();
       final PostDto postDto = PostDto.fromDomain(post);
 
-      await userDoc
-          .doc(postDto.id)
-          .update(postDto.toJson());
+      await userDoc.doc(postDto.id).update(postDto.toJson());
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {

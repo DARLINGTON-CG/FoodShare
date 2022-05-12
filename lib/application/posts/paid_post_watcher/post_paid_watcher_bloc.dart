@@ -24,6 +24,7 @@ class PostPaidWatcherBloc extends Bloc<PostWatcherPaidEvent, PostPaidWatcherStat
 
   void _onWatchAllPaidStarted(
       WatchAllPaidStarted event, Emitter<PostPaidWatcherState> emit) async {
+      
     emit(const PostPaidWatcherState.loadingProgress());
     await emit.onEach<PostPaidWatcherState>(
       _postRepository.watchAllPaid().map(

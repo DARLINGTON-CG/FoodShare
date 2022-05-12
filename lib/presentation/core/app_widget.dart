@@ -17,7 +17,8 @@ class AppWidget extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (BuildContext context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-        )
+        ),
+        
       ],
       child: MaterialApp(
         title: 'FoodShare',

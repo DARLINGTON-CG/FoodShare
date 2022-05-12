@@ -17,11 +17,11 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
   PostActorBloc(this._postRepository) : super(const PostActorState.initial()) {
     on<PostActorEvent>(
         (PostActorEvent event, Emitter<PostActorState> emit) async {
-      emit(const PostActorState.actionProgress());
+      emit(const PostActorState.deletionProgress());
       final Either<PostFailure, Unit> possibleFailure =
           await _postRepository.delete(event.post);
-      emit(possibleFailure.fold((PostFailure f) => PostActorState.actionFailure(f),
-          (Unit r) => const PostActorState.actionSuccess()));
+      emit(possibleFailure.fold((PostFailure f) => PostActorState.deletionFailure(f),
+          (Unit r) => const PostActorState.deletionSuccess()));
     });
   }
 }

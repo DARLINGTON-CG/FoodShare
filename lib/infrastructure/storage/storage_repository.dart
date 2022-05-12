@@ -43,4 +43,20 @@ class StorageRepository implements IStorageRepository {
       return left(const StorageFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<StorageFailure, Unit>> delete(String fileUrl) async {
+    try {
+      await _firebaseStorage.refFromURL(fileUrl).delete();
+      return right(unit);
+    } on firebase_core.FirebaseException catch (e) {
+      if (e.toString().contains("unauthorized")) {
+        return left(const StorageFailure.insufficientPermissions());
+      } else {
+        return left(const StorageFailure.unexpected());
+      }
+    } catch (_) {
+      return left(const StorageFailure.unexpected());
+    }
+  }
 }

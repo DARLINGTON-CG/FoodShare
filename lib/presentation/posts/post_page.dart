@@ -11,6 +11,7 @@ import '../../domain/utility/important_enums.dart';
 import '../../injector.dart';
 import '../anim/page/slide_up.dart';
 import '../anim/widgets/three_dot_indicator.dart';
+import '../auth/widgets/custom_error_bar.dart';
 import '../picture/edit_picture_page.dart';
 import 'widgets/image_container.dart';
 import 'widgets/input_field_and_label.dart';
@@ -52,13 +53,11 @@ class _PostPageState extends State<PostPage> {
               either.fold(
                 (PostFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(failure.map(
-                    insufficientPermissions: (_) =>
-                        'Insufficient permissions ❌',
-                    unableToUpdate: (_) =>
-                        "Couldn't update the note. Was it deleted from another device?",
-                    unexpected: (_) =>
-                        'Unexpected error occured, please contact support.',
+                      content: CustomErrorBar(
+                          errorMessage: failure.map(
+                    insufficientPermissions: (_) => 'Insufficient permissions.',
+                    unableToUpdate: (_) => "Couldn't update the note.",
+                    unexpected: (_) => 'Unexpected error occured..',
                   ))));
                 },
                 (_) {

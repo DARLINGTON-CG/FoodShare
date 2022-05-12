@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,15 +15,13 @@ part 'post_free_watcher_state.dart';
 part 'post_free_watcher_bloc.freezed.dart';
 
 @injectable
-class PostFreeWatcherBloc extends Bloc<PostFreeWatcherEvent, PostFreeWatcherState> {
+class PostFreeWatcherBloc
+    extends Bloc<PostFreeWatcherEvent, PostFreeWatcherState> {
   final IPostRepository _postRepository;
   PostFreeWatcherBloc(this._postRepository)
       : super(const PostFreeWatcherState.initial()) {
     on<WatchAllFreeStarted>(_onWatchAllFreeStarted);
-    
   }
-
-  
 
   void _onWatchAllFreeStarted(
       WatchAllFreeStarted event, Emitter<PostFreeWatcherState> emit) async {
@@ -36,10 +33,9 @@ class PostFreeWatcherBloc extends Bloc<PostFreeWatcherEvent, PostFreeWatcherStat
               failureOrPost.fold(
                   (PostFailure failure) =>
                       PostFreeWatcherState.loadFailure(failure),
-                  (KtList<Post> posts) => PostFreeWatcherState.loadSuccess(posts))),
+                  (KtList<Post> posts) =>
+                      PostFreeWatcherState.loadSuccess(posts))),
       onData: (PostFreeWatcherState post) => emit(post),
     );
   }
-
-  }
-
+}
