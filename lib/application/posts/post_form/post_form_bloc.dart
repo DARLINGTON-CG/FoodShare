@@ -32,7 +32,8 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   }
 
   void _onInitialized(Initialized event, Emitter<PostFormState> emit) {
-    emit(state.copyWith(post: Post.empty()));
+    emit(event.initialPostOption.fold(() => state,
+        (Post initialPost) => state.copyWith(post: initialPost, isEditing: true)));
   }
 
   void _onPickupTimeChanged(
@@ -70,11 +71,11 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
 
   void _onSaved(Saved event, Emitter<PostFormState> emit) async {
     emit(state.copyWith(isSaving: true, successOrFailure: none()));
-    if (state.post.failureOption.isNone() && (event.image != null)) {
-      final Either<PostFailure, Unit>? failureOrSuccess =
+    if (state.post.failureOption.isNone() && (event.image != null || state.post.imageUrl.isValid())) {
+      final Either<PostFailure, Unit>? failureOrSuccess = state.isEditing ? await _postRepository.update(state.post,event.image):
           await _postRepository.create(state.post, event.image!);
       emit(state.copyWith(
-          isSaving: false,
+          isSaving: false,  
           showErrorMessages: true,
           successOrFailure: optionOf(failureOrSuccess)));
     }

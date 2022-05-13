@@ -22,9 +22,9 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
 
 Either<ValueFailure<String>, String> validateSingleLine(String input) {
   if (input.contains('\n')) {
-    return right(input);
+    return left(ValueFailure<String>.multiline(failedValue: input));
   } else {
-    return left(ValueFailure<String>.empty(failedValue: input));
+    return right(input);
   }
 }
 

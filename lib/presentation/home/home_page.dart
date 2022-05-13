@@ -21,10 +21,13 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
-Work for user to delete image data from firestore
 Last navigation bar button for user  update data (Some work on the repository needed).
+fix view all page
+
  Add null check to make sure no null exception value occurs in edit page
 Validate amount changed being a digit.
+Set a maximum and minimum line for description text.
+
 Add dark mode.
 Work on chat page functionality
 Deal with big image sizes.
@@ -76,6 +79,8 @@ class _HomePageState extends State<HomePage> {
               create: (BuildContext context) => getIt<PostActorBloc>()),
         ],
         child: BlocListener<PostActorBloc, PostActorState>(
+          listenWhen: (PostActorState previous, PostActorState current) =>
+              previous != current,
           listener: (BuildContext context, PostActorState state) {
             state.maybeMap(
               deletionFailure: (DeletionFailure state) {
@@ -221,6 +226,7 @@ class _HomePageState extends State<HomePage> {
                                               .push(SlideUpAnim(
                                                   page: const PostPage(
                                             type: PostType.free,
+                                            editedPost: null,
                                           )));
                                         },
                                         trailing: const Icon(

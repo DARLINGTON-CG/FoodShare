@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../../domain/posts/post.dart';
+import '../../../domain/utility/important_enums.dart';
+import '../../anim/page/slide_up.dart';
+import '../../posts/post_page.dart';
 
 Future<void> actionsSheet(
     BuildContext context, Post post, PostActorBloc postActorBloc) async {
@@ -49,8 +52,6 @@ Future<void> actionsSheet(
                     Navigator.of(context).pop();
                     postActorBloc
                         .add(PostActorEvent.deleteActionPerformed(post));
-                    // BlocProvider.of<PostActorBloc>(context)
-                    //     .add(PostActorEvent.deleteActionPerformed(post));
                   },
                   trailing: const Icon(
                     Icons.delete_forever,
@@ -76,7 +77,17 @@ Future<void> actionsSheet(
                   color: Colors.white,
                 ),
                 child: ListTile(
-                  onTap: () => Navigator.of(context).pop(),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).push(SlideUpAnim(
+                        page: PostPage(
+                            type:
+                                double.tryParse(post.postPrice.getOrCrash()) ==
+                                        0.0
+                                    ? PostType.free
+                                    : PostType.paid,
+                            editedPost: post)));
+                  },
                   trailing: const Icon(
                     Icons.update_rounded,
                     color: Colors.black,

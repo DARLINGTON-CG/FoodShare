@@ -67,13 +67,17 @@ class UserPostList extends StatelessWidget {
           },
               // ignore: always_specify_types
               loadFailure: (state) {
-            return SliverFillRemaining(
-              child: Center(
-                  child: Text("Error occured.....",
-                      style: GoogleFonts.lato(
-                          fontSize: 15,
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold))),
+            return SliverToBoxAdapter(
+
+              child: SizedBox(
+                height: 100,
+                child: Center(
+                    child: Text("Error occured.....",
+                        style: GoogleFonts.lato(
+                            fontSize: 15,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold))),
+              ),
             );
           }));
     });

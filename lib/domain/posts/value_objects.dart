@@ -7,7 +7,7 @@ class PostDescription extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const int maxLength = 1000;
+  static const int maxLength = 135;
 
   const PostDescription._(this.value);
 
@@ -28,7 +28,7 @@ class PostTitle extends ValueObject<String> {
   factory PostTitle(String input) {
     return PostTitle._(validateMaxString(input, maxLength)
         .flatMap(validateStringNotEmpty)
-        // .flatMap(validateSingleLine)
+        .flatMap(validateSingleLine)
         
         );
   }

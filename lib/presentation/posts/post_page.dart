@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +8,7 @@ import 'dart:io';
 
 import '../../application/posts/post_form/post_form_bloc.dart';
 import '../../domain/core/failures.dart';
+import '../../domain/posts/post.dart';
 import '../../domain/posts/post_failure.dart';
 import '../../domain/utility/important_enums.dart';
 import '../../injector.dart';
@@ -14,13 +17,17 @@ import '../anim/widgets/three_dot_indicator.dart';
 import '../auth/widgets/custom_error_bar.dart';
 import '../picture/edit_picture_page.dart';
 import 'widgets/image_container.dart';
-import 'widgets/input_field_and_label.dart';
+import 'widgets/post_amount_field.dart';
+import 'widgets/post_description_field.dart';
 import 'widgets/quantity_field.dart';
+import 'widgets/title_field.dart';
 
 class PostPage extends StatefulWidget {
   final PostType type;
+  final Post? editedPost;
 
-  const PostPage({Key? key, required this.type}) : super(key: key);
+  const PostPage({Key? key, required this.type, this.editedPost})
+      : super(key: key);
 
   @override
   State<PostPage> createState() => _PostPageState();
@@ -34,8 +41,8 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PostFormBloc>(
-      create: (BuildContext context) =>
-          getIt<PostFormBloc>()..add(const PostFormEvent.initialized()),
+      create: (BuildContext context) => getIt<PostFormBloc>()
+        ..add(PostFormEvent.initialized(dartz.optionOf(widget.editedPost))),
       child: BlocConsumer<PostFormBloc, PostFormState>(
         listenWhen: (PostFormState previous, PostFormState current) =>
             previous.successOrFailure != current.successOrFailure,
@@ -53,12 +60,18 @@ class _PostPageState extends State<PostPage> {
               either.fold(
                 (PostFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: Colors.transparent,
+                      duration:const Duration(seconds:2),
+
+                      elevation: 0,
+                      padding: const EdgeInsets.all(16),
                       content: CustomErrorBar(
                           errorMessage: failure.map(
-                    insufficientPermissions: (_) => 'Insufficient permissions.',
-                    unableToUpdate: (_) => "Couldn't update the note.",
-                    unexpected: (_) => 'Unexpected error occured..',
-                  ))));
+                        insufficientPermissions: (_) =>
+                            'Insufficient permissions.',
+                        unableToUpdate: (_) => "Couldn't update the note.",
+                        unexpected: (_) => 'Unexpected error occured',
+                      ))));
                 },
                 (_) {
                   Navigator.of(context).pop();
@@ -123,42 +136,125 @@ class _PostPageState extends State<PostPage> {
                           GoogleFonts.lato(fontSize: 14, color: Colors.black),
                     ),
                     trailing: Text(
-                      state.showErrorMessages && _foodImage == null
+                      (state.showErrorMessages && _foodImage == null) && !state.isEditing
                           ? "Add an image"
                           : "",
                       style: GoogleFonts.lato(fontSize: 13, color: Colors.red),
                     ),
                   ),
                 ),
-                _foodImage == null
+                state.isEditing && _foodImage == null
                     ? SizedBox(
                         height: 110,
-                        child: IconButton(
-                          icon: const Icon(Icons.add),
-                          onPressed: () async {
-                            final XFile? _imageFilePicked = await _imagePicker
-                                .pickImage(source: ImageSource.gallery);
-                            if (_imageFilePicked == null) return;
-                            final File? _converted =
-                                File((_imageFilePicked).path);
-                            Future<void>.delayed(const Duration()).then((_) =>
-                                Navigator.of(context)
-                                    .push(SlideUpAnim(
-                                        page: EditPicturePage(
-                                            picture: _converted)))
-                                    // ignore: always_specify_types
-                                    .then((value) {
-                                  setState(() {
-                                    _foodImage = value;
-                                  });
-                                }));
-                          },
-                        ))
-                    : Center(
-                        child: ImageContainer(
-                          file: _foodImage,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: Container(
+                                width: 80,
+                                height: 90,
+                                margin: const EdgeInsets.only(right: 20),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.grey.withOpacity(0.2),
+                                    image: DecorationImage(
+                                        image: CachedNetworkImageProvider(
+                                          state.post.imageUrl.getOrCrash(),
+                                        ),
+                                        fit: BoxFit.cover)),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () async {
+                                final XFile? _imageFilePicked =
+                                    await _imagePicker.pickImage(
+                                        source: ImageSource.gallery);
+                                if (_imageFilePicked == null) return;
+                                final File? _converted =
+                                    File((_imageFilePicked).path);
+                                Future<void>.delayed(const Duration()).then(
+                                    (_) => Navigator.of(context)
+                                            .push(SlideUpAnim(
+                                                page: EditPicturePage(
+                                                    picture: _converted)))
+                                            // ignore: always_specify_types
+                                            .then((value) {
+                                          setState(() {
+                                            _foodImage = value;
+                                          });
+                                        }));
+                              },
+                              icon: const Icon(
+                                Icons.change_circle,
+                                color: Color(0xFF3212F1),
+                                size: 30,
+                              ),
+                            )
+                          ],
                         ),
-                      ),
+                      )
+                    : (_foodImage == null
+                        //
+                        ? SizedBox(
+                            height: 110,
+                            child: IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: () async {
+                                final XFile? _imageFilePicked =
+                                    await _imagePicker.pickImage(
+                                        source: ImageSource.gallery);
+                                if (_imageFilePicked == null) return;
+                                final File? _converted =
+                                    File((_imageFilePicked).path);
+                                Future<void>.delayed(const Duration()).then(
+                                    (_) => Navigator.of(context)
+                                            .push(SlideUpAnim(
+                                                page: EditPicturePage(
+                                                    picture: _converted)))
+                                            // ignore: always_specify_types
+                                            .then((value) {
+                                          setState(() {
+                                            _foodImage = value;
+                                          });
+                                        }));
+                              },
+                            ))
+                        : Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                ImageContainer(
+                                  file: _foodImage,
+                                ),
+                                IconButton(
+                                  onPressed: () async {
+                                    final XFile? _imageFilePicked =
+                                        await _imagePicker.pickImage(
+                                            source: ImageSource.gallery);
+                                    if (_imageFilePicked == null) return;
+                                    final File? _converted =
+                                        File((_imageFilePicked).path);
+                                    Future<void>.delayed(const Duration()).then(
+                                        (_) => Navigator.of(context)
+                                                .push(SlideUpAnim(
+                                                    page: EditPicturePage(
+                                                        picture: _converted)))
+                                                // ignore: always_specify_types
+                                                .then((value) {
+                                              setState(() {
+                                                _foodImage = value;
+                                              });
+                                            }));
+                                  },
+                                  icon: const Icon(
+                                    Icons.change_circle,
+                                    color: Color(0xFF3212F1),
+                                    size: 30,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 55,
@@ -190,13 +286,9 @@ class _PostPageState extends State<PostPage> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: InputFieldAndLabel(
-                      onChangedFunc: (String value) =>
-                          BlocProvider.of<PostFormBloc>(context)
-                              .add(PostFormEvent.titleChanged(value)),
-                      label: 'Add a title...'),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: TitleField(),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -229,13 +321,9 @@ class _PostPageState extends State<PostPage> {
                     ),
                   ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: InputFieldAndLabel(
-                        onChangedFunc: (String value) =>
-                            BlocProvider.of<PostFormBloc>(context)
-                                .add(PostFormEvent.descriptionChanged(value)),
-                        label: 'Describe what is being given away....')),
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    child: PostDescriptionField()),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 55,
@@ -317,15 +405,9 @@ class _PostPageState extends State<PostPage> {
                 ),
                 Visibility(
                   visible: widget.type == PostType.paid,
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: InputFieldAndLabel(
-                          isDigit: true,
-                          onChangedFunc: (String value) =>
-                              BlocProvider.of<PostFormBloc>(context)
-                                  .add(PostFormEvent.amountChanged(value)),
-                          label:
-                              'A \$0.00 amount will be posted as free food...')),
+                  child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: PostAmountField()),
                 ),
                 const SizedBox(height: 80),
                 Container(

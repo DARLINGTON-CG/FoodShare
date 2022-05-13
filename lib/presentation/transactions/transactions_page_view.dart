@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../application/posts/post_actor/post_actor_bloc.dart';
-import '../../domain/core/value_objects.dart';
-import '../../domain/posts/post.dart';
-import '../../domain/posts/value_objects.dart';
 import '../anim/page/slide_up.dart';
 import 'user_post_list/user_post_list.dart';
 import 'user_posts_page.dart';

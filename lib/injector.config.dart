@@ -33,8 +33,8 @@ import 'infrastructure/storage/storage_repository.dart'
 /// initializes the registration of provided dependencies inside of [GetIt]
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
-  final _i2.GetItHelper gh = _i2.GetItHelper(get, environment, environmentFilter);
-  final _$FirebaseInjectableModule firebaseInjectableModule = _$FirebaseInjectableModule();
+  final gh = _i2.GetItHelper(get, environment, environmentFilter);
+  final firebaseInjectableModule = _$FirebaseInjectableModule();
   gh.lazySingleton<_i3.FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<_i4.FirebaseFirestore>(

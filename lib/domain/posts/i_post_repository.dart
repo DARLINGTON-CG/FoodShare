@@ -11,6 +11,6 @@ abstract class IPostRepository {
   Stream<Either<PostFailure, KtList<Post>>> watchAllFree();
   Stream<Either<PostFailure, KtList<Post>>> watchAllPaid();
   Future<Either<PostFailure, Unit>> create(Post post,File file);
-  Future<Either<PostFailure, Unit>> update(Post post);
+  Future<Either<PostFailure, Unit>> update(Post post,File? file);
   Future<Either<PostFailure, Unit>> delete(Post post);
 }
