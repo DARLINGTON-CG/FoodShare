@@ -10,5 +10,10 @@ class PostFormState with _$PostFormState {
           required Option<Either<PostFailure, Unit>> successOrFailure}) =
       _PostFormState;
 
-  factory PostFormState.initial() => PostFormState(post: Post.empty(),showErrorMessages: false,isEditing:false,isSaving: false,successOrFailure: none());
+  factory PostFormState.initial() => PostFormState(
+      post: Post.empty(),
+      showErrorMessages: false,
+      isEditing: false,
+      isSaving: false,
+      successOrFailure: none());
 }

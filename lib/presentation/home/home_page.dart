@@ -21,12 +21,10 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
-Last navigation bar button for user  update data (Some work on the repository needed).
 fix view all page
 
  Add null check to make sure no null exception value occurs in edit page
-Validate amount changed being a digit.
-Set a maximum and minimum line for description text.
+                     
 
 Add dark mode.
 Work on chat page functionality

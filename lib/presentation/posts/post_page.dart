@@ -51,6 +51,7 @@ class _PostPageState extends State<PostPage> {
             (previous.post.description != current.post.description) ||
             (previous.post.pickupTime != current.post.pickupTime) ||
             (previous.post.quantity != current.post.quantity) ||
+            (previous.post.postPrice != current.post.postPrice) ||
             (previous.isSaving != current.isSaving),
         listener: (BuildContext context, PostFormState state) {
           state.successOrFailure.fold(
@@ -61,8 +62,7 @@ class _PostPageState extends State<PostPage> {
                 (PostFailure failure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       backgroundColor: Colors.transparent,
-                      duration:const Duration(seconds:2),
-
+                      duration: const Duration(seconds: 2),
                       elevation: 0,
                       padding: const EdgeInsets.all(16),
                       content: CustomErrorBar(
@@ -105,6 +105,11 @@ class _PostPageState extends State<PostPage> {
             floatingActionButton: FloatingActionButton(
                 backgroundColor: const Color(0xFF3212F1),
                 onPressed: () {
+                  if (PostType.free == widget.type) {
+                    BlocProvider.of<PostFormBloc>(context)
+                        .add(const PostFormEvent.amountChanged('0.00'));
+                  }
+
                   BlocProvider.of<PostFormBloc>(context)
                       .add(PostFormEvent.saved(_foodImage));
                 },
@@ -136,7 +141,8 @@ class _PostPageState extends State<PostPage> {
                           GoogleFonts.lato(fontSize: 14, color: Colors.black),
                     ),
                     trailing: Text(
-                      (state.showErrorMessages && _foodImage == null) && !state.isEditing
+                      (state.showErrorMessages && _foodImage == null) &&
+                              !state.isEditing
                           ? "Add an image"
                           : "",
                       style: GoogleFonts.lato(fontSize: 13, color: Colors.red),
@@ -399,6 +405,24 @@ class _PostPageState extends State<PostPage> {
                         'Amount \$',
                         style:
                             GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      ),
+                      trailing: Text(
+                        state.showErrorMessages
+                            ? BlocProvider.of<PostFormBloc>(context)
+                                .state
+                                .post
+                                .postPrice
+                                .value
+                                .fold(
+                                    (ValueFailure<String> f) => f.maybeMap(
+                                        empty: (_) => "Add an amount",
+                                        invalidAmount: (_) => "Invalid amount",
+                                        maxAmount: (_) => "Exceeds 500\$",
+                                        orElse: () => ""),
+                                    (_) => "")
+                            : "",
+                        style:
+                            GoogleFonts.lato(fontSize: 13, color: Colors.red),
                       ),
                     ),
                   ),

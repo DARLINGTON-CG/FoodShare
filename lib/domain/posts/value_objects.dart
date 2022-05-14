@@ -28,9 +28,7 @@ class PostTitle extends ValueObject<String> {
   factory PostTitle(String input) {
     return PostTitle._(validateMaxString(input, maxLength)
         .flatMap(validateStringNotEmpty)
-        .flatMap(validateSingleLine)
-        
-        );
+        .flatMap(validateSingleLine));
   }
 }
 
@@ -41,8 +39,7 @@ class PostImageUrl extends ValueObject<String> {
   const PostImageUrl._(this.value);
 
   factory PostImageUrl(String input) {
-    return PostImageUrl._(
-        validateStringNotEmpty(input));
+    return PostImageUrl._(validateStringNotEmpty(input));
   }
 }
 
@@ -53,19 +50,15 @@ class PickupTime extends ValueObject<String> {
   const PickupTime._(this.value);
 
   factory PickupTime(String input) {
-    return PickupTime._(
-        validateStringNotEmpty(input)
-        // .flatMap(validateSingleLine)
-        );
+    return PickupTime._(validateStringNotEmpty(input));
   }
 }
-
 
 class PostQuantity extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;
 
-  static const List<int> quantity = <int>[1, 2,3,4,5];
+  static const List<int> quantity = <int>[1, 2, 3, 4, 5];
 
   const PostQuantity._(this.value);
 
@@ -76,7 +69,7 @@ class PostQuantity extends ValueObject<int> {
 
 class PostUserId extends ValueObject<String> {
   @override
-  final Either<ValueFailure<String>,String> value;
+  final Either<ValueFailure<String>, String> value;
 
   const PostUserId._(this.value);
 
@@ -87,11 +80,14 @@ class PostUserId extends ValueObject<String> {
 
 class PostPrice extends ValueObject<String> {
   @override
-  final Either<ValueFailure<String>,String> value;
+  final Either<ValueFailure<String>, String> value;
+  static const double maxAmount = 500;
 
   const PostPrice._(this.value);
 
   factory PostPrice(String input) {
-    return PostPrice._(right(input));
+    return PostPrice._(validateStringNotEmpty(input)
+        .flatMap(validateSingleLine)
+        .flatMap(validateInputAmount).flatMap(validateMaxAmount));
   }
 }

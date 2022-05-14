@@ -25,6 +25,7 @@ class _PostAmountFieldState extends State<PostAmountField> {
         child: TextFormField(
           autocorrect: false,
           controller: textEditingController,
+          toolbarOptions: const ToolbarOptions(paste: false,copy:true,cut: false,selectAll:true),
           onChanged: (String value) =>
                               BlocProvider.of<PostFormBloc>(context)
                                   .add(PostFormEvent.amountChanged(value)),            
@@ -39,7 +40,7 @@ class _PostAmountFieldState extends State<PostAmountField> {
                 color: Colors.black,
               ),
             ),
-            hintText:  'Minimum amount is 1.00\$',
+            hintText:  'Max: 500.00\$',
             errorBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(

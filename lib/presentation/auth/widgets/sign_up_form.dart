@@ -38,7 +38,7 @@ class SignupForm extends StatelessWidget {
                     (AuthFailure failure) {
 
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      behavior: SnackBarBehavior.floating,
+         
                         backgroundColor: Colors.transparent,
                         elevation: 0,
                         padding: const EdgeInsets.all(16),

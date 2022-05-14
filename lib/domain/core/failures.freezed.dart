@@ -24,6 +24,18 @@ class _$ValueFailureTearOff {
     );
   }
 
+  InvalidAmount<T> invalidAmount<T>({required T failedValue}) {
+    return InvalidAmount<T>(
+      failedValue: failedValue,
+    );
+  }
+
+  MaxAmount<T> maxAmount<T>({required T failedValue}) {
+    return MaxAmount<T>(
+      failedValue: failedValue,
+    );
+  }
+
   ShortPassword<T> shortPassword<T>({required T failedValue}) {
     return ShortPassword<T>(
       failedValue: failedValue,
@@ -68,6 +80,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -78,6 +92,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -88,6 +104,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -99,6 +117,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -109,6 +129,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -119,6 +141,8 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -232,6 +256,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -245,6 +271,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -258,6 +286,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -275,6 +305,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -288,6 +320,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -301,6 +335,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -323,6 +359,356 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidAmountCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidAmountCopyWith(
+          InvalidAmount<T> value, $Res Function(InvalidAmount<T>) then) =
+      _$InvalidAmountCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$InvalidAmountCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidAmountCopyWith<T, $Res> {
+  _$InvalidAmountCopyWithImpl(
+      InvalidAmount<T> _value, $Res Function(InvalidAmount<T>) _then)
+      : super(_value, (v) => _then(v as InvalidAmount<T>));
+
+  @override
+  InvalidAmount<T> get _value => super._value as InvalidAmount<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(InvalidAmount<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidAmount<T> implements InvalidAmount<T> {
+  const _$InvalidAmount({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidAmount(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvalidAmount<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidAmountCopyWith<T, InvalidAmount<T>> get copyWith =>
+      _$InvalidAmountCopyWithImpl<T, InvalidAmount<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue, int max) listTooLong,
+    required TResult Function(T failedValue, int max) exceedingLength,
+  }) {
+    return invalidAmount(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+  }) {
+    return invalidAmount?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (invalidAmount != null) {
+      return invalidAmount(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+  }) {
+    return invalidAmount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+  }) {
+    return invalidAmount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (invalidAmount != null) {
+      return invalidAmount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidAmount<T> implements ValueFailure<T> {
+  const factory InvalidAmount({required T failedValue}) = _$InvalidAmount<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $InvalidAmountCopyWith<T, InvalidAmount<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MaxAmountCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $MaxAmountCopyWith(
+          MaxAmount<T> value, $Res Function(MaxAmount<T>) then) =
+      _$MaxAmountCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$MaxAmountCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $MaxAmountCopyWith<T, $Res> {
+  _$MaxAmountCopyWithImpl(
+      MaxAmount<T> _value, $Res Function(MaxAmount<T>) _then)
+      : super(_value, (v) => _then(v as MaxAmount<T>));
+
+  @override
+  MaxAmount<T> get _value => super._value as MaxAmount<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(MaxAmount<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MaxAmount<T> implements MaxAmount<T> {
+  const _$MaxAmount({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.maxAmount(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MaxAmount<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $MaxAmountCopyWith<T, MaxAmount<T>> get copyWith =>
+      _$MaxAmountCopyWithImpl<T, MaxAmount<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue, int max) listTooLong,
+    required TResult Function(T failedValue, int max) exceedingLength,
+  }) {
+    return maxAmount(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+  }) {
+    return maxAmount?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (maxAmount != null) {
+      return maxAmount(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+  }) {
+    return maxAmount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+  }) {
+    return maxAmount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (maxAmount != null) {
+      return maxAmount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MaxAmount<T> implements ValueFailure<T> {
+  const factory MaxAmount({required T failedValue}) = _$MaxAmount<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $MaxAmountCopyWith<T, MaxAmount<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -395,6 +781,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -408,6 +796,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -421,6 +811,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -438,6 +830,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -451,6 +845,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -464,6 +860,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -555,6 +953,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -568,6 +968,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -581,6 +983,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -598,6 +1002,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -611,6 +1017,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -624,6 +1032,8 @@ class _$Empty<T> implements Empty<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -718,6 +1128,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -731,6 +1143,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -744,6 +1158,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -761,6 +1177,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -774,6 +1192,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -787,6 +1207,8 @@ class _$Multiline<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -891,6 +1313,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -904,6 +1328,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -917,6 +1343,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -934,6 +1362,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -947,6 +1377,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -960,6 +1392,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1066,6 +1500,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -1079,6 +1515,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1092,6 +1530,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1109,6 +1549,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -1122,6 +1564,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1135,6 +1579,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,

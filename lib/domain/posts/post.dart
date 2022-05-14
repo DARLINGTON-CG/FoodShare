@@ -30,7 +30,7 @@ abstract class Post implements _$Post {
       pickupTime: PickupTime('7:00-9:00am'),
       title: PostTitle(''),
       postUserId: PostUserId(''),
-      postPrice: PostPrice('0.0')
+      postPrice: PostPrice('')
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

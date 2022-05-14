@@ -28,6 +28,24 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validateInputAmount(String input) {
+  const String currencyRegex = r"""^(\d+(\.\d{0,2})?|\.?\d{1,2})$""";
+  if (RegExp(currencyRegex).hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(ValueFailure<String>.invalidAmount(failedValue: input));
+  }
+}
+
+Either<ValueFailure<String>, String> validateMaxAmount(String input) {
+  bool exceedsMaxAmount = double.tryParse(input)! > 500;
+  if (!exceedsMaxAmount) {
+    return right(input);
+  } else {
+    return left(ValueFailure<String>.maxAmount(failedValue: input));
+  }
+}
+
 Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
     KtList<T> input, int maxLength) {
   if (input.size <= maxLength) {
