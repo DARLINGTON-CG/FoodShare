@@ -16,6 +16,7 @@ import '../anim/page/slide_up.dart';
 import '../map/maps_page_view.dart';
 import '../messages/messages_page_view.dart';
 import '../profile/profile_page.dart';
+import '../profile/user_data_page.dart';
 import '../transactions/transactions_page_view.dart';
 import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
@@ -148,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
                                   .push(
-                                      SlideIn(page: const NotificationPage())),
+                                      SlideIn(page: const UserDataPage())),
                               icon: const Icon(Icons.notifications)),
                         )
                       ],
