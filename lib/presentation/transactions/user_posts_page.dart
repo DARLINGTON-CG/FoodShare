@@ -15,79 +15,75 @@ class UserPostsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserPostBloc, UserPostState>(
-        builder: (BuildContext context, UserPostState state) {
-      return Builder(builder: (BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(
-              elevation: 0.3,
-              title: Text('Posts',
-                  style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
-              leading: IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(
-                    Icons.close_rounded,
-                    color: Colors.black,
-                  )),
-              centerTitle: true,
-            ),
-            body: CustomScrollView(slivers:<Widget> [
-              SliverPadding(
-                  padding: const EdgeInsets.only(top: 10, left: 5),
-                  sliver: state.map(initial: (_) {
-                    return SliverToBoxAdapter(child: Container());
-                  }, loadingProgress: (_) {
-                    return const SliverFillRemaining(
-                      child: Center(
-                          child:
-                              ThreeDotIndicator(color: Colors.black, size: 25)),
-                    );
-                  },
-                      // ignore: always_specify_types
-                      loadSuccess: (state) {
-                    return SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          final Post post = state.posts[index];
-                          if (post.failureOption.isSome()) {
-                            return Container(
-                              color: Colors.green,
-                              width: 100,
-                              height: 100,
-                              margin: const EdgeInsets.all(10),
-                            );
-                          } else {
-                            return BlocProvider<PostActorBloc>(
-                              create: (BuildContext context) =>
-                                  getIt<PostActorBloc>(),
-                              child: Builder(
-                                builder: (BuildContext context) {
-                                  return PostItem(
-                                    post: post,
-                                    postItemType: PostItemType.userPost,
-                                  );
-                                }
-                              ),
-                            );
-                          }
-                        },
-                        childCount: state.posts.size,
-                      ),
-                    );
-                  },
-                      // ignore: always_specify_types
-                      loadFailure: (state) {
-                    return SliverFillRemaining(
-                      child: Center(
-                          child: Text("Error occured.....",
-                              style: GoogleFonts.lato(
-                                  fontSize: 15,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold))),
-                    );
-                  })),
-            ]));
-      });
-    });
+    return Scaffold(
+        appBar: AppBar(
+          elevation: 0.3,
+          title: Text('Posts',
+              style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
+          leading: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(
+                Icons.close_rounded,
+                color: Colors.black,
+              )),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<UserPostBloc, UserPostState>(
+            builder: (BuildContext context, UserPostState state) {
+          return CustomScrollView(slivers: <Widget>[
+            SliverPadding(
+                padding: const EdgeInsets.only(top: 10, left: 5),
+                sliver: state.map(initial: (_) {
+                  return SliverToBoxAdapter(child: Container());
+                }, loadingProgress: (_) {
+                  return const SliverFillRemaining(
+                    child: Center(
+                        child:
+                            ThreeDotIndicator(color: Colors.black, size: 25)),
+                  );
+                },
+                    // ignore: always_specify_types
+                    loadSuccess: (state) {
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final Post post = state.posts[index];
+                        if (post.failureOption.isSome()) {
+                          return Container(
+                            color: Colors.green,
+                            width: 100,
+                            height: 100,
+                            margin: const EdgeInsets.all(10),
+                          );
+                        } else {
+                          return BlocProvider<PostActorBloc>(
+                            create: (BuildContext context) =>
+                                getIt<PostActorBloc>(),
+                            child: Builder(builder: (BuildContext context) {
+                              return PostItem(
+                                post: post,
+                                postItemType: PostItemType.userPost,
+                              );
+                            }),
+                          );
+                        }
+                      },
+                      childCount: state.posts.size,
+                    ),
+                  );
+                },
+                    // ignore: always_specify_types
+                    loadFailure: (state) {
+                  return SliverFillRemaining(
+                    child: Center(
+                        child: Text("Error occured.....",
+                            style: GoogleFonts.lato(
+                                fontSize: 15,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold))),
+                  );
+                })),
+          ]);
+        }));
   }
 }

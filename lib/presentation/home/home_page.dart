@@ -21,11 +21,9 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
-fix view all page
-
+Add Point to add user name and user profile picture after signup.
  Add null check to make sure no null exception value occurs in edit page
-                     
-
+                    
 Add dark mode.
 Work on chat page functionality
 Deal with big image sizes.
@@ -58,6 +56,8 @@ class _HomePageState extends State<HomePage> {
     const MapPageView(),
     const TransactionsPageView(),
   ];
+
+
 
   @override
   Widget build(BuildContext context) {

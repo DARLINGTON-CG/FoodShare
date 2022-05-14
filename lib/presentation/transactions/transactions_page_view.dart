@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
 import '../anim/page/slide_up.dart';
 import 'user_post_list/user_post_list.dart';
 import 'user_posts_page.dart';
@@ -30,8 +32,11 @@ class TransactionsPageView extends StatelessWidget {
                 style: GoogleFonts.lato(fontSize: 14),
               ),
               trailing: InkWell(
-                onTap: () => Navigator.of(context)
-                    .push(SlideUpAnim(page: const UserPostsPage())),
+                onTap: () => Navigator.of(context).push(SlideUpAnim(
+                    page: BlocProvider<UserPostBloc>.value(
+                  value: BlocProvider.of<UserPostBloc>(context),
+                  child: const UserPostsPage(),
+                ))),
                 child: Container(
                     width: 100,
                     height: 40,
