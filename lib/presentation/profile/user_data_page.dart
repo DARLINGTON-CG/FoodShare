@@ -1,12 +1,20 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
+
+import '../../application/user_data/user_data_cud/user_data_bloc.dart';
+import '../../domain/user/user_data_failure.dart';
 import '../anim/page/slide_up.dart';
+import '../anim/widgets/three_dot_indicator.dart';
+import '../auth/widgets/custom_error_bar.dart';
+import '../home/home_page.dart';
 import '../picture/edit_picture_page.dart';
 import 'widget/user_avatar.dart';
+import 'widget/username_field.dart';
 
 class UserDataPage extends StatefulWidget {
   const UserDataPage({Key? key}) : super(key: key);
@@ -22,136 +30,136 @@ class _UserDataPageState extends State<UserDataPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          key: const Key('user_data_page_floating_action_key'),
-          onPressed: () {},
-          child: const Icon(Icons.arrow_forward_rounded),
-          backgroundColor: const Color(0xFF3212F1)),
-      appBar: AppBar(
-        title: Text('Information', style: GoogleFonts.lato(fontSize: 17)),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <
-            Widget>[
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            child: Center(
-              child: Text(
-                'Enter your name and add a profile picture',
-                textAlign: TextAlign.start,
-                style: GoogleFonts.lato(fontSize: 14, color: Colors.grey),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          InkWell(
-              onTap: () async {
-                final XFile? _imageFilePicked =
-                    await _imagePicker.pickImage(source: ImageSource.gallery);
-                final File? _converted = File((_imageFilePicked!).path);
-                Future<void>.delayed(const Duration()).then((_) =>
-                    Navigator.of(context)
-                        .push(SlideUpAnim(
-                            page: EditPicturePage(picture: _converted)))
-                        // ignore: always_specify_types
-                        .then((value) {
-                      setState(() {
-                        _userImage = value;
-                      });
-                    }));
+    return BlocConsumer<UserDataBloc, UserDataState>(
+      listener: (BuildContext context, UserDataState state) {
+        state.successOrFailure.fold(
+          () {},
+          // ignore: always_specify_types
+          (either) {
+            either.fold(
+              (UserDataFailure failure) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    backgroundColor: Colors.transparent,
+                    duration: const Duration(seconds: 2),
+                    elevation: 0,
+                    padding: const EdgeInsets.all(16),
+                    content: CustomErrorBar(
+                        errorMessage: failure.map(
+                      insufficientPermissions: (_) =>
+                          'Insufficient permissions.',
+                      notAvailable: (_) => 'Not available',
+                      unexpected: (_) => 'Unexpected error occured',
+                    ))));
               },
-              child: UserAvatar(
-                file: _userImage,
-              )),
-          const SizedBox(
-            height: 10,
+              (_) {
+                Navigator.of(context).push(SlideUpAnim(page: const HomePage()));
+              },
+            );
+          },
+        );
+      },
+      builder: (BuildContext context, UserDataState state) {
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+              key: const Key('user_data_page_floating_action_key'),
+              onPressed: () {
+                BlocProvider.of<UserDataBloc>(context)
+                    .add(UserDataEvents.saved(_userImage));
+              },
+              backgroundColor: const Color(0xFF3212F1),
+              child: state.isSaving
+                  ? const Center(
+                      child: ThreeDotIndicator(color: Colors.white, size: 14))
+                  : const Icon(Icons.arrow_forward_rounded)),
+          appBar: AppBar(
+            title: Text('Information', style: GoogleFonts.lato(fontSize: 17)),
+            centerTitle: true,
+            elevation: 0.0,
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.69,
-            child: TextFormField(
-              autocorrect: false,
-              keyboardType: TextInputType.text,
-              maxLines: 1,
-              maxLength: 30,
-              style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
-              decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.only(top: 25, left: 10, bottom: 3),
-                isCollapsed: true,
-
-                focusedBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                  ),
-                ),
-
-                hintText: 'Add username...',
-                errorBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: Colors.redAccent.withOpacity(0.5),
-                  ),
-                ),
-                focusedErrorBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: Colors.redAccent.withOpacity(0.8),
-                  ),
-                ),
-
-                errorStyle: GoogleFonts.lato(fontSize: 13, color: Colors.red),
-                enabledBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                  ),
-                ),
-
-                // hintText: widget.label,
-                hintStyle: GoogleFonts.lato(
-                  color: Colors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+          body: SafeArea(
+            child: Form(
+              autovalidateMode: state.showErrorMessages
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Enter your name and add a profile picture',
+                          textAlign: TextAlign.start,
+                          style: GoogleFonts.lato(
+                              fontSize: 14, color: Colors.grey),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InkWell(
+                        onTap: () async {
+                          final XFile? _imageFilePicked = await _imagePicker
+                              .pickImage(source: ImageSource.gallery);
+                          final File? _converted =
+                              File((_imageFilePicked!).path);
+                          Future<void>.delayed(const Duration()).then((_) =>
+                              Navigator.of(context)
+                                  .push(SlideUpAnim(
+                                      page:
+                                          EditPicturePage(picture: _converted)))
+                                  // ignore: always_specify_types
+                                  .then((value) {
+                                setState(() {
+                                  _userImage = value;
+                                });
+                              }));
+                        },
+                        child: UserAvatar(
+                          file: _userImage,
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.69,
+                      child: const UsernameField(),
+                    ),
+                    const SizedBox(height: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "@${state.data.username.isValid() ? state.data.username.getOrCrash() : "..."}",
+                          style: GoogleFonts.lato(
+                              fontSize: 14, color: const Color(0xFF3212F1)),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                              text: "By signing up you agree to the ",
+                              style: GoogleFonts.lato(
+                                  fontSize: 14, color: Colors.black54),
+                              children: <InlineSpan>[
+                                TextSpan(
+                                    text: "terms of service.",
+                                    style: GoogleFonts.lato(
+                                      color: const Color(0xFF3212F1),
+                                    ))
+                              ]),
+                        ),
+                      ],
+                    )
+                  ]),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "@DarlingtonCg",
-                style: GoogleFonts.lato(
-                    fontSize: 14, color: const Color(0xFF3212F1)),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              RichText(
-                text: TextSpan(
-                    text: "By signing up you agree to the ",
-                    style:
-                        GoogleFonts.lato(fontSize: 14, color: Colors.black54),
-                    children: <InlineSpan>[
-                      TextSpan(
-                          text: "terms of service.",
-                          style: GoogleFonts.lato(
-                            color: const Color(0xFF3212F1),
-                          ))
-                    ]),
-              ),
-            ],
-          )
-        ]),
-      ),
+        );
+      },
     );
   }
 }

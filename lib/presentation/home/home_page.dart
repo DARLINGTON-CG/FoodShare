@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +7,7 @@ import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
+import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_in.dart';
 import '../auth/widgets/custom_error_bar.dart';
@@ -76,6 +78,9 @@ class _HomePageState extends State<HomePage> {
                 ..add(const UserPostEvent.watchAllStarted())),
           BlocProvider<PostActorBloc>(
               create: (BuildContext context) => getIt<PostActorBloc>()),
+          BlocProvider<UserDataReadBloc>(
+              create: (BuildContext context) => getIt<UserDataReadBloc>()
+                ..add(const UserDataReadEvents.readUserData())),
         ],
         child: BlocListener<PostActorBloc, PostActorState>(
           listenWhen: (PostActorState previous, PostActorState current) =>
@@ -117,23 +122,52 @@ class _HomePageState extends State<HomePage> {
                       elevation: 0.5,
                       title: Text(
                         appBarTitle[pageIndex],
-                        style: GoogleFonts.alegreya(
-                            fontSize: 18, color: Colors.black),
+                        style:
+                            GoogleFonts.lato(fontSize: 17, color: Colors.black),
                       ),
                       centerTitle: true,
-                      leading: Center(
-                        child: GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .push(SlideUpAnim(page: const ProfilePage())),
-                          child: Container(
-                            width: 38,
-                            height: 38,
-                            decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.2),
-                                shape: BoxShape.circle),
-                          ),
-                        ),
-                      ),
+                      leading: Builder(builder: (BuildContext context) {
+                        return BlocBuilder<UserDataReadBloc, UserDataReadState>(
+                          builder:
+                              (BuildContext context, UserDataReadState state) {
+                            return Center(
+                              child: GestureDetector(
+                                onTap: () => Navigator.of(context).push(
+                                    SlideUpAnim(page: const ProfilePage())),
+                                child: Container(
+                                  width: 38,
+                                  height: 38,
+                                  decoration: BoxDecoration(
+                                      color: state.map(
+                                          initial: (_) =>
+                                              Colors.grey.withOpacity(0.2),
+                                          loadingProgress: (_) =>
+                                              Colors.blueGrey.withOpacity(0.2),
+                                          // ignore: always_specify_types
+                                          loadSuccess: (success) =>
+                                              Colors.grey.withOpacity(0.2),
+                                          loadFailure: (_) =>
+                                              Colors.red.withOpacity(0.2)),
+                                      shape: BoxShape.circle,
+                                      image: state.map(
+                                          initial: (_) => null,
+                                          loadingProgress: (_) => null,
+                                          // ignore: always_specify_types
+                                          loadSuccess: (success) =>
+                                              DecorationImage(
+                                                  image:
+                                                      CachedNetworkImageProvider(
+                                                          success
+                                                              .userData.imageUrl
+                                                              .getOrCrash()),
+                                                  fit: BoxFit.cover),
+                                          loadFailure: (_) => null)),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }),
                       actions: <Widget>[
                         Container(
                           width: 38,
@@ -148,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                           child: IconButton(
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
-                                  .push(SlideIn(page: const UserDataPage())),
+                                  .push(SlideIn(page: const NotificationPage())),
                               icon: const Icon(Icons.notifications)),
                         )
                       ],

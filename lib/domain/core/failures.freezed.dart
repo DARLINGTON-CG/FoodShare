@@ -36,6 +36,13 @@ class _$ValueFailureTearOff {
     );
   }
 
+  NoSpaceOrSpecialCharac<T> noSpaceOrSpecialCharac<T>(
+      {required T failedValue}) {
+    return NoSpaceOrSpecialCharac<T>(
+      failedValue: failedValue,
+    );
+  }
+
   ShortPassword<T> shortPassword<T>({required T failedValue}) {
     return ShortPassword<T>(
       failedValue: failedValue,
@@ -82,6 +89,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -94,6 +102,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -106,6 +115,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -119,6 +129,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -131,6 +143,7 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -143,6 +156,7 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -258,6 +272,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -273,6 +288,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -288,6 +304,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -307,6 +324,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -322,6 +341,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -337,6 +357,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -433,6 +454,7 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -448,6 +470,7 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -463,6 +486,7 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -482,6 +506,8 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -497,6 +523,7 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -512,6 +539,7 @@ class _$InvalidAmount<T> implements InvalidAmount<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -608,6 +636,7 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -623,6 +652,7 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -638,6 +668,7 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -657,6 +688,8 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -672,6 +705,7 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -687,6 +721,7 @@ class _$MaxAmount<T> implements MaxAmount<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -709,6 +744,191 @@ abstract class MaxAmount<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $MaxAmountCopyWith<T, MaxAmount<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NoSpaceOrSpecialCharacCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NoSpaceOrSpecialCharacCopyWith(NoSpaceOrSpecialCharac<T> value,
+          $Res Function(NoSpaceOrSpecialCharac<T>) then) =
+      _$NoSpaceOrSpecialCharacCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$NoSpaceOrSpecialCharacCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $NoSpaceOrSpecialCharacCopyWith<T, $Res> {
+  _$NoSpaceOrSpecialCharacCopyWithImpl(NoSpaceOrSpecialCharac<T> _value,
+      $Res Function(NoSpaceOrSpecialCharac<T>) _then)
+      : super(_value, (v) => _then(v as NoSpaceOrSpecialCharac<T>));
+
+  @override
+  NoSpaceOrSpecialCharac<T> get _value =>
+      super._value as NoSpaceOrSpecialCharac<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(NoSpaceOrSpecialCharac<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NoSpaceOrSpecialCharac<T> implements NoSpaceOrSpecialCharac<T> {
+  const _$NoSpaceOrSpecialCharac({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.noSpaceOrSpecialCharac(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NoSpaceOrSpecialCharac<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $NoSpaceOrSpecialCharacCopyWith<T, NoSpaceOrSpecialCharac<T>> get copyWith =>
+      _$NoSpaceOrSpecialCharacCopyWithImpl<T, NoSpaceOrSpecialCharac<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) invalidAmount,
+    required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue, int max) listTooLong,
+    required TResult Function(T failedValue, int max) exceedingLength,
+  }) {
+    return noSpaceOrSpecialCharac(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+  }) {
+    return noSpaceOrSpecialCharac?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? invalidAmount,
+    TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (noSpaceOrSpecialCharac != null) {
+      return noSpaceOrSpecialCharac(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidAmount<T> value) invalidAmount,
+    required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+  }) {
+    return noSpaceOrSpecialCharac(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+  }) {
+    return noSpaceOrSpecialCharac?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidAmount<T> value)? invalidAmount,
+    TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
+  }) {
+    if (noSpaceOrSpecialCharac != null) {
+      return noSpaceOrSpecialCharac(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoSpaceOrSpecialCharac<T> implements ValueFailure<T> {
+  const factory NoSpaceOrSpecialCharac({required T failedValue}) =
+      _$NoSpaceOrSpecialCharac<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $NoSpaceOrSpecialCharacCopyWith<T, NoSpaceOrSpecialCharac<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -783,6 +1003,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -798,6 +1019,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -813,6 +1035,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -832,6 +1055,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -847,6 +1072,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -862,6 +1088,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -955,6 +1182,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -970,6 +1198,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -985,6 +1214,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1004,6 +1234,8 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -1019,6 +1251,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1034,6 +1267,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1130,6 +1364,7 @@ class _$Multiline<T> implements Multiline<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -1145,6 +1380,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1160,6 +1396,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1179,6 +1416,8 @@ class _$Multiline<T> implements Multiline<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -1194,6 +1433,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1209,6 +1449,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1315,6 +1556,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -1330,6 +1572,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1345,6 +1588,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1364,6 +1608,8 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -1379,6 +1625,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1394,6 +1641,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1502,6 +1750,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) invalidAmount,
     required TResult Function(T failedValue) maxAmount,
+    required TResult Function(T failedValue) noSpaceOrSpecialCharac,
     required TResult Function(T failedValue) shortPassword,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
@@ -1517,6 +1766,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1532,6 +1782,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? invalidAmount,
     TResult Function(T failedValue)? maxAmount,
+    TResult Function(T failedValue)? noSpaceOrSpecialCharac,
     TResult Function(T failedValue)? shortPassword,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
@@ -1551,6 +1802,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidAmount<T> value) invalidAmount,
     required TResult Function(MaxAmount<T> value) maxAmount,
+    required TResult Function(NoSpaceOrSpecialCharac<T> value)
+        noSpaceOrSpecialCharac,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
@@ -1566,6 +1819,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
@@ -1581,6 +1835,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidAmount<T> value)? invalidAmount,
     TResult Function(MaxAmount<T> value)? maxAmount,
+    TResult Function(NoSpaceOrSpecialCharac<T> value)? noSpaceOrSpecialCharac,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,

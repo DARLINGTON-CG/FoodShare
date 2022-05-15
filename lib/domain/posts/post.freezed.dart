@@ -23,7 +23,7 @@ class _$PostTearOff {
       required PostDescription description,
       required PostQuantity quantity,
       required PostTitle title,
-      required PostImageUrl imageUrl,
+      required ImageUrl imageUrl,
       required PickupTime pickupTime,
       required PostUserId postUserId,
       required PostPrice postPrice}) {
@@ -49,7 +49,7 @@ mixin _$Post {
   PostDescription get description => throw _privateConstructorUsedError;
   PostQuantity get quantity => throw _privateConstructorUsedError;
   PostTitle get title => throw _privateConstructorUsedError;
-  PostImageUrl get imageUrl => throw _privateConstructorUsedError;
+  ImageUrl get imageUrl => throw _privateConstructorUsedError;
   PickupTime get pickupTime => throw _privateConstructorUsedError;
   PostUserId get postUserId => throw _privateConstructorUsedError;
   PostPrice get postPrice => throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ abstract class $PostCopyWith<$Res> {
       PostDescription description,
       PostQuantity quantity,
       PostTitle title,
-      PostImageUrl imageUrl,
+      ImageUrl imageUrl,
       PickupTime pickupTime,
       PostUserId postUserId,
       PostPrice postPrice});
@@ -112,7 +112,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as PostImageUrl,
+              as ImageUrl,
       pickupTime: pickupTime == freezed
           ? _value.pickupTime
           : pickupTime // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostDescription description,
       PostQuantity quantity,
       PostTitle title,
-      PostImageUrl imageUrl,
+      ImageUrl imageUrl,
       PickupTime pickupTime,
       PostUserId postUserId,
       PostPrice postPrice});
@@ -185,7 +185,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as PostImageUrl,
+              as ImageUrl,
       pickupTime: pickupTime == freezed
           ? _value.pickupTime
           : pickupTime // ignore: cast_nullable_to_non_nullable
@@ -225,7 +225,7 @@ class _$_Post extends _Post {
   @override
   final PostTitle title;
   @override
-  final PostImageUrl imageUrl;
+  final ImageUrl imageUrl;
   @override
   final PickupTime pickupTime;
   @override
@@ -280,7 +280,7 @@ abstract class _Post extends Post {
       required PostDescription description,
       required PostQuantity quantity,
       required PostTitle title,
-      required PostImageUrl imageUrl,
+      required ImageUrl imageUrl,
       required PickupTime pickupTime,
       required PostUserId postUserId,
       required PostPrice postPrice}) = _$_Post;
@@ -295,7 +295,7 @@ abstract class _Post extends Post {
   @override
   PostTitle get title;
   @override
-  PostImageUrl get imageUrl;
+  ImageUrl get imageUrl;
   @override
   PickupTime get pickupTime;
   @override

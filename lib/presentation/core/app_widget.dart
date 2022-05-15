@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/auth/auth_bloc.dart';
+import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../injector.dart';
 import '../splash/splash_page.dart';
 
@@ -18,7 +19,8 @@ class AppWidget extends StatelessWidget {
           create: (BuildContext context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
-        
+        BlocProvider<UserDataBloc>(
+            create: (BuildContext context) => getIt<UserDataBloc>()),
       ],
       child: MaterialApp(
         title: 'FoodShare',
@@ -35,7 +37,7 @@ class AppWidget extends StatelessWidget {
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
-          sliderTheme:const SliderThemeData(
+          sliderTheme: const SliderThemeData(
               rangeThumbShape: RoundRangeSliderThumbShape(
             enabledThumbRadius: 7,
           )),

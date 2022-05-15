@@ -32,16 +32,6 @@ class PostTitle extends ValueObject<String> {
   }
 }
 
-class PostImageUrl extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  const PostImageUrl._(this.value);
-
-  factory PostImageUrl(String input) {
-    return PostImageUrl._(validateStringNotEmpty(input));
-  }
-}
 
 class PickupTime extends ValueObject<String> {
   @override

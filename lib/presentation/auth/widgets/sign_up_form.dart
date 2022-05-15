@@ -9,7 +9,6 @@ import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../anim/fade_slide_transition.dart';
 import '../../anim/page/slide_in.dart';
 import '../../core/constants.dart';
-import '../../home/home_page.dart';
 import '../../profile/user_data_page.dart';
 import '../sign_in_page.dart';
 import 'custom_button.dart';

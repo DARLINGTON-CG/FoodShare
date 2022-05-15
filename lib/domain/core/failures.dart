@@ -10,6 +10,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
       InvalidAmount<T>;
   const factory ValueFailure.maxAmount({required T failedValue}) =
       MaxAmount<T>;
+  const factory ValueFailure.noSpaceOrSpecialCharac({required T failedValue}) =
+      NoSpaceOrSpecialCharac<T>;
   const factory ValueFailure.shortPassword({required T failedValue}) =
       ShortPassword<T>;
   const factory ValueFailure.empty({required T failedValue}) =

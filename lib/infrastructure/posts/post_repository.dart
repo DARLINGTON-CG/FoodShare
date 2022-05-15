@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
 import '../../domain/core/errors.dart';
+import '../../domain/core/value_objects.dart';
 import '../../domain/posts/value_objects.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
@@ -39,7 +40,7 @@ class PostRepository implements IPostRepository {
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
               postUserId: PostUserId(user.id.getOrCrash()),
               imageUrl:
-                  PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
+                  ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.postDocuments();
@@ -92,7 +93,7 @@ class PostRepository implements IPostRepository {
             .upload(file, post.id.getOrCrash())
             .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
                 imageUrl:
-                    PostImageUrl(imageUrl.getOrElse(() => throw Exception()))));
+                    ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
         final PostDto postDto = PostDto.fromDomain(postForUpload);
         await userDoc.doc(postDto.id).update(postDto.toJson());
       }

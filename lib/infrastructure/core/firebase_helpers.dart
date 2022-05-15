@@ -1,10 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
-
-import '../../domain/auth/user.dart';
-import '../../domain/core/errors.dart';
-import '../../injector.dart';
-import '../../domain/auth/i_auth_facade.dart';
 
 extension FirestoreX on FirebaseFirestore {
   // ignore: always_specify_types
@@ -14,17 +8,21 @@ extension FirestoreX on FirebaseFirestore {
 
   // ignore: always_specify_types
   Future<CollectionReference> userDocuments() async {
-    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
-    final LocalUser user =
-        userOption.getOrElse(() => throw NotAuthenticatedError());
-
-    return FirebaseFirestore.instance.collection('posts')
-      ..where('postUserId', isEqualTo: user.id.getOrCrash());
+    return FirebaseFirestore.instance.collection('users');
   }
+  // // ignore: always_specify_types
+  // Future<CollectionReference> userDocuments() async {
+  //   final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+  //   final LocalUser user =
+  //       userOption.getOrElse(() => throw NotAuthenticatedError());
+
+  //   return FirebaseFirestore.instance.collection('posts')
+  //     ..where('postUserId', isEqualTo: user.id.getOrCrash());
+  // }
 }
 
-// ignore: always_specify_types
-extension DocumentReferenceX on DocumentReference {
-  // ignore: always_specify_types
-  CollectionReference get postCollection => collection('posts');
-}
+// // ignore: always_specify_types
+// extension DocumentReferenceX on DocumentReference {
+//   // ignore: always_specify_types
+//   CollectionReference get postCollection => collection('posts');
+// }

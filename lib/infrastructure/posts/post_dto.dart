@@ -48,7 +48,7 @@ class PostDto with _$PostDto {
         id: UniqueId.fromUniqueString(id!),
         postPrice: PostPrice(postPrice),
         description: PostDescription(description),
-        imageUrl: PostImageUrl(imageUrl),
+        imageUrl: ImageUrl(imageUrl),
         pickupTime: PickupTime(pickupTime),
         quantity: PostQuantity(quantity),
         postUserId: PostUserId(postUserId),

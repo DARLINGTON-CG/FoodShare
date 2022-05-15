@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 
 import 'errors.dart';
 import 'failures.dart';
+import 'value_validators.dart';
 
 @immutable
 abstract class ValueObject<T> {
@@ -48,5 +49,17 @@ class UniqueId extends ValueObject<String> {
 
   factory UniqueId.fromUniqueString(String uniqueId) {
     return UniqueId._(right(uniqueId));
+  }
+}
+
+
+class ImageUrl extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  const ImageUrl._(this.value);
+
+  factory ImageUrl(String input) {
+    return ImageUrl._(validateStringNotEmpty(input));
   }
 }

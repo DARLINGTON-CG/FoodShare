@@ -20,9 +20,13 @@ class UserPostList extends StatelessWidget {
           sliver: state.map(initial: (_) {
             return SliverToBoxAdapter(child: Container());
           }, loadingProgress: (_) {
-            return const SliverFillRemaining(
-              child: Center(
-                  child: ThreeDotIndicator(color: Colors.black, size: 25)),
+            return const SliverToBoxAdapter(
+
+              child: SizedBox(
+                height: 150,
+                child: Center(
+                    child: ThreeDotIndicator(color: Colors.black, size: 25)),
+              ),
             );
           },
               // ignore: always_specify_types
@@ -30,7 +34,7 @@ class UserPostList extends StatelessWidget {
             if (state.posts.isEmpty()) {
               return SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 100,
+                  height: 150,
                   child: Center(
                       child: Text("No recent posts.....",
                           style: GoogleFonts.lato(
