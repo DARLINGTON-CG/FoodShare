@@ -23,6 +23,8 @@ import 'widgets/nav_bar_item.dart';
 
 /*
 Add Point to add user name and user profile picture after signup.
+After signing up user might quit application and come back to sign in hence check if user details is available.
+
  Add null check to make sure no null exception value occurs in edit page
                     
 Add dark mode.
@@ -57,8 +59,6 @@ class _HomePageState extends State<HomePage> {
     const MapPageView(),
     const TransactionsPageView(),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -148,8 +148,7 @@ class _HomePageState extends State<HomePage> {
                           child: IconButton(
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
-                                  .push(
-                                      SlideIn(page: const UserDataPage())),
+                                  .push(SlideIn(page: const UserDataPage())),
                               icon: const Icon(Icons.notifications)),
                         )
                       ],

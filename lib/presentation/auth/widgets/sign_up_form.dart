@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 import '../../../domain/auth/auth_failure.dart';
 import '../../../domain/core/failures.dart';
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -11,6 +10,7 @@ import '../../anim/fade_slide_transition.dart';
 import '../../anim/page/slide_in.dart';
 import '../../core/constants.dart';
 import '../../home/home_page.dart';
+import '../../profile/user_data_page.dart';
 import '../sign_in_page.dart';
 import 'custom_button.dart';
 import 'custom_error_bar.dart';
@@ -36,21 +36,22 @@ class SignupForm extends StatelessWidget {
             () {},
             (Either<AuthFailure, Unit> either) => either.fold(
                     (AuthFailure failure) {
-
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-         
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        padding: const EdgeInsets.all(16),
-                        content: CustomErrorBar(errorMessage:(failure.map(
-                          cancelledByUser: (_) => "Cancelled",
-                          serverError: (_) => "Server Error",
-                          emailAlreadyInUse: (_) => "Email already in use",
-                          invalidEmailProvided: (_) => "Invalid email provided",
-                          invalidEmailAndPasswordCombination: (_) =>
-                              "Invalid details combination")))));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      padding: const EdgeInsets.all(16),
+                      content: CustomErrorBar(
+                          errorMessage: (failure.map(
+                              cancelledByUser: (_) => "Cancelled",
+                              serverError: (_) => "Server Error",
+                              emailAlreadyInUse: (_) => "Email already in use",
+                              invalidEmailProvided: (_) =>
+                                  "Invalid email provided",
+                              invalidEmailAndPasswordCombination: (_) =>
+                                  "Invalid details combination")))));
                 },
-                    (Unit success) =>  Navigator.of(context).pushReplacement( SlideIn(page:const HomePage() ) )));
+                    (Unit success) => Navigator.of(context)
+                        .pushReplacement(SlideIn(page: const UserDataPage()))));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -61,25 +62,26 @@ class SignupForm extends StatelessWidget {
                 : AutovalidateMode.disabled,
             child: Column(
               children: <Widget>[
-                 FadeSlideTransition(
+                FadeSlideTransition(
                     animation: animation,
                     additionalOffset: 0.0,
                     child: InputField(
-                      label: "Email Address",
-                      passwordField: false,
-                      validator:  (_) => BlocProvider.of<SignInFormBloc>(context)
-                        .state
-                        .emailAddress
-                        .value
-                        .fold(
-                            (ValueFailure<String> f) => f.maybeMap(
-                                invalidEmail: (_) => 'Invalid Email',
-                                orElse: () => null),
-                            (_) => null),
-                      onChangedFunc:(String value) =>
-                        BlocProvider.of<SignInFormBloc>(context)
-                            .add(SignInFormEvent.emailChanged(value),
-                    ))),
+                        label: "Email Address",
+                        passwordField: false,
+                        validator: (_) =>
+                            BlocProvider.of<SignInFormBloc>(context)
+                                .state
+                                .emailAddress
+                                .value
+                                .fold(
+                                    (ValueFailure<String> f) => f.maybeMap(
+                                        invalidEmail: (_) => 'Invalid Email',
+                                        orElse: () => null),
+                                    (_) => null),
+                        onChangedFunc: (String value) =>
+                            BlocProvider.of<SignInFormBloc>(context).add(
+                              SignInFormEvent.emailChanged(value),
+                            ))),
                 SizedBox(height: space),
                 FadeSlideTransition(
                     animation: animation,
@@ -88,22 +90,19 @@ class SignupForm extends StatelessWidget {
                       label: "Password",
                       passwordField: true,
                       hideForgot: true,
-                      validator:  (_) => BlocProvider.of<SignInFormBloc>(context)
-                        .state
-                        .password
-                        .value
-                        .fold(
-                            (ValueFailure<String> f) => f.maybeMap(
-                                shortPassword: (_) => 'Short Password',
-                                orElse: () => null),
-                            (_) => null),
-                      onChangedFunc:(String value) =>
-                        BlocProvider.of<SignInFormBloc>(context)
-                            .add(SignInFormEvent.passwordChanged(value)),
-                   
+                      validator: (_) => BlocProvider.of<SignInFormBloc>(context)
+                          .state
+                          .password
+                          .value
+                          .fold(
+                              (ValueFailure<String> f) => f.maybeMap(
+                                  shortPassword: (_) => 'Short Password',
+                                  orElse: () => null),
+                              (_) => null),
+                      onChangedFunc: (String value) =>
+                          BlocProvider.of<SignInFormBloc>(context)
+                              .add(SignInFormEvent.passwordChanged(value)),
                     )),
-               
-              
                 SizedBox(height: space),
                 FadeSlideTransition(
                   animation: animation,
@@ -124,7 +123,8 @@ class SignupForm extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: const Color(0xff000000)),
                       ),
-                      onPressed: () =>  Navigator.of(context).pushReplacement( SlideIn(page:const SignInPage() ) ),
+                      onPressed: () => Navigator.of(context)
+                          .pushReplacement(SlideIn(page: const SignInPage())),
                     )),
                 const SizedBox(height: 10),
                 FadeSlideTransition(
