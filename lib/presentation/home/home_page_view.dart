@@ -4,12 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
-import '../../domain/user/user_data_failure.dart';
 import '../anim/page/slide_in.dart';
 import '../anim/page/slide_up.dart';
 import '../notification/notification_page.dart';
 import '../profile/profile_page.dart';
-import '../profile/user_data_page.dart';
 import 'widgets/free_tab.dart';
 import 'widgets/paid_tab.dart';
 

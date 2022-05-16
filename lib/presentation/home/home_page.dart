@@ -7,7 +7,6 @@ import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
-import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../domain/user/user_data_failure.dart';
 import '../../domain/utility/important_enums.dart';
