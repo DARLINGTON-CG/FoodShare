@@ -32,9 +32,9 @@ class _$UserDataReadStateTearOff {
     );
   }
 
-  _LoadFailure loadFailure(UserDataFailure postFailure) {
+  _LoadFailure loadFailure(UserDataFailure loadFailure) {
     return _LoadFailure(
-      postFailure,
+      loadFailure,
     );
   }
 }
@@ -49,7 +49,7 @@ mixin _$UserDataReadState {
     required TResult Function() initial,
     required TResult Function() loadingProgress,
     required TResult Function(UserData userData) loadSuccess,
-    required TResult Function(UserDataFailure postFailure) loadFailure,
+    required TResult Function(UserDataFailure loadFailure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +57,7 @@ mixin _$UserDataReadState {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,7 +65,7 @@ mixin _$UserDataReadState {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,7 +154,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadingProgress,
     required TResult Function(UserData userData) loadSuccess,
-    required TResult Function(UserDataFailure postFailure) loadFailure,
+    required TResult Function(UserDataFailure loadFailure) loadFailure,
   }) {
     return initial();
   }
@@ -165,7 +165,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -176,7 +176,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -271,7 +271,7 @@ class _$_LoadingProgress implements _LoadingProgress {
     required TResult Function() initial,
     required TResult Function() loadingProgress,
     required TResult Function(UserData userData) loadSuccess,
-    required TResult Function(UserDataFailure postFailure) loadFailure,
+    required TResult Function(UserDataFailure loadFailure) loadFailure,
   }) {
     return loadingProgress();
   }
@@ -282,7 +282,7 @@ class _$_LoadingProgress implements _LoadingProgress {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
   }) {
     return loadingProgress?.call();
   }
@@ -293,7 +293,7 @@ class _$_LoadingProgress implements _LoadingProgress {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadingProgress != null) {
@@ -421,7 +421,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function() initial,
     required TResult Function() loadingProgress,
     required TResult Function(UserData userData) loadSuccess,
-    required TResult Function(UserDataFailure postFailure) loadFailure,
+    required TResult Function(UserDataFailure loadFailure) loadFailure,
   }) {
     return loadSuccess(userData);
   }
@@ -432,7 +432,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
   }) {
     return loadSuccess?.call(userData);
   }
@@ -443,7 +443,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -504,9 +504,9 @@ abstract class _$LoadFailureCopyWith<$Res> {
   factory _$LoadFailureCopyWith(
           _LoadFailure value, $Res Function(_LoadFailure) then) =
       __$LoadFailureCopyWithImpl<$Res>;
-  $Res call({UserDataFailure postFailure});
+  $Res call({UserDataFailure loadFailure});
 
-  $UserDataFailureCopyWith<$Res> get postFailure;
+  $UserDataFailureCopyWith<$Res> get loadFailure;
 }
 
 /// @nodoc
@@ -522,20 +522,20 @@ class __$LoadFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? postFailure = freezed,
+    Object? loadFailure = freezed,
   }) {
     return _then(_LoadFailure(
-      postFailure == freezed
-          ? _value.postFailure
-          : postFailure // ignore: cast_nullable_to_non_nullable
+      loadFailure == freezed
+          ? _value.loadFailure
+          : loadFailure // ignore: cast_nullable_to_non_nullable
               as UserDataFailure,
     ));
   }
 
   @override
-  $UserDataFailureCopyWith<$Res> get postFailure {
-    return $UserDataFailureCopyWith<$Res>(_value.postFailure, (value) {
-      return _then(_value.copyWith(postFailure: value));
+  $UserDataFailureCopyWith<$Res> get loadFailure {
+    return $UserDataFailureCopyWith<$Res>(_value.loadFailure, (value) {
+      return _then(_value.copyWith(loadFailure: value));
     });
   }
 }
@@ -543,14 +543,14 @@ class __$LoadFailureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadFailure implements _LoadFailure {
-  const _$_LoadFailure(this.postFailure);
+  const _$_LoadFailure(this.loadFailure);
 
   @override
-  final UserDataFailure postFailure;
+  final UserDataFailure loadFailure;
 
   @override
   String toString() {
-    return 'UserDataReadState.loadFailure(postFailure: $postFailure)';
+    return 'UserDataReadState.loadFailure(loadFailure: $loadFailure)';
   }
 
   @override
@@ -559,12 +559,12 @@ class _$_LoadFailure implements _LoadFailure {
         (other.runtimeType == runtimeType &&
             other is _LoadFailure &&
             const DeepCollectionEquality()
-                .equals(other.postFailure, postFailure));
+                .equals(other.loadFailure, loadFailure));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(postFailure));
+      runtimeType, const DeepCollectionEquality().hash(loadFailure));
 
   @JsonKey(ignore: true)
   @override
@@ -577,9 +577,9 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadingProgress,
     required TResult Function(UserData userData) loadSuccess,
-    required TResult Function(UserDataFailure postFailure) loadFailure,
+    required TResult Function(UserDataFailure loadFailure) loadFailure,
   }) {
-    return loadFailure(postFailure);
+    return loadFailure(this.loadFailure);
   }
 
   @override
@@ -588,9 +588,9 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
   }) {
-    return loadFailure?.call(postFailure);
+    return loadFailure?.call(this.loadFailure);
   }
 
   @override
@@ -599,11 +599,11 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadingProgress,
     TResult Function(UserData userData)? loadSuccess,
-    TResult Function(UserDataFailure postFailure)? loadFailure,
+    TResult Function(UserDataFailure loadFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
-      return loadFailure(postFailure);
+      return loadFailure(this.loadFailure);
     }
     return orElse();
   }
@@ -647,9 +647,9 @@ class _$_LoadFailure implements _LoadFailure {
 }
 
 abstract class _LoadFailure implements UserDataReadState {
-  const factory _LoadFailure(UserDataFailure postFailure) = _$_LoadFailure;
+  const factory _LoadFailure(UserDataFailure loadFailure) = _$_LoadFailure;
 
-  UserDataFailure get postFailure;
+  UserDataFailure get loadFailure;
   @JsonKey(ignore: true)
   _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../domain/auth/auth_failure.dart';
 import '../../../domain/core/failures.dart';
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../../domain/utility/important_enums.dart';
 import '../../anim/fade_slide_transition.dart';
 import '../../anim/page/slide_in.dart';
 import '../../core/constants.dart';
@@ -50,7 +51,7 @@ class SignupForm extends StatelessWidget {
                                   "Invalid details combination")))));
                 },
                     (Unit success) => Navigator.of(context)
-                        .pushReplacement(SlideIn(page: const UserDataPage()))));
+                        .pushReplacement(SlideIn(page: const UserDataPage(accessType: PageAccessType.replaced,)))));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(

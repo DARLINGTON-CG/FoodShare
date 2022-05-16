@@ -29,6 +29,10 @@ class _$PostFailureTearOff {
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
   }
+
+  _NonExistentUser nonExistentUser() {
+    return const _NonExistentUser();
+  }
 }
 
 /// @nodoc
@@ -41,6 +45,7 @@ mixin _$PostFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() nonExistentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +53,7 @@ mixin _$PostFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +61,7 @@ mixin _$PostFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +71,7 @@ mixin _$PostFailure {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NonExistentUser value) nonExistentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +79,7 @@ mixin _$PostFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +87,7 @@ mixin _$PostFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +152,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() nonExistentUser,
   }) {
     return unexpected();
   }
@@ -152,6 +163,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
   }) {
     return unexpected?.call();
   }
@@ -162,6 +174,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -177,6 +190,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NonExistentUser value) nonExistentUser,
   }) {
     return unexpected(this);
   }
@@ -187,6 +201,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
   }) {
     return unexpected?.call(this);
   }
@@ -197,6 +212,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -255,6 +271,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() nonExistentUser,
   }) {
     return insufficientPermissions();
   }
@@ -265,6 +282,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
   }) {
     return insufficientPermissions?.call();
   }
@@ -275,6 +293,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -290,6 +309,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NonExistentUser value) nonExistentUser,
   }) {
     return insufficientPermissions(this);
   }
@@ -300,6 +320,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
   }) {
     return insufficientPermissions?.call(this);
   }
@@ -310,6 +331,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -367,6 +389,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() nonExistentUser,
   }) {
     return unableToUpdate();
   }
@@ -377,6 +400,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
   }) {
     return unableToUpdate?.call();
   }
@@ -387,6 +411,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -402,6 +427,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NonExistentUser value) nonExistentUser,
   }) {
     return unableToUpdate(this);
   }
@@ -412,6 +438,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -422,6 +449,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -433,4 +461,122 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements PostFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
+}
+
+/// @nodoc
+abstract class _$NonExistentUserCopyWith<$Res> {
+  factory _$NonExistentUserCopyWith(
+          _NonExistentUser value, $Res Function(_NonExistentUser) then) =
+      __$NonExistentUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NonExistentUserCopyWithImpl<$Res>
+    extends _$PostFailureCopyWithImpl<$Res>
+    implements _$NonExistentUserCopyWith<$Res> {
+  __$NonExistentUserCopyWithImpl(
+      _NonExistentUser _value, $Res Function(_NonExistentUser) _then)
+      : super(_value, (v) => _then(v as _NonExistentUser));
+
+  @override
+  _NonExistentUser get _value => super._value as _NonExistentUser;
+}
+
+/// @nodoc
+
+class _$_NonExistentUser implements _NonExistentUser {
+  const _$_NonExistentUser();
+
+  @override
+  String toString() {
+    return 'PostFailure.nonExistentUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NonExistentUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermissions,
+    required TResult Function() unableToUpdate,
+    required TResult Function() nonExistentUser,
+  }) {
+    return nonExistentUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
+  }) {
+    return nonExistentUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? unableToUpdate,
+    TResult Function()? nonExistentUser,
+    required TResult orElse(),
+  }) {
+    if (nonExistentUser != null) {
+      return nonExistentUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NonExistentUser value) nonExistentUser,
+  }) {
+    return nonExistentUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
+  }) {
+    return nonExistentUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NonExistentUser value)? nonExistentUser,
+    required TResult orElse(),
+  }) {
+    if (nonExistentUser != null) {
+      return nonExistentUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NonExistentUser implements PostFailure {
+  const factory _NonExistentUser() = _$_NonExistentUser;
 }

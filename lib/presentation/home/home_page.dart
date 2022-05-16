@@ -7,7 +7,9 @@ import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
+import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import '../../domain/user/user_data_failure.dart';
 import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_in.dart';
 import '../auth/widgets/custom_error_bar.dart';
@@ -24,8 +26,11 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
-Add Point to add user name and user profile picture after signup.
+Verify that user data exists before  sending message.
 After signing up user might quit application and come back to sign in hence check if user details is available.
+Add a warning when user does not add image in user data page
+Work on username regex for special characters and no spaces + no starting number
+
 
  Add null check to make sure no null exception value occurs in edit page
                     
@@ -82,37 +87,65 @@ class _HomePageState extends State<HomePage> {
               create: (BuildContext context) => getIt<UserDataReadBloc>()
                 ..add(const UserDataReadEvents.readUserData())),
         ],
-        child: BlocListener<PostActorBloc, PostActorState>(
-          listenWhen: (PostActorState previous, PostActorState current) =>
-              previous != current,
-          listener: (BuildContext context, PostActorState state) {
-            state.maybeMap(
-              deletionFailure: (DeletionFailure state) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    behavior: SnackBarBehavior.floating,
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    padding: const EdgeInsets.all(16),
-                    content: CustomErrorBar(
-                        errorMessage: (state.postFailure.map(
-                      unexpected: (_) => 'Unexpected error occured',
-                      insufficientPermissions: (_) =>
-                          'Insufficient permissions ',
-                      unableToUpdate: (_) => 'Impossible error',
-                    )))));
+        child: MultiBlocListener(
+          // ignore: always_specify_types
+          listeners: [
+            BlocListener<PostActorBloc, PostActorState>(
+              listenWhen: (PostActorState previous, PostActorState current) =>
+                  previous != current,
+              listener: (BuildContext context, PostActorState state) {
+                state.maybeMap(
+                  deletionFailure: (DeletionFailure state) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        padding: const EdgeInsets.all(16),
+                        content: CustomErrorBar(
+                            errorMessage: (state.postFailure.map(
+                          unexpected: (_) => 'Unexpected error occured',
+                          nonExistentUser: (_) => "",
+                          insufficientPermissions: (_) =>
+                              'Insufficient permissions ',
+                          unableToUpdate: (_) => 'Impossible error',
+                        )))));
+                  },
+                  orElse: () {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Colors.transparent,
+                        duration: Duration(seconds: 2),
+                        elevation: 0,
+                        padding: EdgeInsets.all(16),
+                        content: CustomErrorBar(
+                            errorMessage: "Post deleted successfully")));
+                  },
+                );
               },
-              orElse: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    behavior: SnackBarBehavior.floating,
-                    backgroundColor: Colors.transparent,
-                    duration: Duration(seconds: 2),
-                    elevation: 0,
-                    padding: EdgeInsets.all(16),
-                    content: CustomErrorBar(
-                        errorMessage: "Post deleted successfully")));
+            ),
+            BlocListener<UserDataReadBloc, UserDataReadState>(
+              listenWhen:
+                  (UserDataReadState previous, UserDataReadState current) =>
+                      previous != current,
+              listener: (BuildContext context, UserDataReadState state) {
+                state.map(
+                    initial: (_) => null,
+                    loadingProgress: (_) => null,
+                    loadSuccess: (_) => null,
+                    // ignore: always_specify_types
+                    loadFailure: (failure) {
+                      if (failure.loadFailure ==
+                          const UserDataFailure.notAvailable()) {
+                        Navigator.of(context).pushReplacement(SlideIn(
+                            page: const UserDataPage(
+                          accessType: PageAccessType.replaced,
+                        )));
+                      }
+                      return null;
+                    });
               },
-            );
-          },
+            ),
+          ],
           child: Scaffold(
               key: _scaffoldKey,
               resizeToAvoidBottomInset: false,
@@ -133,7 +166,12 @@ class _HomePageState extends State<HomePage> {
                             return Center(
                               child: GestureDetector(
                                 onTap: () => Navigator.of(context).push(
-                                    SlideUpAnim(page: const ProfilePage())),
+                                    SlideUpAnim(
+                                        page: BlocProvider<
+                                                UserDataReadBloc>.value(
+                                            value: BlocProvider.of<
+                                                UserDataReadBloc>(context),
+                                            child: const ProfilePage()))),
                                 child: Container(
                                   width: 38,
                                   height: 38,
@@ -182,7 +220,8 @@ class _HomePageState extends State<HomePage> {
                           child: IconButton(
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
-                                  .push(SlideIn(page: const NotificationPage())),
+                                  .push(
+                                      SlideIn(page: const NotificationPage())),
                               icon: const Icon(Icons.notifications)),
                         )
                       ],

@@ -89,9 +89,14 @@ class PostItem extends StatelessWidget {
                           style: GoogleFonts.lato(
                               fontSize: 13, fontWeight: FontWeight.bold)),
                       const SizedBox(
-                        width: 4,
+                        width: 10,
                       ),
-                      Text("-- Jonh Buscon",
+                     
+                      const Icon(
+                        Icons.face,
+                        size: 16,
+                      ),
+                      Text("-"+post.username.getOrCrash(),
                           style: GoogleFonts.lato(
                               fontSize: 13, fontWeight: FontWeight.bold)),
                     ],

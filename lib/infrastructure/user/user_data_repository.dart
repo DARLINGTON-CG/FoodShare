@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
 
 import 'dart:io';
 
@@ -82,14 +83,20 @@ class UserDataRepository extends IUserRepository {
 
       final DocumentSnapshot<Object?> doc =
           await userDoc.doc(user.id.getOrCrash()).get();
-      final UserData userData = UserDataDto.fromFirestore(doc).toDomain();
-      return right(userData);
-    } catch (e) {
-      if (e.toString().toLowerCase().contains("permission-denied")) {
-        return left(const UserDataFailure.insufficientPermissions());
+      if (doc.exists) {
+        final UserData userData = UserDataDto.fromFirestore(doc).toDomain();
+        return right(userData);
+      } else {
+        return left(const UserDataFailure.notAvailable());
+      }
+    } on firebase_core.FirebaseException catch (e) {
+      if (e.toString().contains("unauthorized")) {
+         return left(const UserDataFailure.insufficientPermissions());
       } else {
         return left(const UserDataFailure.unexpected());
       }
+    } catch (e) {
+           return left(const UserDataFailure.unexpected());
     }
   }
 }

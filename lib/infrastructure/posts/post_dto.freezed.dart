@@ -28,6 +28,7 @@ class _$PostDtoTearOff {
       required String pickupTime,
       required String description,
       required int quantity,
+      required String username,
       required String title,
       required String postUserId,
       required String postPrice,
@@ -38,6 +39,7 @@ class _$PostDtoTearOff {
       pickupTime: pickupTime,
       description: description,
       quantity: quantity,
+      username: username,
       title: title,
       postUserId: postUserId,
       postPrice: postPrice,
@@ -61,6 +63,7 @@ mixin _$PostDto {
   String get pickupTime => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get postUserId => throw _privateConstructorUsedError;
   String get postPrice => throw _privateConstructorUsedError;
@@ -82,6 +85,7 @@ abstract class $PostDtoCopyWith<$Res> {
       String pickupTime,
       String description,
       int quantity,
+      String username,
       String title,
       String postUserId,
       String postPrice,
@@ -103,6 +107,7 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object? pickupTime = freezed,
     Object? description = freezed,
     Object? quantity = freezed,
+    Object? username = freezed,
     Object? title = freezed,
     Object? postUserId = freezed,
     Object? postPrice = freezed,
@@ -129,6 +134,10 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -160,6 +169,7 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       String pickupTime,
       String description,
       int quantity,
+      String username,
       String title,
       String postUserId,
       String postPrice,
@@ -182,6 +192,7 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object? pickupTime = freezed,
     Object? description = freezed,
     Object? quantity = freezed,
+    Object? username = freezed,
     Object? title = freezed,
     Object? postUserId = freezed,
     Object? postPrice = freezed,
@@ -208,6 +219,10 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -237,6 +252,7 @@ class _$_PostDto extends _PostDto {
       required this.pickupTime,
       required this.description,
       required this.quantity,
+      required this.username,
       required this.title,
       required this.postUserId,
       required this.postPrice,
@@ -258,6 +274,8 @@ class _$_PostDto extends _PostDto {
   @override
   final int quantity;
   @override
+  final String username;
+  @override
   final String title;
   @override
   final String postUserId;
@@ -269,7 +287,7 @@ class _$_PostDto extends _PostDto {
 
   @override
   String toString() {
-    return 'PostDto(id: $id, imageUrl: $imageUrl, pickupTime: $pickupTime, description: $description, quantity: $quantity, title: $title, postUserId: $postUserId, postPrice: $postPrice, serverTimeStamp: $serverTimeStamp)';
+    return 'PostDto(id: $id, imageUrl: $imageUrl, pickupTime: $pickupTime, description: $description, quantity: $quantity, username: $username, title: $title, postUserId: $postUserId, postPrice: $postPrice, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -284,6 +302,7 @@ class _$_PostDto extends _PostDto {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.postUserId, postUserId) &&
@@ -300,6 +319,7 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(pickupTime),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(postUserId),
       const DeepCollectionEquality().hash(postPrice),
@@ -323,6 +343,7 @@ abstract class _PostDto extends PostDto {
           required String pickupTime,
           required String description,
           required int quantity,
+          required String username,
           required String title,
           required String postUserId,
           required String postPrice,
@@ -343,6 +364,8 @@ abstract class _PostDto extends PostDto {
   String get description;
   @override
   int get quantity;
+  @override
+  String get username;
   @override
   String get title;
   @override

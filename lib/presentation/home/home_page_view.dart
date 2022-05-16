@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import '../../domain/user/user_data_failure.dart';
 import '../anim/page/slide_in.dart';
 import '../anim/page/slide_up.dart';
 import '../notification/notification_page.dart';
 import '../profile/profile_page.dart';
+import '../profile/user_data_page.dart';
 import 'widgets/free_tab.dart';
 import 'widgets/paid_tab.dart';
 
@@ -53,11 +55,17 @@ class _HomePageViewState extends State<HomePageView>
                   )
                 ],
                 leading: BlocBuilder<UserDataReadBloc, UserDataReadState>(
+                  buildWhen:
+                      (UserDataReadState previous, UserDataReadState current) =>
+                          previous != current,
                   builder: (BuildContext context, UserDataReadState state) {
                     return Center(
                       child: GestureDetector(
-                        onTap: () => Navigator.of(context)
-                            .push(SlideUpAnim(page: const ProfilePage())),
+                        onTap: () => Navigator.of(context).push(SlideUpAnim(
+                            page: BlocProvider<UserDataReadBloc>.value(
+                                value:
+                                    BlocProvider.of<UserDataReadBloc>(context),
+                                child: const ProfilePage()))),
                         child: Container(
                           width: 38,
                           height: 38,
@@ -67,9 +75,12 @@ class _HomePageViewState extends State<HomePageView>
                                   loadingProgress: (_) =>
                                       Colors.blueGrey.withOpacity(0.2),
                                   // ignore: always_specify_types
-                                  loadSuccess: (success) => null,
-                                  loadFailure: (_) =>
-                                      Colors.red.withOpacity(0.2)),
+                                  loadSuccess: (success) =>
+                                      Colors.grey.withOpacity(0.2),
+                                  // ignore: always_specify_types
+                                  loadFailure: (failure) {
+                                    return Colors.red.withOpacity(0.2);
+                                  }),
                               //  Colors.grey.withOpacity(0.2)
                               shape: BoxShape.circle,
                               image: state.map(
@@ -81,8 +92,7 @@ class _HomePageViewState extends State<HomePageView>
                                           .userData.imageUrl
                                           .getOrCrash()),
                                       fit: BoxFit.cover),
-                                  loadFailure: (_) => null)
-                              ),
+                                  loadFailure: (_) => null)),
                         ),
                       ),
                     );

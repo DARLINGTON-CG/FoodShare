@@ -75,11 +75,12 @@ Future<void> showDetailSheet(BuildContext context, Post post) async {
                       style: GoogleFonts.lato(
                           fontSize: 12, fontWeight: FontWeight.bold)),
                   const SizedBox(
-                    width: 4,
+                    width: 8,
                   ),
-                  // Text("-- Jonh Buscon",
-                  //     style: GoogleFonts.lato(
-                  //         fontSize: 13, fontWeight: FontWeight.bold)),
+                  Text("@"+post.username.getOrCrash(),
+                      style: GoogleFonts.lato(
+                        color:const Color(0xFF3212F1),
+                          fontSize: 13, fontWeight: FontWeight.bold)),
                 ],
               ),
               const SizedBox(

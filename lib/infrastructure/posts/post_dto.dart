@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../domain/posts/post.dart';
+import '../../domain/user/value_objects.dart';
 
 part 'post_dto.freezed.dart';
 
@@ -21,6 +22,7 @@ class PostDto with _$PostDto {
           required String pickupTime,
           required String description,
           required int quantity,
+          required String username,
           required String title,
           required String postUserId,
           required String postPrice,
@@ -39,6 +41,7 @@ class PostDto with _$PostDto {
         pickupTime: post.pickupTime.getOrCrash(),
         quantity: post.quantity.getOrCrash(),
         title: post.title.getOrCrash(),
+        username: post.username.getOrCrash(),
         postPrice: post.postPrice.getOrCrash(),
         serverTimeStamp: FieldValue.serverTimestamp());
   }
@@ -46,6 +49,7 @@ class PostDto with _$PostDto {
   Post toDomain() {
     return Post(
         id: UniqueId.fromUniqueString(id!),
+        username: Username(username),
         postPrice: PostPrice(postPrice),
         description: PostDescription(description),
         imageUrl: ImageUrl(imageUrl),

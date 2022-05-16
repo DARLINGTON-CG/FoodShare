@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../domain/user/user_data_failure.dart';
+import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_up.dart';
 import '../anim/widgets/three_dot_indicator.dart';
 import '../auth/widgets/custom_error_bar.dart';
@@ -17,7 +17,9 @@ import 'widget/user_avatar.dart';
 import 'widget/username_field.dart';
 
 class UserDataPage extends StatefulWidget {
-  const UserDataPage({Key? key}) : super(key: key);
+  final PageAccessType accessType;
+
+  const UserDataPage({Key? key, required this.accessType}) : super(key: key);
 
   @override
   State<UserDataPage> createState() => _UserDataPageState();
@@ -52,7 +54,15 @@ class _UserDataPageState extends State<UserDataPage> {
                     ))));
               },
               (_) {
-                Navigator.of(context).push(SlideUpAnim(page: const HomePage()));
+                if (widget.accessType == PageAccessType.pushed) {
+                  Navigator.of(context).pop();
+                }
+                else
+                {
+                   Navigator.of(context)
+                    .pushReplacement(SlideUpAnim(page: const HomePage()));
+                }
+               
               },
             );
           },

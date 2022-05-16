@@ -12,10 +12,12 @@ import '../../domain/posts/post.dart';
 import '../../domain/posts/post_failure.dart';
 import '../../domain/utility/important_enums.dart';
 import '../../injector.dart';
+import '../anim/page/slide_in.dart';
 import '../anim/page/slide_up.dart';
 import '../anim/widgets/three_dot_indicator.dart';
 import '../auth/widgets/custom_error_bar.dart';
 import '../picture/edit_picture_page.dart';
+import '../profile/user_data_page.dart';
 import 'widgets/image_container.dart';
 import 'widgets/post_amount_field.dart';
 import 'widgets/post_description_field.dart';
@@ -69,9 +71,20 @@ class _PostPageState extends State<PostPage> {
                           errorMessage: failure.map(
                         insufficientPermissions: (_) =>
                             'Insufficient permissions.',
+                        nonExistentUser: (_) => "Add user profile",
                         unableToUpdate: (_) => "Couldn't update the note.",
                         unexpected: (_) => 'Unexpected error occured',
                       ))));
+
+                  failure.map(
+                    insufficientPermissions: (_) => null,
+                    nonExistentUser: (_) {
+                      Navigator.of(context)
+                          .push(SlideIn(page: const UserDataPage(accessType: PageAccessType.pushed,)));
+                    },
+                    unableToUpdate: (_) => null,
+                    unexpected: (_) => null,
+                  );
                 },
                 (_) {
                   Navigator.of(context).pop();

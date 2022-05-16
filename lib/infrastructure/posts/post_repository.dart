@@ -10,6 +10,10 @@ import '../../domain/core/value_objects.dart';
 import '../../domain/posts/value_objects.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
+import '../../domain/user/i_user_repository.dart';
+import '../../domain/user/user_data_failure.dart';
+import '../../domain/user/user_data.dart';
+import '../../domain/user/value_objects.dart';
 import '../../injector.dart';
 import 'post_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -35,12 +39,23 @@ class PostRepository implements IPostRepository {
       final LocalUser user =
           userOption.getOrElse(() => throw NotAuthenticatedError());
 
+      final Either<UserDataFailure, UserData> userData =
+          await getIt<IUserRepository>().getUserData();
+      final Username username =
+          userData.fold((UserDataFailure userDataFailure) {
+        if (userDataFailure == const UserDataFailure.notAvailable()) {
+          throw const PostFailure.nonExistentUser();
+        } else {
+          throw const PostFailure.unexpected();
+        }
+      }, (UserData userData) => userData.username);
+
       final Post postForUpload = await getIt<IStorageRepository>()
           .upload(file, post.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
               postUserId: PostUserId(user.id.getOrCrash()),
-              imageUrl:
-                  ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
+              username: username,
+              imageUrl: ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.postDocuments();
@@ -49,9 +64,13 @@ class PostRepository implements IPostRepository {
       await userDoc.doc(postDto.id).set(postDto.toJson());
       return right(unit);
     } catch (e) {
+       
       if (e.toString().toLowerCase().contains("permission-denied")) {
         return left(const PostFailure.insufficientPermissions());
-      } else {
+      } else if (e == const PostFailure.nonExistentUser()) {
+        return left(const PostFailure.nonExistentUser());
+      }
+       else  {
         return left(const PostFailure.unexpected());
       }
     }

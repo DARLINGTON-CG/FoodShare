@@ -5,8 +5,9 @@ class UserDataReadState with _$UserDataReadState {
   const factory UserDataReadState.initial() = _Initial;
   const factory UserDataReadState.loadingProgress() = _LoadingProgress;
   const factory UserDataReadState.loadSuccess(UserData userData) = _LoadSuccess;
-  const factory UserDataReadState.loadFailure(UserDataFailure postFailure) = _LoadFailure;
+  const factory UserDataReadState.loadFailure(UserDataFailure loadFailure) = _LoadFailure;
 }
+
 
 
 

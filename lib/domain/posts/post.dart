@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import '../core/value_objects.dart';
+import '../user/value_objects.dart';
 import 'value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -20,6 +21,7 @@ abstract class Post implements _$Post {
       required PickupTime pickupTime,
       required PostUserId postUserId,
       required PostPrice postPrice,
+      required Username username,
       }) = _Post;
 
   factory Post.empty() => Post(
@@ -30,7 +32,8 @@ abstract class Post implements _$Post {
       pickupTime: PickupTime('7:00-9:00am'),
       title: PostTitle(''),
       postUserId: PostUserId(''),
-      postPrice: PostPrice('')
+      postPrice: PostPrice(''),
+      username: Username('')
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
