@@ -91,12 +91,11 @@ class PostItem extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                     
                       const Icon(
                         Icons.face,
                         size: 16,
                       ),
-                      Text("-"+post.username.getOrCrash(),
+                      Text("-${post.username.getOrCrash().length < 8 ? post.username.getOrCrash():post.username.getOrCrash().substring(0,8)+ "..."}",
                           style: GoogleFonts.lato(
                               fontSize: 13, fontWeight: FontWeight.bold)),
                     ],
