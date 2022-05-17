@@ -29,6 +29,10 @@ class _$UserDataFailureTearOff {
   _NotAvailable notAvailable() {
     return const _NotAvailable();
   }
+
+  _UsernameNotAvailable usernameUnavailable() {
+    return const _UsernameNotAvailable();
+  }
 }
 
 /// @nodoc
@@ -41,6 +45,7 @@ mixin _$UserDataFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() notAvailable,
+    required TResult Function() usernameUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +53,7 @@ mixin _$UserDataFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +61,7 @@ mixin _$UserDataFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +71,7 @@ mixin _$UserDataFailure {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_NotAvailable value) notAvailable,
+    required TResult Function(_UsernameNotAvailable value) usernameUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +79,7 @@ mixin _$UserDataFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +87,7 @@ mixin _$UserDataFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +154,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() notAvailable,
+    required TResult Function() usernameUnavailable,
   }) {
     return unexpected();
   }
@@ -154,6 +165,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
   }) {
     return unexpected?.call();
   }
@@ -164,6 +176,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -179,6 +192,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_NotAvailable value) notAvailable,
+    required TResult Function(_UsernameNotAvailable value) usernameUnavailable,
   }) {
     return unexpected(this);
   }
@@ -189,6 +203,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
   }) {
     return unexpected?.call(this);
   }
@@ -199,6 +214,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -257,6 +273,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() notAvailable,
+    required TResult Function() usernameUnavailable,
   }) {
     return insufficientPermissions();
   }
@@ -267,6 +284,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
   }) {
     return insufficientPermissions?.call();
   }
@@ -277,6 +295,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -292,6 +311,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_NotAvailable value) notAvailable,
+    required TResult Function(_UsernameNotAvailable value) usernameUnavailable,
   }) {
     return insufficientPermissions(this);
   }
@@ -302,6 +322,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
   }) {
     return insufficientPermissions?.call(this);
   }
@@ -312,6 +333,7 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -369,6 +391,7 @@ class _$_NotAvailable implements _NotAvailable {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() notAvailable,
+    required TResult Function() usernameUnavailable,
   }) {
     return notAvailable();
   }
@@ -379,6 +402,7 @@ class _$_NotAvailable implements _NotAvailable {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
   }) {
     return notAvailable?.call();
   }
@@ -389,6 +413,7 @@ class _$_NotAvailable implements _NotAvailable {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (notAvailable != null) {
@@ -404,6 +429,7 @@ class _$_NotAvailable implements _NotAvailable {
     required TResult Function(_InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(_NotAvailable value) notAvailable,
+    required TResult Function(_UsernameNotAvailable value) usernameUnavailable,
   }) {
     return notAvailable(this);
   }
@@ -414,6 +440,7 @@ class _$_NotAvailable implements _NotAvailable {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
   }) {
     return notAvailable?.call(this);
   }
@@ -424,6 +451,7 @@ class _$_NotAvailable implements _NotAvailable {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermissions value)? insufficientPermissions,
     TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
     required TResult orElse(),
   }) {
     if (notAvailable != null) {
@@ -435,4 +463,122 @@ class _$_NotAvailable implements _NotAvailable {
 
 abstract class _NotAvailable implements UserDataFailure {
   const factory _NotAvailable() = _$_NotAvailable;
+}
+
+/// @nodoc
+abstract class _$UsernameNotAvailableCopyWith<$Res> {
+  factory _$UsernameNotAvailableCopyWith(_UsernameNotAvailable value,
+          $Res Function(_UsernameNotAvailable) then) =
+      __$UsernameNotAvailableCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UsernameNotAvailableCopyWithImpl<$Res>
+    extends _$UserDataFailureCopyWithImpl<$Res>
+    implements _$UsernameNotAvailableCopyWith<$Res> {
+  __$UsernameNotAvailableCopyWithImpl(
+      _UsernameNotAvailable _value, $Res Function(_UsernameNotAvailable) _then)
+      : super(_value, (v) => _then(v as _UsernameNotAvailable));
+
+  @override
+  _UsernameNotAvailable get _value => super._value as _UsernameNotAvailable;
+}
+
+/// @nodoc
+
+class _$_UsernameNotAvailable implements _UsernameNotAvailable {
+  const _$_UsernameNotAvailable();
+
+  @override
+  String toString() {
+    return 'UserDataFailure.usernameUnavailable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _UsernameNotAvailable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermissions,
+    required TResult Function() notAvailable,
+    required TResult Function() usernameUnavailable,
+  }) {
+    return usernameUnavailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
+  }) {
+    return usernameUnavailable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? notAvailable,
+    TResult Function()? usernameUnavailable,
+    required TResult orElse(),
+  }) {
+    if (usernameUnavailable != null) {
+      return usernameUnavailable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_NotAvailable value) notAvailable,
+    required TResult Function(_UsernameNotAvailable value) usernameUnavailable,
+  }) {
+    return usernameUnavailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
+  }) {
+    return usernameUnavailable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(_NotAvailable value)? notAvailable,
+    TResult Function(_UsernameNotAvailable value)? usernameUnavailable,
+    required TResult orElse(),
+  }) {
+    if (usernameUnavailable != null) {
+      return usernameUnavailable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UsernameNotAvailable implements UserDataFailure {
+  const factory _UsernameNotAvailable() = _$_UsernameNotAvailable;
 }

@@ -51,18 +51,16 @@ class _UserDataPageState extends State<UserDataPage> {
                           'Insufficient permissions.',
                       notAvailable: (_) => 'Not available',
                       unexpected: (_) => 'Unexpected error occured',
+                      usernameUnavailable: (_) => "Username unavailable"
                     ))));
               },
               (_) {
                 if (widget.accessType == PageAccessType.pushed) {
                   Navigator.of(context).pop();
+                } else {
+                  Navigator.of(context)
+                      .pushReplacement(SlideUpAnim(page: const HomePage()));
                 }
-                else
-                {
-                   Navigator.of(context)
-                    .pushReplacement(SlideUpAnim(page: const HomePage()));
-                }
-               
               },
             );
           },
@@ -73,8 +71,17 @@ class _UserDataPageState extends State<UserDataPage> {
           floatingActionButton: FloatingActionButton(
               key: const Key('user_data_page_floating_action_key'),
               onPressed: () {
-                BlocProvider.of<UserDataBloc>(context)
-                    .add(UserDataEvents.saved(_userImage));
+                if (_userImage == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      backgroundColor: Colors.transparent,
+                      duration: Duration(seconds: 2),
+                      elevation: 0,
+                      padding: EdgeInsets.all(16),
+                      content: CustomErrorBar(errorMessage: "Add an image")));
+                } else {
+                  BlocProvider.of<UserDataBloc>(context)
+                      .add(UserDataEvents.saved(_userImage));
+                }
               },
               backgroundColor: const Color(0xFF3212F1),
               child: state.isSaving

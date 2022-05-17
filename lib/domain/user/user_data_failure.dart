@@ -8,4 +8,5 @@ class UserDataFailure with _$UserDataFailure {
   const factory UserDataFailure.insufficientPermissions() =
       _InsufficientPermissions;
   const factory UserDataFailure.notAvailable() = _NotAvailable;
+  const factory UserDataFailure.usernameUnavailable() = _UsernameNotAvailable;
 }

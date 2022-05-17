@@ -26,16 +26,10 @@ import 'widgets/nav_bar_item.dart';
 
 /*
 Verify that user data exists before  sending message.
-After signing up user might quit application and come back to sign in hence check if user details is available.
-Add a warning when user does not add image in user data page
 Work on username regex for special characters and no spaces + no starting number
-
-
  Add null check to make sure no null exception value occurs in edit page
-                    
 Add dark mode.
 Work on chat page functionality
-Deal with big image sizes.
 Add functionality for user to delete account.
 Add state management functionality for navigation bar.
 */

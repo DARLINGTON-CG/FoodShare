@@ -14,6 +14,7 @@ import '../../domain/storage/storage_failure.dart';
 import '../../domain/user/i_user_repository.dart';
 import '../../domain/user/user_data_failure.dart';
 import '../../domain/user/user_data.dart';
+import '../../domain/user/value_objects.dart';
 import '../../injector.dart';
 import '../core/firebase_helpers.dart';
 import 'user_data_dto.dart';
@@ -32,9 +33,19 @@ class UserDataRepository extends IUserRepository {
       final LocalUser user =
           userOption.getOrElse(() => throw NotAuthenticatedError());
 
+      final Either<UserDataFailure, Unit> returnedData =
+          await checkAvailability(data.username.getOrCrash().trim());
+      //Modifications soon
+      returnedData.fold(
+          (UserDataFailure l) =>
+              throw const UserDataFailure.usernameUnavailable(), (_) {
+           return null;
+      });
+
       final UserData dataForUpload = await getIt<IStorageRepository>()
           .upload(file, user.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => data.copyWith(
+              username: Username(data.username.getOrCrash().trim()),
               imageUrl: ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =
@@ -46,6 +57,8 @@ class UserDataRepository extends IUserRepository {
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
         return left(const UserDataFailure.insufficientPermissions());
+      } else if (e == const UserDataFailure.usernameUnavailable()) {
+        return left(const UserDataFailure.usernameUnavailable());
       } else {
         return left(const UserDataFailure.unexpected());
       }
@@ -59,9 +72,33 @@ class UserDataRepository extends IUserRepository {
   }
 
   @override
-  Stream<Either<UserDataFailure, Unit>> observeAllUsernames() {
-    // TODO: implement observeAllUsernames
-    throw UnimplementedError();
+  Future<Either<UserDataFailure, Unit>> checkAvailability(
+      String username) async {
+    try {
+      final CollectionReference<Object?> userDoc =
+          await _firebaseFirestore.userDocuments();
+
+      final QuerySnapshot<Object?> document = await userDoc.get();
+      if (document.docs.isNotEmpty) {
+        final bool result =
+            document.docs.where((QueryDocumentSnapshot<Object?> element) {
+          return UserDataDto.fromFirestore(element)
+                  .toDomain()
+                  .username
+                  .getOrCrash() ==
+              username;
+        }).isEmpty;
+        if (result) {
+          return right(unit);
+        } else {
+          return left(const UserDataFailure.usernameUnavailable());
+        }
+      } else {
+        return right(unit);
+      }
+    } catch (e) {
+      return left(const UserDataFailure.unexpected());
+    }
   }
 
   @override
@@ -91,12 +128,12 @@ class UserDataRepository extends IUserRepository {
       }
     } on firebase_core.FirebaseException catch (e) {
       if (e.toString().contains("unauthorized")) {
-         return left(const UserDataFailure.insufficientPermissions());
+        return left(const UserDataFailure.insufficientPermissions());
       } else {
         return left(const UserDataFailure.unexpected());
       }
     } catch (e) {
-           return left(const UserDataFailure.unexpected());
+      return left(const UserDataFailure.unexpected());
     }
   }
 }
