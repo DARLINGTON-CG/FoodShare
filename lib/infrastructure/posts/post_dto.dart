@@ -56,6 +56,7 @@ class PostDto with _$PostDto {
         pickupTime: PickupTime(pickupTime),
         quantity: PostQuantity(quantity),
         postUserId: PostUserId(postUserId),
+        
         title: PostTitle(title));
   }
 

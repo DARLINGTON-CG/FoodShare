@@ -10,6 +10,12 @@ extension FirestoreX on FirebaseFirestore {
   Future<CollectionReference> userDocuments() async {
     return FirebaseFirestore.instance.collection('users');
   }
+
+
+  // ignore: always_specify_types
+  Future<CollectionReference> chatDocuments() async {
+    return FirebaseFirestore.instance.collection('chat');
+  }
   // // ignore: always_specify_types
   // Future<CollectionReference> userDocuments() async {
   //   final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
