@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
@@ -81,6 +82,9 @@ class _HomePageState extends State<HomePage> {
           BlocProvider<UserDataReadBloc>(
               create: (BuildContext context) => getIt<UserDataReadBloc>()
                 ..add(const UserDataReadEvents.readUserData())),
+          BlocProvider<ReadMessagesBloc>(
+              create: (BuildContext context) => getIt<ReadMessagesBloc>()
+                ..add(const ReadMessagesEvents.readAllStarted())),
         ],
         child: MultiBlocListener(
           // ignore: always_specify_types
