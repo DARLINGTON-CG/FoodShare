@@ -65,6 +65,11 @@ class PostDto with _$PostDto {
     return PostDto.fromJson(doc.data()! as Map<String, dynamic>)
         .copyWith(id: doc.id);
   }
+  
+  factory PostDto.fromMap(Map<String,dynamic> doc) {
+    return PostDto.fromJson(doc);
+  }
+
 }
 
 class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {

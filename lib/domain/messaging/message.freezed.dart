@@ -18,14 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MessageTearOff {
   const _$MessageTearOff();
 
-  _Message call(
-      {required UniqueId id,
-      required MessageBody message,
-      required MessageTimeStamp messageTimeStamp}) {
+  _Message call({required UniqueId id, required MessageBody message}) {
     return _Message(
       id: id,
       message: message,
-      messageTimeStamp: messageTimeStamp,
     );
   }
 }
@@ -37,7 +33,6 @@ const $Message = _$MessageTearOff();
 mixin _$Message {
   UniqueId get id => throw _privateConstructorUsedError;
   MessageBody get message => throw _privateConstructorUsedError;
-  MessageTimeStamp get messageTimeStamp => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -47,8 +42,7 @@ mixin _$Message {
 abstract class $MessageCopyWith<$Res> {
   factory $MessageCopyWith(Message value, $Res Function(Message) then) =
       _$MessageCopyWithImpl<$Res>;
-  $Res call(
-      {UniqueId id, MessageBody message, MessageTimeStamp messageTimeStamp});
+  $Res call({UniqueId id, MessageBody message});
 }
 
 /// @nodoc
@@ -63,7 +57,6 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
-    Object? messageTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -74,10 +67,6 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as MessageBody,
-      messageTimeStamp: messageTimeStamp == freezed
-          ? _value.messageTimeStamp
-          : messageTimeStamp // ignore: cast_nullable_to_non_nullable
-              as MessageTimeStamp,
     ));
   }
 }
@@ -87,8 +76,7 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
   factory _$MessageCopyWith(_Message value, $Res Function(_Message) then) =
       __$MessageCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {UniqueId id, MessageBody message, MessageTimeStamp messageTimeStamp});
+  $Res call({UniqueId id, MessageBody message});
 }
 
 /// @nodoc
@@ -104,7 +92,6 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
-    Object? messageTimeStamp = freezed,
   }) {
     return _then(_Message(
       id: id == freezed
@@ -115,10 +102,6 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as MessageBody,
-      messageTimeStamp: messageTimeStamp == freezed
-          ? _value.messageTimeStamp
-          : messageTimeStamp // ignore: cast_nullable_to_non_nullable
-              as MessageTimeStamp,
     ));
   }
 }
@@ -126,20 +109,16 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Message extends _Message {
-  const _$_Message(
-      {required this.id, required this.message, required this.messageTimeStamp})
-      : super._();
+  const _$_Message({required this.id, required this.message}) : super._();
 
   @override
   final UniqueId id;
   @override
   final MessageBody message;
-  @override
-  final MessageTimeStamp messageTimeStamp;
 
   @override
   String toString() {
-    return 'Message(id: $id, message: $message, messageTimeStamp: $messageTimeStamp)';
+    return 'Message(id: $id, message: $message)';
   }
 
   @override
@@ -148,17 +127,14 @@ class _$_Message extends _Message {
         (other.runtimeType == runtimeType &&
             other is _Message &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality()
-                .equals(other.messageTimeStamp, messageTimeStamp));
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(messageTimeStamp));
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -167,18 +143,14 @@ class _$_Message extends _Message {
 }
 
 abstract class _Message extends Message {
-  const factory _Message(
-      {required UniqueId id,
-      required MessageBody message,
-      required MessageTimeStamp messageTimeStamp}) = _$_Message;
+  const factory _Message({required UniqueId id, required MessageBody message}) =
+      _$_Message;
   const _Message._() : super._();
 
   @override
   UniqueId get id;
   @override
   MessageBody get message;
-  @override
-  MessageTimeStamp get messageTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

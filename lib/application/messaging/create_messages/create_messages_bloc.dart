@@ -4,11 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../domain/auth/i_auth_facade.dart';
+import '../../../domain/auth/user.dart';
+import '../../../domain/core/errors.dart';
 import '../../../domain/messaging/chat_room.dart';
 import '../../../domain/messaging/i_message_repository.dart';
 import '../../../domain/messaging/message.dart';
 import '../../../domain/messaging/message_failure.dart';
 import '../../../domain/messaging/value_objects.dart';
+import '../../../injector.dart';
 import '../../../presentation/messages/misc/message_primitive.dart';
 
 part 'create_messages_bloc.freezed.dart';
@@ -37,19 +41,40 @@ class CreateMessagesBloc
   void _onMessageChanged(
       MessageChanged event, Emitter<CreateMessagesState> emit) {
     emit(state.copyWith(
-        data: state.data.copyWith(
-          messages: MessageList<Message>(event.message
-              .map((MessagePrimitive primitive) => primitive.toDomain())),
-        ),
-        successOrFailure: none()));
+        currentMessage: event.message, successOrFailure: none()));
+    print(state.currentMessage);
   }
 
   void _onSaved(Saved event, Emitter<CreateMessagesState> emit) async {
     emit(state.copyWith(isSaving: true, successOrFailure: none()));
+    final KtList<Message> currentMessages = state.data.messages.getOrCrash();
+    print("It is emptey");
+    print(currentMessages.isEmpty());
+    List<Message> converted = <Message>[];
+    for (Message element in currentMessages.iter) {
+      converted.add(element);
+    }
 
+    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    final LocalUser user =
+        userOption.getOrElse(() => throw NotAuthenticatedError());
+
+    converted.add(Message(
+        id: user.id,
+        message: MessageBody(state.currentMessage),));
+
+    emit(state.copyWith(
+        data: state.data.copyWith(
+          messages: MessageList<Message>(
+              converted.map((Message message) => message).toImmutableList()),
+        ),
+        successOrFailure: none()));
+    print("VALID MESSAGE");
+    print(state.data.messages.isValid());
     if (state.data.failureOption.isNone()) {
       final Either<MessageFailure, Unit>? failureOrSuccess =
           await _messageRepository.send(state.data);
+
       emit(state.copyWith(
           isSaving: false,
           showErrorMessages: true,

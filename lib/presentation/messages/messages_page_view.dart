@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,20 +28,57 @@ class MessagesPageView extends StatelessWidget {
                      
                       SliverPadding(
                           padding: const EdgeInsets.only(top: 10),
-                          sliver:    SliverList(
+                          sliver: state.map(initial: (_) {
+                            return SliverToBoxAdapter(child: Container());
+                          }, loadingProgress: (_) {
+                            return const SliverFillRemaining(
+                              child: Center(
+                                  child: ThreeDotIndicator(
+                                      color: Colors.black, size: 25)),
+                            );
+                          },
+                              // ignore: always_specify_types
+                              loadSuccess: (state) {
+                            return SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int index) {
-                              
+                                  final ChatRoom chat = state.chatRoom[index];
+                                  if (chat.failureOption.isSome()) {
+                                    return Container(
+                                      color: Colors.green,
+                                      width: 100,
+                                      height: 100,
+                                      margin: const EdgeInsets.all(10),
+                                    );
+                                  } else {
+                                    int indexOfLastMessage =
+                                        chat.messages.getOrCrash().size - 1;
+                                    String lastMessage = chat.messages
+                                        .getOrCrash()[indexOfLastMessage]
+                                        .message
+                                        .getOrCrash();
 
-                                    return const ChatListItem(
-                                        title: "Ranspustilskin",
-                                        lastMessage: "This english keyboard is worth a million days this type of message...",
-                                        imageUrl: "https://firebasestorage.googleapis.com/v0/b/foodshare-cc295.appspot.com/o/41w2pUUDqYaDpgckpnLOKatOWA33%2F41w2pUUDqYaDpgckpnLOKatOWA33?alt=media&token=40f1eb2f-b41e-41af-a5ce-1bb489728d43");
-                                  
+                                    return ChatListItem(
+                                        title: "chat.requester.username.getOrCrash()",
+                                        lastMessage: lastMessage,
+                                        imageUrl: "chat.requester.imageUrl.getOrCrash()");
+                                  }
                                 },
-                                childCount: 1,
+                                childCount: state.chatRoom.size,
                               ),
-                            )),
+                            );
+                          },
+                              // ignore: always_specify_types
+                              loadFailure: (state) {
+                            return SliverFillRemaining(
+                              child: Center(
+                                  child: Text("Error occured.....",
+                                      style: GoogleFonts.lato(
+                                          fontSize: 15,
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold))),
+                            );
+                          })),
                     ],
                   );
                 },

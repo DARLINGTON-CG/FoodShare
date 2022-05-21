@@ -18,12 +18,11 @@ class ChatRoomDto with _$ChatRoomDto {
   const ChatRoomDto._();
 
   const factory ChatRoomDto(
-      {
-      required List<String> chatIds,
-      required UserDataDto owner,
-      required UserDataDto requester,
-      required PostDto post,
-      required List<MessagesDto> messages}) = _ChatRoomDto;
+      {required List<String> chatIds,
+       required Map<String,dynamic> owner,
+       required Map<String,dynamic> requester,
+      required Map<String,dynamic> post,
+      required List<Map<String,dynamic>> messages}) = _ChatRoomDto;
 
   factory ChatRoomDto.fromJson(Map<String, dynamic> json) =>
       _$ChatRoomDtoFromJson(json);
@@ -31,32 +30,37 @@ class ChatRoomDto with _$ChatRoomDto {
   factory ChatRoomDto.fromDomain(ChatRoom chatRoom) {
     return ChatRoomDto(
       chatIds: chatRoom.chatIds,
-      owner: UserDataDto.fromDomain(chatRoom.owner),
-      requester: UserDataDto.fromDomain(chatRoom.requester),
-      post: PostDto.fromDomain(chatRoom.post),
-      messages: chatRoom.messages
-          .getOrCrash()
-          .map(
-            (Message message) => MessagesDto.fromDomain(message),
-          )
-          .asList(),
+      owner: UserDataDto.fromDomain(chatRoom.owner).toJson(),
+     requester: UserDataDto.fromDomain(chatRoom.requester).toJson(),
+      post: PostDto.fromDomain(chatRoom.post).toJson(),
+      messages: chatRoom.messages.getOrCrash().map((Message message) => MessagesDto.fromDomain(message).toJson()).asList(),
+      
+      // chatRoom.messages
+      //     .getOrCrash()
+      //     .map(
+      //       (Message message) => MessagesDto.fromDomain(message),
+      //     )
+      //     .asList(),
     );
   }
 
   ChatRoom toDomain() {
     return ChatRoom(
       chatIds: chatIds,
-      post: post.toDomain(),
-     owner: owner.toDomain(),
-     requester: requester.toDomain(),
+      post: PostDto.fromMap(post).toDomain() ,
+      owner:UserDataDto.fromMap( owner).toDomain(),
+      requester: UserDataDto.fromMap( requester).toDomain(),
       messages: MessageList<Message>(
-          messages.map((MessagesDto dto) => dto.toDomain()).toImmutableList()),
+          messages.map((Map<String, dynamic> dto) => MessagesDto.fromJson(dto).toDomain()).toImmutableList()),
     );
   }
 
+ 
+
   // ignore: always_specify_types
   factory ChatRoomDto.fromFirestore(DocumentSnapshot doc) {
-    return ChatRoomDto.fromJson(doc.data()! as Map<String, dynamic>);
+    
+    return ChatRoomDto.fromJson(doc.data() as Map<String, dynamic>);
   }
 }
 
@@ -67,21 +71,20 @@ abstract class MessagesDto implements _$MessagesDto {
   const factory MessagesDto({
     required String id,
     required String message,
-    @ServerTimestampConverter() required FieldValue serverTimeStamp,
   }) = _MessagesDto;
 
   factory MessagesDto.fromDomain(Message message) {
     return MessagesDto(
         id: message.id.getOrCrash(),
         message: message.message.getOrCrash(),
-        serverTimeStamp: FieldValue.serverTimestamp());
+       );
   }
 
   Message toDomain() {
     return Message(
         id: UniqueId.fromUniqueString(id),
         message: MessageBody(message),
-        messageTimeStamp: MessageTimeStamp(serverTimeStamp.toString()));
+        );
   }
 
   factory MessagesDto.fromJson(Map<String, dynamic> json) =>

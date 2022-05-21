@@ -14,7 +14,7 @@ extension FirestoreX on FirebaseFirestore {
 
   // ignore: always_specify_types
   Future<CollectionReference> chatDocuments() async {
-    return FirebaseFirestore.instance.collection('chat');
+    return FirebaseFirestore.instance.collection('chats');
   }
   // // ignore: always_specify_types
   // Future<CollectionReference> userDocuments() async {

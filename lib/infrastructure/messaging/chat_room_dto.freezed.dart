@@ -24,10 +24,10 @@ class _$ChatRoomDtoTearOff {
 
   _ChatRoomDto call(
       {required List<String> chatIds,
-      required UserDataDto owner,
-      required UserDataDto requester,
-      required PostDto post,
-      required List<MessagesDto> messages}) {
+      required Map<String, dynamic> owner,
+      required Map<String, dynamic> requester,
+      required Map<String, dynamic> post,
+      required List<Map<String, dynamic>> messages}) {
     return _ChatRoomDto(
       chatIds: chatIds,
       owner: owner,
@@ -48,10 +48,10 @@ const $ChatRoomDto = _$ChatRoomDtoTearOff();
 /// @nodoc
 mixin _$ChatRoomDto {
   List<String> get chatIds => throw _privateConstructorUsedError;
-  UserDataDto get owner => throw _privateConstructorUsedError;
-  UserDataDto get requester => throw _privateConstructorUsedError;
-  PostDto get post => throw _privateConstructorUsedError;
-  List<MessagesDto> get messages => throw _privateConstructorUsedError;
+  Map<String, dynamic> get owner => throw _privateConstructorUsedError;
+  Map<String, dynamic> get requester => throw _privateConstructorUsedError;
+  Map<String, dynamic> get post => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get messages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,14 +66,10 @@ abstract class $ChatRoomDtoCopyWith<$Res> {
       _$ChatRoomDtoCopyWithImpl<$Res>;
   $Res call(
       {List<String> chatIds,
-      UserDataDto owner,
-      UserDataDto requester,
-      PostDto post,
-      List<MessagesDto> messages});
-
-  $UserDataDtoCopyWith<$Res> get owner;
-  $UserDataDtoCopyWith<$Res> get requester;
-  $PostDtoCopyWith<$Res> get post;
+      Map<String, dynamic> owner,
+      Map<String, dynamic> requester,
+      Map<String, dynamic> post,
+      List<Map<String, dynamic>> messages});
 }
 
 /// @nodoc
@@ -100,41 +96,20 @@ class _$ChatRoomDtoCopyWithImpl<$Res> implements $ChatRoomDtoCopyWith<$Res> {
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as UserDataDto,
+              as Map<String, dynamic>,
       requester: requester == freezed
           ? _value.requester
           : requester // ignore: cast_nullable_to_non_nullable
-              as UserDataDto,
+              as Map<String, dynamic>,
       post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-              as PostDto,
+              as Map<String, dynamic>,
       messages: messages == freezed
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<MessagesDto>,
+              as List<Map<String, dynamic>>,
     ));
-  }
-
-  @override
-  $UserDataDtoCopyWith<$Res> get owner {
-    return $UserDataDtoCopyWith<$Res>(_value.owner, (value) {
-      return _then(_value.copyWith(owner: value));
-    });
-  }
-
-  @override
-  $UserDataDtoCopyWith<$Res> get requester {
-    return $UserDataDtoCopyWith<$Res>(_value.requester, (value) {
-      return _then(_value.copyWith(requester: value));
-    });
-  }
-
-  @override
-  $PostDtoCopyWith<$Res> get post {
-    return $PostDtoCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
-    });
   }
 }
 
@@ -147,17 +122,10 @@ abstract class _$ChatRoomDtoCopyWith<$Res>
   @override
   $Res call(
       {List<String> chatIds,
-      UserDataDto owner,
-      UserDataDto requester,
-      PostDto post,
-      List<MessagesDto> messages});
-
-  @override
-  $UserDataDtoCopyWith<$Res> get owner;
-  @override
-  $UserDataDtoCopyWith<$Res> get requester;
-  @override
-  $PostDtoCopyWith<$Res> get post;
+      Map<String, dynamic> owner,
+      Map<String, dynamic> requester,
+      Map<String, dynamic> post,
+      List<Map<String, dynamic>> messages});
 }
 
 /// @nodoc
@@ -186,19 +154,19 @@ class __$ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
       owner: owner == freezed
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as UserDataDto,
+              as Map<String, dynamic>,
       requester: requester == freezed
           ? _value.requester
           : requester // ignore: cast_nullable_to_non_nullable
-              as UserDataDto,
+              as Map<String, dynamic>,
       post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-              as PostDto,
+              as Map<String, dynamic>,
       messages: messages == freezed
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<MessagesDto>,
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -220,13 +188,13 @@ class _$_ChatRoomDto extends _ChatRoomDto {
   @override
   final List<String> chatIds;
   @override
-  final UserDataDto owner;
+  final Map<String, dynamic> owner;
   @override
-  final UserDataDto requester;
+  final Map<String, dynamic> requester;
   @override
-  final PostDto post;
+  final Map<String, dynamic> post;
   @override
-  final List<MessagesDto> messages;
+  final List<Map<String, dynamic>> messages;
 
   @override
   String toString() {
@@ -268,10 +236,10 @@ class _$_ChatRoomDto extends _ChatRoomDto {
 abstract class _ChatRoomDto extends ChatRoomDto {
   const factory _ChatRoomDto(
       {required List<String> chatIds,
-      required UserDataDto owner,
-      required UserDataDto requester,
-      required PostDto post,
-      required List<MessagesDto> messages}) = _$_ChatRoomDto;
+      required Map<String, dynamic> owner,
+      required Map<String, dynamic> requester,
+      required Map<String, dynamic> post,
+      required List<Map<String, dynamic>> messages}) = _$_ChatRoomDto;
   const _ChatRoomDto._() : super._();
 
   factory _ChatRoomDto.fromJson(Map<String, dynamic> json) =
@@ -280,13 +248,13 @@ abstract class _ChatRoomDto extends ChatRoomDto {
   @override
   List<String> get chatIds;
   @override
-  UserDataDto get owner;
+  Map<String, dynamic> get owner;
   @override
-  UserDataDto get requester;
+  Map<String, dynamic> get requester;
   @override
-  PostDto get post;
+  Map<String, dynamic> get post;
   @override
-  List<MessagesDto> get messages;
+  List<Map<String, dynamic>> get messages;
   @override
   @JsonKey(ignore: true)
   _$ChatRoomDtoCopyWith<_ChatRoomDto> get copyWith =>
@@ -301,14 +269,10 @@ MessagesDto _$MessagesDtoFromJson(Map<String, dynamic> json) {
 class _$MessagesDtoTearOff {
   const _$MessagesDtoTearOff();
 
-  _MessagesDto call(
-      {required String id,
-      required String message,
-      @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
+  _MessagesDto call({required String id, required String message}) {
     return _MessagesDto(
       id: id,
       message: message,
-      serverTimeStamp: serverTimeStamp,
     );
   }
 
@@ -324,8 +288,6 @@ const $MessagesDto = _$MessagesDtoTearOff();
 mixin _$MessagesDto {
   String get id => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  @ServerTimestampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -338,10 +300,7 @@ abstract class $MessagesDtoCopyWith<$Res> {
   factory $MessagesDtoCopyWith(
           MessagesDto value, $Res Function(MessagesDto) then) =
       _$MessagesDtoCopyWithImpl<$Res>;
-  $Res call(
-      {String id,
-      String message,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+  $Res call({String id, String message});
 }
 
 /// @nodoc
@@ -356,7 +315,6 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
-    Object? serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -367,10 +325,6 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
     ));
   }
 }
@@ -382,10 +336,7 @@ abstract class _$MessagesDtoCopyWith<$Res>
           _MessagesDto value, $Res Function(_MessagesDto) then) =
       __$MessagesDtoCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String id,
-      String message,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+  $Res call({String id, String message});
 }
 
 /// @nodoc
@@ -402,7 +353,6 @@ class __$MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
-    Object? serverTimeStamp = freezed,
   }) {
     return _then(_MessagesDto(
       id: id == freezed
@@ -413,10 +363,6 @@ class __$MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
     ));
   }
 }
@@ -424,11 +370,7 @@ class __$MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MessagesDto extends _MessagesDto {
-  const _$_MessagesDto(
-      {required this.id,
-      required this.message,
-      @ServerTimestampConverter() required this.serverTimeStamp})
-      : super._();
+  const _$_MessagesDto({required this.id, required this.message}) : super._();
 
   factory _$_MessagesDto.fromJson(Map<String, dynamic> json) =>
       _$$_MessagesDtoFromJson(json);
@@ -437,13 +379,10 @@ class _$_MessagesDto extends _MessagesDto {
   final String id;
   @override
   final String message;
-  @override
-  @ServerTimestampConverter()
-  final FieldValue serverTimeStamp;
 
   @override
   String toString() {
-    return 'MessagesDto(id: $id, message: $message, serverTimeStamp: $serverTimeStamp)';
+    return 'MessagesDto(id: $id, message: $message)';
   }
 
   @override
@@ -452,17 +391,14 @@ class _$_MessagesDto extends _MessagesDto {
         (other.runtimeType == runtimeType &&
             other is _MessagesDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality()
-                .equals(other.serverTimeStamp, serverTimeStamp));
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(serverTimeStamp));
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -476,10 +412,7 @@ class _$_MessagesDto extends _MessagesDto {
 }
 
 abstract class _MessagesDto extends MessagesDto {
-  const factory _MessagesDto(
-          {required String id,
-          required String message,
-          @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
+  const factory _MessagesDto({required String id, required String message}) =
       _$_MessagesDto;
   const _MessagesDto._() : super._();
 
@@ -490,9 +423,6 @@ abstract class _MessagesDto extends MessagesDto {
   String get id;
   @override
   String get message;
-  @override
-  @ServerTimestampConverter()
-  FieldValue get serverTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$MessagesDtoCopyWith<_MessagesDto> get copyWith =>

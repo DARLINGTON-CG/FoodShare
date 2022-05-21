@@ -38,4 +38,8 @@ class UserDataDto with _$UserDataDto {
   factory UserDataDto.fromFirestore(DocumentSnapshot doc) {
     return UserDataDto.fromJson(doc.data()! as Map<String, dynamic>);
   }
+
+  factory UserDataDto.fromMap(Map<String,dynamic> doc) {
+    return UserDataDto.fromJson(doc);
+  }
 }

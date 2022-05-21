@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/posts/post_actor/post_actor_bloc.dart';
+import '../../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../../domain/posts/post.dart';
 import '../../../domain/utility/important_enums.dart';
 import 'actions_sheet.dart';
@@ -23,8 +24,17 @@ class PostItem extends StatelessWidget {
           final PostActorBloc postActorBloc =
               BlocProvider.of<PostActorBloc>(context);
           actionsSheet(context, post, postActorBloc);
+         
         } else {
-          showDetailSheet(context, post);
+          final UserDataReadBloc userDataBloc = 
+              BlocProvider.of<UserDataReadBloc>(context);
+          showDetailSheet(context, post,userDataBloc
+          .state.map(
+                                  initial: (_) => null,
+                                  loadingProgress: (_) => null,
+                                  // ignore: always_specify_types
+                                  loadSuccess: (success) => success.userData,
+                                  loadFailure: (_) => null));
         }
       },
       child: Container(

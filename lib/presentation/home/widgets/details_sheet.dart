@@ -1,11 +1,26 @@
+// ignore_for_file: always_specify_types
+
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kt_dart/collection.dart';
 
+import '../../../domain/auth/i_auth_facade.dart';
+import '../../../domain/auth/user.dart';
+import '../../../domain/core/errors.dart';
+import '../../../domain/messaging/chat_room.dart';
+import '../../../domain/messaging/value_objects.dart';
 import '../../../domain/posts/post.dart';
+import '../../../domain/user/user_data.dart';
+import '../../../injector.dart';
 import '../../anim/page/slide_in.dart';
 import '../../messages/chat_page.dart';
 
-Future<void> showDetailSheet(BuildContext context, Post post) async {
+Future<void> showDetailSheet(
+  BuildContext context,
+  Post post,
+  UserData? requester,
+) async {
   return showModalBottomSheet<void>(
     context: context,
     builder: (BuildContext context) {
@@ -48,7 +63,6 @@ Future<void> showDetailSheet(BuildContext context, Post post) async {
                 post.description.getOrCrash(),
                 style: GoogleFonts.lato(fontSize: 13, color: Colors.black),
               ),
-
               const SizedBox(
                 height: 10,
               ),
@@ -77,23 +91,43 @@ Future<void> showDetailSheet(BuildContext context, Post post) async {
                   const SizedBox(
                     width: 8,
                   ),
-                  Text("@"+post.username.getOrCrash(),
+                  Text("@" + post.username.getOrCrash(),
                       style: GoogleFonts.lato(
-                        color:const Color(0xFF3212F1),
-                          fontSize: 13, fontWeight: FontWeight.bold)),
+                          color: const Color(0xFF3212F1),
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold)),
                 ],
               ),
               const SizedBox(
                 height: 15,
               ),
-              //  Text("Free",style: GoogleFonts.lato(fontSize: 18  , color: const Color(0xFF3212F1),fontWeight: FontWeight.bold),),
-
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).pop();
-                    Navigator.of(context).push(SlideIn(page: const ChatPage()));
+                    final Option<LocalUser> userOption =
+                        getIt<IAuthFacade>().getSignedInUser();
+                    final LocalUser user = userOption
+                        .getOrElse(() => throw NotAuthenticatedError());
+                    if (requester == null) {
+                      return;
+                    } else {
+                      ChatRoom chatRoom = ChatRoom(
+                          chatIds: [
+                            post.postUserId.getOrCrash(),
+                            user.id.getOrCrash(),
+                          ],
+                          post: post,
+                          owner: UserData(
+                              username: post.username, imageUrl: post.imageUrl),
+                          requester: requester,
+                          messages: MessageList(const KtList.empty()));
+                      Navigator.of(context).push(SlideIn(
+                          page: ChatPage(
+                        chatRoom: chatRoom,
+                      )));
+                    }
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,

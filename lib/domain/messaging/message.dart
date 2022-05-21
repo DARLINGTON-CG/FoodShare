@@ -14,12 +14,11 @@ abstract class Message implements _$Message {
   const factory Message({
     required UniqueId id,
     required MessageBody message,
-    required MessageTimeStamp messageTimeStamp,
+   
   }) = _Message;
 
   factory Message.empty() => Message(
       id: UniqueId(),
-      messageTimeStamp: MessageTimeStamp(''),
       message: MessageBody(''));
 
   Option<ValueFailure<dynamic>> get failureOption {

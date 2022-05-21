@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../domain/messaging/chat_room.dart';
 import '../../anim/page/slide_in.dart';
 import '../chat_page.dart';
 
@@ -38,7 +39,7 @@ class ChatListItem extends StatelessWidget {
         style: GoogleFonts.alegreya(color: Colors.grey, fontSize: 14),
       ),
       onTap: () {
-        Navigator.of(context).push(SlideIn(page: const ChatPage()));
+        Navigator.of(context).push(SlideIn(page: ChatPage(chatRoom: ChatRoom.empty(),)));
       },
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,

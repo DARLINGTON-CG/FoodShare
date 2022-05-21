@@ -24,7 +24,7 @@ class _$CreateMessagesEventsTearOff {
     );
   }
 
-  MessageChanged messageChanged(KtList<MessagePrimitive> message) {
+  MessageChanged messageChanged(String message) {
     return MessageChanged(
       message,
     );
@@ -43,21 +43,21 @@ mixin _$CreateMessagesEvents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
-    required TResult Function(KtList<MessagePrimitive> message) messageChanged,
+    required TResult Function(String message) messageChanged,
     required TResult Function() saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) =>
@@ -170,7 +170,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
-    required TResult Function(KtList<MessagePrimitive> message) messageChanged,
+    required TResult Function(String message) messageChanged,
     required TResult Function() saved,
   }) {
     return initialized(initialChat);
@@ -180,7 +180,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
   }) {
     return initialized?.call(initialChat);
@@ -190,7 +190,7 @@ class _$Initialized implements Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ abstract class $MessageChangedCopyWith<$Res> {
   factory $MessageChangedCopyWith(
           MessageChanged value, $Res Function(MessageChanged) then) =
       _$MessageChangedCopyWithImpl<$Res>;
-  $Res call({KtList<MessagePrimitive> message});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -271,7 +271,7 @@ class _$MessageChangedCopyWithImpl<$Res>
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as KtList<MessagePrimitive>,
+              as String,
     ));
   }
 }
@@ -282,7 +282,7 @@ class _$MessageChanged implements MessageChanged {
   const _$MessageChanged(this.message);
 
   @override
-  final KtList<MessagePrimitive> message;
+  final String message;
 
   @override
   String toString() {
@@ -310,7 +310,7 @@ class _$MessageChanged implements MessageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
-    required TResult Function(KtList<MessagePrimitive> message) messageChanged,
+    required TResult Function(String message) messageChanged,
     required TResult Function() saved,
   }) {
     return messageChanged(message);
@@ -320,7 +320,7 @@ class _$MessageChanged implements MessageChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
   }) {
     return messageChanged?.call(message);
@@ -330,7 +330,7 @@ class _$MessageChanged implements MessageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -376,10 +376,9 @@ class _$MessageChanged implements MessageChanged {
 }
 
 abstract class MessageChanged implements CreateMessagesEvents {
-  const factory MessageChanged(KtList<MessagePrimitive> message) =
-      _$MessageChanged;
+  const factory MessageChanged(String message) = _$MessageChanged;
 
-  KtList<MessagePrimitive> get message;
+  String get message;
   @JsonKey(ignore: true)
   $MessageChangedCopyWith<MessageChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -424,7 +423,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
-    required TResult Function(KtList<MessagePrimitive> message) messageChanged,
+    required TResult Function(String message) messageChanged,
     required TResult Function() saved,
   }) {
     return saved();
@@ -434,7 +433,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
   }) {
     return saved?.call();
@@ -444,7 +443,7 @@ class _$Saved implements Saved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
-    TResult Function(KtList<MessagePrimitive> message)? messageChanged,
+    TResult Function(String message)? messageChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -499,12 +498,14 @@ class _$CreateMessagesStateTearOff {
 
   _CreateMessagesState call(
       {required ChatRoom data,
+      required String currentMessage,
       required bool showErrorMessages,
       required bool isSaving,
       required bool isEditing,
       required Option<Either<MessageFailure, Unit>> successOrFailure}) {
     return _CreateMessagesState(
       data: data,
+      currentMessage: currentMessage,
       showErrorMessages: showErrorMessages,
       isSaving: isSaving,
       isEditing: isEditing,
@@ -519,6 +520,7 @@ const $CreateMessagesState = _$CreateMessagesStateTearOff();
 /// @nodoc
 mixin _$CreateMessagesState {
   ChatRoom get data => throw _privateConstructorUsedError;
+  String get currentMessage => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
@@ -537,6 +539,7 @@ abstract class $CreateMessagesStateCopyWith<$Res> {
       _$CreateMessagesStateCopyWithImpl<$Res>;
   $Res call(
       {ChatRoom data,
+      String currentMessage,
       bool showErrorMessages,
       bool isSaving,
       bool isEditing,
@@ -557,6 +560,7 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? currentMessage = freezed,
     Object? showErrorMessages = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
@@ -567,6 +571,10 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as ChatRoom,
+      currentMessage: currentMessage == freezed
+          ? _value.currentMessage
+          : currentMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -603,6 +611,7 @@ abstract class _$CreateMessagesStateCopyWith<$Res>
   @override
   $Res call(
       {ChatRoom data,
+      String currentMessage,
       bool showErrorMessages,
       bool isSaving,
       bool isEditing,
@@ -626,6 +635,7 @@ class __$CreateMessagesStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? currentMessage = freezed,
     Object? showErrorMessages = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
@@ -636,6 +646,10 @@ class __$CreateMessagesStateCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as ChatRoom,
+      currentMessage: currentMessage == freezed
+          ? _value.currentMessage
+          : currentMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -661,6 +675,7 @@ class __$CreateMessagesStateCopyWithImpl<$Res>
 class _$_CreateMessagesState implements _CreateMessagesState {
   const _$_CreateMessagesState(
       {required this.data,
+      required this.currentMessage,
       required this.showErrorMessages,
       required this.isSaving,
       required this.isEditing,
@@ -668,6 +683,8 @@ class _$_CreateMessagesState implements _CreateMessagesState {
 
   @override
   final ChatRoom data;
+  @override
+  final String currentMessage;
   @override
   final bool showErrorMessages;
   @override
@@ -679,7 +696,7 @@ class _$_CreateMessagesState implements _CreateMessagesState {
 
   @override
   String toString() {
-    return 'CreateMessagesState(data: $data, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, successOrFailure: $successOrFailure)';
+    return 'CreateMessagesState(data: $data, currentMessage: $currentMessage, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, successOrFailure: $successOrFailure)';
   }
 
   @override
@@ -688,6 +705,8 @@ class _$_CreateMessagesState implements _CreateMessagesState {
         (other.runtimeType == runtimeType &&
             other is _CreateMessagesState &&
             const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality()
+                .equals(other.currentMessage, currentMessage) &&
             const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
             const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
@@ -700,6 +719,7 @@ class _$_CreateMessagesState implements _CreateMessagesState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(currentMessage),
       const DeepCollectionEquality().hash(showErrorMessages),
       const DeepCollectionEquality().hash(isSaving),
       const DeepCollectionEquality().hash(isEditing),
@@ -715,6 +735,7 @@ class _$_CreateMessagesState implements _CreateMessagesState {
 abstract class _CreateMessagesState implements CreateMessagesState {
   const factory _CreateMessagesState(
           {required ChatRoom data,
+          required String currentMessage,
           required bool showErrorMessages,
           required bool isSaving,
           required bool isEditing,
@@ -723,6 +744,8 @@ abstract class _CreateMessagesState implements CreateMessagesState {
 
   @override
   ChatRoom get data;
+  @override
+  String get currentMessage;
   @override
   bool get showErrorMessages;
   @override

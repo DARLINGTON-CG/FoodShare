@@ -4,6 +4,7 @@ part of 'create_messages_bloc.dart';
 class CreateMessagesState with _$CreateMessagesState{
   const factory CreateMessagesState(
           {required ChatRoom data,
+          required String currentMessage,
           required bool showErrorMessages,
           required bool isSaving,
           required bool isEditing,
@@ -13,6 +14,7 @@ class CreateMessagesState with _$CreateMessagesState{
   factory CreateMessagesState.initial() => CreateMessagesState(
       data: ChatRoom.empty(),
       showErrorMessages: false,
+      currentMessage: "",
       isEditing: false,
       isSaving: false,
       successOrFailure: none());

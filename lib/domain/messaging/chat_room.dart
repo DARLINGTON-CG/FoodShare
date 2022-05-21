@@ -16,8 +16,8 @@ abstract class ChatRoom implements _$ChatRoom {
   const factory ChatRoom({
     required List<String> chatIds,
     required Post post,
-    required UserData owner,
-    required UserData requester,
+     required UserData owner,
+     required UserData requester,
     required MessageList<Message> messages,
   }) = _ChatRoom;
 
@@ -26,7 +26,7 @@ abstract class ChatRoom implements _$ChatRoom {
      chatIds: List<String>.empty(),
        messages: MessageList<Message>(emptyList()),
        post: Post.empty(),
-       owner: UserData.empty(),
+        owner: UserData.empty(),
        requester: UserData.empty()
       );
   

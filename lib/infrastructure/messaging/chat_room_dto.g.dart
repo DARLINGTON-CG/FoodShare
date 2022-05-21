@@ -10,12 +10,11 @@ _$_ChatRoomDto _$$_ChatRoomDtoFromJson(Map<String, dynamic> json) =>
     _$_ChatRoomDto(
       chatIds:
           (json['chatIds'] as List<dynamic>).map((e) => e as String).toList(),
-      owner: UserDataDto.fromJson(json['owner'] as Map<String, dynamic>),
-      requester:
-          UserDataDto.fromJson(json['requester'] as Map<String, dynamic>),
-      post: PostDto.fromJson(json['post'] as Map<String, dynamic>),
+      owner: json['owner'] as Map<String, dynamic>,
+      requester: json['requester'] as Map<String, dynamic>,
+      post: json['post'] as Map<String, dynamic>,
       messages: (json['messages'] as List<dynamic>)
-          .map((e) => MessagesDto.fromJson(e as Map<String, dynamic>))
+          .map((e) => e as Map<String, dynamic>)
           .toList(),
     );
 
@@ -32,14 +31,10 @@ _$_MessagesDto _$$_MessagesDtoFromJson(Map<String, dynamic> json) =>
     _$_MessagesDto(
       id: json['id'] as String,
       message: json['message'] as String,
-      serverTimeStamp: const ServerTimestampConverter()
-          .fromJson(json['serverTimeStamp'] as Object),
     );
 
 Map<String, dynamic> _$$_MessagesDtoToJson(_$_MessagesDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'message': instance.message,
-      'serverTimeStamp':
-          const ServerTimestampConverter().toJson(instance.serverTimeStamp),
     };
