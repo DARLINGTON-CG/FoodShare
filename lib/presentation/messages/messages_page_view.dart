@@ -59,9 +59,9 @@ class MessagesPageView extends StatelessWidget {
                                         .getOrCrash();
 
                                     return ChatListItem(
-                                        title: "chat.requester.username.getOrCrash()",
+                                        title: chat.requester.username.getOrCrash(),
                                         lastMessage: lastMessage,
-                                        imageUrl: "chat.requester.imageUrl.getOrCrash()");
+                                        imageUrl: chat.requester.imageUrl.getOrCrash());
                                   }
                                 },
                                 childCount: state.chatRoom.size,

@@ -48,7 +48,8 @@ class PostDto with _$PostDto {
 
   Post toDomain() {
     return Post(
-        id: UniqueId.fromUniqueString(id!),
+         id: UniqueId(),
+        //id: UniqueId.fromUniqueString(id!),
         username: Username(username),
         postPrice: PostPrice(postPrice),
         description: PostDescription(description),

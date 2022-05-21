@@ -13,7 +13,6 @@ import '../../../domain/messaging/message.dart';
 import '../../../domain/messaging/message_failure.dart';
 import '../../../domain/messaging/value_objects.dart';
 import '../../../injector.dart';
-import '../../../presentation/messages/misc/message_primitive.dart';
 
 part 'create_messages_bloc.freezed.dart';
 part 'create_messages_events.dart';
@@ -42,14 +41,11 @@ class CreateMessagesBloc
       MessageChanged event, Emitter<CreateMessagesState> emit) {
     emit(state.copyWith(
         currentMessage: event.message, successOrFailure: none()));
-    print(state.currentMessage);
   }
 
   void _onSaved(Saved event, Emitter<CreateMessagesState> emit) async {
     emit(state.copyWith(isSaving: true, successOrFailure: none()));
     final KtList<Message> currentMessages = state.data.messages.getOrCrash();
-    print("It is emptey");
-    print(currentMessages.isEmpty());
     List<Message> converted = <Message>[];
     for (Message element in currentMessages.iter) {
       converted.add(element);
@@ -69,8 +65,6 @@ class CreateMessagesBloc
               converted.map((Message message) => message).toImmutableList()),
         ),
         successOrFailure: none()));
-    print("VALID MESSAGE");
-    print(state.data.messages.isValid());
     if (state.data.failureOption.isNone()) {
       final Either<MessageFailure, Unit>? failureOrSuccess =
           await _messageRepository.send(state.data);

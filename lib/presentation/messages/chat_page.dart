@@ -8,7 +8,6 @@ import '../../application/messaging/create_messages/create_messages_bloc.dart';
 import '../../domain/messaging/chat_room.dart';
 import '../../domain/messaging/message.dart';
 import '../../injector.dart';
-import 'misc/message_primitive.dart';
 import 'widgets/custom_dialog.dart';
 
 class ChatPage extends StatelessWidget {
@@ -55,8 +54,7 @@ class ChatPage extends StatelessWidget {
             ..add(CreateMessagesEvents.initialized(optionOf(chatRoom))),
           child: BlocListener<CreateMessagesBloc, CreateMessagesState>(
               listener: (BuildContext context, CreateMessagesState state) {},
-              //   builder: (BuildContext context, CreateMessagesState state) {
-              // return
+             
               child: BottomSheet(
                   onClosing: () {},
                   elevation: 0.5,
@@ -148,92 +146,3 @@ class ChatPage extends StatelessWidget {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// import '../../application/messaging/read_messages/read_messages_bloc.dart';
-// import '../../domain/messaging/chat_room.dart';
-// import '../anim/widgets/three_dot_indicator.dart';
-
-// import 'widgets/chat_list_item.dart';
-
-// class MessagesPageView extends StatelessWidget {
-//   const MessagesPageView({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocBuilder<ReadMessagesBloc, ReadMessagesState>(
-//         builder: (BuildContext context, ReadMessagesState state) => SafeArea(
-//               top: false,
-//               bottom: false,
-//               child: Builder(
-//                 builder: (BuildContext context) {
-//                   return CustomScrollView(
-//                     physics: const BouncingScrollPhysics(),
-//                     key: const PageStorageKey<String>("chat_page_view_key"),
-//                     slivers: <Widget>[
-
-//                       SliverPadding(
-//                           padding: const EdgeInsets.only(top: 10),
-//                           sliver: state.map(initial: (_) {
-//                             return SliverToBoxAdapter(child: Container());
-//                           }, loadingProgress: (_) {
-//                             return const SliverFillRemaining(
-//                               child: Center(
-//                                   child: ThreeDotIndicator(
-//                                       color: Colors.black, size: 25)),
-//                             );
-//                           },
-//                               // ignore: always_specify_types
-//                               loadSuccess: (state) {
-//                             return SliverList(
-//                               delegate: SliverChildBuilderDelegate(
-//                                 (BuildContext context, int index) {
-//                                   final ChatRoom chat = state.chatRoom[index];
-//                                   if (chat.failureOption.isSome()) {
-//                                     return Container(
-//                                       color: Colors.green,
-//                                       width: 100,
-//                                       height: 100,
-//                                       margin: const EdgeInsets.all(10),
-//                                     );
-//                                   } else {
-//                                     int indexOfLastMessage =
-//                                         chat.messages.getOrCrash().size - 1;
-//                                     String lastMessage = chat.messages
-//                                         .getOrCrash()[indexOfLastMessage]
-//                                         .message
-//                                         .getOrCrash();
-
-//                                     return ChatListItem(
-//                                         title: chat.requester.username
-//                                             .getOrCrash(),
-//                                         lastMessage: lastMessage,
-//                                         imageUrl: chat.requester.imageUrl
-//                                             .getOrCrash());
-//                                   }
-//                                 },
-//                                 childCount: state.chatRoom.size,
-//                               ),
-//                             );
-//                           },
-//                               // ignore: always_specify_types
-//                               loadFailure: (state) {
-//                             return SliverFillRemaining(
-//                               child: Center(
-//                                   child: Text("Error occured.....",
-//                                       style: GoogleFonts.lato(
-//                                           fontSize: 15,
-//                                           color: Colors.red,
-//                                           fontWeight: FontWeight.bold))),
-//                             );
-//                           })),
-//                     ],
-//                   );
-//                 },
-//               ),
-//             ));
-//   }
-// }

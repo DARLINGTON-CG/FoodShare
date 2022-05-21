@@ -26,11 +26,12 @@ import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
 /*
+
+Work on chat page functionality
 Work on username regex for special characters and no spaces + no starting number
 Only first name can be capital, rest small,no spaces, no special characters.
 Verify that user data exists before  sending message.
 Add dark mode.
-Work on chat page functionality
 Add functionality for user to delete account.
 Add state management functionality for navigation bar.
 */
