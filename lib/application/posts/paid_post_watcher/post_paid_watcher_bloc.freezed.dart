@@ -12,19 +12,7 @@ part of 'post_paid_watcher_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PostWatcherPaidEventTearOff {
-  const _$PostWatcherPaidEventTearOff();
-
-  WatchAllPaidStarted watchAllPaidStarted() {
-    return const WatchAllPaidStarted();
-  }
-}
-
-/// @nodoc
-const $PostWatcherPaidEvent = _$PostWatcherPaidEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PostWatcherPaidEvent {
@@ -80,22 +68,22 @@ class _$PostWatcherPaidEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $WatchAllPaidStartedCopyWith<$Res> {
-  factory $WatchAllPaidStartedCopyWith(
-          WatchAllPaidStarted value, $Res Function(WatchAllPaidStarted) then) =
-      _$WatchAllPaidStartedCopyWithImpl<$Res>;
+abstract class _$$WatchAllPaidStartedCopyWith<$Res> {
+  factory _$$WatchAllPaidStartedCopyWith(_$WatchAllPaidStarted value,
+          $Res Function(_$WatchAllPaidStarted) then) =
+      __$$WatchAllPaidStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WatchAllPaidStartedCopyWithImpl<$Res>
+class __$$WatchAllPaidStartedCopyWithImpl<$Res>
     extends _$PostWatcherPaidEventCopyWithImpl<$Res>
-    implements $WatchAllPaidStartedCopyWith<$Res> {
-  _$WatchAllPaidStartedCopyWithImpl(
-      WatchAllPaidStarted _value, $Res Function(WatchAllPaidStarted) _then)
-      : super(_value, (v) => _then(v as WatchAllPaidStarted));
+    implements _$$WatchAllPaidStartedCopyWith<$Res> {
+  __$$WatchAllPaidStartedCopyWithImpl(
+      _$WatchAllPaidStarted _value, $Res Function(_$WatchAllPaidStarted) _then)
+      : super(_value, (v) => _then(v as _$WatchAllPaidStarted));
 
   @override
-  WatchAllPaidStarted get _value => super._value as WatchAllPaidStarted;
+  _$WatchAllPaidStarted get _value => super._value as _$WatchAllPaidStarted;
 }
 
 /// @nodoc
@@ -111,7 +99,7 @@ class _$WatchAllPaidStarted implements WatchAllPaidStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is WatchAllPaidStarted);
+        (other.runtimeType == runtimeType && other is _$WatchAllPaidStarted);
   }
 
   @override
@@ -177,34 +165,6 @@ class _$WatchAllPaidStarted implements WatchAllPaidStarted {
 abstract class WatchAllPaidStarted implements PostWatcherPaidEvent {
   const factory WatchAllPaidStarted() = _$WatchAllPaidStarted;
 }
-
-/// @nodoc
-class _$PostPaidWatcherStateTearOff {
-  const _$PostPaidWatcherStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _LoadingProgress loadingProgress() {
-    return const _LoadingProgress();
-  }
-
-  _LoadSuccess loadSuccess(KtList<Post> posts) {
-    return _LoadSuccess(
-      posts,
-    );
-  }
-
-  _LoadFailure loadFailure(PostFailure postFailure) {
-    return _LoadFailure(
-      postFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $PostPaidWatcherState = _$PostPaidWatcherStateTearOff();
 
 /// @nodoc
 mixin _$PostPaidWatcherState {
@@ -278,20 +238,21 @@ class _$PostPaidWatcherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
     extends _$PostPaidWatcherStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -307,7 +268,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -393,22 +354,22 @@ abstract class _Initial implements PostPaidWatcherState {
 }
 
 /// @nodoc
-abstract class _$LoadingProgressCopyWith<$Res> {
-  factory _$LoadingProgressCopyWith(
-          _LoadingProgress value, $Res Function(_LoadingProgress) then) =
-      __$LoadingProgressCopyWithImpl<$Res>;
+abstract class _$$_LoadingProgressCopyWith<$Res> {
+  factory _$$_LoadingProgressCopyWith(
+          _$_LoadingProgress value, $Res Function(_$_LoadingProgress) then) =
+      __$$_LoadingProgressCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingProgressCopyWithImpl<$Res>
+class __$$_LoadingProgressCopyWithImpl<$Res>
     extends _$PostPaidWatcherStateCopyWithImpl<$Res>
-    implements _$LoadingProgressCopyWith<$Res> {
-  __$LoadingProgressCopyWithImpl(
-      _LoadingProgress _value, $Res Function(_LoadingProgress) _then)
-      : super(_value, (v) => _then(v as _LoadingProgress));
+    implements _$$_LoadingProgressCopyWith<$Res> {
+  __$$_LoadingProgressCopyWithImpl(
+      _$_LoadingProgress _value, $Res Function(_$_LoadingProgress) _then)
+      : super(_value, (v) => _then(v as _$_LoadingProgress));
 
   @override
-  _LoadingProgress get _value => super._value as _LoadingProgress;
+  _$_LoadingProgress get _value => super._value as _$_LoadingProgress;
 }
 
 /// @nodoc
@@ -424,7 +385,7 @@ class _$_LoadingProgress implements _LoadingProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LoadingProgress);
+        (other.runtimeType == runtimeType && other is _$_LoadingProgress);
   }
 
   @override
@@ -510,29 +471,29 @@ abstract class _LoadingProgress implements PostPaidWatcherState {
 }
 
 /// @nodoc
-abstract class _$LoadSuccessCopyWith<$Res> {
-  factory _$LoadSuccessCopyWith(
-          _LoadSuccess value, $Res Function(_LoadSuccess) then) =
-      __$LoadSuccessCopyWithImpl<$Res>;
+abstract class _$$_LoadSuccessCopyWith<$Res> {
+  factory _$$_LoadSuccessCopyWith(
+          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
+      __$$_LoadSuccessCopyWithImpl<$Res>;
   $Res call({KtList<Post> posts});
 }
 
 /// @nodoc
-class __$LoadSuccessCopyWithImpl<$Res>
+class __$$_LoadSuccessCopyWithImpl<$Res>
     extends _$PostPaidWatcherStateCopyWithImpl<$Res>
-    implements _$LoadSuccessCopyWith<$Res> {
-  __$LoadSuccessCopyWithImpl(
-      _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadSuccess));
+    implements _$$_LoadSuccessCopyWith<$Res> {
+  __$$_LoadSuccessCopyWithImpl(
+      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+      : super(_value, (v) => _then(v as _$_LoadSuccess));
 
   @override
-  _LoadSuccess get _value => super._value as _LoadSuccess;
+  _$_LoadSuccess get _value => super._value as _$_LoadSuccess;
 
   @override
   $Res call({
     Object? posts = freezed,
   }) {
-    return _then(_LoadSuccess(
+    return _then(_$_LoadSuccess(
       posts == freezed
           ? _value.posts
           : posts // ignore: cast_nullable_to_non_nullable
@@ -558,7 +519,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadSuccess &&
+            other is _$_LoadSuccess &&
             const DeepCollectionEquality().equals(other.posts, posts));
   }
 
@@ -568,8 +529,8 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
-      __$LoadSuccessCopyWithImpl<_LoadSuccess>(this, _$identity);
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -647,40 +608,40 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements PostPaidWatcherState {
-  const factory _LoadSuccess(KtList<Post> posts) = _$_LoadSuccess;
+  const factory _LoadSuccess(final KtList<Post> posts) = _$_LoadSuccess;
 
-  KtList<Post> get posts;
+  KtList<Post> get posts => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadFailureCopyWith<$Res> {
-  factory _$LoadFailureCopyWith(
-          _LoadFailure value, $Res Function(_LoadFailure) then) =
-      __$LoadFailureCopyWithImpl<$Res>;
+abstract class _$$_LoadFailureCopyWith<$Res> {
+  factory _$$_LoadFailureCopyWith(
+          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
+      __$$_LoadFailureCopyWithImpl<$Res>;
   $Res call({PostFailure postFailure});
 
   $PostFailureCopyWith<$Res> get postFailure;
 }
 
 /// @nodoc
-class __$LoadFailureCopyWithImpl<$Res>
+class __$$_LoadFailureCopyWithImpl<$Res>
     extends _$PostPaidWatcherStateCopyWithImpl<$Res>
-    implements _$LoadFailureCopyWith<$Res> {
-  __$LoadFailureCopyWithImpl(
-      _LoadFailure _value, $Res Function(_LoadFailure) _then)
-      : super(_value, (v) => _then(v as _LoadFailure));
+    implements _$$_LoadFailureCopyWith<$Res> {
+  __$$_LoadFailureCopyWithImpl(
+      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+      : super(_value, (v) => _then(v as _$_LoadFailure));
 
   @override
-  _LoadFailure get _value => super._value as _LoadFailure;
+  _$_LoadFailure get _value => super._value as _$_LoadFailure;
 
   @override
   $Res call({
     Object? postFailure = freezed,
   }) {
-    return _then(_LoadFailure(
+    return _then(_$_LoadFailure(
       postFailure == freezed
           ? _value.postFailure
           : postFailure // ignore: cast_nullable_to_non_nullable
@@ -713,7 +674,7 @@ class _$_LoadFailure implements _LoadFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadFailure &&
+            other is _$_LoadFailure &&
             const DeepCollectionEquality()
                 .equals(other.postFailure, postFailure));
   }
@@ -724,8 +685,8 @@ class _$_LoadFailure implements _LoadFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
-      __$LoadFailureCopyWithImpl<_LoadFailure>(this, _$identity);
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -803,10 +764,10 @@ class _$_LoadFailure implements _LoadFailure {
 }
 
 abstract class _LoadFailure implements PostPaidWatcherState {
-  const factory _LoadFailure(PostFailure postFailure) = _$_LoadFailure;
+  const factory _LoadFailure(final PostFailure postFailure) = _$_LoadFailure;
 
-  PostFailure get postFailure;
+  PostFailure get postFailure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -30,6 +30,11 @@ class _PostAmountFieldState extends State<PostAmountField> {
                               BlocProvider.of<PostFormBloc>(context)
                                   .add(PostFormEvent.amountChanged(value)),            
           keyboardType: TextInputType.number,
+          style: GoogleFonts.lato(
+          color: Colors.black,
+          fontSize: 14,
+          
+        ),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             isCollapsed: true,

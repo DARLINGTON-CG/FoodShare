@@ -20,7 +20,7 @@ class _TitleFieldState extends State<TitleField> {
         listenWhen: (PostFormState previous, PostFormState current) =>
             previous.isEditing != current.isEditing,
         listener: (BuildContext context, PostFormState state) {
-            textEditingController.text = state.post.title.getOrCrash();
+          textEditingController.text = state.post.title.getOrCrash();
         },
         child: TextFormField(
           autocorrect: false,
@@ -28,6 +28,11 @@ class _TitleFieldState extends State<TitleField> {
           onChanged: (String value) => BlocProvider.of<PostFormBloc>(context)
               .add(PostFormEvent.titleChanged(value)),
           keyboardType: TextInputType.text,
+          style: GoogleFonts.lato(
+            color: Colors.black,
+            fontSize: 14,
+            
+          ),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             isCollapsed: true,

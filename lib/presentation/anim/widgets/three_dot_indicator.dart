@@ -19,10 +19,10 @@ class ThreeDotIndicator extends StatefulWidget {
   final AnimationController? controller;
 
   @override
-  _ThreeDotIndicatorState createState() => _ThreeDotIndicatorState();
+  ThreeDotIndicatorState createState() => ThreeDotIndicatorState();
 }
 
-class _ThreeDotIndicatorState extends State<ThreeDotIndicator> with SingleTickerProviderStateMixin {
+class ThreeDotIndicatorState extends State<ThreeDotIndicator> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

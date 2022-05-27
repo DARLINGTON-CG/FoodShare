@@ -12,35 +12,17 @@ part of 'user_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserDataDto _$UserDataDtoFromJson(Map<String, dynamic> json) {
   return _UserDataDto.fromJson(json);
 }
 
 /// @nodoc
-class _$UserDataDtoTearOff {
-  const _$UserDataDtoTearOff();
-
-  _UserDataDto call({required String imageUrl, required String username}) {
-    return _UserDataDto(
-      imageUrl: imageUrl,
-      username: username,
-    );
-  }
-
-  UserDataDto fromJson(Map<String, Object?> json) {
-    return UserDataDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserDataDto = _$UserDataDtoTearOff();
-
-/// @nodoc
 mixin _$UserDataDto {
   String get imageUrl => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +35,7 @@ abstract class $UserDataDtoCopyWith<$Res> {
   factory $UserDataDtoCopyWith(
           UserDataDto value, $Res Function(UserDataDto) then) =
       _$UserDataDtoCopyWithImpl<$Res>;
-  $Res call({String imageUrl, String username});
+  $Res call({String imageUrl, String username, String userId});
 }
 
 /// @nodoc
@@ -68,6 +50,7 @@ class _$UserDataDtoCopyWithImpl<$Res> implements $UserDataDtoCopyWith<$Res> {
   $Res call({
     Object? imageUrl = freezed,
     Object? username = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: imageUrl == freezed
@@ -78,36 +61,41 @@ class _$UserDataDtoCopyWithImpl<$Res> implements $UserDataDtoCopyWith<$Res> {
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$UserDataDtoCopyWith<$Res>
+abstract class _$$_UserDataDtoCopyWith<$Res>
     implements $UserDataDtoCopyWith<$Res> {
-  factory _$UserDataDtoCopyWith(
-          _UserDataDto value, $Res Function(_UserDataDto) then) =
-      __$UserDataDtoCopyWithImpl<$Res>;
+  factory _$$_UserDataDtoCopyWith(
+          _$_UserDataDto value, $Res Function(_$_UserDataDto) then) =
+      __$$_UserDataDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String imageUrl, String username});
+  $Res call({String imageUrl, String username, String userId});
 }
 
 /// @nodoc
-class __$UserDataDtoCopyWithImpl<$Res> extends _$UserDataDtoCopyWithImpl<$Res>
-    implements _$UserDataDtoCopyWith<$Res> {
-  __$UserDataDtoCopyWithImpl(
-      _UserDataDto _value, $Res Function(_UserDataDto) _then)
-      : super(_value, (v) => _then(v as _UserDataDto));
+class __$$_UserDataDtoCopyWithImpl<$Res> extends _$UserDataDtoCopyWithImpl<$Res>
+    implements _$$_UserDataDtoCopyWith<$Res> {
+  __$$_UserDataDtoCopyWithImpl(
+      _$_UserDataDto _value, $Res Function(_$_UserDataDto) _then)
+      : super(_value, (v) => _then(v as _$_UserDataDto));
 
   @override
-  _UserDataDto get _value => super._value as _UserDataDto;
+  _$_UserDataDto get _value => super._value as _$_UserDataDto;
 
   @override
   $Res call({
     Object? imageUrl = freezed,
     Object? username = freezed,
+    Object? userId = freezed,
   }) {
-    return _then(_UserDataDto(
+    return _then(_$_UserDataDto(
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -116,6 +104,10 @@ class __$UserDataDtoCopyWithImpl<$Res> extends _$UserDataDtoCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -123,7 +115,8 @@ class __$UserDataDtoCopyWithImpl<$Res> extends _$UserDataDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserDataDto extends _UserDataDto {
-  const _$_UserDataDto({required this.imageUrl, required this.username})
+  const _$_UserDataDto(
+      {required this.imageUrl, required this.username, required this.userId})
       : super._();
 
   factory _$_UserDataDto.fromJson(Map<String, dynamic> json) =>
@@ -133,31 +126,36 @@ class _$_UserDataDto extends _UserDataDto {
   final String imageUrl;
   @override
   final String username;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'UserDataDto(imageUrl: $imageUrl, username: $username)';
+    return 'UserDataDto(imageUrl: $imageUrl, username: $username, userId: $userId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserDataDto &&
+            other is _$_UserDataDto &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.username, username));
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.userId, userId));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(username));
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(userId));
 
   @JsonKey(ignore: true)
   @override
-  _$UserDataDtoCopyWith<_UserDataDto> get copyWith =>
-      __$UserDataDtoCopyWithImpl<_UserDataDto>(this, _$identity);
+  _$$_UserDataDtoCopyWith<_$_UserDataDto> get copyWith =>
+      __$$_UserDataDtoCopyWithImpl<_$_UserDataDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,18 +165,22 @@ class _$_UserDataDto extends _UserDataDto {
 
 abstract class _UserDataDto extends UserDataDto {
   const factory _UserDataDto(
-      {required String imageUrl, required String username}) = _$_UserDataDto;
+      {required final String imageUrl,
+      required final String username,
+      required final String userId}) = _$_UserDataDto;
   const _UserDataDto._() : super._();
 
   factory _UserDataDto.fromJson(Map<String, dynamic> json) =
       _$_UserDataDto.fromJson;
 
   @override
-  String get imageUrl;
+  String get imageUrl => throw _privateConstructorUsedError;
   @override
-  String get username;
+  String get username => throw _privateConstructorUsedError;
+  @override
+  String get userId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserDataDtoCopyWith<_UserDataDto> get copyWith =>
+  _$$_UserDataDtoCopyWith<_$_UserDataDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

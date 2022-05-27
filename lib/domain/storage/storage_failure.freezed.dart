@@ -12,23 +12,7 @@ part of 'storage_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$StorageFailureTearOff {
-  const _$StorageFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-
-  _InsufficientPermissions insufficientPermissions() {
-    return const _InsufficientPermissions();
-  }
-}
-
-/// @nodoc
-const $StorageFailure = _$StorageFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$StorageFailure {
@@ -91,21 +75,22 @@ class _$StorageFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res> extends _$StorageFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$StorageFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -121,7 +106,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -196,23 +181,23 @@ abstract class _Unexpected implements StorageFailure {
 }
 
 /// @nodoc
-abstract class _$InsufficientPermissionsCopyWith<$Res> {
-  factory _$InsufficientPermissionsCopyWith(_InsufficientPermissions value,
-          $Res Function(_InsufficientPermissions) then) =
-      __$InsufficientPermissionsCopyWithImpl<$Res>;
+abstract class _$$_InsufficientPermissionsCopyWith<$Res> {
+  factory _$$_InsufficientPermissionsCopyWith(_$_InsufficientPermissions value,
+          $Res Function(_$_InsufficientPermissions) then) =
+      __$$_InsufficientPermissionsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InsufficientPermissionsCopyWithImpl<$Res>
+class __$$_InsufficientPermissionsCopyWithImpl<$Res>
     extends _$StorageFailureCopyWithImpl<$Res>
-    implements _$InsufficientPermissionsCopyWith<$Res> {
-  __$InsufficientPermissionsCopyWithImpl(_InsufficientPermissions _value,
-      $Res Function(_InsufficientPermissions) _then)
-      : super(_value, (v) => _then(v as _InsufficientPermissions));
+    implements _$$_InsufficientPermissionsCopyWith<$Res> {
+  __$$_InsufficientPermissionsCopyWithImpl(_$_InsufficientPermissions _value,
+      $Res Function(_$_InsufficientPermissions) _then)
+      : super(_value, (v) => _then(v as _$_InsufficientPermissions));
 
   @override
-  _InsufficientPermissions get _value =>
-      super._value as _InsufficientPermissions;
+  _$_InsufficientPermissions get _value =>
+      super._value as _$_InsufficientPermissions;
 }
 
 /// @nodoc
@@ -228,7 +213,8 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InsufficientPermissions);
+        (other.runtimeType == runtimeType &&
+            other is _$_InsufficientPermissions);
   }
 
   @override

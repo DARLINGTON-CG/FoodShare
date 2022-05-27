@@ -119,15 +119,15 @@ class _UserDataPageState extends State<UserDataPage> {
                     ),
                     InkWell(
                         onTap: () async {
-                          final XFile? _imageFilePicked = await _imagePicker
+                          final XFile? imageFilePicked = await _imagePicker
                               .pickImage(source: ImageSource.gallery);
-                          final File? _converted =
-                              File((_imageFilePicked!).path);
+                          final File converted =
+                              File((imageFilePicked!).path);
                           Future<void>.delayed(const Duration()).then((_) =>
                               Navigator.of(context)
                                   .push(SlideUpAnim(
                                       page:
-                                          EditPicturePage(picture: _converted)))
+                                          EditPicturePage(picture: converted)))
                                   // ignore: always_specify_types
                                   .then((value) {
                                 setState(() {

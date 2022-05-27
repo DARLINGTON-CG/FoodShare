@@ -12,57 +12,7 @@ part of 'post_form_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PostFormEventTearOff {
-  const _$PostFormEventTearOff();
-
-  Initialized initialized(Option<Post> initialPostOption) {
-    return Initialized(
-      initialPostOption,
-    );
-  }
-
-  AmountChanged amountChanged(String amountChanged) {
-    return AmountChanged(
-      amountChanged,
-    );
-  }
-
-  DescriptionChanged descriptionChanged(String description) {
-    return DescriptionChanged(
-      description,
-    );
-  }
-
-  PickupTimeChanged pickupTimeChanged(String pickupTime) {
-    return PickupTimeChanged(
-      pickupTime,
-    );
-  }
-
-  QuantityChanged quantityChanged(int quantity) {
-    return QuantityChanged(
-      quantity,
-    );
-  }
-
-  TitleChanged titleChanged(String title) {
-    return TitleChanged(
-      title,
-    );
-  }
-
-  Saved saved(File? image) {
-    return Saved(
-      image,
-    );
-  }
-}
-
-/// @nodoc
-const $PostFormEvent = _$PostFormEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PostFormEvent {
@@ -154,28 +104,29 @@ class _$PostFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitializedCopyWith<$Res> {
-  factory $InitializedCopyWith(
-          Initialized value, $Res Function(Initialized) then) =
-      _$InitializedCopyWithImpl<$Res>;
+abstract class _$$InitializedCopyWith<$Res> {
+  factory _$$InitializedCopyWith(
+          _$Initialized value, $Res Function(_$Initialized) then) =
+      __$$InitializedCopyWithImpl<$Res>;
   $Res call({Option<Post> initialPostOption});
 }
 
 /// @nodoc
-class _$InitializedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
-    implements $InitializedCopyWith<$Res> {
-  _$InitializedCopyWithImpl(
-      Initialized _value, $Res Function(Initialized) _then)
-      : super(_value, (v) => _then(v as Initialized));
+class __$$InitializedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$$InitializedCopyWith<$Res> {
+  __$$InitializedCopyWithImpl(
+      _$Initialized _value, $Res Function(_$Initialized) _then)
+      : super(_value, (v) => _then(v as _$Initialized));
 
   @override
-  Initialized get _value => super._value as Initialized;
+  _$Initialized get _value => super._value as _$Initialized;
 
   @override
   $Res call({
     Object? initialPostOption = freezed,
   }) {
-    return _then(Initialized(
+    return _then(_$Initialized(
       initialPostOption == freezed
           ? _value.initialPostOption
           : initialPostOption // ignore: cast_nullable_to_non_nullable
@@ -201,7 +152,7 @@ class _$Initialized implements Initialized {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Initialized &&
+            other is _$Initialized &&
             const DeepCollectionEquality()
                 .equals(other.initialPostOption, initialPostOption));
   }
@@ -212,8 +163,8 @@ class _$Initialized implements Initialized {
 
   @JsonKey(ignore: true)
   @override
-  $InitializedCopyWith<Initialized> get copyWith =>
-      _$InitializedCopyWithImpl<Initialized>(this, _$identity);
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
+      __$$InitializedCopyWithImpl<_$Initialized>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -309,38 +260,39 @@ class _$Initialized implements Initialized {
 }
 
 abstract class Initialized implements PostFormEvent {
-  const factory Initialized(Option<Post> initialPostOption) = _$Initialized;
+  const factory Initialized(final Option<Post> initialPostOption) =
+      _$Initialized;
 
-  Option<Post> get initialPostOption;
+  Option<Post> get initialPostOption => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InitializedCopyWith<Initialized> get copyWith =>
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AmountChangedCopyWith<$Res> {
-  factory $AmountChangedCopyWith(
-          AmountChanged value, $Res Function(AmountChanged) then) =
-      _$AmountChangedCopyWithImpl<$Res>;
+abstract class _$$AmountChangedCopyWith<$Res> {
+  factory _$$AmountChangedCopyWith(
+          _$AmountChanged value, $Res Function(_$AmountChanged) then) =
+      __$$AmountChangedCopyWithImpl<$Res>;
   $Res call({String amountChanged});
 }
 
 /// @nodoc
-class _$AmountChangedCopyWithImpl<$Res>
+class __$$AmountChangedCopyWithImpl<$Res>
     extends _$PostFormEventCopyWithImpl<$Res>
-    implements $AmountChangedCopyWith<$Res> {
-  _$AmountChangedCopyWithImpl(
-      AmountChanged _value, $Res Function(AmountChanged) _then)
-      : super(_value, (v) => _then(v as AmountChanged));
+    implements _$$AmountChangedCopyWith<$Res> {
+  __$$AmountChangedCopyWithImpl(
+      _$AmountChanged _value, $Res Function(_$AmountChanged) _then)
+      : super(_value, (v) => _then(v as _$AmountChanged));
 
   @override
-  AmountChanged get _value => super._value as AmountChanged;
+  _$AmountChanged get _value => super._value as _$AmountChanged;
 
   @override
   $Res call({
     Object? amountChanged = freezed,
   }) {
-    return _then(AmountChanged(
+    return _then(_$AmountChanged(
       amountChanged == freezed
           ? _value.amountChanged
           : amountChanged // ignore: cast_nullable_to_non_nullable
@@ -366,7 +318,7 @@ class _$AmountChanged implements AmountChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AmountChanged &&
+            other is _$AmountChanged &&
             const DeepCollectionEquality()
                 .equals(other.amountChanged, amountChanged));
   }
@@ -377,8 +329,8 @@ class _$AmountChanged implements AmountChanged {
 
   @JsonKey(ignore: true)
   @override
-  $AmountChangedCopyWith<AmountChanged> get copyWith =>
-      _$AmountChangedCopyWithImpl<AmountChanged>(this, _$identity);
+  _$$AmountChangedCopyWith<_$AmountChanged> get copyWith =>
+      __$$AmountChangedCopyWithImpl<_$AmountChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -474,38 +426,38 @@ class _$AmountChanged implements AmountChanged {
 }
 
 abstract class AmountChanged implements PostFormEvent {
-  const factory AmountChanged(String amountChanged) = _$AmountChanged;
+  const factory AmountChanged(final String amountChanged) = _$AmountChanged;
 
-  String get amountChanged;
+  String get amountChanged => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AmountChangedCopyWith<AmountChanged> get copyWith =>
+  _$$AmountChangedCopyWith<_$AmountChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DescriptionChangedCopyWith<$Res> {
-  factory $DescriptionChangedCopyWith(
-          DescriptionChanged value, $Res Function(DescriptionChanged) then) =
-      _$DescriptionChangedCopyWithImpl<$Res>;
+abstract class _$$DescriptionChangedCopyWith<$Res> {
+  factory _$$DescriptionChangedCopyWith(_$DescriptionChanged value,
+          $Res Function(_$DescriptionChanged) then) =
+      __$$DescriptionChangedCopyWithImpl<$Res>;
   $Res call({String description});
 }
 
 /// @nodoc
-class _$DescriptionChangedCopyWithImpl<$Res>
+class __$$DescriptionChangedCopyWithImpl<$Res>
     extends _$PostFormEventCopyWithImpl<$Res>
-    implements $DescriptionChangedCopyWith<$Res> {
-  _$DescriptionChangedCopyWithImpl(
-      DescriptionChanged _value, $Res Function(DescriptionChanged) _then)
-      : super(_value, (v) => _then(v as DescriptionChanged));
+    implements _$$DescriptionChangedCopyWith<$Res> {
+  __$$DescriptionChangedCopyWithImpl(
+      _$DescriptionChanged _value, $Res Function(_$DescriptionChanged) _then)
+      : super(_value, (v) => _then(v as _$DescriptionChanged));
 
   @override
-  DescriptionChanged get _value => super._value as DescriptionChanged;
+  _$DescriptionChanged get _value => super._value as _$DescriptionChanged;
 
   @override
   $Res call({
     Object? description = freezed,
   }) {
-    return _then(DescriptionChanged(
+    return _then(_$DescriptionChanged(
       description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -531,7 +483,7 @@ class _$DescriptionChanged implements DescriptionChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DescriptionChanged &&
+            other is _$DescriptionChanged &&
             const DeepCollectionEquality()
                 .equals(other.description, description));
   }
@@ -542,8 +494,9 @@ class _$DescriptionChanged implements DescriptionChanged {
 
   @JsonKey(ignore: true)
   @override
-  $DescriptionChangedCopyWith<DescriptionChanged> get copyWith =>
-      _$DescriptionChangedCopyWithImpl<DescriptionChanged>(this, _$identity);
+  _$$DescriptionChangedCopyWith<_$DescriptionChanged> get copyWith =>
+      __$$DescriptionChangedCopyWithImpl<_$DescriptionChanged>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -639,38 +592,39 @@ class _$DescriptionChanged implements DescriptionChanged {
 }
 
 abstract class DescriptionChanged implements PostFormEvent {
-  const factory DescriptionChanged(String description) = _$DescriptionChanged;
+  const factory DescriptionChanged(final String description) =
+      _$DescriptionChanged;
 
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DescriptionChangedCopyWith<DescriptionChanged> get copyWith =>
+  _$$DescriptionChangedCopyWith<_$DescriptionChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PickupTimeChangedCopyWith<$Res> {
-  factory $PickupTimeChangedCopyWith(
-          PickupTimeChanged value, $Res Function(PickupTimeChanged) then) =
-      _$PickupTimeChangedCopyWithImpl<$Res>;
+abstract class _$$PickupTimeChangedCopyWith<$Res> {
+  factory _$$PickupTimeChangedCopyWith(
+          _$PickupTimeChanged value, $Res Function(_$PickupTimeChanged) then) =
+      __$$PickupTimeChangedCopyWithImpl<$Res>;
   $Res call({String pickupTime});
 }
 
 /// @nodoc
-class _$PickupTimeChangedCopyWithImpl<$Res>
+class __$$PickupTimeChangedCopyWithImpl<$Res>
     extends _$PostFormEventCopyWithImpl<$Res>
-    implements $PickupTimeChangedCopyWith<$Res> {
-  _$PickupTimeChangedCopyWithImpl(
-      PickupTimeChanged _value, $Res Function(PickupTimeChanged) _then)
-      : super(_value, (v) => _then(v as PickupTimeChanged));
+    implements _$$PickupTimeChangedCopyWith<$Res> {
+  __$$PickupTimeChangedCopyWithImpl(
+      _$PickupTimeChanged _value, $Res Function(_$PickupTimeChanged) _then)
+      : super(_value, (v) => _then(v as _$PickupTimeChanged));
 
   @override
-  PickupTimeChanged get _value => super._value as PickupTimeChanged;
+  _$PickupTimeChanged get _value => super._value as _$PickupTimeChanged;
 
   @override
   $Res call({
     Object? pickupTime = freezed,
   }) {
-    return _then(PickupTimeChanged(
+    return _then(_$PickupTimeChanged(
       pickupTime == freezed
           ? _value.pickupTime
           : pickupTime // ignore: cast_nullable_to_non_nullable
@@ -696,7 +650,7 @@ class _$PickupTimeChanged implements PickupTimeChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PickupTimeChanged &&
+            other is _$PickupTimeChanged &&
             const DeepCollectionEquality()
                 .equals(other.pickupTime, pickupTime));
   }
@@ -707,8 +661,8 @@ class _$PickupTimeChanged implements PickupTimeChanged {
 
   @JsonKey(ignore: true)
   @override
-  $PickupTimeChangedCopyWith<PickupTimeChanged> get copyWith =>
-      _$PickupTimeChangedCopyWithImpl<PickupTimeChanged>(this, _$identity);
+  _$$PickupTimeChangedCopyWith<_$PickupTimeChanged> get copyWith =>
+      __$$PickupTimeChangedCopyWithImpl<_$PickupTimeChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -804,38 +758,39 @@ class _$PickupTimeChanged implements PickupTimeChanged {
 }
 
 abstract class PickupTimeChanged implements PostFormEvent {
-  const factory PickupTimeChanged(String pickupTime) = _$PickupTimeChanged;
+  const factory PickupTimeChanged(final String pickupTime) =
+      _$PickupTimeChanged;
 
-  String get pickupTime;
+  String get pickupTime => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PickupTimeChangedCopyWith<PickupTimeChanged> get copyWith =>
+  _$$PickupTimeChangedCopyWith<_$PickupTimeChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $QuantityChangedCopyWith<$Res> {
-  factory $QuantityChangedCopyWith(
-          QuantityChanged value, $Res Function(QuantityChanged) then) =
-      _$QuantityChangedCopyWithImpl<$Res>;
+abstract class _$$QuantityChangedCopyWith<$Res> {
+  factory _$$QuantityChangedCopyWith(
+          _$QuantityChanged value, $Res Function(_$QuantityChanged) then) =
+      __$$QuantityChangedCopyWithImpl<$Res>;
   $Res call({int quantity});
 }
 
 /// @nodoc
-class _$QuantityChangedCopyWithImpl<$Res>
+class __$$QuantityChangedCopyWithImpl<$Res>
     extends _$PostFormEventCopyWithImpl<$Res>
-    implements $QuantityChangedCopyWith<$Res> {
-  _$QuantityChangedCopyWithImpl(
-      QuantityChanged _value, $Res Function(QuantityChanged) _then)
-      : super(_value, (v) => _then(v as QuantityChanged));
+    implements _$$QuantityChangedCopyWith<$Res> {
+  __$$QuantityChangedCopyWithImpl(
+      _$QuantityChanged _value, $Res Function(_$QuantityChanged) _then)
+      : super(_value, (v) => _then(v as _$QuantityChanged));
 
   @override
-  QuantityChanged get _value => super._value as QuantityChanged;
+  _$QuantityChanged get _value => super._value as _$QuantityChanged;
 
   @override
   $Res call({
     Object? quantity = freezed,
   }) {
-    return _then(QuantityChanged(
+    return _then(_$QuantityChanged(
       quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -861,7 +816,7 @@ class _$QuantityChanged implements QuantityChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is QuantityChanged &&
+            other is _$QuantityChanged &&
             const DeepCollectionEquality().equals(other.quantity, quantity));
   }
 
@@ -871,8 +826,8 @@ class _$QuantityChanged implements QuantityChanged {
 
   @JsonKey(ignore: true)
   @override
-  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
-      _$QuantityChangedCopyWithImpl<QuantityChanged>(this, _$identity);
+  _$$QuantityChangedCopyWith<_$QuantityChanged> get copyWith =>
+      __$$QuantityChangedCopyWithImpl<_$QuantityChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -968,37 +923,38 @@ class _$QuantityChanged implements QuantityChanged {
 }
 
 abstract class QuantityChanged implements PostFormEvent {
-  const factory QuantityChanged(int quantity) = _$QuantityChanged;
+  const factory QuantityChanged(final int quantity) = _$QuantityChanged;
 
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
+  _$$QuantityChangedCopyWith<_$QuantityChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TitleChangedCopyWith<$Res> {
-  factory $TitleChangedCopyWith(
-          TitleChanged value, $Res Function(TitleChanged) then) =
-      _$TitleChangedCopyWithImpl<$Res>;
+abstract class _$$TitleChangedCopyWith<$Res> {
+  factory _$$TitleChangedCopyWith(
+          _$TitleChanged value, $Res Function(_$TitleChanged) then) =
+      __$$TitleChangedCopyWithImpl<$Res>;
   $Res call({String title});
 }
 
 /// @nodoc
-class _$TitleChangedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
-    implements $TitleChangedCopyWith<$Res> {
-  _$TitleChangedCopyWithImpl(
-      TitleChanged _value, $Res Function(TitleChanged) _then)
-      : super(_value, (v) => _then(v as TitleChanged));
+class __$$TitleChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$$TitleChangedCopyWith<$Res> {
+  __$$TitleChangedCopyWithImpl(
+      _$TitleChanged _value, $Res Function(_$TitleChanged) _then)
+      : super(_value, (v) => _then(v as _$TitleChanged));
 
   @override
-  TitleChanged get _value => super._value as TitleChanged;
+  _$TitleChanged get _value => super._value as _$TitleChanged;
 
   @override
   $Res call({
     Object? title = freezed,
   }) {
-    return _then(TitleChanged(
+    return _then(_$TitleChanged(
       title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -1024,7 +980,7 @@ class _$TitleChanged implements TitleChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TitleChanged &&
+            other is _$TitleChanged &&
             const DeepCollectionEquality().equals(other.title, title));
   }
 
@@ -1034,8 +990,8 @@ class _$TitleChanged implements TitleChanged {
 
   @JsonKey(ignore: true)
   @override
-  $TitleChangedCopyWith<TitleChanged> get copyWith =>
-      _$TitleChangedCopyWithImpl<TitleChanged>(this, _$identity);
+  _$$TitleChangedCopyWith<_$TitleChanged> get copyWith =>
+      __$$TitleChangedCopyWithImpl<_$TitleChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1131,35 +1087,35 @@ class _$TitleChanged implements TitleChanged {
 }
 
 abstract class TitleChanged implements PostFormEvent {
-  const factory TitleChanged(String title) = _$TitleChanged;
+  const factory TitleChanged(final String title) = _$TitleChanged;
 
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TitleChangedCopyWith<TitleChanged> get copyWith =>
+  _$$TitleChangedCopyWith<_$TitleChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SavedCopyWith<$Res> {
-  factory $SavedCopyWith(Saved value, $Res Function(Saved) then) =
-      _$SavedCopyWithImpl<$Res>;
+abstract class _$$SavedCopyWith<$Res> {
+  factory _$$SavedCopyWith(_$Saved value, $Res Function(_$Saved) then) =
+      __$$SavedCopyWithImpl<$Res>;
   $Res call({File? image});
 }
 
 /// @nodoc
-class _$SavedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
-    implements $SavedCopyWith<$Res> {
-  _$SavedCopyWithImpl(Saved _value, $Res Function(Saved) _then)
-      : super(_value, (v) => _then(v as Saved));
+class __$$SavedCopyWithImpl<$Res> extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$$SavedCopyWith<$Res> {
+  __$$SavedCopyWithImpl(_$Saved _value, $Res Function(_$Saved) _then)
+      : super(_value, (v) => _then(v as _$Saved));
 
   @override
-  Saved get _value => super._value as Saved;
+  _$Saved get _value => super._value as _$Saved;
 
   @override
   $Res call({
     Object? image = freezed,
   }) {
-    return _then(Saved(
+    return _then(_$Saved(
       image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1185,7 +1141,7 @@ class _$Saved implements Saved {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Saved &&
+            other is _$Saved &&
             const DeepCollectionEquality().equals(other.image, image));
   }
 
@@ -1195,8 +1151,8 @@ class _$Saved implements Saved {
 
   @JsonKey(ignore: true)
   @override
-  $SavedCopyWith<Saved> get copyWith =>
-      _$SavedCopyWithImpl<Saved>(this, _$identity);
+  _$$SavedCopyWith<_$Saved> get copyWith =>
+      __$$SavedCopyWithImpl<_$Saved>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1292,35 +1248,12 @@ class _$Saved implements Saved {
 }
 
 abstract class Saved implements PostFormEvent {
-  const factory Saved(File? image) = _$Saved;
+  const factory Saved(final File? image) = _$Saved;
 
-  File? get image;
+  File? get image => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SavedCopyWith<Saved> get copyWith => throw _privateConstructorUsedError;
+  _$$SavedCopyWith<_$Saved> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PostFormStateTearOff {
-  const _$PostFormStateTearOff();
-
-  _PostFormState call(
-      {required Post post,
-      required bool showErrorMessages,
-      required bool isSaving,
-      required bool isEditing,
-      required Option<Either<PostFailure, Unit>> successOrFailure}) {
-    return _PostFormState(
-      post: post,
-      showErrorMessages: showErrorMessages,
-      isSaving: isSaving,
-      isEditing: isEditing,
-      successOrFailure: successOrFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $PostFormState = _$PostFormStateTearOff();
 
 /// @nodoc
 mixin _$PostFormState {
@@ -1401,11 +1334,11 @@ class _$PostFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PostFormStateCopyWith<$Res>
+abstract class _$$_PostFormStateCopyWith<$Res>
     implements $PostFormStateCopyWith<$Res> {
-  factory _$PostFormStateCopyWith(
-          _PostFormState value, $Res Function(_PostFormState) then) =
-      __$PostFormStateCopyWithImpl<$Res>;
+  factory _$$_PostFormStateCopyWith(
+          _$_PostFormState value, $Res Function(_$_PostFormState) then) =
+      __$$_PostFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {Post post,
@@ -1419,15 +1352,15 @@ abstract class _$PostFormStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PostFormStateCopyWithImpl<$Res>
+class __$$_PostFormStateCopyWithImpl<$Res>
     extends _$PostFormStateCopyWithImpl<$Res>
-    implements _$PostFormStateCopyWith<$Res> {
-  __$PostFormStateCopyWithImpl(
-      _PostFormState _value, $Res Function(_PostFormState) _then)
-      : super(_value, (v) => _then(v as _PostFormState));
+    implements _$$_PostFormStateCopyWith<$Res> {
+  __$$_PostFormStateCopyWithImpl(
+      _$_PostFormState _value, $Res Function(_$_PostFormState) _then)
+      : super(_value, (v) => _then(v as _$_PostFormState));
 
   @override
-  _PostFormState get _value => super._value as _PostFormState;
+  _$_PostFormState get _value => super._value as _$_PostFormState;
 
   @override
   $Res call({
@@ -1437,7 +1370,7 @@ class __$PostFormStateCopyWithImpl<$Res>
     Object? isEditing = freezed,
     Object? successOrFailure = freezed,
   }) {
-    return _then(_PostFormState(
+    return _then(_$_PostFormState(
       post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
@@ -1492,7 +1425,7 @@ class _$_PostFormState implements _PostFormState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PostFormState &&
+            other is _$_PostFormState &&
             const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
@@ -1513,31 +1446,32 @@ class _$_PostFormState implements _PostFormState {
 
   @JsonKey(ignore: true)
   @override
-  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
-      __$PostFormStateCopyWithImpl<_PostFormState>(this, _$identity);
+  _$$_PostFormStateCopyWith<_$_PostFormState> get copyWith =>
+      __$$_PostFormStateCopyWithImpl<_$_PostFormState>(this, _$identity);
 }
 
 abstract class _PostFormState implements PostFormState {
   const factory _PostFormState(
-          {required Post post,
-          required bool showErrorMessages,
-          required bool isSaving,
-          required bool isEditing,
-          required Option<Either<PostFailure, Unit>> successOrFailure}) =
+          {required final Post post,
+          required final bool showErrorMessages,
+          required final bool isSaving,
+          required final bool isEditing,
+          required final Option<Either<PostFailure, Unit>> successOrFailure}) =
       _$_PostFormState;
 
   @override
-  Post get post;
+  Post get post => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  bool get isSaving;
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
-  bool get isEditing;
+  bool get isEditing => throw _privateConstructorUsedError;
   @override
-  Option<Either<PostFailure, Unit>> get successOrFailure;
+  Option<Either<PostFailure, Unit>> get successOrFailure =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PostFormStateCopyWith<_PostFormState> get copyWith =>
+  _$$_PostFormStateCopyWith<_$_PostFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }

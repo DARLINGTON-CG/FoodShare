@@ -56,8 +56,9 @@ class CreateMessagesBloc
         userOption.getOrElse(() => throw NotAuthenticatedError());
 
     converted.add(Message(
-        id: user.id,
-        message: MessageBody(state.currentMessage),));
+      id: user.id,
+      message: MessageBody(state.currentMessage),
+    ));
 
     emit(state.copyWith(
         data: state.data.copyWith(
@@ -65,8 +66,8 @@ class CreateMessagesBloc
               converted.map((Message message) => message).toImmutableList()),
         ),
         successOrFailure: none()));
-    if (state.data.failureOption.isNone()) {
-      final Either<MessageFailure, Unit>? failureOrSuccess =
+    if (state.data.failureOption.isNone() && state.currentMessage.isNotEmpty) {
+      final Either<MessageFailure, Unit> failureOrSuccess =
           await _messageRepository.send(state.data);
 
       emit(state.copyWith(

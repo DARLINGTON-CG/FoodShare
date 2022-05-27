@@ -12,33 +12,7 @@ part of 'user_data_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UserDataEventsTearOff {
-  const _$UserDataEventsTearOff();
-
-  Initialized initialized(Option<UserData> initialUserData) {
-    return Initialized(
-      initialUserData,
-    );
-  }
-
-  UsernameChanged usernameChanged(String username) {
-    return UsernameChanged(
-      username,
-    );
-  }
-
-  Saved saved(File? image) {
-    return Saved(
-      image,
-    );
-  }
-}
-
-/// @nodoc
-const $UserDataEvents = _$UserDataEventsTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UserDataEvents {
@@ -106,28 +80,29 @@ class _$UserDataEventsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitializedCopyWith<$Res> {
-  factory $InitializedCopyWith(
-          Initialized value, $Res Function(Initialized) then) =
-      _$InitializedCopyWithImpl<$Res>;
+abstract class _$$InitializedCopyWith<$Res> {
+  factory _$$InitializedCopyWith(
+          _$Initialized value, $Res Function(_$Initialized) then) =
+      __$$InitializedCopyWithImpl<$Res>;
   $Res call({Option<UserData> initialUserData});
 }
 
 /// @nodoc
-class _$InitializedCopyWithImpl<$Res> extends _$UserDataEventsCopyWithImpl<$Res>
-    implements $InitializedCopyWith<$Res> {
-  _$InitializedCopyWithImpl(
-      Initialized _value, $Res Function(Initialized) _then)
-      : super(_value, (v) => _then(v as Initialized));
+class __$$InitializedCopyWithImpl<$Res>
+    extends _$UserDataEventsCopyWithImpl<$Res>
+    implements _$$InitializedCopyWith<$Res> {
+  __$$InitializedCopyWithImpl(
+      _$Initialized _value, $Res Function(_$Initialized) _then)
+      : super(_value, (v) => _then(v as _$Initialized));
 
   @override
-  Initialized get _value => super._value as Initialized;
+  _$Initialized get _value => super._value as _$Initialized;
 
   @override
   $Res call({
     Object? initialUserData = freezed,
   }) {
-    return _then(Initialized(
+    return _then(_$Initialized(
       initialUserData == freezed
           ? _value.initialUserData
           : initialUserData // ignore: cast_nullable_to_non_nullable
@@ -153,7 +128,7 @@ class _$Initialized implements Initialized {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Initialized &&
+            other is _$Initialized &&
             const DeepCollectionEquality()
                 .equals(other.initialUserData, initialUserData));
   }
@@ -164,8 +139,8 @@ class _$Initialized implements Initialized {
 
   @JsonKey(ignore: true)
   @override
-  $InitializedCopyWith<Initialized> get copyWith =>
-      _$InitializedCopyWithImpl<Initialized>(this, _$identity);
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
+      __$$InitializedCopyWithImpl<_$Initialized>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -237,38 +212,39 @@ class _$Initialized implements Initialized {
 }
 
 abstract class Initialized implements UserDataEvents {
-  const factory Initialized(Option<UserData> initialUserData) = _$Initialized;
+  const factory Initialized(final Option<UserData> initialUserData) =
+      _$Initialized;
 
-  Option<UserData> get initialUserData;
+  Option<UserData> get initialUserData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InitializedCopyWith<Initialized> get copyWith =>
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UsernameChangedCopyWith<$Res> {
-  factory $UsernameChangedCopyWith(
-          UsernameChanged value, $Res Function(UsernameChanged) then) =
-      _$UsernameChangedCopyWithImpl<$Res>;
+abstract class _$$UsernameChangedCopyWith<$Res> {
+  factory _$$UsernameChangedCopyWith(
+          _$UsernameChanged value, $Res Function(_$UsernameChanged) then) =
+      __$$UsernameChangedCopyWithImpl<$Res>;
   $Res call({String username});
 }
 
 /// @nodoc
-class _$UsernameChangedCopyWithImpl<$Res>
+class __$$UsernameChangedCopyWithImpl<$Res>
     extends _$UserDataEventsCopyWithImpl<$Res>
-    implements $UsernameChangedCopyWith<$Res> {
-  _$UsernameChangedCopyWithImpl(
-      UsernameChanged _value, $Res Function(UsernameChanged) _then)
-      : super(_value, (v) => _then(v as UsernameChanged));
+    implements _$$UsernameChangedCopyWith<$Res> {
+  __$$UsernameChangedCopyWithImpl(
+      _$UsernameChanged _value, $Res Function(_$UsernameChanged) _then)
+      : super(_value, (v) => _then(v as _$UsernameChanged));
 
   @override
-  UsernameChanged get _value => super._value as UsernameChanged;
+  _$UsernameChanged get _value => super._value as _$UsernameChanged;
 
   @override
   $Res call({
     Object? username = freezed,
   }) {
-    return _then(UsernameChanged(
+    return _then(_$UsernameChanged(
       username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -294,7 +270,7 @@ class _$UsernameChanged implements UsernameChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UsernameChanged &&
+            other is _$UsernameChanged &&
             const DeepCollectionEquality().equals(other.username, username));
   }
 
@@ -304,8 +280,8 @@ class _$UsernameChanged implements UsernameChanged {
 
   @JsonKey(ignore: true)
   @override
-  $UsernameChangedCopyWith<UsernameChanged> get copyWith =>
-      _$UsernameChangedCopyWithImpl<UsernameChanged>(this, _$identity);
+  _$$UsernameChangedCopyWith<_$UsernameChanged> get copyWith =>
+      __$$UsernameChangedCopyWithImpl<_$UsernameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -377,35 +353,35 @@ class _$UsernameChanged implements UsernameChanged {
 }
 
 abstract class UsernameChanged implements UserDataEvents {
-  const factory UsernameChanged(String username) = _$UsernameChanged;
+  const factory UsernameChanged(final String username) = _$UsernameChanged;
 
-  String get username;
+  String get username => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UsernameChangedCopyWith<UsernameChanged> get copyWith =>
+  _$$UsernameChangedCopyWith<_$UsernameChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SavedCopyWith<$Res> {
-  factory $SavedCopyWith(Saved value, $Res Function(Saved) then) =
-      _$SavedCopyWithImpl<$Res>;
+abstract class _$$SavedCopyWith<$Res> {
+  factory _$$SavedCopyWith(_$Saved value, $Res Function(_$Saved) then) =
+      __$$SavedCopyWithImpl<$Res>;
   $Res call({File? image});
 }
 
 /// @nodoc
-class _$SavedCopyWithImpl<$Res> extends _$UserDataEventsCopyWithImpl<$Res>
-    implements $SavedCopyWith<$Res> {
-  _$SavedCopyWithImpl(Saved _value, $Res Function(Saved) _then)
-      : super(_value, (v) => _then(v as Saved));
+class __$$SavedCopyWithImpl<$Res> extends _$UserDataEventsCopyWithImpl<$Res>
+    implements _$$SavedCopyWith<$Res> {
+  __$$SavedCopyWithImpl(_$Saved _value, $Res Function(_$Saved) _then)
+      : super(_value, (v) => _then(v as _$Saved));
 
   @override
-  Saved get _value => super._value as Saved;
+  _$Saved get _value => super._value as _$Saved;
 
   @override
   $Res call({
     Object? image = freezed,
   }) {
-    return _then(Saved(
+    return _then(_$Saved(
       image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -431,7 +407,7 @@ class _$Saved implements Saved {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Saved &&
+            other is _$Saved &&
             const DeepCollectionEquality().equals(other.image, image));
   }
 
@@ -441,8 +417,8 @@ class _$Saved implements Saved {
 
   @JsonKey(ignore: true)
   @override
-  $SavedCopyWith<Saved> get copyWith =>
-      _$SavedCopyWithImpl<Saved>(this, _$identity);
+  _$$SavedCopyWith<_$Saved> get copyWith =>
+      __$$SavedCopyWithImpl<_$Saved>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -514,35 +490,12 @@ class _$Saved implements Saved {
 }
 
 abstract class Saved implements UserDataEvents {
-  const factory Saved(File? image) = _$Saved;
+  const factory Saved(final File? image) = _$Saved;
 
-  File? get image;
+  File? get image => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SavedCopyWith<Saved> get copyWith => throw _privateConstructorUsedError;
+  _$$SavedCopyWith<_$Saved> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$UserDataStateTearOff {
-  const _$UserDataStateTearOff();
-
-  _UserDataState call(
-      {required UserData data,
-      required bool showErrorMessages,
-      required bool isSaving,
-      required bool isEditing,
-      required Option<Either<UserDataFailure, Unit>> successOrFailure}) {
-    return _UserDataState(
-      data: data,
-      showErrorMessages: showErrorMessages,
-      isSaving: isSaving,
-      isEditing: isEditing,
-      successOrFailure: successOrFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $UserDataState = _$UserDataStateTearOff();
 
 /// @nodoc
 mixin _$UserDataState {
@@ -623,11 +576,11 @@ class _$UserDataStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UserDataStateCopyWith<$Res>
+abstract class _$$_UserDataStateCopyWith<$Res>
     implements $UserDataStateCopyWith<$Res> {
-  factory _$UserDataStateCopyWith(
-          _UserDataState value, $Res Function(_UserDataState) then) =
-      __$UserDataStateCopyWithImpl<$Res>;
+  factory _$$_UserDataStateCopyWith(
+          _$_UserDataState value, $Res Function(_$_UserDataState) then) =
+      __$$_UserDataStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {UserData data,
@@ -641,15 +594,15 @@ abstract class _$UserDataStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserDataStateCopyWithImpl<$Res>
+class __$$_UserDataStateCopyWithImpl<$Res>
     extends _$UserDataStateCopyWithImpl<$Res>
-    implements _$UserDataStateCopyWith<$Res> {
-  __$UserDataStateCopyWithImpl(
-      _UserDataState _value, $Res Function(_UserDataState) _then)
-      : super(_value, (v) => _then(v as _UserDataState));
+    implements _$$_UserDataStateCopyWith<$Res> {
+  __$$_UserDataStateCopyWithImpl(
+      _$_UserDataState _value, $Res Function(_$_UserDataState) _then)
+      : super(_value, (v) => _then(v as _$_UserDataState));
 
   @override
-  _UserDataState get _value => super._value as _UserDataState;
+  _$_UserDataState get _value => super._value as _$_UserDataState;
 
   @override
   $Res call({
@@ -659,7 +612,7 @@ class __$UserDataStateCopyWithImpl<$Res>
     Object? isEditing = freezed,
     Object? successOrFailure = freezed,
   }) {
-    return _then(_UserDataState(
+    return _then(_$_UserDataState(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -714,7 +667,7 @@ class _$_UserDataState implements _UserDataState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserDataState &&
+            other is _$_UserDataState &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
@@ -735,31 +688,32 @@ class _$_UserDataState implements _UserDataState {
 
   @JsonKey(ignore: true)
   @override
-  _$UserDataStateCopyWith<_UserDataState> get copyWith =>
-      __$UserDataStateCopyWithImpl<_UserDataState>(this, _$identity);
+  _$$_UserDataStateCopyWith<_$_UserDataState> get copyWith =>
+      __$$_UserDataStateCopyWithImpl<_$_UserDataState>(this, _$identity);
 }
 
 abstract class _UserDataState implements UserDataState {
   const factory _UserDataState(
-          {required UserData data,
-          required bool showErrorMessages,
-          required bool isSaving,
-          required bool isEditing,
-          required Option<Either<UserDataFailure, Unit>> successOrFailure}) =
-      _$_UserDataState;
+      {required final UserData data,
+      required final bool showErrorMessages,
+      required final bool isSaving,
+      required final bool isEditing,
+      required final Option<Either<UserDataFailure, Unit>>
+          successOrFailure}) = _$_UserDataState;
 
   @override
-  UserData get data;
+  UserData get data => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  bool get isSaving;
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
-  bool get isEditing;
+  bool get isEditing => throw _privateConstructorUsedError;
   @override
-  Option<Either<UserDataFailure, Unit>> get successOrFailure;
+  Option<Either<UserDataFailure, Unit>> get successOrFailure =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserDataStateCopyWith<_UserDataState> get copyWith =>
+  _$$_UserDataStateCopyWith<_$_UserDataState> get copyWith =>
       throw _privateConstructorUsedError;
 }

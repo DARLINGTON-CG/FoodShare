@@ -43,7 +43,7 @@ class UserDataBloc extends Bloc<UserDataEvents, UserDataState> {
 
     if (state.data.failureOption.isNone() &&
         (event.image != null || state.data.imageUrl.isValid())) {
-      final Either<UserDataFailure, Unit>? failureOrSuccess = state.isEditing
+      final Either<UserDataFailure, Unit> failureOrSuccess = state.isEditing
           ? await _userRepository.update(state.data, event.image)
           : await _userRepository.create(state.data, event.image!);
       emit(state.copyWith(

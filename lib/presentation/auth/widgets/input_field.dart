@@ -41,6 +41,10 @@ class _InputFieldState extends State<InputField> {
       onChanged: widget.onChangedFunc,
       obscureText: hidden,
       validator: widget.validator,
+      style: GoogleFonts.lato(
+        color: Colors.black87,
+        fontSize: 14
+      ),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(kPaddingM),
         focusedBorder: OutlineInputBorder(
@@ -69,11 +73,12 @@ class _InputFieldState extends State<InputField> {
           ),
         ),
         hintText: widget.label,
-        hintStyle: GoogleFonts.alegreya(
-          color: kBlack.withOpacity(0.7),
-          fontSize: 17,
-          fontWeight: FontWeight.w500,
+        hintStyle: GoogleFonts.lato(
+          color: Colors.black87,
+          fontSize: 14,
+          
         ),
+      
         prefixIcon: Icon(
           widget.passwordField ? Icons.lock_rounded : Icons.person,
           color: kBlack,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../../domain/posts/post.dart';
@@ -28,13 +29,15 @@ class PostItem extends StatelessWidget {
         } else {
           final UserDataReadBloc userDataBloc = 
               BlocProvider.of<UserDataReadBloc>(context);
+          final ReadMessagesBloc readMessagesBloc = 
+              BlocProvider.of<ReadMessagesBloc>(context);
           showDetailSheet(context, post,userDataBloc
           .state.map(
                                   initial: (_) => null,
                                   loadingProgress: (_) => null,
                                   // ignore: always_specify_types
                                   loadSuccess: (success) => success.userData,
-                                  loadFailure: (_) => null));
+                                  loadFailure: (_) => null),readMessagesBloc);
         }
       },
       child: Container(
@@ -105,7 +108,7 @@ class PostItem extends StatelessWidget {
                         Icons.face,
                         size: 16,
                       ),
-                      Text("-${post.username.getOrCrash().length < 8 ? post.username.getOrCrash():post.username.getOrCrash().substring(0,8)+ "..."}",
+                      Text("-${post.username.getOrCrash().length < 8 ? post.username.getOrCrash():"${post.username.getOrCrash().substring(0,8)}..."}",
                           style: GoogleFonts.lato(
                               fontSize: 13, fontWeight: FontWeight.bold)),
                     ],

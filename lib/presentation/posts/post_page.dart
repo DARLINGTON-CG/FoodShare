@@ -185,17 +185,17 @@ class _PostPageState extends State<PostPage> {
                             ),
                             IconButton(
                               onPressed: () async {
-                                final XFile? _imageFilePicked =
+                                final XFile? imageFilePicked =
                                     await _imagePicker.pickImage(
                                         source: ImageSource.gallery);
-                                if (_imageFilePicked == null) return;
-                                final File? _converted =
-                                    File((_imageFilePicked).path);
+                                if (imageFilePicked == null) return;
+                                final File converted =
+                                    File((imageFilePicked).path);
                                 Future<void>.delayed(const Duration()).then(
                                     (_) => Navigator.of(context)
                                             .push(SlideUpAnim(
                                                 page: EditPicturePage(
-                                                    picture: _converted)))
+                                                    picture: converted)))
                                             // ignore: always_specify_types
                                             .then((value) {
                                           setState(() {
@@ -219,17 +219,17 @@ class _PostPageState extends State<PostPage> {
                             child: IconButton(
                               icon: const Icon(Icons.add),
                               onPressed: () async {
-                                final XFile? _imageFilePicked =
+                                final XFile? imageFilePicked =
                                     await _imagePicker.pickImage(
                                         source: ImageSource.gallery);
-                                if (_imageFilePicked == null) return;
-                                final File? _converted =
-                                    File((_imageFilePicked).path);
+                                if (imageFilePicked == null) return;
+                                final File converted =
+                                    File((imageFilePicked).path);
                                 Future<void>.delayed(const Duration()).then(
                                     (_) => Navigator.of(context)
                                             .push(SlideUpAnim(
                                                 page: EditPicturePage(
-                                                    picture: _converted)))
+                                                    picture: converted)))
                                             // ignore: always_specify_types
                                             .then((value) {
                                           setState(() {
@@ -247,17 +247,17 @@ class _PostPageState extends State<PostPage> {
                                 ),
                                 IconButton(
                                   onPressed: () async {
-                                    final XFile? _imageFilePicked =
+                                    final XFile? imageFilePicked =
                                         await _imagePicker.pickImage(
                                             source: ImageSource.gallery);
-                                    if (_imageFilePicked == null) return;
-                                    final File? _converted =
-                                        File((_imageFilePicked).path);
+                                    if (imageFilePicked == null) return;
+                                    final File converted =
+                                        File((imageFilePicked).path);
                                     Future<void>.delayed(const Duration()).then(
                                         (_) => Navigator.of(context)
                                                 .push(SlideUpAnim(
                                                     page: EditPicturePage(
-                                                        picture: _converted)))
+                                                        picture: converted)))
                                                 // ignore: always_specify_types
                                                 .then((value) {
                                               setState(() {

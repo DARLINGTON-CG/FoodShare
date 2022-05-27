@@ -12,31 +12,7 @@ part of 'message_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MessageFailureTearOff {
-  const _$MessageFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-
-  _InsufficientPermissions insufficientPermissions() {
-    return const _InsufficientPermissions();
-  }
-
-  _UnableToUpdate unableToUpdate() {
-    return const _UnableToUpdate();
-  }
-
-  _NonExistentUser nonExistentUser() {
-    return const _NonExistentUser();
-  }
-}
-
-/// @nodoc
-const $MessageFailure = _$MessageFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MessageFailure {
@@ -111,21 +87,22 @@ class _$MessageFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res> extends _$MessageFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$MessageFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -141,7 +118,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -228,23 +205,23 @@ abstract class _Unexpected implements MessageFailure {
 }
 
 /// @nodoc
-abstract class _$InsufficientPermissionsCopyWith<$Res> {
-  factory _$InsufficientPermissionsCopyWith(_InsufficientPermissions value,
-          $Res Function(_InsufficientPermissions) then) =
-      __$InsufficientPermissionsCopyWithImpl<$Res>;
+abstract class _$$_InsufficientPermissionsCopyWith<$Res> {
+  factory _$$_InsufficientPermissionsCopyWith(_$_InsufficientPermissions value,
+          $Res Function(_$_InsufficientPermissions) then) =
+      __$$_InsufficientPermissionsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InsufficientPermissionsCopyWithImpl<$Res>
+class __$$_InsufficientPermissionsCopyWithImpl<$Res>
     extends _$MessageFailureCopyWithImpl<$Res>
-    implements _$InsufficientPermissionsCopyWith<$Res> {
-  __$InsufficientPermissionsCopyWithImpl(_InsufficientPermissions _value,
-      $Res Function(_InsufficientPermissions) _then)
-      : super(_value, (v) => _then(v as _InsufficientPermissions));
+    implements _$$_InsufficientPermissionsCopyWith<$Res> {
+  __$$_InsufficientPermissionsCopyWithImpl(_$_InsufficientPermissions _value,
+      $Res Function(_$_InsufficientPermissions) _then)
+      : super(_value, (v) => _then(v as _$_InsufficientPermissions));
 
   @override
-  _InsufficientPermissions get _value =>
-      super._value as _InsufficientPermissions;
+  _$_InsufficientPermissions get _value =>
+      super._value as _$_InsufficientPermissions;
 }
 
 /// @nodoc
@@ -260,7 +237,8 @@ class _$_InsufficientPermissions implements _InsufficientPermissions {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InsufficientPermissions);
+        (other.runtimeType == runtimeType &&
+            other is _$_InsufficientPermissions);
   }
 
   @override
@@ -347,22 +325,22 @@ abstract class _InsufficientPermissions implements MessageFailure {
 }
 
 /// @nodoc
-abstract class _$UnableToUpdateCopyWith<$Res> {
-  factory _$UnableToUpdateCopyWith(
-          _UnableToUpdate value, $Res Function(_UnableToUpdate) then) =
-      __$UnableToUpdateCopyWithImpl<$Res>;
+abstract class _$$_UnableToUpdateCopyWith<$Res> {
+  factory _$$_UnableToUpdateCopyWith(
+          _$_UnableToUpdate value, $Res Function(_$_UnableToUpdate) then) =
+      __$$_UnableToUpdateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnableToUpdateCopyWithImpl<$Res>
+class __$$_UnableToUpdateCopyWithImpl<$Res>
     extends _$MessageFailureCopyWithImpl<$Res>
-    implements _$UnableToUpdateCopyWith<$Res> {
-  __$UnableToUpdateCopyWithImpl(
-      _UnableToUpdate _value, $Res Function(_UnableToUpdate) _then)
-      : super(_value, (v) => _then(v as _UnableToUpdate));
+    implements _$$_UnableToUpdateCopyWith<$Res> {
+  __$$_UnableToUpdateCopyWithImpl(
+      _$_UnableToUpdate _value, $Res Function(_$_UnableToUpdate) _then)
+      : super(_value, (v) => _then(v as _$_UnableToUpdate));
 
   @override
-  _UnableToUpdate get _value => super._value as _UnableToUpdate;
+  _$_UnableToUpdate get _value => super._value as _$_UnableToUpdate;
 }
 
 /// @nodoc
@@ -378,7 +356,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UnableToUpdate);
+        (other.runtimeType == runtimeType && other is _$_UnableToUpdate);
   }
 
   @override
@@ -465,22 +443,22 @@ abstract class _UnableToUpdate implements MessageFailure {
 }
 
 /// @nodoc
-abstract class _$NonExistentUserCopyWith<$Res> {
-  factory _$NonExistentUserCopyWith(
-          _NonExistentUser value, $Res Function(_NonExistentUser) then) =
-      __$NonExistentUserCopyWithImpl<$Res>;
+abstract class _$$_NonExistentUserCopyWith<$Res> {
+  factory _$$_NonExistentUserCopyWith(
+          _$_NonExistentUser value, $Res Function(_$_NonExistentUser) then) =
+      __$$_NonExistentUserCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NonExistentUserCopyWithImpl<$Res>
+class __$$_NonExistentUserCopyWithImpl<$Res>
     extends _$MessageFailureCopyWithImpl<$Res>
-    implements _$NonExistentUserCopyWith<$Res> {
-  __$NonExistentUserCopyWithImpl(
-      _NonExistentUser _value, $Res Function(_NonExistentUser) _then)
-      : super(_value, (v) => _then(v as _NonExistentUser));
+    implements _$$_NonExistentUserCopyWith<$Res> {
+  __$$_NonExistentUserCopyWithImpl(
+      _$_NonExistentUser _value, $Res Function(_$_NonExistentUser) _then)
+      : super(_value, (v) => _then(v as _$_NonExistentUser));
 
   @override
-  _NonExistentUser get _value => super._value as _NonExistentUser;
+  _$_NonExistentUser get _value => super._value as _$_NonExistentUser;
 }
 
 /// @nodoc
@@ -496,7 +474,7 @@ class _$_NonExistentUser implements _NonExistentUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _NonExistentUser);
+        (other.runtimeType == runtimeType && other is _$_NonExistentUser);
   }
 
   @override

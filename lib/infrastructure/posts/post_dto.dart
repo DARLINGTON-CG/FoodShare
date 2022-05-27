@@ -17,7 +17,9 @@ class PostDto with _$PostDto {
 
   const factory PostDto(
           // ignore: invalid_annotation_target
-          {@JsonKey(ignore: true) String? id,
+          {
+            //@JsonKey(ignore: true) String? id,
+            required String id,
           required String imageUrl,
           required String pickupTime,
           required String description,
@@ -48,8 +50,8 @@ class PostDto with _$PostDto {
 
   Post toDomain() {
     return Post(
-         id: UniqueId(),
-        //id: UniqueId.fromUniqueString(id!),
+        // id: UniqueId(),
+        id: UniqueId.fromUniqueString(id),
         username: Username(username),
         postPrice: PostPrice(postPrice),
         description: PostDescription(description),
@@ -84,3 +86,4 @@ class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
   @override
   Object toJson(FieldValue fieldValue) => fieldValue;
 }
+

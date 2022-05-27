@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../domain/messaging/chat_room.dart';
+import '../../domain/utility/useful_functions.dart';
 import '../anim/widgets/three_dot_indicator.dart';
 
 import 'widgets/chat_list_item.dart';
@@ -24,8 +24,6 @@ class MessagesPageView extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     key: const PageStorageKey<String>("chat_page_view_key"),
                     slivers: <Widget>[
-                  
-                     
                       SliverPadding(
                           padding: const EdgeInsets.only(top: 10),
                           sliver: state.map(initial: (_) {
@@ -59,9 +57,22 @@ class MessagesPageView extends StatelessWidget {
                                         .getOrCrash();
 
                                     return ChatListItem(
-                                        title: chat.requester.username.getOrCrash(),
+                                        chatRoom: chat,
+                                        title: getUserId() !=
+                                                chat.requester.userId
+                                                    .getOrCrash()
+                                            ? chat.requester.username
+                                                .getOrCrash()
+                                            : chat.owner.username
+                                                .getOrCrash(),
+                                        messageIndex: index,
                                         lastMessage: lastMessage,
-                                        imageUrl: chat.requester.imageUrl.getOrCrash());
+                                        imageUrl: getUserId() !=
+                                                chat.requester.userId
+                                                    .getOrCrash()
+                                            ? chat.requester.imageUrl
+                                                .getOrCrash()
+                                            : chat.owner.imageUrl.getOrCrash());
                                   }
                                 },
                                 childCount: state.chatRoom.size,

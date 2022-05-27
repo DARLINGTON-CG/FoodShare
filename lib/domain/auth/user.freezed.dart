@@ -12,21 +12,7 @@ part of 'user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LocalUserTearOff {
-  const _$LocalUserTearOff();
-
-  _LocalUser call({required UniqueId id}) {
-    return _LocalUser(
-      id: id,
-    );
-  }
-}
-
-/// @nodoc
-const $LocalUser = _$LocalUserTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$LocalUser {
@@ -66,28 +52,29 @@ class _$LocalUserCopyWithImpl<$Res> implements $LocalUserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LocalUserCopyWith<$Res> implements $LocalUserCopyWith<$Res> {
-  factory _$LocalUserCopyWith(
-          _LocalUser value, $Res Function(_LocalUser) then) =
-      __$LocalUserCopyWithImpl<$Res>;
+abstract class _$$_LocalUserCopyWith<$Res> implements $LocalUserCopyWith<$Res> {
+  factory _$$_LocalUserCopyWith(
+          _$_LocalUser value, $Res Function(_$_LocalUser) then) =
+      __$$_LocalUserCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$LocalUserCopyWithImpl<$Res> extends _$LocalUserCopyWithImpl<$Res>
-    implements _$LocalUserCopyWith<$Res> {
-  __$LocalUserCopyWithImpl(_LocalUser _value, $Res Function(_LocalUser) _then)
-      : super(_value, (v) => _then(v as _LocalUser));
+class __$$_LocalUserCopyWithImpl<$Res> extends _$LocalUserCopyWithImpl<$Res>
+    implements _$$_LocalUserCopyWith<$Res> {
+  __$$_LocalUserCopyWithImpl(
+      _$_LocalUser _value, $Res Function(_$_LocalUser) _then)
+      : super(_value, (v) => _then(v as _$_LocalUser));
 
   @override
-  _LocalUser get _value => super._value as _LocalUser;
+  _$_LocalUser get _value => super._value as _$_LocalUser;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_LocalUser(
+    return _then(_$_LocalUser(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,7 +100,7 @@ class _$_LocalUser implements _LocalUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LocalUser &&
+            other is _$_LocalUser &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -123,17 +110,17 @@ class _$_LocalUser implements _LocalUser {
 
   @JsonKey(ignore: true)
   @override
-  _$LocalUserCopyWith<_LocalUser> get copyWith =>
-      __$LocalUserCopyWithImpl<_LocalUser>(this, _$identity);
+  _$$_LocalUserCopyWith<_$_LocalUser> get copyWith =>
+      __$$_LocalUserCopyWithImpl<_$_LocalUser>(this, _$identity);
 }
 
 abstract class _LocalUser implements LocalUser {
-  const factory _LocalUser({required UniqueId id}) = _$_LocalUser;
+  const factory _LocalUser({required final UniqueId id}) = _$_LocalUser;
 
   @override
-  UniqueId get id;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LocalUserCopyWith<_LocalUser> get copyWith =>
+  _$$_LocalUserCopyWith<_$_LocalUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

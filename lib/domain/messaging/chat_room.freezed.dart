@@ -12,30 +12,7 @@ part of 'chat_room.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ChatRoomTearOff {
-  const _$ChatRoomTearOff();
-
-  _ChatRoom call(
-      {required List<String> chatIds,
-      required Post post,
-      required UserData owner,
-      required UserData requester,
-      required MessageList<Message> messages}) {
-    return _ChatRoom(
-      chatIds: chatIds,
-      post: post,
-      owner: owner,
-      requester: requester,
-      messages: messages,
-    );
-  }
-}
-
-/// @nodoc
-const $ChatRoom = _$ChatRoomTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ChatRoom {
@@ -129,9 +106,10 @@ class _$ChatRoomCopyWithImpl<$Res> implements $ChatRoomCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
-  factory _$ChatRoomCopyWith(_ChatRoom value, $Res Function(_ChatRoom) then) =
-      __$ChatRoomCopyWithImpl<$Res>;
+abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
+  factory _$$_ChatRoomCopyWith(
+          _$_ChatRoom value, $Res Function(_$_ChatRoom) then) =
+      __$$_ChatRoomCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<String> chatIds,
@@ -149,13 +127,14 @@ abstract class _$ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
-    implements _$ChatRoomCopyWith<$Res> {
-  __$ChatRoomCopyWithImpl(_ChatRoom _value, $Res Function(_ChatRoom) _then)
-      : super(_value, (v) => _then(v as _ChatRoom));
+class __$$_ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
+    implements _$$_ChatRoomCopyWith<$Res> {
+  __$$_ChatRoomCopyWithImpl(
+      _$_ChatRoom _value, $Res Function(_$_ChatRoom) _then)
+      : super(_value, (v) => _then(v as _$_ChatRoom));
 
   @override
-  _ChatRoom get _value => super._value as _ChatRoom;
+  _$_ChatRoom get _value => super._value as _$_ChatRoom;
 
   @override
   $Res call({
@@ -165,9 +144,9 @@ class __$ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
     Object? requester = freezed,
     Object? messages = freezed,
   }) {
-    return _then(_ChatRoom(
+    return _then(_$_ChatRoom(
       chatIds: chatIds == freezed
-          ? _value.chatIds
+          ? _value._chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       post: post == freezed
@@ -194,15 +173,21 @@ class __$ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
 
 class _$_ChatRoom extends _ChatRoom {
   const _$_ChatRoom(
-      {required this.chatIds,
+      {required final List<String> chatIds,
       required this.post,
       required this.owner,
       required this.requester,
       required this.messages})
-      : super._();
+      : _chatIds = chatIds,
+        super._();
 
+  final List<String> _chatIds;
   @override
-  final List<String> chatIds;
+  List<String> get chatIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chatIds);
+  }
+
   @override
   final Post post;
   @override
@@ -221,8 +206,8 @@ class _$_ChatRoom extends _ChatRoom {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChatRoom &&
-            const DeepCollectionEquality().equals(other.chatIds, chatIds) &&
+            other is _$_ChatRoom &&
+            const DeepCollectionEquality().equals(other._chatIds, _chatIds) &&
             const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality().equals(other.owner, owner) &&
             const DeepCollectionEquality().equals(other.requester, requester) &&
@@ -232,7 +217,7 @@ class _$_ChatRoom extends _ChatRoom {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(chatIds),
+      const DeepCollectionEquality().hash(_chatIds),
       const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(owner),
       const DeepCollectionEquality().hash(requester),
@@ -240,31 +225,31 @@ class _$_ChatRoom extends _ChatRoom {
 
   @JsonKey(ignore: true)
   @override
-  _$ChatRoomCopyWith<_ChatRoom> get copyWith =>
-      __$ChatRoomCopyWithImpl<_ChatRoom>(this, _$identity);
+  _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>
+      __$$_ChatRoomCopyWithImpl<_$_ChatRoom>(this, _$identity);
 }
 
 abstract class _ChatRoom extends ChatRoom {
   const factory _ChatRoom(
-      {required List<String> chatIds,
-      required Post post,
-      required UserData owner,
-      required UserData requester,
-      required MessageList<Message> messages}) = _$_ChatRoom;
+      {required final List<String> chatIds,
+      required final Post post,
+      required final UserData owner,
+      required final UserData requester,
+      required final MessageList<Message> messages}) = _$_ChatRoom;
   const _ChatRoom._() : super._();
 
   @override
-  List<String> get chatIds;
+  List<String> get chatIds => throw _privateConstructorUsedError;
   @override
-  Post get post;
+  Post get post => throw _privateConstructorUsedError;
   @override
-  UserData get owner;
+  UserData get owner => throw _privateConstructorUsedError;
   @override
-  UserData get requester;
+  UserData get requester => throw _privateConstructorUsedError;
   @override
-  MessageList<Message> get messages;
+  MessageList<Message> get messages => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ChatRoomCopyWith<_ChatRoom> get copyWith =>
+  _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>
       throw _privateConstructorUsedError;
 }

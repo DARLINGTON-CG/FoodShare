@@ -12,38 +12,11 @@ part of 'chat_room_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ChatRoomDto _$ChatRoomDtoFromJson(Map<String, dynamic> json) {
   return _ChatRoomDto.fromJson(json);
 }
-
-/// @nodoc
-class _$ChatRoomDtoTearOff {
-  const _$ChatRoomDtoTearOff();
-
-  _ChatRoomDto call(
-      {required List<String> chatIds,
-      required Map<String, dynamic> owner,
-      required Map<String, dynamic> requester,
-      required Map<String, dynamic> post,
-      required List<Map<String, dynamic>> messages}) {
-    return _ChatRoomDto(
-      chatIds: chatIds,
-      owner: owner,
-      requester: requester,
-      post: post,
-      messages: messages,
-    );
-  }
-
-  ChatRoomDto fromJson(Map<String, Object?> json) {
-    return ChatRoomDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ChatRoomDto = _$ChatRoomDtoTearOff();
 
 /// @nodoc
 mixin _$ChatRoomDto {
@@ -114,11 +87,11 @@ class _$ChatRoomDtoCopyWithImpl<$Res> implements $ChatRoomDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ChatRoomDtoCopyWith<$Res>
+abstract class _$$_ChatRoomDtoCopyWith<$Res>
     implements $ChatRoomDtoCopyWith<$Res> {
-  factory _$ChatRoomDtoCopyWith(
-          _ChatRoomDto value, $Res Function(_ChatRoomDto) then) =
-      __$ChatRoomDtoCopyWithImpl<$Res>;
+  factory _$$_ChatRoomDtoCopyWith(
+          _$_ChatRoomDto value, $Res Function(_$_ChatRoomDto) then) =
+      __$$_ChatRoomDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<String> chatIds,
@@ -129,14 +102,14 @@ abstract class _$ChatRoomDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
-    implements _$ChatRoomDtoCopyWith<$Res> {
-  __$ChatRoomDtoCopyWithImpl(
-      _ChatRoomDto _value, $Res Function(_ChatRoomDto) _then)
-      : super(_value, (v) => _then(v as _ChatRoomDto));
+class __$$_ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
+    implements _$$_ChatRoomDtoCopyWith<$Res> {
+  __$$_ChatRoomDtoCopyWithImpl(
+      _$_ChatRoomDto _value, $Res Function(_$_ChatRoomDto) _then)
+      : super(_value, (v) => _then(v as _$_ChatRoomDto));
 
   @override
-  _ChatRoomDto get _value => super._value as _ChatRoomDto;
+  _$_ChatRoomDto get _value => super._value as _$_ChatRoomDto;
 
   @override
   $Res call({
@@ -146,25 +119,25 @@ class __$ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
     Object? post = freezed,
     Object? messages = freezed,
   }) {
-    return _then(_ChatRoomDto(
+    return _then(_$_ChatRoomDto(
       chatIds: chatIds == freezed
-          ? _value.chatIds
+          ? _value._chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       owner: owner == freezed
-          ? _value.owner
+          ? _value._owner
           : owner // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       requester: requester == freezed
-          ? _value.requester
+          ? _value._requester
           : requester // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       post: post == freezed
-          ? _value.post
+          ? _value._post
           : post // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       messages: messages == freezed
-          ? _value.messages
+          ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
     ));
@@ -175,26 +148,55 @@ class __$ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatRoomDto extends _ChatRoomDto {
   const _$_ChatRoomDto(
-      {required this.chatIds,
-      required this.owner,
-      required this.requester,
-      required this.post,
-      required this.messages})
-      : super._();
+      {required final List<String> chatIds,
+      required final Map<String, dynamic> owner,
+      required final Map<String, dynamic> requester,
+      required final Map<String, dynamic> post,
+      required final List<Map<String, dynamic>> messages})
+      : _chatIds = chatIds,
+        _owner = owner,
+        _requester = requester,
+        _post = post,
+        _messages = messages,
+        super._();
 
   factory _$_ChatRoomDto.fromJson(Map<String, dynamic> json) =>
       _$$_ChatRoomDtoFromJson(json);
 
+  final List<String> _chatIds;
   @override
-  final List<String> chatIds;
+  List<String> get chatIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chatIds);
+  }
+
+  final Map<String, dynamic> _owner;
   @override
-  final Map<String, dynamic> owner;
+  Map<String, dynamic> get owner {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_owner);
+  }
+
+  final Map<String, dynamic> _requester;
   @override
-  final Map<String, dynamic> requester;
+  Map<String, dynamic> get requester {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_requester);
+  }
+
+  final Map<String, dynamic> _post;
   @override
-  final Map<String, dynamic> post;
+  Map<String, dynamic> get post {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_post);
+  }
+
+  final List<Map<String, dynamic>> _messages;
   @override
-  final List<Map<String, dynamic>> messages;
+  List<Map<String, dynamic>> get messages {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
 
   @override
   String toString() {
@@ -205,27 +207,29 @@ class _$_ChatRoomDto extends _ChatRoomDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChatRoomDto &&
-            const DeepCollectionEquality().equals(other.chatIds, chatIds) &&
-            const DeepCollectionEquality().equals(other.owner, owner) &&
-            const DeepCollectionEquality().equals(other.requester, requester) &&
-            const DeepCollectionEquality().equals(other.post, post) &&
-            const DeepCollectionEquality().equals(other.messages, messages));
+            other is _$_ChatRoomDto &&
+            const DeepCollectionEquality().equals(other._chatIds, _chatIds) &&
+            const DeepCollectionEquality().equals(other._owner, _owner) &&
+            const DeepCollectionEquality()
+                .equals(other._requester, _requester) &&
+            const DeepCollectionEquality().equals(other._post, _post) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(chatIds),
-      const DeepCollectionEquality().hash(owner),
-      const DeepCollectionEquality().hash(requester),
-      const DeepCollectionEquality().hash(post),
-      const DeepCollectionEquality().hash(messages));
 
   @JsonKey(ignore: true)
   @override
-  _$ChatRoomDtoCopyWith<_ChatRoomDto> get copyWith =>
-      __$ChatRoomDtoCopyWithImpl<_ChatRoomDto>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_chatIds),
+      const DeepCollectionEquality().hash(_owner),
+      const DeepCollectionEquality().hash(_requester),
+      const DeepCollectionEquality().hash(_post),
+      const DeepCollectionEquality().hash(_messages));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ChatRoomDtoCopyWith<_$_ChatRoomDto> get copyWith =>
+      __$$_ChatRoomDtoCopyWithImpl<_$_ChatRoomDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -235,54 +239,35 @@ class _$_ChatRoomDto extends _ChatRoomDto {
 
 abstract class _ChatRoomDto extends ChatRoomDto {
   const factory _ChatRoomDto(
-      {required List<String> chatIds,
-      required Map<String, dynamic> owner,
-      required Map<String, dynamic> requester,
-      required Map<String, dynamic> post,
-      required List<Map<String, dynamic>> messages}) = _$_ChatRoomDto;
+      {required final List<String> chatIds,
+      required final Map<String, dynamic> owner,
+      required final Map<String, dynamic> requester,
+      required final Map<String, dynamic> post,
+      required final List<Map<String, dynamic>> messages}) = _$_ChatRoomDto;
   const _ChatRoomDto._() : super._();
 
   factory _ChatRoomDto.fromJson(Map<String, dynamic> json) =
       _$_ChatRoomDto.fromJson;
 
   @override
-  List<String> get chatIds;
+  List<String> get chatIds => throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get owner;
+  Map<String, dynamic> get owner => throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get requester;
+  Map<String, dynamic> get requester => throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get post;
+  Map<String, dynamic> get post => throw _privateConstructorUsedError;
   @override
-  List<Map<String, dynamic>> get messages;
+  List<Map<String, dynamic>> get messages => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ChatRoomDtoCopyWith<_ChatRoomDto> get copyWith =>
+  _$$_ChatRoomDtoCopyWith<_$_ChatRoomDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 MessagesDto _$MessagesDtoFromJson(Map<String, dynamic> json) {
   return _MessagesDto.fromJson(json);
 }
-
-/// @nodoc
-class _$MessagesDtoTearOff {
-  const _$MessagesDtoTearOff();
-
-  _MessagesDto call({required String id, required String message}) {
-    return _MessagesDto(
-      id: id,
-      message: message,
-    );
-  }
-
-  MessagesDto fromJson(Map<String, Object?> json) {
-    return MessagesDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MessagesDto = _$MessagesDtoTearOff();
 
 /// @nodoc
 mixin _$MessagesDto {
@@ -330,31 +315,31 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MessagesDtoCopyWith<$Res>
+abstract class _$$_MessagesDtoCopyWith<$Res>
     implements $MessagesDtoCopyWith<$Res> {
-  factory _$MessagesDtoCopyWith(
-          _MessagesDto value, $Res Function(_MessagesDto) then) =
-      __$MessagesDtoCopyWithImpl<$Res>;
+  factory _$$_MessagesDtoCopyWith(
+          _$_MessagesDto value, $Res Function(_$_MessagesDto) then) =
+      __$$_MessagesDtoCopyWithImpl<$Res>;
   @override
   $Res call({String id, String message});
 }
 
 /// @nodoc
-class __$MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
-    implements _$MessagesDtoCopyWith<$Res> {
-  __$MessagesDtoCopyWithImpl(
-      _MessagesDto _value, $Res Function(_MessagesDto) _then)
-      : super(_value, (v) => _then(v as _MessagesDto));
+class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
+    implements _$$_MessagesDtoCopyWith<$Res> {
+  __$$_MessagesDtoCopyWithImpl(
+      _$_MessagesDto _value, $Res Function(_$_MessagesDto) _then)
+      : super(_value, (v) => _then(v as _$_MessagesDto));
 
   @override
-  _MessagesDto get _value => super._value as _MessagesDto;
+  _$_MessagesDto get _value => super._value as _$_MessagesDto;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
   }) {
-    return _then(_MessagesDto(
+    return _then(_$_MessagesDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -389,11 +374,12 @@ class _$_MessagesDto extends _MessagesDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MessagesDto &&
+            other is _$_MessagesDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -402,8 +388,8 @@ class _$_MessagesDto extends _MessagesDto {
 
   @JsonKey(ignore: true)
   @override
-  _$MessagesDtoCopyWith<_MessagesDto> get copyWith =>
-      __$MessagesDtoCopyWithImpl<_MessagesDto>(this, _$identity);
+  _$$_MessagesDtoCopyWith<_$_MessagesDto> get copyWith =>
+      __$$_MessagesDtoCopyWithImpl<_$_MessagesDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -412,19 +398,20 @@ class _$_MessagesDto extends _MessagesDto {
 }
 
 abstract class _MessagesDto extends MessagesDto {
-  const factory _MessagesDto({required String id, required String message}) =
-      _$_MessagesDto;
+  const factory _MessagesDto(
+      {required final String id,
+      required final String message}) = _$_MessagesDto;
   const _MessagesDto._() : super._();
 
   factory _MessagesDto.fromJson(Map<String, dynamic> json) =
       _$_MessagesDto.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MessagesDtoCopyWith<_MessagesDto> get copyWith =>
+  _$$_MessagesDtoCopyWith<_$_MessagesDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

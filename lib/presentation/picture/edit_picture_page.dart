@@ -9,10 +9,10 @@ class EditPicturePage extends StatefulWidget {
   final File? picture;
   const EditPicturePage({Key? key, required this.picture}) : super(key: key);
   @override
-  _EditPicturePageState createState() => _EditPicturePageState();
+  EditPicturePageState createState() => EditPicturePageState();
 }
 
-class _EditPicturePageState extends State<EditPicturePage> {
+class EditPicturePageState extends State<EditPicturePage> {
   final GlobalKey<ExtendedImageEditorState> editorKey =
       GlobalKey<ExtendedImageEditorState>();
 
@@ -31,7 +31,7 @@ class _EditPicturePageState extends State<EditPicturePage> {
     editorKey.currentState!.rotate(right: right);
   }
 
-  Future<void> crop(BuildContext context) async {
+  Future<File?> crop(BuildContext context) async {
     final ExtendedImageEditorState state = editorKey.currentState!;
     final Rect? rect = state.getCropRect();
     final EditActionDetails? action = state.editAction;
@@ -58,7 +58,8 @@ class _EditPicturePageState extends State<EditPicturePage> {
     );
     image?.writeAsBytesSync(result!);
 
-    Navigator.of(context).pop(image);
+    return image;
+   
   }
 
   @override
@@ -122,7 +123,7 @@ class _EditPicturePageState extends State<EditPicturePage> {
                       )),
                   TextButton(
                     onPressed: () async {
-                      await crop(context);
+                      await crop(context).then((File? image) =>  Navigator.of(context).pop(image));
                     },
                     child: Text('DONE',
                         style: GoogleFonts.lato(

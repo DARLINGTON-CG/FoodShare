@@ -11,11 +11,6 @@ class UserAvatar extends StatelessWidget {
     return Container(
       width: 90,
       height: 90,
-      child: file == null
-          ? Center(
-              child: Icon(Icons.add_a_photo_rounded,
-                  color: const Color(0xFF3212F1).withOpacity(0.5)))
-          : Container(),
       decoration: file == null
           ? BoxDecoration(
               color: Colors.grey.withOpacity(0.2),
@@ -26,6 +21,11 @@ class UserAvatar extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               image:
                   DecorationImage(image: FileImage(file!), fit: BoxFit.cover)),
+      child: file == null
+          ? Center(
+              child: Icon(Icons.add_a_photo_rounded,
+                  color: const Color(0xFF3212F1).withOpacity(0.5)))
+          : Container(),
     );
   }
 }

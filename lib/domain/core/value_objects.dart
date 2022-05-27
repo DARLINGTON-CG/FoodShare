@@ -63,3 +63,15 @@ class ImageUrl extends ValueObject<String> {
     return ImageUrl._(validateStringNotEmpty(input));
   }
 }
+
+
+class UserId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  const UserId._(this.value);
+
+  factory UserId(String input) {
+    return UserId._(validateStringNotEmpty(input));
+  }
+}

@@ -12,38 +12,7 @@ part of 'post.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PostTearOff {
-  const _$PostTearOff();
-
-  _Post call(
-      {required UniqueId id,
-      required PostDescription description,
-      required PostQuantity quantity,
-      required PostTitle title,
-      required ImageUrl imageUrl,
-      required PickupTime pickupTime,
-      required PostUserId postUserId,
-      required PostPrice postPrice,
-      required Username username}) {
-    return _Post(
-      id: id,
-      description: description,
-      quantity: quantity,
-      title: title,
-      imageUrl: imageUrl,
-      pickupTime: pickupTime,
-      postUserId: postUserId,
-      postPrice: postPrice,
-      username: username,
-    );
-  }
-}
-
-/// @nodoc
-const $Post = _$PostTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Post {
@@ -139,9 +108,9 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
-  factory _$PostCopyWith(_Post value, $Res Function(_Post) then) =
-      __$PostCopyWithImpl<$Res>;
+abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
+  factory _$$_PostCopyWith(_$_Post value, $Res Function(_$_Post) then) =
+      __$$_PostCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId id,
@@ -156,13 +125,13 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
-    implements _$PostCopyWith<$Res> {
-  __$PostCopyWithImpl(_Post _value, $Res Function(_Post) _then)
-      : super(_value, (v) => _then(v as _Post));
+class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
+    implements _$$_PostCopyWith<$Res> {
+  __$$_PostCopyWithImpl(_$_Post _value, $Res Function(_$_Post) _then)
+      : super(_value, (v) => _then(v as _$_Post));
 
   @override
-  _Post get _value => super._value as _Post;
+  _$_Post get _value => super._value as _$_Post;
 
   @override
   $Res call({
@@ -176,7 +145,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object? postPrice = freezed,
     Object? username = freezed,
   }) {
-    return _then(_Post(
+    return _then(_$_Post(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -260,7 +229,7 @@ class _$_Post extends _Post {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Post &&
+            other is _$_Post &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -290,42 +259,42 @@ class _$_Post extends _Post {
 
   @JsonKey(ignore: true)
   @override
-  _$PostCopyWith<_Post> get copyWith =>
-      __$PostCopyWithImpl<_Post>(this, _$identity);
+  _$$_PostCopyWith<_$_Post> get copyWith =>
+      __$$_PostCopyWithImpl<_$_Post>(this, _$identity);
 }
 
 abstract class _Post extends Post {
   const factory _Post(
-      {required UniqueId id,
-      required PostDescription description,
-      required PostQuantity quantity,
-      required PostTitle title,
-      required ImageUrl imageUrl,
-      required PickupTime pickupTime,
-      required PostUserId postUserId,
-      required PostPrice postPrice,
-      required Username username}) = _$_Post;
+      {required final UniqueId id,
+      required final PostDescription description,
+      required final PostQuantity quantity,
+      required final PostTitle title,
+      required final ImageUrl imageUrl,
+      required final PickupTime pickupTime,
+      required final PostUserId postUserId,
+      required final PostPrice postPrice,
+      required final Username username}) = _$_Post;
   const _Post._() : super._();
 
   @override
-  UniqueId get id;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
-  PostDescription get description;
+  PostDescription get description => throw _privateConstructorUsedError;
   @override
-  PostQuantity get quantity;
+  PostQuantity get quantity => throw _privateConstructorUsedError;
   @override
-  PostTitle get title;
+  PostTitle get title => throw _privateConstructorUsedError;
   @override
-  ImageUrl get imageUrl;
+  ImageUrl get imageUrl => throw _privateConstructorUsedError;
   @override
-  PickupTime get pickupTime;
+  PickupTime get pickupTime => throw _privateConstructorUsedError;
   @override
-  PostUserId get postUserId;
+  PostUserId get postUserId => throw _privateConstructorUsedError;
   @override
-  PostPrice get postPrice;
+  PostPrice get postPrice => throw _privateConstructorUsedError;
   @override
-  Username get username;
+  Username get username => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PostCopyWith<_Post> get copyWith => throw _privateConstructorUsedError;
+  _$$_PostCopyWith<_$_Post> get copyWith => throw _privateConstructorUsedError;
 }

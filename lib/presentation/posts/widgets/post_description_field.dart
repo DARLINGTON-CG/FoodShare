@@ -20,19 +20,20 @@ class _PostDescriptionFieldState extends State<PostDescriptionField> {
         listenWhen: (PostFormState previous, PostFormState current) =>
             previous.isEditing != current.isEditing,
         listener: (BuildContext context, PostFormState state) {
-            textEditingController.text = state.post.description.getOrCrash();
+          textEditingController.text = state.post.description.getOrCrash();
         },
         child: TextFormField(
           autocorrect: false,
           controller: textEditingController,
-           onChanged: (String value) =>
-                            BlocProvider.of<PostFormBloc>(context)
-                                .add(PostFormEvent.descriptionChanged(value)),
-                      
+          onChanged: (String value) => BlocProvider.of<PostFormBloc>(context)
+              .add(PostFormEvent.descriptionChanged(value)),
           keyboardType: TextInputType.text,
           maxLines: 3,
           minLines: 1,
-          
+          style: GoogleFonts.lato(
+            color: Colors.black,
+            fontSize: 14,
+          ),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             isCollapsed: true,
@@ -43,7 +44,7 @@ class _PostDescriptionFieldState extends State<PostDescriptionField> {
                 color: Colors.black,
               ),
             ),
-            hintText:  'Describe what is being given away....',
+            hintText: 'Describe what is being given away....',
             errorBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(

@@ -10,10 +10,12 @@ _$_UserDataDto _$$_UserDataDtoFromJson(Map<String, dynamic> json) =>
     _$_UserDataDto(
       imageUrl: json['imageUrl'] as String,
       username: json['username'] as String,
+      userId: json['userId'] as String,
     );
 
 Map<String, dynamic> _$$_UserDataDtoToJson(_$_UserDataDto instance) =>
     <String, dynamic>{
       'imageUrl': instance.imageUrl,
       'username': instance.username,
+      'userId': instance.userId,
     };

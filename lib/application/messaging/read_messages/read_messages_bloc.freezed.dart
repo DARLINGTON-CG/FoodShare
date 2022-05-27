@@ -12,19 +12,7 @@ part of 'read_messages_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ReadMessagesEventsTearOff {
-  const _$ReadMessagesEventsTearOff();
-
-  ReadAllStarted readAllStarted() {
-    return const ReadAllStarted();
-  }
-}
-
-/// @nodoc
-const $ReadMessagesEvents = _$ReadMessagesEventsTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ReadMessagesEvents {
@@ -80,22 +68,22 @@ class _$ReadMessagesEventsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $ReadAllStartedCopyWith<$Res> {
-  factory $ReadAllStartedCopyWith(
-          ReadAllStarted value, $Res Function(ReadAllStarted) then) =
-      _$ReadAllStartedCopyWithImpl<$Res>;
+abstract class _$$ReadAllStartedCopyWith<$Res> {
+  factory _$$ReadAllStartedCopyWith(
+          _$ReadAllStarted value, $Res Function(_$ReadAllStarted) then) =
+      __$$ReadAllStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReadAllStartedCopyWithImpl<$Res>
+class __$$ReadAllStartedCopyWithImpl<$Res>
     extends _$ReadMessagesEventsCopyWithImpl<$Res>
-    implements $ReadAllStartedCopyWith<$Res> {
-  _$ReadAllStartedCopyWithImpl(
-      ReadAllStarted _value, $Res Function(ReadAllStarted) _then)
-      : super(_value, (v) => _then(v as ReadAllStarted));
+    implements _$$ReadAllStartedCopyWith<$Res> {
+  __$$ReadAllStartedCopyWithImpl(
+      _$ReadAllStarted _value, $Res Function(_$ReadAllStarted) _then)
+      : super(_value, (v) => _then(v as _$ReadAllStarted));
 
   @override
-  ReadAllStarted get _value => super._value as ReadAllStarted;
+  _$ReadAllStarted get _value => super._value as _$ReadAllStarted;
 }
 
 /// @nodoc
@@ -111,7 +99,7 @@ class _$ReadAllStarted implements ReadAllStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ReadAllStarted);
+        (other.runtimeType == runtimeType && other is _$ReadAllStarted);
   }
 
   @override
@@ -177,34 +165,6 @@ class _$ReadAllStarted implements ReadAllStarted {
 abstract class ReadAllStarted implements ReadMessagesEvents {
   const factory ReadAllStarted() = _$ReadAllStarted;
 }
-
-/// @nodoc
-class _$ReadMessagesStateTearOff {
-  const _$ReadMessagesStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _LoadingProgress loadingProgress() {
-    return const _LoadingProgress();
-  }
-
-  _LoadSuccess loadSuccess(KtList<ChatRoom> chatRoom) {
-    return _LoadSuccess(
-      chatRoom,
-    );
-  }
-
-  _LoadFailure loadFailure(MessageFailure messageFailure) {
-    return _LoadFailure(
-      messageFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $ReadMessagesState = _$ReadMessagesStateTearOff();
 
 /// @nodoc
 mixin _$ReadMessagesState {
@@ -278,19 +238,21 @@ class _$ReadMessagesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$ReadMessagesStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$ReadMessagesStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -306,7 +268,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -392,22 +354,22 @@ abstract class _Initial implements ReadMessagesState {
 }
 
 /// @nodoc
-abstract class _$LoadingProgressCopyWith<$Res> {
-  factory _$LoadingProgressCopyWith(
-          _LoadingProgress value, $Res Function(_LoadingProgress) then) =
-      __$LoadingProgressCopyWithImpl<$Res>;
+abstract class _$$_LoadingProgressCopyWith<$Res> {
+  factory _$$_LoadingProgressCopyWith(
+          _$_LoadingProgress value, $Res Function(_$_LoadingProgress) then) =
+      __$$_LoadingProgressCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingProgressCopyWithImpl<$Res>
+class __$$_LoadingProgressCopyWithImpl<$Res>
     extends _$ReadMessagesStateCopyWithImpl<$Res>
-    implements _$LoadingProgressCopyWith<$Res> {
-  __$LoadingProgressCopyWithImpl(
-      _LoadingProgress _value, $Res Function(_LoadingProgress) _then)
-      : super(_value, (v) => _then(v as _LoadingProgress));
+    implements _$$_LoadingProgressCopyWith<$Res> {
+  __$$_LoadingProgressCopyWithImpl(
+      _$_LoadingProgress _value, $Res Function(_$_LoadingProgress) _then)
+      : super(_value, (v) => _then(v as _$_LoadingProgress));
 
   @override
-  _LoadingProgress get _value => super._value as _LoadingProgress;
+  _$_LoadingProgress get _value => super._value as _$_LoadingProgress;
 }
 
 /// @nodoc
@@ -423,7 +385,7 @@ class _$_LoadingProgress implements _LoadingProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LoadingProgress);
+        (other.runtimeType == runtimeType && other is _$_LoadingProgress);
   }
 
   @override
@@ -509,29 +471,29 @@ abstract class _LoadingProgress implements ReadMessagesState {
 }
 
 /// @nodoc
-abstract class _$LoadSuccessCopyWith<$Res> {
-  factory _$LoadSuccessCopyWith(
-          _LoadSuccess value, $Res Function(_LoadSuccess) then) =
-      __$LoadSuccessCopyWithImpl<$Res>;
+abstract class _$$_LoadSuccessCopyWith<$Res> {
+  factory _$$_LoadSuccessCopyWith(
+          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
+      __$$_LoadSuccessCopyWithImpl<$Res>;
   $Res call({KtList<ChatRoom> chatRoom});
 }
 
 /// @nodoc
-class __$LoadSuccessCopyWithImpl<$Res>
+class __$$_LoadSuccessCopyWithImpl<$Res>
     extends _$ReadMessagesStateCopyWithImpl<$Res>
-    implements _$LoadSuccessCopyWith<$Res> {
-  __$LoadSuccessCopyWithImpl(
-      _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadSuccess));
+    implements _$$_LoadSuccessCopyWith<$Res> {
+  __$$_LoadSuccessCopyWithImpl(
+      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+      : super(_value, (v) => _then(v as _$_LoadSuccess));
 
   @override
-  _LoadSuccess get _value => super._value as _LoadSuccess;
+  _$_LoadSuccess get _value => super._value as _$_LoadSuccess;
 
   @override
   $Res call({
     Object? chatRoom = freezed,
   }) {
-    return _then(_LoadSuccess(
+    return _then(_$_LoadSuccess(
       chatRoom == freezed
           ? _value.chatRoom
           : chatRoom // ignore: cast_nullable_to_non_nullable
@@ -557,7 +519,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadSuccess &&
+            other is _$_LoadSuccess &&
             const DeepCollectionEquality().equals(other.chatRoom, chatRoom));
   }
 
@@ -567,8 +529,8 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
-      __$LoadSuccessCopyWithImpl<_LoadSuccess>(this, _$identity);
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -646,40 +608,40 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements ReadMessagesState {
-  const factory _LoadSuccess(KtList<ChatRoom> chatRoom) = _$_LoadSuccess;
+  const factory _LoadSuccess(final KtList<ChatRoom> chatRoom) = _$_LoadSuccess;
 
-  KtList<ChatRoom> get chatRoom;
+  KtList<ChatRoom> get chatRoom => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadFailureCopyWith<$Res> {
-  factory _$LoadFailureCopyWith(
-          _LoadFailure value, $Res Function(_LoadFailure) then) =
-      __$LoadFailureCopyWithImpl<$Res>;
+abstract class _$$_LoadFailureCopyWith<$Res> {
+  factory _$$_LoadFailureCopyWith(
+          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
+      __$$_LoadFailureCopyWithImpl<$Res>;
   $Res call({MessageFailure messageFailure});
 
   $MessageFailureCopyWith<$Res> get messageFailure;
 }
 
 /// @nodoc
-class __$LoadFailureCopyWithImpl<$Res>
+class __$$_LoadFailureCopyWithImpl<$Res>
     extends _$ReadMessagesStateCopyWithImpl<$Res>
-    implements _$LoadFailureCopyWith<$Res> {
-  __$LoadFailureCopyWithImpl(
-      _LoadFailure _value, $Res Function(_LoadFailure) _then)
-      : super(_value, (v) => _then(v as _LoadFailure));
+    implements _$$_LoadFailureCopyWith<$Res> {
+  __$$_LoadFailureCopyWithImpl(
+      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+      : super(_value, (v) => _then(v as _$_LoadFailure));
 
   @override
-  _LoadFailure get _value => super._value as _LoadFailure;
+  _$_LoadFailure get _value => super._value as _$_LoadFailure;
 
   @override
   $Res call({
     Object? messageFailure = freezed,
   }) {
-    return _then(_LoadFailure(
+    return _then(_$_LoadFailure(
       messageFailure == freezed
           ? _value.messageFailure
           : messageFailure // ignore: cast_nullable_to_non_nullable
@@ -712,7 +674,7 @@ class _$_LoadFailure implements _LoadFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadFailure &&
+            other is _$_LoadFailure &&
             const DeepCollectionEquality()
                 .equals(other.messageFailure, messageFailure));
   }
@@ -723,8 +685,8 @@ class _$_LoadFailure implements _LoadFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
-      __$LoadFailureCopyWithImpl<_LoadFailure>(this, _$identity);
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -802,10 +764,11 @@ class _$_LoadFailure implements _LoadFailure {
 }
 
 abstract class _LoadFailure implements ReadMessagesState {
-  const factory _LoadFailure(MessageFailure messageFailure) = _$_LoadFailure;
+  const factory _LoadFailure(final MessageFailure messageFailure) =
+      _$_LoadFailure;
 
-  MessageFailure get messageFailure;
+  MessageFailure get messageFailure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

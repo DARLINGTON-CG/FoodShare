@@ -12,31 +12,7 @@ part of 'create_messages_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CreateMessagesEventsTearOff {
-  const _$CreateMessagesEventsTearOff();
-
-  Initialized initialized(Option<ChatRoom> initialChat) {
-    return Initialized(
-      initialChat,
-    );
-  }
-
-  MessageChanged messageChanged(String message) {
-    return MessageChanged(
-      message,
-    );
-  }
-
-  Saved saved() {
-    return const Saved();
-  }
-}
-
-/// @nodoc
-const $CreateMessagesEvents = _$CreateMessagesEventsTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CreateMessagesEvents {
@@ -104,29 +80,29 @@ class _$CreateMessagesEventsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitializedCopyWith<$Res> {
-  factory $InitializedCopyWith(
-          Initialized value, $Res Function(Initialized) then) =
-      _$InitializedCopyWithImpl<$Res>;
+abstract class _$$InitializedCopyWith<$Res> {
+  factory _$$InitializedCopyWith(
+          _$Initialized value, $Res Function(_$Initialized) then) =
+      __$$InitializedCopyWithImpl<$Res>;
   $Res call({Option<ChatRoom> initialChat});
 }
 
 /// @nodoc
-class _$InitializedCopyWithImpl<$Res>
+class __$$InitializedCopyWithImpl<$Res>
     extends _$CreateMessagesEventsCopyWithImpl<$Res>
-    implements $InitializedCopyWith<$Res> {
-  _$InitializedCopyWithImpl(
-      Initialized _value, $Res Function(Initialized) _then)
-      : super(_value, (v) => _then(v as Initialized));
+    implements _$$InitializedCopyWith<$Res> {
+  __$$InitializedCopyWithImpl(
+      _$Initialized _value, $Res Function(_$Initialized) _then)
+      : super(_value, (v) => _then(v as _$Initialized));
 
   @override
-  Initialized get _value => super._value as Initialized;
+  _$Initialized get _value => super._value as _$Initialized;
 
   @override
   $Res call({
     Object? initialChat = freezed,
   }) {
-    return _then(Initialized(
+    return _then(_$Initialized(
       initialChat == freezed
           ? _value.initialChat
           : initialChat // ignore: cast_nullable_to_non_nullable
@@ -152,7 +128,7 @@ class _$Initialized implements Initialized {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Initialized &&
+            other is _$Initialized &&
             const DeepCollectionEquality()
                 .equals(other.initialChat, initialChat));
   }
@@ -163,8 +139,8 @@ class _$Initialized implements Initialized {
 
   @JsonKey(ignore: true)
   @override
-  $InitializedCopyWith<Initialized> get copyWith =>
-      _$InitializedCopyWithImpl<Initialized>(this, _$identity);
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
+      __$$InitializedCopyWithImpl<_$Initialized>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -236,38 +212,38 @@ class _$Initialized implements Initialized {
 }
 
 abstract class Initialized implements CreateMessagesEvents {
-  const factory Initialized(Option<ChatRoom> initialChat) = _$Initialized;
+  const factory Initialized(final Option<ChatRoom> initialChat) = _$Initialized;
 
-  Option<ChatRoom> get initialChat;
+  Option<ChatRoom> get initialChat => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InitializedCopyWith<Initialized> get copyWith =>
+  _$$InitializedCopyWith<_$Initialized> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessageChangedCopyWith<$Res> {
-  factory $MessageChangedCopyWith(
-          MessageChanged value, $Res Function(MessageChanged) then) =
-      _$MessageChangedCopyWithImpl<$Res>;
+abstract class _$$MessageChangedCopyWith<$Res> {
+  factory _$$MessageChangedCopyWith(
+          _$MessageChanged value, $Res Function(_$MessageChanged) then) =
+      __$$MessageChangedCopyWithImpl<$Res>;
   $Res call({String message});
 }
 
 /// @nodoc
-class _$MessageChangedCopyWithImpl<$Res>
+class __$$MessageChangedCopyWithImpl<$Res>
     extends _$CreateMessagesEventsCopyWithImpl<$Res>
-    implements $MessageChangedCopyWith<$Res> {
-  _$MessageChangedCopyWithImpl(
-      MessageChanged _value, $Res Function(MessageChanged) _then)
-      : super(_value, (v) => _then(v as MessageChanged));
+    implements _$$MessageChangedCopyWith<$Res> {
+  __$$MessageChangedCopyWithImpl(
+      _$MessageChanged _value, $Res Function(_$MessageChanged) _then)
+      : super(_value, (v) => _then(v as _$MessageChanged));
 
   @override
-  MessageChanged get _value => super._value as MessageChanged;
+  _$MessageChanged get _value => super._value as _$MessageChanged;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(MessageChanged(
+    return _then(_$MessageChanged(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -293,7 +269,7 @@ class _$MessageChanged implements MessageChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MessageChanged &&
+            other is _$MessageChanged &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
@@ -303,8 +279,8 @@ class _$MessageChanged implements MessageChanged {
 
   @JsonKey(ignore: true)
   @override
-  $MessageChangedCopyWith<MessageChanged> get copyWith =>
-      _$MessageChangedCopyWithImpl<MessageChanged>(this, _$identity);
+  _$$MessageChangedCopyWith<_$MessageChanged> get copyWith =>
+      __$$MessageChangedCopyWithImpl<_$MessageChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -376,28 +352,29 @@ class _$MessageChanged implements MessageChanged {
 }
 
 abstract class MessageChanged implements CreateMessagesEvents {
-  const factory MessageChanged(String message) = _$MessageChanged;
+  const factory MessageChanged(final String message) = _$MessageChanged;
 
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MessageChangedCopyWith<MessageChanged> get copyWith =>
+  _$$MessageChangedCopyWith<_$MessageChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SavedCopyWith<$Res> {
-  factory $SavedCopyWith(Saved value, $Res Function(Saved) then) =
-      _$SavedCopyWithImpl<$Res>;
+abstract class _$$SavedCopyWith<$Res> {
+  factory _$$SavedCopyWith(_$Saved value, $Res Function(_$Saved) then) =
+      __$$SavedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SavedCopyWithImpl<$Res> extends _$CreateMessagesEventsCopyWithImpl<$Res>
-    implements $SavedCopyWith<$Res> {
-  _$SavedCopyWithImpl(Saved _value, $Res Function(Saved) _then)
-      : super(_value, (v) => _then(v as Saved));
+class __$$SavedCopyWithImpl<$Res>
+    extends _$CreateMessagesEventsCopyWithImpl<$Res>
+    implements _$$SavedCopyWith<$Res> {
+  __$$SavedCopyWithImpl(_$Saved _value, $Res Function(_$Saved) _then)
+      : super(_value, (v) => _then(v as _$Saved));
 
   @override
-  Saved get _value => super._value as Saved;
+  _$Saved get _value => super._value as _$Saved;
 }
 
 /// @nodoc
@@ -413,7 +390,7 @@ class _$Saved implements Saved {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Saved);
+        (other.runtimeType == runtimeType && other is _$Saved);
   }
 
   @override
@@ -491,31 +468,6 @@ class _$Saved implements Saved {
 abstract class Saved implements CreateMessagesEvents {
   const factory Saved() = _$Saved;
 }
-
-/// @nodoc
-class _$CreateMessagesStateTearOff {
-  const _$CreateMessagesStateTearOff();
-
-  _CreateMessagesState call(
-      {required ChatRoom data,
-      required String currentMessage,
-      required bool showErrorMessages,
-      required bool isSaving,
-      required bool isEditing,
-      required Option<Either<MessageFailure, Unit>> successOrFailure}) {
-    return _CreateMessagesState(
-      data: data,
-      currentMessage: currentMessage,
-      showErrorMessages: showErrorMessages,
-      isSaving: isSaving,
-      isEditing: isEditing,
-      successOrFailure: successOrFailure,
-    );
-  }
-}
-
-/// @nodoc
-const $CreateMessagesState = _$CreateMessagesStateTearOff();
 
 /// @nodoc
 mixin _$CreateMessagesState {
@@ -603,11 +555,11 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CreateMessagesStateCopyWith<$Res>
+abstract class _$$_CreateMessagesStateCopyWith<$Res>
     implements $CreateMessagesStateCopyWith<$Res> {
-  factory _$CreateMessagesStateCopyWith(_CreateMessagesState value,
-          $Res Function(_CreateMessagesState) then) =
-      __$CreateMessagesStateCopyWithImpl<$Res>;
+  factory _$$_CreateMessagesStateCopyWith(_$_CreateMessagesState value,
+          $Res Function(_$_CreateMessagesState) then) =
+      __$$_CreateMessagesStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {ChatRoom data,
@@ -622,15 +574,15 @@ abstract class _$CreateMessagesStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CreateMessagesStateCopyWithImpl<$Res>
+class __$$_CreateMessagesStateCopyWithImpl<$Res>
     extends _$CreateMessagesStateCopyWithImpl<$Res>
-    implements _$CreateMessagesStateCopyWith<$Res> {
-  __$CreateMessagesStateCopyWithImpl(
-      _CreateMessagesState _value, $Res Function(_CreateMessagesState) _then)
-      : super(_value, (v) => _then(v as _CreateMessagesState));
+    implements _$$_CreateMessagesStateCopyWith<$Res> {
+  __$$_CreateMessagesStateCopyWithImpl(_$_CreateMessagesState _value,
+      $Res Function(_$_CreateMessagesState) _then)
+      : super(_value, (v) => _then(v as _$_CreateMessagesState));
 
   @override
-  _CreateMessagesState get _value => super._value as _CreateMessagesState;
+  _$_CreateMessagesState get _value => super._value as _$_CreateMessagesState;
 
   @override
   $Res call({
@@ -641,7 +593,7 @@ class __$CreateMessagesStateCopyWithImpl<$Res>
     Object? isEditing = freezed,
     Object? successOrFailure = freezed,
   }) {
-    return _then(_CreateMessagesState(
+    return _then(_$_CreateMessagesState(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -703,7 +655,7 @@ class _$_CreateMessagesState implements _CreateMessagesState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CreateMessagesState &&
+            other is _$_CreateMessagesState &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality()
                 .equals(other.currentMessage, currentMessage) &&
@@ -727,35 +679,36 @@ class _$_CreateMessagesState implements _CreateMessagesState {
 
   @JsonKey(ignore: true)
   @override
-  _$CreateMessagesStateCopyWith<_CreateMessagesState> get copyWith =>
-      __$CreateMessagesStateCopyWithImpl<_CreateMessagesState>(
+  _$$_CreateMessagesStateCopyWith<_$_CreateMessagesState> get copyWith =>
+      __$$_CreateMessagesStateCopyWithImpl<_$_CreateMessagesState>(
           this, _$identity);
 }
 
 abstract class _CreateMessagesState implements CreateMessagesState {
   const factory _CreateMessagesState(
-          {required ChatRoom data,
-          required String currentMessage,
-          required bool showErrorMessages,
-          required bool isSaving,
-          required bool isEditing,
-          required Option<Either<MessageFailure, Unit>> successOrFailure}) =
-      _$_CreateMessagesState;
+      {required final ChatRoom data,
+      required final String currentMessage,
+      required final bool showErrorMessages,
+      required final bool isSaving,
+      required final bool isEditing,
+      required final Option<Either<MessageFailure, Unit>>
+          successOrFailure}) = _$_CreateMessagesState;
 
   @override
-  ChatRoom get data;
+  ChatRoom get data => throw _privateConstructorUsedError;
   @override
-  String get currentMessage;
+  String get currentMessage => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  bool get isSaving;
+  bool get isSaving => throw _privateConstructorUsedError;
   @override
-  bool get isEditing;
+  bool get isEditing => throw _privateConstructorUsedError;
   @override
-  Option<Either<MessageFailure, Unit>> get successOrFailure;
+  Option<Either<MessageFailure, Unit>> get successOrFailure =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CreateMessagesStateCopyWith<_CreateMessagesState> get copyWith =>
+  _$$_CreateMessagesStateCopyWith<_$_CreateMessagesState> get copyWith =>
       throw _privateConstructorUsedError;
 }

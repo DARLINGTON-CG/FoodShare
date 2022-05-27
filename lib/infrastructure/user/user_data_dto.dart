@@ -16,6 +16,7 @@ class UserDataDto with _$UserDataDto {
   const factory UserDataDto({
     required String imageUrl,
     required String username,
+    required String userId,
   }) = _UserDataDto;
 
   factory UserDataDto.fromJson(Map<String, dynamic> json) =>
@@ -24,13 +25,16 @@ class UserDataDto with _$UserDataDto {
   factory UserDataDto.fromDomain(UserData userData) {
     return UserDataDto(
         imageUrl: userData.imageUrl.getOrCrash(),
-        username: userData.username.getOrCrash());
+        username: userData.username.getOrCrash(),
+        userId:  userData.userId.getOrCrash()
+        );
   }
 
   UserData toDomain() {
     return UserData(
       username: Username(username),
       imageUrl: ImageUrl(imageUrl),
+      userId: UserId(userId)
     );
   }
 

@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void showCustomDialogBox(BuildContext context, String header, String message) {
+import '../../../domain/posts/post.dart';
+
+void showCustomDialogBox(BuildContext context, Post post) {
   showGeneralDialog(
       context: context,
       barrierDismissible: true,
@@ -26,7 +28,7 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(header.toUpperCase(),
+                    Text(post.title.getOrCrash().toUpperCase(),
                         style: GoogleFonts.lato(
                             fontSize: 15,
                             color: Colors.black,
@@ -35,7 +37,7 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(message,
+                    Text(post.description.getOrCrash(),
                         textAlign: TextAlign.center,
                         style:
                             GoogleFonts.lato(fontSize: 13, color: Colors.grey)),
@@ -58,7 +60,7 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                         const SizedBox(
                           width: 2,
                         ),
-                        Text("200\$",
+                        Text("${post.postPrice.getOrCrash()}\$",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                                 fontSize: 12, color: Colors.black)),
@@ -76,7 +78,7 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                         const SizedBox(
                           width: 2,
                         ),
-                        Text("5:00-7:00 pm",
+                        Text(post.pickupTime.getOrCrash(),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                                 fontSize: 12, color: Colors.black)),
@@ -91,35 +93,12 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                           color: Colors.black,
                           size: 18,
                         ),
-                        Text("3",
+                        Text(post.quantity.getOrCrash().toString(),
                             textAlign: TextAlign.start,
                             style: GoogleFonts.lato(
                                 fontSize: 12, color: Colors.black)),
                       ],
                     ),
-
-                    // const SizedBox(
-                    //   height: 5,
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   crossAxisAlignment: CrossAxisAlignment.center,
-                    //   children: <Widget>[
-
-                    //   ],
-
-                    // ),
-                    // const SizedBox(
-                    //   height: 5,
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   crossAxisAlignment: CrossAxisAlignment.center,
-                    //   children: <Widget>[
-
-                    //   ],
-
-                    // ),
                   ])),
         );
       },
@@ -135,8 +114,8 @@ void showCustomDialogBox(BuildContext context, String header, String message) {
                     filter: ImageFilter.blur(
                         sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
                     child: FadeTransition(
-                      child: child,
                       opacity: anim1,
+                      child: child,
                     ))));
       });
 }

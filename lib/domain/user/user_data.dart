@@ -15,13 +15,15 @@ abstract class UserData implements _$UserData {
       {
     
       required Username username,
-      required ImageUrl imageUrl
+      required ImageUrl imageUrl,
+      required UserId userId,
       }) = _UserData;
 
   factory UserData.empty() => UserData(
    
       imageUrl: ImageUrl(''),
-       username: Username('')
+       username: Username(''),
+       userId: UserId('')
       );
 
    Option<ValueFailure<dynamic>> get failureOption {

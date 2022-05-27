@@ -26,9 +26,9 @@ class _HomePageViewState extends State<HomePageView>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final List<String> _tabs = <String>['Free', 'Paid'];
+    final List<String> tabs = <String>['Free', 'Paid'];
     return DefaultTabController(
-      length: _tabs.length,
+      length: tabs.length,
       child: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -116,7 +116,7 @@ class _HomePageViewState extends State<HomePageView>
                       indicatorColor: Colors.black,
                       labelStyle: GoogleFonts.lato(fontSize: 15),
                       indicatorSize: TabBarIndicatorSize.label,
-                      tabs: _tabs
+                      tabs: tabs
                           .map((String name) => Tab(
                                 text: name,
                               ))
@@ -129,7 +129,7 @@ class _HomePageViewState extends State<HomePageView>
           ];
         },
         body: TabBarView(
-          children: _tabs.map((String name) {
+          children: tabs.map((String name) {
             return name == 'Free'
                 ? FreeTabWidget(name: name)
                 : PaidTabWidget(name: name);

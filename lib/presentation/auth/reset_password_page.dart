@@ -26,12 +26,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1600));
 
-    Tween<double> _fadeSlideAnimation = Tween<double>(begin: 0, end: 1);
-    _headerAnimation = _fadeSlideAnimation.animate(CurvedAnimation(
+    Tween<double> fadeSlideAnimation = Tween<double>(begin: 0, end: 1);
+    _headerAnimation = fadeSlideAnimation.animate(CurvedAnimation(
         parent: _animationController,
         curve: const Interval(0.0, 0.6, curve: Curves.easeIn)));
 
-    _formAnimation = _fadeSlideAnimation.animate(CurvedAnimation(
+    _formAnimation = fadeSlideAnimation.animate(CurvedAnimation(
         parent: _animationController, curve: const Interval(0.7, 1.0)));
     _animationController.forward();
   }

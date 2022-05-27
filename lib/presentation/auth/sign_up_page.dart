@@ -14,10 +14,10 @@ class SignUpPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  SignUpPageState createState() => SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage>
+class SignUpPageState extends State<SignUpPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _headerTextAnimation;

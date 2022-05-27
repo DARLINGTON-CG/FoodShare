@@ -7,6 +7,7 @@ part of 'post_dto.dart';
 // **************************************************************************
 
 _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
+      id: json['id'] as String,
       imageUrl: json['imageUrl'] as String,
       pickupTime: json['pickupTime'] as String,
       description: json['description'] as String,
@@ -21,6 +22,7 @@ _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
 
 Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'imageUrl': instance.imageUrl,
       'pickupTime': instance.pickupTime,
       'description': instance.description,

@@ -72,7 +72,7 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   void _onSaved(Saved event, Emitter<PostFormState> emit) async {
     emit(state.copyWith(isSaving: true, successOrFailure: none()));
     if (state.post.failureOption.isNone() && (event.image != null || state.post.imageUrl.isValid())) {
-      final Either<PostFailure, Unit>? failureOrSuccess = state.isEditing ? await _postRepository.update(state.post,event.image):
+      final Either<PostFailure, Unit> failureOrSuccess = state.isEditing ? await _postRepository.update(state.post,event.image):
           await _postRepository.create(state.post, event.image!);
       emit(state.copyWith(
           isSaving: false,  

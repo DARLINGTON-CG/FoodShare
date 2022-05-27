@@ -39,13 +39,14 @@ class UserDataRepository extends IUserRepository {
       returnedData.fold(
           (UserDataFailure l) =>
               throw const UserDataFailure.usernameUnavailable(), (_) {
-           return null;
+        return null;
       });
 
       final UserData dataForUpload = await getIt<IStorageRepository>()
           .upload(file, user.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => data.copyWith(
               username: Username(data.username.getOrCrash().trim()),
+              userId: UserId(user.id.getOrCrash()),
               imageUrl: ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =

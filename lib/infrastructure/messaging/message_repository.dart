@@ -39,7 +39,6 @@ class MessageRepository implements IMessageRepository {
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) =>
             snapshots.docs.map((QueryDocumentSnapshot<Object?> doc) {
-              debugPrint(doc.data().toString());
 
               return ChatRoomDto.fromFirestore(doc).toDomain();
             }))
@@ -48,10 +47,8 @@ class MessageRepository implements IMessageRepository {
     }).onErrorReturnWith((Object error, StackTrace stackTrace) {
       if (error is PlatformException &&
           error.message!.contains("permission-denied")) {
-
         return left(const MessageFailure.insufficientPermissions());
       } else {
-       
         return left(const MessageFailure.unexpected());
       }
     });
@@ -62,11 +59,10 @@ class MessageRepository implements IMessageRepository {
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.chatDocuments();
-      debugPrint(ChatRoomDto.fromDomain(chat).toJson().toString());
-      
       await userDoc
           .doc(chat.post.id.getOrCrash() + chat.requester.username.getOrCrash())
           .set(ChatRoomDto.fromDomain(chat).toJson());
+
       return right(unit);
     } catch (e) {
       if (e.toString().toLowerCase().contains("permission-denied")) {
@@ -77,3 +73,5 @@ class MessageRepository implements IMessageRepository {
     }
   }
 }
+
+
