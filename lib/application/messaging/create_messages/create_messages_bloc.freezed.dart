@@ -20,21 +20,21 @@ mixin _$CreateMessagesEvents {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function() saved,
+    required TResult Function(bool isUpdate) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +147,7 @@ class _$Initialized implements Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function() saved,
+    required TResult Function(bool isUpdate) saved,
   }) {
     return initialized(initialChat);
   }
@@ -157,7 +157,7 @@ class _$Initialized implements Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
   }) {
     return initialized?.call(initialChat);
   }
@@ -167,7 +167,7 @@ class _$Initialized implements Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -287,7 +287,7 @@ class _$MessageChanged implements MessageChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function() saved,
+    required TResult Function(bool isUpdate) saved,
   }) {
     return messageChanged(message);
   }
@@ -297,7 +297,7 @@ class _$MessageChanged implements MessageChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
   }) {
     return messageChanged?.call(message);
   }
@@ -307,7 +307,7 @@ class _$MessageChanged implements MessageChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
     required TResult orElse(),
   }) {
     if (messageChanged != null) {
@@ -364,6 +364,7 @@ abstract class MessageChanged implements CreateMessagesEvents {
 abstract class _$$SavedCopyWith<$Res> {
   factory _$$SavedCopyWith(_$Saved value, $Res Function(_$Saved) then) =
       __$$SavedCopyWithImpl<$Res>;
+  $Res call({bool isUpdate});
 }
 
 /// @nodoc
@@ -375,35 +376,58 @@ class __$$SavedCopyWithImpl<$Res>
 
   @override
   _$Saved get _value => super._value as _$Saved;
+
+  @override
+  $Res call({
+    Object? isUpdate = freezed,
+  }) {
+    return _then(_$Saved(
+      isUpdate == freezed
+          ? _value.isUpdate
+          : isUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Saved implements Saved {
-  const _$Saved();
+  const _$Saved(this.isUpdate);
+
+  @override
+  final bool isUpdate;
 
   @override
   String toString() {
-    return 'CreateMessagesEvents.saved()';
+    return 'CreateMessagesEvents.saved(isUpdate: $isUpdate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Saved);
+        (other.runtimeType == runtimeType &&
+            other is _$Saved &&
+            const DeepCollectionEquality().equals(other.isUpdate, isUpdate));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isUpdate));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$SavedCopyWith<_$Saved> get copyWith =>
+      __$$SavedCopyWithImpl<_$Saved>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function() saved,
+    required TResult Function(bool isUpdate) saved,
   }) {
-    return saved();
+    return saved(isUpdate);
   }
 
   @override
@@ -411,9 +435,9 @@ class _$Saved implements Saved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
   }) {
-    return saved?.call();
+    return saved?.call(isUpdate);
   }
 
   @override
@@ -421,11 +445,11 @@ class _$Saved implements Saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function()? saved,
+    TResult Function(bool isUpdate)? saved,
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved();
+      return saved(isUpdate);
     }
     return orElse();
   }
@@ -466,7 +490,11 @@ class _$Saved implements Saved {
 }
 
 abstract class Saved implements CreateMessagesEvents {
-  const factory Saved() = _$Saved;
+  const factory Saved(final bool isUpdate) = _$Saved;
+
+  bool get isUpdate => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$SavedCopyWith<_$Saved> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

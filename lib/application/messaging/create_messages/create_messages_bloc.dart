@@ -66,9 +66,10 @@ class CreateMessagesBloc
               converted.map((Message message) => message).toImmutableList()),
         ),
         successOrFailure: none()));
+  
     if (state.data.failureOption.isNone() && state.currentMessage.isNotEmpty) {
       final Either<MessageFailure, Unit> failureOrSuccess =
-          state.data.messages.length >= 2
+          state.data.messages.length >= 2 || event.isUpdate
               ? await _messageRepository.sendUpdate(
                   state.data,
                   Message(

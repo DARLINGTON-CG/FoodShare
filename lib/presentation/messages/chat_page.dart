@@ -14,6 +14,8 @@ import '../../injector.dart';
 import 'widgets/body.dart';
 import 'widgets/custom_dialog.dart';
 
+//TODO: WORK ON INTIAL DATA
+//TODO: WORK MAIN REMOVED IMAGE URL'S
 
 class ChatPage extends StatefulWidget {
   final ChatRoom chatRoom;
@@ -28,6 +30,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final TextEditingController controller = TextEditingController();
+   bool isUpdate = false;
 
   @override
   void dispose() {
@@ -65,6 +68,10 @@ class _ChatPageState extends State<ChatPage> {
                             (chatRoomElem.post.id.getOrCrash() +
                                 chatRoomElem.requester.username.getOrCrash()),
                         orElse: () => ChatRoom.empty());
+
+                    if (element.messages.length != 0) {
+                      isUpdate = true;
+                    }
 
                     if (success.chatRoom.isEmpty() ||
                         !(element.owner.userId.isValid())) {
@@ -152,7 +159,8 @@ class _ChatPageState extends State<ChatPage> {
         ),
         bottomSheet: BlocProvider<CreateMessagesBloc>(
             create: (BuildContext context) => getIt<CreateMessagesBloc>()
-              ..add(CreateMessagesEvents.initialized(dartz.optionOf(widget.chatRoom))),
+              ..add(CreateMessagesEvents.initialized(
+                  dartz.optionOf(widget.chatRoom))),
             child: BlocListener<CreateMessagesBloc, CreateMessagesState>(
                 listener: (BuildContext context, CreateMessagesState state) {},
                 child: BottomSheet(
@@ -222,7 +230,7 @@ class _ChatPageState extends State<ChatPage> {
                                         .isNotEmpty) {
                                       controller.clear();
                                       context.read<CreateMessagesBloc>().add(
-                                          const CreateMessagesEvents.saved());
+                                          CreateMessagesEvents.saved(isUpdate));
                                     }
                                   },
                                   child: const Icon(

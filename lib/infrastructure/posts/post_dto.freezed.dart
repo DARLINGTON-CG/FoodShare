@@ -20,7 +20,6 @@ PostDto _$PostDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostDto {
-//@JsonKey(ignore: true) String? id,
   String get id => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get pickupTime => throw _privateConstructorUsedError;
@@ -226,7 +225,6 @@ class _$_PostDto extends _PostDto {
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
       _$$_PostDtoFromJson(json);
 
-//@JsonKey(ignore: true) String? id,
   @override
   final String id;
   @override
@@ -318,7 +316,7 @@ abstract class _PostDto extends PostDto {
 
   factory _PostDto.fromJson(Map<String, dynamic> json) = _$_PostDto.fromJson;
 
-  @override //@JsonKey(ignore: true) String? id,
+  @override
   String get id => throw _privateConstructorUsedError;
   @override
   String get imageUrl => throw _privateConstructorUsedError;

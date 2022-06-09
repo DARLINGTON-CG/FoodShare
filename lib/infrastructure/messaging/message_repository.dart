@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -74,8 +73,8 @@ class MessageRepository implements IMessageRepository {
   }
 
   @override
-  Future<Either<MessageFailure, Unit>> sendUpdate(ChatRoom chat,Message message) async {
-    print("UPDATE BABY");
+  Future<Either<MessageFailure, Unit>> sendUpdate(
+      ChatRoom chat, Message message) async {
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.chatDocuments();
@@ -83,15 +82,14 @@ class MessageRepository implements IMessageRepository {
           .doc(chat.post.id.getOrCrash() + chat.requester.username.getOrCrash())
           // ignore: always_specify_types
           .update({
+        // ignore: always_specify_types
+        "messages":
             // ignore: always_specify_types
-            "messages":FieldValue.arrayUnion([
-               MessagesDto.fromDomain(message).toJson()
-            ])
-          } /*ChatRoomDto.fromDomain(chat).toJson()*/);
+            FieldValue.arrayUnion([MessagesDto.fromDomain(message).toJson()])
+      } /*ChatRoomDto.fromDomain(chat).toJson()*/);
 
       return right(unit);
     } catch (e) {
-       print("EXCEPTION BABY");
       if (e.toString().toLowerCase().contains("permission-denied")) {
         return left(const MessageFailure.insufficientPermissions());
       } else {
