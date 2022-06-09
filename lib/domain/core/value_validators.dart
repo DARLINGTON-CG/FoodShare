@@ -23,6 +23,7 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
 Either<ValueFailure<String>, String> validateNoSpecialCharAndSpace(
     String input) {
   const String noSpaceOrSpecialChar = r"""^[A-Za-z0-9? ,_-]+$""";
+  //"^[A-Za-z0-9? , _-]+$"
   if (RegExp(noSpaceOrSpecialChar).hasMatch(input)) {
     return right(input);
   } else {

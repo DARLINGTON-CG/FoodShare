@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/src/rendering/paragraph.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
@@ -22,7 +22,9 @@ class TextMessage extends StatelessWidget {
         vertical: kDefaultPadding / 2,
       ),
       decoration: BoxDecoration(
-        color:message!.isSender? const Color(0xFF3212F1).withOpacity(0.8): const Color(0xFF3212F1).withOpacity(0.1),
+        color: message!.isSender
+            ? const Color(0xFF3212F1).withOpacity(0.8)
+            : const Color(0xFF3212F1).withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(

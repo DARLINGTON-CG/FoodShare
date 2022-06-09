@@ -68,7 +68,14 @@ class CreateMessagesBloc
         successOrFailure: none()));
     if (state.data.failureOption.isNone() && state.currentMessage.isNotEmpty) {
       final Either<MessageFailure, Unit> failureOrSuccess =
-          await _messageRepository.send(state.data);
+          state.data.messages.length >= 2
+              ? await _messageRepository.sendUpdate(
+                  state.data,
+                  Message(
+                    id: user.id,
+                    message: MessageBody(state.currentMessage),
+                  ))
+              : await _messageRepository.send(state.data);
 
       emit(state.copyWith(
           isSaving: false,

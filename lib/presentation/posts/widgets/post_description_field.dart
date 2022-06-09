@@ -37,7 +37,6 @@ class _PostDescriptionFieldState extends State<PostDescriptionField> {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             isCollapsed: true,
-
             focusedBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(

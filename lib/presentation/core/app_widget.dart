@@ -49,7 +49,8 @@ class AppWidget extends StatelessWidget {
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
               height: 60),
           splashColor: Colors.transparent,
-          useMaterial3: true,
+         
+          useMaterial3: false,
           textTheme: TextTheme(
             bodyText1: GoogleFonts.lato(fontSize: 19, color: Colors.black),
             bodyText2: GoogleFonts.lato(fontSize: 18, color: Colors.black),

@@ -18,7 +18,7 @@ class PostDto with _$PostDto {
   const factory PostDto(
           // ignore: invalid_annotation_target
           {
-            //@JsonKey(ignore: true) String? id,
+            
             required String id,
           required String imageUrl,
           required String pickupTime,

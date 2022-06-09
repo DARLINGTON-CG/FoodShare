@@ -11,6 +11,7 @@ import '../../domain/auth/user.dart';
 import '../../domain/core/errors.dart';
 import '../../domain/messaging/chat_room.dart';
 import '../../domain/messaging/i_message_repository.dart';
+import '../../domain/messaging/message.dart';
 import '../../domain/messaging/message_failure.dart';
 import '../../injector.dart';
 import '../core/firebase_helpers.dart';
@@ -39,7 +40,6 @@ class MessageRepository implements IMessageRepository {
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) =>
             snapshots.docs.map((QueryDocumentSnapshot<Object?> doc) {
-
               return ChatRoomDto.fromFirestore(doc).toDomain();
             }))
         .map((Iterable<ChatRoom> chat) {
@@ -72,6 +72,31 @@ class MessageRepository implements IMessageRepository {
       }
     }
   }
+
+  @override
+  Future<Either<MessageFailure, Unit>> sendUpdate(ChatRoom chat,Message message) async {
+    print("UPDATE BABY");
+    try {
+      final CollectionReference<Object?> userDoc =
+          await _firebaseFirestore.chatDocuments();
+      await userDoc
+          .doc(chat.post.id.getOrCrash() + chat.requester.username.getOrCrash())
+          // ignore: always_specify_types
+          .update({
+            // ignore: always_specify_types
+            "messages":FieldValue.arrayUnion([
+               MessagesDto.fromDomain(message).toJson()
+            ])
+          } /*ChatRoomDto.fromDomain(chat).toJson()*/);
+
+      return right(unit);
+    } catch (e) {
+       print("EXCEPTION BABY");
+      if (e.toString().toLowerCase().contains("permission-denied")) {
+        return left(const MessageFailure.insufficientPermissions());
+      } else {
+        return left(const MessageFailure.unexpected());
+      }
+    }
+  }
 }
-
-

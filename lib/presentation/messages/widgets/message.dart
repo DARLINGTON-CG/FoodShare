@@ -1,4 +1,4 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/utility/important_enums.dart';
@@ -9,13 +9,15 @@ import 'video_message.dart';
 
 import 'chat_message.dart';
 
-class Message extends StatelessWidget {
-  const Message({
+class DisplayMessage extends StatelessWidget {
+  final ChatMessage message;
+  final String imageUrl;
+
+  const DisplayMessage({
     Key? key,
     required this.message,
+    required this.imageUrl
   }) : super(key: key);
-
-  final ChatMessage message;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +41,9 @@ class Message extends StatelessWidget {
             message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: <Widget>[
           if (!message.isSender) ...<Widget>[
-            const CircleAvatar(
+          CircleAvatar(
               radius: 12,
-              backgroundImage:  AssetImage("assets/user_2.png"),
+              backgroundImage:  CachedNetworkImageProvider(imageUrl),
             ),
             const SizedBox(width: kDefaultPadding / 2),
           ],

@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,15 +14,32 @@ import '../../injector.dart';
 import 'widgets/body.dart';
 import 'widgets/custom_dialog.dart';
 
-class ChatPage extends StatelessWidget {
+//TODO: Work maximum word length
+
+
+class ChatPage extends StatefulWidget {
   final ChatRoom chatRoom;
   final String chatRoomId;
 
   const ChatPage({Key? key, required this.chatRoom, required this.chatRoomId})
       : super(key: key);
 
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   String getUserId() {
-    final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    final dartz.Option<LocalUser> userOption =
+        getIt<IAuthFacade>().getSignedInUser();
     final LocalUser user =
         userOption.getOrElse(() => throw NotAuthenticatedError());
     return user.id.getOrCrash();
@@ -37,46 +54,6 @@ class ChatPage extends StatelessWidget {
           elevation: 0.5,
           shadowColor: Colors.grey.withOpacity(0.3),
           title: BlocBuilder<ReadMessagesBloc, ReadMessagesState>(
-            // buildWhen: (ReadMessagesState previous, ReadMessagesState current) {
-            //   // String usernamePrevious = previous.map(
-            //   //   initial: (_) => "",
-            //   //   loadingProgress: (_) => "",
-            //   //   // ignore: always_specify_types
-            //   //   loadSuccess: (success) {
-            //   //     if (success.chatRoom.isEmpty()) {
-            //   //       return chatRoom.owner.username.getOrCrash();
-            //   //     } else {
-            //   //       final ChatRoom elm = success.chatRoom.iter.firstWhere(
-            //   //           (ChatRoom chatRoomElem) =>
-            //   //               chatRoomId ==
-            //   //               (chatRoomElem.post.id.getOrCrash() +
-            //   //                   chatRoomElem.requester.username.getOrCrash()));
-            //   //       final String username =
-            //   //           getUserId() == elm.owner.userId.getOrCrash()
-            //   //               ? elm.requester.userId.getOrCrash()
-            //   //               : elm.owner.userId.getOrCrash();
-            //   //       return username;
-            //   //     }
-            //   //   },
-
-            //   //   // success.chatRoom[chatRoomIndex].owner.username
-            //   //   //     .getOrCrash(),
-            //   //   loadFailure: (_) => "",
-            //   // );
-            //   // String usernameCurrent = current.map(
-            //   //   initial: (_) => "",
-            //   //   loadingProgress: (_) => "",
-            //   //   // ignore: always_specify_types
-            //   //   loadSuccess: (success) => success.chatRoom.isEmpty()
-            //   //       ? ""
-            //   //       : success.chatRoom[chatRoomIndex].owner.username
-            //   //           .getOrCrash(),
-            //   //   loadFailure: (_) => "",
-            //   // );
-            //   // // print(usernameCurrent );
-            //   // // print(usernamePrevious);
-            //   // return usernameCurrent != usernamePrevious;
-            // },
             builder: (BuildContext context, ReadMessagesState state) {
               return Text(
                 state.map(
@@ -86,18 +63,18 @@ class ChatPage extends StatelessWidget {
                   loadSuccess: (success) {
                     ChatRoom element = success.chatRoom.iter.firstWhere(
                         (ChatRoom chatRoomElem) =>
-                            chatRoomId ==
+                            widget.chatRoomId ==
                             (chatRoomElem.post.id.getOrCrash() +
                                 chatRoomElem.requester.username.getOrCrash()),
                         orElse: () => ChatRoom.empty());
 
                     if (success.chatRoom.isEmpty() ||
                         !(element.owner.userId.isValid())) {
-                      return chatRoom.owner.username.getOrCrash();
+                      return widget.chatRoom.owner.username.getOrCrash();
                     } else {
                       final ChatRoom elm = success.chatRoom.iter.firstWhere(
                           (ChatRoom chatRoomElem) =>
-                              chatRoomId ==
+                              widget.chatRoomId ==
                               (chatRoomElem.post.id.getOrCrash() +
                                   chatRoomElem.requester.username
                                       .getOrCrash()));
@@ -127,16 +104,17 @@ class ChatPage extends StatelessWidget {
                   loadSuccess: (success) {
                     ChatRoom element = success.chatRoom.iter.firstWhere(
                         (ChatRoom chatRoomElem) =>
-                            chatRoomId ==
+                            widget.chatRoomId ==
                             (chatRoomElem.post.id.getOrCrash() +
                                 chatRoomElem.requester.username.getOrCrash()),
                         orElse: () => ChatRoom.empty());
-                    if (success.chatRoom.isEmpty() ||  !(element.owner.userId.isValid())) {
-                      return chatRoom.post;
+                    if (success.chatRoom.isEmpty() ||
+                        !(element.owner.userId.isValid())) {
+                      return widget.chatRoom.post;
                     } else {
                       final ChatRoom elm = success.chatRoom.iter.firstWhere(
                           (ChatRoom chatRoomElem) =>
-                              chatRoomId ==
+                              widget.chatRoomId ==
                               (chatRoomElem.post.id.getOrCrash() +
                                   chatRoomElem.requester.username
                                       .getOrCrash()));
@@ -176,7 +154,7 @@ class ChatPage extends StatelessWidget {
         ),
         bottomSheet: BlocProvider<CreateMessagesBloc>(
             create: (BuildContext context) => getIt<CreateMessagesBloc>()
-              ..add(CreateMessagesEvents.initialized(optionOf(chatRoom))),
+              ..add(CreateMessagesEvents.initialized(dartz.optionOf(widget.chatRoom))),
             child: BlocListener<CreateMessagesBloc, CreateMessagesState>(
                 listener: (BuildContext context, CreateMessagesState state) {},
                 child: BottomSheet(
@@ -217,6 +195,7 @@ class ChatPage extends StatelessWidget {
                                     style: GoogleFonts.lato(
                                         color: Colors.black, fontSize: 17),
                                     textAlignVertical: TextAlignVertical.bottom,
+                                    controller: controller,
                                     onChanged: (String value) {
                                       context.read<CreateMessagesBloc>().add(
                                           CreateMessagesEvents.messageChanged(
@@ -243,6 +222,7 @@ class ChatPage extends StatelessWidget {
                                         .state
                                         .currentMessage
                                         .isNotEmpty) {
+                                      controller.clear();
                                       context.read<CreateMessagesBloc>().add(
                                           const CreateMessagesEvents.saved());
                                     }
@@ -260,7 +240,7 @@ class ChatPage extends StatelessWidget {
                     })
                 //}
                 )),
-        body: Body(chatRoomId: chatRoomId),
+        body: Body(chatRoomId: widget.chatRoomId),
       ),
     );
   }
