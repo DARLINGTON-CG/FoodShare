@@ -14,8 +14,6 @@ import '../../injector.dart';
 import 'widgets/body.dart';
 import 'widgets/custom_dialog.dart';
 
-//TODO: Work maximum word length
-
 
 class ChatPage extends StatefulWidget {
   final ChatRoom chatRoom;

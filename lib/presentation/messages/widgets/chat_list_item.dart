@@ -44,7 +44,7 @@ class ChatListItem extends StatelessWidget {
             color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
-        lastMessage,
+        lastMessage.length > 25 ? "${lastMessage.substring(0,25)}...":lastMessage ,
         style: GoogleFonts.alegreya(color: Colors.grey, fontSize: 14),
       ),
       onTap: () {

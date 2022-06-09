@@ -21,6 +21,8 @@ class TextMessage extends StatelessWidget {
         horizontal: kDefaultPadding * 0.75,
         vertical: kDefaultPadding / 2,
       ),
+      //TODO: work on making the width adaptive. But this is good for the mean time.
+      constraints:const BoxConstraints(maxWidth: 200),
       decoration: BoxDecoration(
         color: message!.isSender
             ? const Color(0xFF3212F1).withOpacity(0.8)
