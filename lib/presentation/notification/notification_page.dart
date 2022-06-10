@@ -14,10 +14,12 @@ class NotificationPage extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(Icons.close)),
         ),
-        body: Center(
-            child: Text("No new notifications",
-                style: GoogleFonts.lato(
-                  fontSize: 18,
-                ))));
+        body:const Center(
+                                  child: Image(
+                                    width: 160,
+                                    height: 160,
+                                    image: AssetImage("assets/NoMessages.png"),
+                                  ),
+                                ),);
   }
 }

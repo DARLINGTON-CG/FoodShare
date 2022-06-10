@@ -37,57 +37,72 @@ class MessagesPageView extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadSuccess: (state) {
-                            return SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int index) {
-                                  final ChatRoom chat = state.chatRoom[index];
-                                  if (chat.failureOption.isSome()) {
-                                    return Container(
-                                      color: Colors.green,
-                                      width: 100,
-                                      height: 100,
-                                      margin: const EdgeInsets.all(10),
-                                    );
-                                  } else {
-                                    int indexOfLastMessage =
-                                        chat.messages.getOrCrash().size - 1;
-                                    String lastMessage = chat.messages
-                                        .getOrCrash()[indexOfLastMessage]
-                                        .message
-                                        .getOrCrash();
+                            if (state.chatRoom.isEmpty()) {
+                              return const SliverFillRemaining(
+                                child: Center(
+                                  child: Image(
+                                    width: 160,
+                                    height: 160,
+                                    image:
+                                        AssetImage("assets/NoConnection.png"),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return SliverList(
+                                delegate: SliverChildBuilderDelegate(
+                                  (BuildContext context, int index) {
+                                    final ChatRoom chat = state.chatRoom[index];
+                                    if (chat.failureOption.isSome()) {
+                                      return Container(
+                                        color: Colors.grey.withOpacity(0.4),
+                                        width: 100,
+                                        height: 100,
+                                        margin: const EdgeInsets.all(10),
+                                      );
+                                    } else {
+                                      int indexOfLastMessage =
+                                          chat.messages.getOrCrash().size - 1;
+                                      String lastMessage = chat.messages
+                                          .getOrCrash()[indexOfLastMessage]
+                                          .message
+                                          .getOrCrash();
 
-                                    return ChatListItem(
-                                        chatRoom: chat,
-                                        title: getUserId() !=
-                                                chat.requester.userId
-                                                    .getOrCrash()
-                                            ? chat.requester.username
-                                                .getOrCrash()
-                                            : chat.owner.username
-                                                .getOrCrash(),
-                                        messageIndex: index,
-                                        lastMessage: lastMessage,
-                                        imageUrl: getUserId() !=
-                                                chat.requester.userId
-                                                    .getOrCrash()
-                                            ? chat.requester.imageUrl
-                                                .getOrCrash()
-                                            : chat.owner.imageUrl.getOrCrash());
-                                  }
-                                },
-                                childCount: state.chatRoom.size,
-                              ),
-                            );
+                                      return ChatListItem(
+                                          chatRoom: chat,
+                                          title: getUserId() !=
+                                                  chat.requester.userId
+                                                      .getOrCrash()
+                                              ? chat.requester.username
+                                                  .getOrCrash()
+                                              : chat.owner.username
+                                                  .getOrCrash(),
+                                          messageIndex: index,
+                                          lastMessage: lastMessage,
+                                          imageUrl: getUserId() !=
+                                                  chat.requester.userId
+                                                      .getOrCrash()
+                                              ? chat.requester.imageUrl
+                                                  .getOrCrash()
+                                              : chat.owner.imageUrl
+                                                  .getOrCrash());
+                                    }
+                                  },
+                                  childCount: state.chatRoom.size,
+                                ),
+                              );
+                            }
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
-                            return SliverFillRemaining(
+                            return const SliverFillRemaining(
                               child: Center(
-                                  child: Text("Error occured.....",
-                                      style: GoogleFonts.lato(
-                                          fontSize: 15,
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.bold))),
+                                child: Image(
+                                  width: 160,
+                                  height: 160,
+                                  image: AssetImage("assets/NoConnection.png"),
+                                ),
+                              ),
                             );
                           })),
                     ],

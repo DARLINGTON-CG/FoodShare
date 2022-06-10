@@ -44,34 +44,57 @@ class UserPostsPage extends StatelessWidget {
                 },
                     // ignore: always_specify_types
                     loadSuccess: (state) {
-                  return SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        final Post post = state.posts[index];
-                        if (post.failureOption.isSome()) {
-                          return Container(
-                            color: Colors.green,
-                            width: 100,
-                            height: 100,
-                            margin: const EdgeInsets.all(10),
-                          );
-                        } else {
-                          return BlocProvider<PostActorBloc>(
-                            create: (BuildContext context) =>
-                                getIt<PostActorBloc>(),
-                            child: Builder(builder: (BuildContext context) {
-                              return PostItem(
-                                post: post,
-                                postItemType: PostItemType.userPost,
-                              );
-                            }),
-                          );
-                        }
-                      },
-                      childCount: state.posts.size,
-                    ),
-                  );
+                  if (state.posts.isEmpty()) {
+                    return SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 200,
+                        child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            const Image(
+                              width: 160,
+                              height: 160,
+                              image: AssetImage("assets/NoDocuments.png"),
+                            ),
+                            Text("No recent posts",
+                                style: GoogleFonts.lato(fontSize: 15))
+                          ],
+                        )),
+                      ),
+                    );
+                  } else {
+                    return SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          final Post post = state.posts[index];
+                          if (post.failureOption.isSome()) {
+                            return Container(
+                              color: Colors.green,
+                              width: 100,
+                              height: 100,
+                              margin: const EdgeInsets.all(10),
+                            );
+                          } else {
+                            return BlocProvider<PostActorBloc>(
+                              create: (BuildContext context) =>
+                                  getIt<PostActorBloc>(),
+                              child: Builder(builder: (BuildContext context) {
+                                return PostItem(
+                                  post: post,
+                                  postItemType: PostItemType.userPost,
+                                );
+                              }),
+                            );
+                          }
+                        },
+                        childCount: state.posts.size,
+                      ),
+                    );
+                  }
                 },
+
                     // ignore: always_specify_types
                     loadFailure: (state) {
                   return SliverFillRemaining(

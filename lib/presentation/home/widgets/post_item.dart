@@ -73,8 +73,8 @@ class PostItem extends StatelessWidget {
                   ),
                   Text(post.description.getOrCrash(),
                       style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: Colors.black54,
+                        fontSize: 13,
+                        color: Colors.black,
                       )),
                   const SizedBox(
                     height: 10,

@@ -40,10 +40,8 @@ class FreeTabWidget extends StatelessWidget {
                       SliverPadding(
                           padding: const EdgeInsets.only(top: 10),
                           sliver: state.map(initial: (_) {
-                           
                             return SliverToBoxAdapter(child: Container());
                           }, loadingProgress: (_) {
-                          
                             return const SliverFillRemaining(
                               child: Center(
                                   child: ThreeDotIndicator(
@@ -52,40 +50,51 @@ class FreeTabWidget extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadSuccess: (state) {
-                           
-                            return SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int index) {
-                                  final Post post = state.posts[index];
-                                  if (post.failureOption.isSome()) {
-                                    return Container(
-                                      color: Colors.green,
-                                      width: 100,
-                                      height: 100,
-                                      margin: const EdgeInsets.all(10),
-                                    );
-                                  } else {
-                                    return PostItem(
-                                      post: post,
-                                      postItemType: PostItemType.externalPost,
-                                    );
-                                  }
-                                },
-                                childCount: state.posts.size,
-                              ),
-                            );
+                            if (state.posts.isEmpty()) {
+                              return const SliverFillRemaining(
+                                child: Center(
+                                  child: Image(
+                                    width: 160,
+                                    height: 160,
+                                    image: AssetImage("assets/NoItemsCart.png"),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return SliverList(
+                                delegate: SliverChildBuilderDelegate(
+                                  (BuildContext context, int index) {
+                                    final Post post = state.posts[index];
+                                    if (post.failureOption.isSome()) {
+                                      return Container(
+                                        color: Colors.green,
+                                        width: 100,
+                                        height: 100,
+                                        margin: const EdgeInsets.all(10),
+                                      );
+                                    } else {
+                                      return PostItem(
+                                        post: post,
+                                        postItemType: PostItemType.externalPost,
+                                      );
+                                    }
+                                  },
+                                  childCount: state.posts.size,
+                                ),
+                              );
+                            }
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
-                            
-                            return SliverFillRemaining(
-                              child: Center(
-                                  child: Text("Error occured.....",
-                                      style: GoogleFonts.lato(
-                                          fontSize: 15,
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.bold))),
-                            );
+                           return const SliverFillRemaining(
+                                child: Center(
+                                  child: Image(
+                                    width: 160,
+                                    height: 160,
+                                    image: AssetImage("assets/NoConnection.png"),
+                                  ),
+                                ),
+                              );
                           })),
                     ],
                   );

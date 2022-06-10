@@ -30,7 +30,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final TextEditingController controller = TextEditingController();
-   bool isUpdate = false;
+  bool isUpdate = false;
 
   @override
   void dispose() {
@@ -58,8 +58,14 @@ class _ChatPageState extends State<ChatPage> {
             builder: (BuildContext context, ReadMessagesState state) {
               return Text(
                 state.map(
-                  initial: (_) => "...",
-                  loadingProgress: (_) => "...",
+                  initial: (_) => getUserId() !=
+                          widget.chatRoom.requester.userId.getOrCrash()
+                      ? widget.chatRoom.requester.username.getOrCrash()
+                      : widget.chatRoom.owner.username.getOrCrash(),
+                  loadingProgress: (_) => getUserId() !=
+                          widget.chatRoom.requester.userId.getOrCrash()
+                      ? widget.chatRoom.requester.username.getOrCrash()
+                      : widget.chatRoom.owner.username.getOrCrash(),
                   // ignore: always_specify_types
                   loadSuccess: (success) {
                     ChatRoom element = success.chatRoom.iter.firstWhere(
@@ -90,7 +96,10 @@ class _ChatPageState extends State<ChatPage> {
                       return username;
                     }
                   },
-                  loadFailure: (_) => "-",
+                  loadFailure: (_) => getUserId() !=
+                          widget.chatRoom.requester.userId.getOrCrash()
+                      ? widget.chatRoom.requester.username.getOrCrash()
+                      : widget.chatRoom.owner.username.getOrCrash(),
                 ),
                 style: GoogleFonts.lato(
                     color: Colors.black,
@@ -131,19 +140,16 @@ class _ChatPageState extends State<ChatPage> {
                 );
                 return Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: post == null
-                      ? const Icon(
-                          Icons.cancel,
-                          color: Colors.red,
-                        )
-                      : IconButton(
-                          onPressed: () {
-                            showCustomDialogBox(context, post);
-                          },
-                          icon: const Icon(
-                            Icons.post_add_rounded,
-                            size: 25,
-                          )),
+                  child: IconButton(
+                      onPressed: () {
+                        if (post != null) {
+                          showCustomDialogBox(context, post);
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.post_add_rounded,
+                        size: 25,
+                      )),
                 );
               },
             ),
