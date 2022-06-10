@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SignContainer extends StatelessWidget {
   final String displayText;
@@ -20,12 +19,18 @@ class SignContainer extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         decoration: BoxDecoration(
             color: isOutlined ? Colors.transparent : const Color(0xFF3212F1),
-            border: isOutlined ? Border.all(color: const Color(0xFF3212F1)) : null,
+            border:
+                isOutlined ? Border.all(color: const Color(0xFF3212F1)) : null,
             borderRadius: BorderRadius.circular(10)),
         child: Text(
           displayText,
-          style: GoogleFonts.alegreya(
-              fontSize: 16, color: isOutlined ? Colors.black : Colors.white),
+          //Check for dark or light mode
+          style: isOutlined
+              ? Theme.of(context).textTheme.headline4
+              : Theme.of(context)
+                  .textTheme
+                  .headline4
+                  ?.copyWith(color: Colors.white),
           textAlign: TextAlign.center,
         ),
       ),

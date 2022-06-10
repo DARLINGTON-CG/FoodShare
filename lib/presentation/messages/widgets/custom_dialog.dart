@@ -14,7 +14,7 @@ void showCustomDialogBox(BuildContext context, Post post) {
       pageBuilder: (BuildContext context, Animation<double> anim1,
           Animation<double> anim2) {
         return AlertDialog(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).primaryColor,
           elevation: 1.0,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -29,10 +29,8 @@ void showCustomDialogBox(BuildContext context, Post post) {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(post.title.getOrCrash().toUpperCase(),
-                        style: GoogleFonts.lato(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontSize: 15, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center),
                     const SizedBox(
                       height: 5,
@@ -52,51 +50,66 @@ void showCustomDialogBox(BuildContext context, Post post) {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        const Icon(
+                        Icon(
                           Icons.monetization_on,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 18,
                         ),
                         const SizedBox(
                           width: 2,
                         ),
-                        Text("${post.postPrice.getOrCrash()}\$",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                                fontSize: 12, color: Colors.black)),
+                        Text(
+                          "${post.postPrice.getOrCrash()}\$",
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
                         Container(
                           height: 18,
                           width: 1,
                           margin: const EdgeInsets.symmetric(horizontal: 3),
                           color: Colors.grey,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.timer,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 18,
                         ),
                         const SizedBox(
                           width: 2,
                         ),
-                        Text(post.pickupTime.getOrCrash(),
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                                fontSize: 12, color: Colors.black)),
+                        Text(
+                          post.pickupTime.getOrCrash(),
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
                         Container(
                           height: 18,
                           width: 1,
                           margin: const EdgeInsets.symmetric(horizontal: 3),
                           color: Colors.grey,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.numbers_rounded,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 18,
                         ),
-                        Text(post.quantity.getOrCrash().toString(),
-                            textAlign: TextAlign.start,
-                            style: GoogleFonts.lato(
-                                fontSize: 12, color: Colors.black)),
+                        Text(
+                          post.quantity.getOrCrash().toString(),
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                   ])),

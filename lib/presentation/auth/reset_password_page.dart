@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../injector.dart';
@@ -56,11 +55,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
             title: FadeSlideTransition(
               animation: _headerAnimation,
               additionalOffset: 0,
-              child: Text("Reset Password",
-                  style: GoogleFonts.lato(
-                      fontSize: 19,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold)),
+              child: const Text(
+                "Reset Password",
+              ),
             )),
         resizeToAvoidBottomInset: false,
         body: SafeArea(

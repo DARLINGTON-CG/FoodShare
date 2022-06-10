@@ -1,18 +1,15 @@
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../anim/page/slide_up.dart';
 import 'sign_in_page.dart';
 import 'sign_up_page.dart';
 import 'widgets/sign_container.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
@@ -27,15 +24,15 @@ class WelcomePage extends StatelessWidget {
                       image: AssetImage('assets/welcome.png'))),
               Text(
                 'FOODSHARE',
-                style: GoogleFonts.alegreya(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline1
+               
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15),
                 child: Text(
                   'Amazing way to distribute food.\nLet\'s work together to make the world a better place.',
-                  style: GoogleFonts.alegreya(fontSize: 17),
+                  style: Theme.of(context).textTheme.headline2,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -45,16 +42,18 @@ class WelcomePage extends StatelessWidget {
                   SignContainer(
                       displayText: 'Sign up',
                       isOutlined: false,
-                      onPressedCallback: () =>
-                          Navigator.of(context).pushReplacement( SlideUpAnim(page:const SignUpPage() ) )),
+                      onPressedCallback: () => Navigator.of(context)
+                          .pushReplacement(
+                              SlideUpAnim(page: const SignUpPage()))),
                   const SizedBox(
                     width: 15,
                   ),
                   SignContainer(
                       displayText: 'Sign In',
                       isOutlined: true,
-                      onPressedCallback: () =>
-                           Navigator.of(context).pushReplacement( SlideUpAnim(page:const SignInPage()) )),
+                      onPressedCallback: () => Navigator.of(context)
+                          .pushReplacement(
+                              SlideUpAnim(page: const SignInPage()))),
                 ],
               )
             ],

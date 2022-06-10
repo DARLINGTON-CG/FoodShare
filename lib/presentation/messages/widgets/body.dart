@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rive/rive.dart';
 
 import '../../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../../domain/auth/i_auth_facade.dart';
@@ -33,12 +33,14 @@ class Body extends StatelessWidget {
     return BlocBuilder<ReadMessagesBloc, ReadMessagesState>(
       builder: (BuildContext context, ReadMessagesState state) {
         return state.map(
-            initial: (_) => Center(
-                child: Text("Messages....",
-                    style: GoogleFonts.lato(fontSize: 15))),
-            loadFailure: (_) => Center(
-                child: Text("Messages....",
-                    style: GoogleFonts.lato(fontSize: 15))),
+            initial: (_) => const Center(
+                    child: RiveAnimation.asset(
+                  'assets/message_icon.riv',
+                )),
+            loadFailure: (_) => const Center(
+                    child: RiveAnimation.asset(
+                  'assets/message_icon.riv',
+                )),
             // ignore: always_specify_types
             loadSuccess: (success) {
               ChatRoom element = success.chatRoom.iter.firstWhere(
@@ -49,12 +51,8 @@ class Body extends StatelessWidget {
                   orElse: () => ChatRoom.empty());
               if (success.chatRoom.isEmpty() ||
                   !(element.owner.userId.isValid())) {
-                return Center(
-                  child: Text(
-                    "Messages....",
-                    style: GoogleFonts.lato(fontSize: 17, color: Colors.black),
-                  ),
-                );
+                return const Center(
+                    child: RiveAnimation.asset('assets/message_icon.riv'));
               } else {
                 final ChatRoom elm = success.chatRoom.iter.firstWhere(
                     (ChatRoom chatRoomElem) =>
@@ -109,9 +107,7 @@ class Body extends StatelessWidget {
                 );
               }
             },
-            loadingProgress: (_) => Center(
-                child: Text("Loading....",
-                    style: GoogleFonts.lato(fontSize: 15))));
+            loadingProgress: (_) => const SizedBox());
       },
     );
   }

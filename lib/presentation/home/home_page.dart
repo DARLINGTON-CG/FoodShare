@@ -27,7 +27,6 @@ import 'widgets/nav_bar_item.dart';
 
 /*
 
-Work on chat page functionality
 Work on username regex for special characters and no spaces + no starting number
 Only first name can be capital, rest small,no spaces, no special characters.
 Verify that user data exists before  sending message.
@@ -155,8 +154,7 @@ class _HomePageState extends State<HomePage> {
                       elevation: 0.5,
                       title: Text(
                         appBarTitle[pageIndex],
-                        style:
-                            GoogleFonts.lato(fontSize: 17, color: Colors.black),
+                        
                       ),
                       centerTitle: true,
                       leading: Builder(builder: (BuildContext context) {
@@ -215,8 +213,11 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.transparent,
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  color: Colors.black.withOpacity(0.3),
-                                  width: 0.5)),
+                                    color: Theme.of(context).iconTheme.color ==
+                                    Colors.black
+                                ? Colors.grey.withOpacity(0.3)
+                                : Colors.black.withOpacity(0.1), width: 0.5
+                                  )),
                           child: IconButton(
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
@@ -253,9 +254,9 @@ class _HomePageState extends State<HomePage> {
                         showModalBottomSheet<void>(
                           context: context,
                           builder: (BuildContext context) {
-                            return Container(
+                            return SizedBox(
                               height: 170,
-                              color: Colors.white,
+                              
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -265,11 +266,13 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                         
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1)))),
+                                                 
+                                                  color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
+                                        
+                                                      ))),
                                       child: ListTile(
                                         title: Text(
                                           "Choose a category",
@@ -284,11 +287,12 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                         
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.1)))),
+                                                  color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
+                                                 
+                                                      ))),
                                       child: ListTile(
                                         onTap: () {
                                           Navigator.of(context).pop();
@@ -300,15 +304,13 @@ class _HomePageState extends State<HomePage> {
                                             editedPost: null,
                                           )));
                                         },
-                                        trailing: const Icon(
-                                          Icons.free_breakfast_rounded,
-                                          color: Colors.black,
+                                        trailing: Icon(
+                                          Icons.animation_outlined,
+                                           color: Theme.of(context).iconTheme.color,
                                         ),
                                         title: Text(
                                           "Free food",
-                                          style: GoogleFonts.lato(
-                                              fontSize: 14,
-                                              color: Colors.black),
+                                          style: Theme.of(context).textTheme.bodyText2,
                                         ),
                                       ),
                                     ),
@@ -316,7 +318,7 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: const BoxDecoration(
-                                        color: Colors.white,
+                                       
                                       ),
                                       child: ListTile(
                                         onTap: () {
@@ -328,15 +330,13 @@ class _HomePageState extends State<HomePage> {
                                             type: PostType.paid,
                                           )));
                                         },
-                                        trailing: const Icon(
+                                        trailing: Icon(
                                           Icons.account_balance_wallet,
-                                          color: Colors.black,
+                                         color: Theme.of(context).iconTheme.color,
                                         ),
                                         title: Text(
                                           "Paid food",
-                                          style: GoogleFonts.lato(
-                                              fontSize: 14,
-                                              color: Colors.black),
+                                          style: Theme.of(context).textTheme.bodyText2,
                                         ),
                                       ),
                                     ),
@@ -355,7 +355,7 @@ class _HomePageState extends State<HomePage> {
                             boxShadow: <BoxShadow>[
                               BoxShadow(
                                   blurRadius: 4,
-                                  color: Colors.grey.withOpacity(0.4),
+                                  color: (Theme.of(context).iconTheme.color)! == Colors.white ? Colors.black38:Colors.grey.withOpacity(0.4),
                                   offset: const Offset(-1, 5),
                                   spreadRadius: 0.3)
                             ],

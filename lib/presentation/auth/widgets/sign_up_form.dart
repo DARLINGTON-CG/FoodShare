@@ -50,8 +50,11 @@ class SignupForm extends StatelessWidget {
                               invalidEmailAndPasswordCombination: (_) =>
                                   "Invalid details combination")))));
                 },
-                    (Unit success) => Navigator.of(context)
-                        .pushReplacement(SlideIn(page: const UserDataPage(accessType: PageAccessType.replaced,)))));
+                    (Unit success) =>
+                        Navigator.of(context).pushReplacement(SlideIn(
+                            page: const UserDataPage(
+                          accessType: PageAccessType.replaced,
+                        )))));
       },
       builder: (BuildContext context, SignInFormState state) {
         return Padding(
@@ -118,10 +121,7 @@ class SignupForm extends StatelessWidget {
                     child: TextButton(
                       child: Text(
                         "SIGN IN",
-                        style: GoogleFonts.alegreya(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: const Color(0xff000000)),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                       onPressed: () => Navigator.of(context)
                           .pushReplacement(SlideIn(page: const SignInPage())),
@@ -133,7 +133,7 @@ class SignupForm extends StatelessWidget {
                   child: CustomButton(
                     color: const Color(0xFF3212F1),
                     isSubmitting: state.isSubmitting,
-                    textColor: kWhite,
+                    textColor: Colors.white,
                     text: 'Signup to continue',
                     onPressed: () {
                       BlocProvider.of<SignInFormBloc>(context).add(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rive/rive.dart';
 
 import '../../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
 import '../../../domain/posts/post.dart';
@@ -33,7 +33,7 @@ class FreeTabWidget extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           height: 1,
                           decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.4),
+                            color: (Theme.of(context).iconTheme.color)! == Colors.white ? Colors.black38.withOpacity(0.1):Colors.grey.withOpacity(0.4)
                           ),
                         ),
                       ),
@@ -51,15 +51,15 @@ class FreeTabWidget extends StatelessWidget {
                               // ignore: always_specify_types
                               loadSuccess: (state) {
                             if (state.posts.isEmpty()) {
-                              return const SliverFillRemaining(
-                                child: Center(
-                                  child: Image(
-                                    width: 160,
-                                    height: 160,
-                                    image: AssetImage("assets/NoItemsCart.png"),
-                                  ),
-                                ),
-                              );
+                                return const SliverFillRemaining(
+                      child:Center(
+                          child: RiveAnimation.asset(
+                            'assets/document_icon.riv',
+                          ),
+                        
+                      ),
+                    );
+                             
                             } else {
                               return SliverList(
                                 delegate: SliverChildBuilderDelegate(
@@ -86,6 +86,7 @@ class FreeTabWidget extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
+                                //TODO:Replace with rive animation
                            return const SliverFillRemaining(
                                 child: Center(
                                   child: Image(

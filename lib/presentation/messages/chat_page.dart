@@ -14,8 +14,7 @@ import '../../injector.dart';
 import 'widgets/body.dart';
 import 'widgets/custom_dialog.dart';
 
-//TODO: WORK ON INTIAL DATA
-//TODO: WORK MAIN REMOVED IMAGE URL'S
+//TODO: WORK ON VERIFYING USER BEFORE SENDING MESSAGE
 
 class ChatPage extends StatefulWidget {
   final ChatRoom chatRoom;
@@ -101,10 +100,8 @@ class _ChatPageState extends State<ChatPage> {
                       ? widget.chatRoom.requester.username.getOrCrash()
                       : widget.chatRoom.owner.username.getOrCrash(),
                 ),
-                style: GoogleFonts.lato(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
+                style:
+                    GoogleFonts.lato(fontSize: 17, fontWeight: FontWeight.bold),
               );
             },
           ),
@@ -146,9 +143,10 @@ class _ChatPageState extends State<ChatPage> {
                           showCustomDialogBox(context, post);
                         }
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.post_add_rounded,
                         size: 25,
+                        color: Theme.of(context).iconTheme.color,
                       )),
                 );
               },
@@ -197,15 +195,12 @@ class _ChatPageState extends State<ChatPage> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
-                                const Icon(
-                                  Icons.data_saver_on,
-                                  color: Colors.grey,
-                                ),
-                                const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
-                                    style: GoogleFonts.lato(
-                                        color: Colors.black, fontSize: 17),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        ?.copyWith(fontSize: 17),
                                     textAlignVertical: TextAlignVertical.bottom,
                                     controller: controller,
                                     onChanged: (String value) {

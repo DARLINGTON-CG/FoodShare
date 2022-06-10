@@ -67,6 +67,7 @@ class LoginForm extends StatelessWidget {
                     additionalOffset: 0.0,
                     child: InputField(
                       label: "Email Address",
+
                       passwordField: false,
                       validator: (_) => BlocProvider.of<SignInFormBloc>(context)
                           .state
@@ -118,10 +119,7 @@ class LoginForm extends StatelessWidget {
                     child: TextButton(
                       child: Text(
                         "SIGN UP",
-                        style: GoogleFonts.alegreya(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: const Color(0xFF000000)),
+                        style:   Theme.of(context).textTheme.headline3,
                       ),
                       onPressed: () => Navigator.of(context).pushReplacement(
                           SlideUpAnim(page: const SignUpPage())),
@@ -133,7 +131,7 @@ class LoginForm extends StatelessWidget {
                   child: CustomButton(
                     color: const Color(0xFF3212F1),
                     isSubmitting: state.isSubmitting,
-                    textColor: kWhite,
+                    textColor: Colors.white,
                     text: 'Login to continue',
                     onPressed: () {
                       BlocProvider.of<SignInFormBloc>(context).add(

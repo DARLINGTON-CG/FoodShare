@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rive/rive.dart';
 
 import '../../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
 import '../../../domain/posts/post.dart';
@@ -31,24 +32,16 @@ class UserPostList extends StatelessWidget {
               // ignore: always_specify_types
               loadSuccess: (state) {
             if (state.posts.isEmpty()) {
-              return SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 200,
-                  child: Center(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      const Image(
-                        width: 160,
-                        height: 160,
-                        image: AssetImage("assets/NoDocuments.png"),
+               return const SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 200,
+                        child: Center(
+                          child:  RiveAnimation.asset(
+                            'assets/document_icon.riv',
+                          ) ,
+                        ),
                       ),
-                      Text("No recent posts",
-                          style: GoogleFonts.lato(fontSize: 15))
-                    ],
-                  )),
-                ),
-              );
+                    );
             } else {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(

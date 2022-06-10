@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
@@ -14,7 +13,9 @@ class NotificationPage extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(Icons.close)),
         ),
+        //TODO: Replace with rive animation.
         body:const Center(
+          
                                   child: Image(
                                     width: 160,
                                     height: 160,

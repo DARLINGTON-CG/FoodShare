@@ -47,12 +47,12 @@ class _UserDataPageState extends State<UserDataPage> {
                     padding: const EdgeInsets.all(16),
                     content: CustomErrorBar(
                         errorMessage: failure.map(
-                      insufficientPermissions: (_) =>
-                          'Insufficient permissions.',
-                      notAvailable: (_) => 'Not available',
-                      unexpected: (_) => 'Unexpected error occured',
-                      usernameUnavailable: (_) => "Username unavailable"
-                    ))));
+                            insufficientPermissions: (_) =>
+                                'Insufficient permissions.',
+                            notAvailable: (_) => 'Not available',
+                            unexpected: (_) => 'Unexpected error occured',
+                            usernameUnavailable: (_) =>
+                                "Username unavailable"))));
               },
               (_) {
                 if (widget.accessType == PageAccessType.pushed) {
@@ -83,11 +83,13 @@ class _UserDataPageState extends State<UserDataPage> {
                       .add(UserDataEvents.saved(_userImage));
                 }
               },
-              backgroundColor: const Color(0xFF3212F1),
               child: state.isSaving
                   ? const Center(
                       child: ThreeDotIndicator(color: Colors.white, size: 14))
-                  : const Icon(Icons.arrow_forward_rounded)),
+                  :const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                    )),
           appBar: AppBar(
             title: Text('Information', style: GoogleFonts.lato(fontSize: 17)),
             centerTitle: true,
@@ -121,8 +123,7 @@ class _UserDataPageState extends State<UserDataPage> {
                         onTap: () async {
                           final XFile? imageFilePicked = await _imagePicker
                               .pickImage(source: ImageSource.gallery);
-                          final File converted =
-                              File((imageFilePicked!).path);
+                          final File converted = File((imageFilePicked!).path);
                           Future<void>.delayed(const Duration()).then((_) =>
                               Navigator.of(context)
                                   .push(SlideUpAnim(
@@ -160,8 +161,10 @@ class _UserDataPageState extends State<UserDataPage> {
                         RichText(
                           text: TextSpan(
                               text: "By signing up you agree to the ",
-                              style: GoogleFonts.lato(
-                                  fontSize: 14, color: Colors.black54),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(color: Colors.grey),
                               children: <InlineSpan>[
                                 TextSpan(
                                     text: "terms of service.",

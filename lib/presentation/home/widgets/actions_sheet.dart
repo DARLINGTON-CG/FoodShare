@@ -13,9 +13,9 @@ Future<void> actionsSheet(
     context: context,
     useRootNavigator: true,
     builder: (BuildContext context) {
-      return Container(
+      return SizedBox(
         height: 190,
-        color: Colors.white,
+      
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -25,10 +25,10 @@ Future<void> actionsSheet(
                 width: MediaQuery.of(context).size.width,
                 height: 55,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                  
                     border: Border(
                         bottom:
-                            BorderSide(color: Colors.grey.withOpacity(0.1)))),
+                            BorderSide(color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)))),
                 child: ListTile(
                   title: Text(
                     "Critical action",
@@ -43,19 +43,19 @@ Future<void> actionsSheet(
                 width: MediaQuery.of(context).size.width,
                 height: 65,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                   
                     border: Border(
                         bottom:
-                            BorderSide(color: Colors.grey.withOpacity(0.1)))),
+                            BorderSide(color:Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)))),
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).pop();
                     postActorBloc
                         .add(PostActorEvent.deleteActionPerformed(post));
                   },
-                  trailing: const Icon(
+                  trailing:Icon(
                     Icons.delete_forever,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   title: Text(
                     "Delete",
@@ -70,12 +70,10 @@ Future<void> actionsSheet(
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 65,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
+               
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).pop();
@@ -88,9 +86,9 @@ Future<void> actionsSheet(
                                     : PostType.paid,
                             editedPost: post)));
                   },
-                  trailing: const Icon(
+                  trailing:  Icon(
                     Icons.update_rounded,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   title: Text(
                     "Update",

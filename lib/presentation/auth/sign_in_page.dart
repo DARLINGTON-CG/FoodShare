@@ -70,21 +70,21 @@ class SignInPageState extends State<SignInPage>
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: kWhite,
         appBar: AppBar(
           elevation: 0.0,
           centerTitle: true,
-          backgroundColor: Colors.white,
-          actionsIconTheme: const IconThemeData(color: Colors.black),
-          iconTheme: const IconThemeData(color: Colors.black),
+       
           title: FadeSlideTransition(
             animation: _headerTextAnimation,
             additionalOffset: 0,
             child: Text("Welcome Back",
                 style: GoogleFonts.alegreya(
                     fontSize: 21,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
+                    fontWeight: FontWeight.bold)
+                    
+                    
+                    
+            ),
           ),
         ),
         body: SafeArea(

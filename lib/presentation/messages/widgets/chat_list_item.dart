@@ -41,7 +41,7 @@ class ChatListItem extends StatelessWidget {
       title: Text(
         title,
         style: GoogleFonts.lato(
-            color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+           fontSize: 15, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
         lastMessage.length > 25 ? "${lastMessage.substring(0,25)}...":lastMessage ,
@@ -58,26 +58,9 @@ class ChatListItem extends StatelessWidget {
               )),
         ));
       },
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            width: 25,
-            height: 25,
-            margin: const EdgeInsets.all(4),
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFF3212F1),
-            ),
-            child: Center(
-                child: Text('12',
-                    style: GoogleFonts.lato(
-                      color: Colors.white,
-                      fontSize: 10,
-                    ))),
-          )
-        ],
+      trailing: const CircleAvatar(
+        radius: 5 ,
+        backgroundColor:Color(0xFF3212F1),
       ),
     );
   }

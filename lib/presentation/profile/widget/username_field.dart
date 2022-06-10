@@ -45,6 +45,7 @@ class _UsernameFieldState extends State<UsernameField> {
           onChanged: (String value) => BlocProvider.of<UserDataBloc>(context)
               .add(UserDataEvents.usernameChanged(value)),
           keyboardType: TextInputType.text,
+          style: Theme.of(context).textTheme.bodyText2,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             counterText: "",
@@ -52,9 +53,10 @@ class _UsernameFieldState extends State<UsernameField> {
             focusedBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
-                color: Colors.black,
+                color: Colors.grey,
               ),
             ),
+
             hintText: 'Add username...',
             errorBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -71,16 +73,12 @@ class _UsernameFieldState extends State<UsernameField> {
             errorStyle: GoogleFonts.lato(fontSize: 13, color: Colors.red),
             enabledBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: Colors.black.withOpacity(0.5),
+              borderSide:const BorderSide(
+                color: Colors.grey,
               ),
             ),
-            // hintText: widget.label,
-            hintStyle: GoogleFonts.lato(
-              color: Colors.black.withOpacity(0.7),
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
+          
+            hintStyle: Theme.of(context).textTheme.bodyText2,
           ),
         ));
   }

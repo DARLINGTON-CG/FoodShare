@@ -79,8 +79,10 @@ class _PostPageState extends State<PostPage> {
                   failure.map(
                     insufficientPermissions: (_) => null,
                     nonExistentUser: (_) {
-                      Navigator.of(context)
-                          .push(SlideIn(page: const UserDataPage(accessType: PageAccessType.pushed,)));
+                      Navigator.of(context).push(SlideIn(
+                          page: const UserDataPage(
+                        accessType: PageAccessType.pushed,
+                      )));
                     },
                     unableToUpdate: (_) => null,
                     unexpected: (_) => null,
@@ -105,18 +107,15 @@ class _PostPageState extends State<PostPage> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('Post Food',
-                  style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
+              title: Text('Post Food', style: GoogleFonts.lato(fontSize: 17)),
               leading: IconButton(
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(
                     Icons.close_rounded,
-                    color: Colors.black,
                   )),
               centerTitle: true,
             ),
             floatingActionButton: FloatingActionButton(
-                backgroundColor: const Color(0xFF3212F1),
                 onPressed: () {
                   if (PostType.free == widget.type) {
                     BlocProvider.of<PostFormBloc>(context)
@@ -129,7 +128,10 @@ class _PostPageState extends State<PostPage> {
                 child: state.isSaving
                     ? const Center(
                         child: ThreeDotIndicator(color: Colors.white, size: 14))
-                    : const Icon(Icons.post_add)),
+                    : const Icon(
+                        Icons.post_add,
+                        color: Colors.white,
+                      )),
             body: Form(
               autovalidateMode: AutovalidateMode.disabled,
               child:
@@ -139,7 +141,7 @@ class _PostPageState extends State<PostPage> {
                   width: MediaQuery.of(context).size.width,
                   height: 1,
                   decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
+                    color: Colors.black.withOpacity(0.1),
                   ),
                 ),
                 Container(
@@ -150,8 +152,10 @@ class _PostPageState extends State<PostPage> {
                   child: ListTile(
                     title: Text(
                       "Add Image",
-                      style:
-                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     trailing: Text(
                       (state.showErrorMessages && _foodImage == null) &&
@@ -282,8 +286,10 @@ class _PostPageState extends State<PostPage> {
                   child: ListTile(
                     title: Text(
                       "Title",
-                      style:
-                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     trailing: Text(
                       state.showErrorMessages
@@ -317,8 +323,10 @@ class _PostPageState extends State<PostPage> {
                   child: ListTile(
                     title: Text(
                       'Description',
-                      style:
-                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     trailing: Text(
                       state.showErrorMessages
@@ -351,8 +359,10 @@ class _PostPageState extends State<PostPage> {
                   child: ListTile(
                     title: Text(
                       'Quantity',
-                      style:
-                          GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -365,8 +375,10 @@ class _PostPageState extends State<PostPage> {
                   child: ListTile(
                       title: Text(
                         'Pick up times',
-                        style:
-                            GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       trailing: TextButton(
                         onPressed: () {
@@ -416,8 +428,10 @@ class _PostPageState extends State<PostPage> {
                     child: ListTile(
                       title: Text(
                         'Amount \$',
-                        style:
-                            GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       trailing: Text(
                         state.showErrorMessages

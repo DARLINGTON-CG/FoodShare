@@ -107,19 +107,19 @@ class EditPicturePageState extends State<EditPicturePage> {
                       onPressed: flip,
                       icon: const Icon(
                         Icons.flip,
-                        color: Colors.black,
+                        
                       )),
                   IconButton(
                       onPressed: () => rotate(false),
                       icon: const Icon(
                         Icons.rotate_left,
-                        color: Colors.black,
+                        
                       )),
                   IconButton(
                       onPressed: () => rotate(true),
                       icon: const Icon(
                         Icons.rotate_right,
-                        color: Colors.black,
+                       
                       )),
                   TextButton(
                     onPressed: () async {

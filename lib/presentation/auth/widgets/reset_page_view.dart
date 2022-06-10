@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../../domain/auth/auth_failure.dart';
@@ -49,7 +48,7 @@ class ResetPageView extends StatelessWidget {
               child: Text(
                 "Enter your email address below\nto receive a reset link.",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.lato(fontSize: 16, color: Colors.black),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
             const SizedBox(
@@ -81,7 +80,7 @@ class ResetPageView extends StatelessWidget {
                 additionalOffset: 0,
                 child: Text(
                   "Make sure to provide the email\nused for registration.",
-                  style: GoogleFonts.lato(fontSize: 16, color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText2,
                   textAlign: TextAlign.center,
                 )),
             const SizedBox(height: 15),

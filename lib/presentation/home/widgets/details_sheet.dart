@@ -27,7 +27,6 @@ Future<void> showDetailSheet(BuildContext context, Post post,
       return Container(
         height: 250,
         padding: const EdgeInsets.all(15),
-        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -48,29 +47,35 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                     double.tryParse(post.postPrice.getOrCrash()) == 0
                         ? "Free"
                         : "${post.postPrice.getOrCrash()}\$",
-                    style: GoogleFonts.lato(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        ?.copyWith(fontSize: 13, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              const Divider(),
+               Divider(
+                color: Colors.black.withOpacity(0.4)
+              ),
               const SizedBox(
                 height: 8,
               ),
               Text(
                 post.description.getOrCrash(),
-                style: GoogleFonts.lato(fontSize: 13, color: Colors.black),
+                style:Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        ?.copyWith(fontSize: 13),
               ),
               const SizedBox(
                 height: 10,
               ),
               Row(
                 children: <Widget>[
-                  const Icon(
+                  Icon(
                     Icons.numbers_rounded,
                     size: 16,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   Text(post.quantity.getOrCrash().toString(),
                       style: GoogleFonts.lato(
@@ -78,16 +83,19 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                   const SizedBox(
                     width: 8,
                   ),
-                  const Icon(
+                Icon(
                     Icons.timer_outlined,
                     size: 14,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   Text(post.pickupTime.getOrCrash(),
-                      style: GoogleFonts.lato(
-                          fontSize: 12, fontWeight: FontWeight.bold)),
+                      style:Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        ?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
                   const SizedBox(
                     width: 8,
                   ),

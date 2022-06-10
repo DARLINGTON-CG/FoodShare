@@ -13,12 +13,11 @@ class InformationPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Information',
-              style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
+              style: GoogleFonts.lato(fontSize: 17)),
           leading: IconButton(
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(
                 Icons.close_rounded,
-                color: Colors.black,
               )),
           centerTitle: true,
         ),

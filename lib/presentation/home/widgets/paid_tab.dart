@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rive/rive.dart';
 
 import '../../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../../domain/posts/post.dart';
@@ -38,8 +38,10 @@ class _PaidTabWidgetState extends State<PaidTabWidget> {
                           width: MediaQuery.of(context).size.width,
                           height: 1,
                           decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.4),
-                          ),
+                              color: (Theme.of(context).iconTheme.color)! ==
+                                      Colors.white
+                                  ? Colors.black38.withOpacity(0.1)
+                                  : Colors.grey.withOpacity(0.4)),
                         ),
                       ),
                       SliverPadding(
@@ -58,10 +60,8 @@ class _PaidTabWidgetState extends State<PaidTabWidget> {
                             if (state.posts.isEmpty()) {
                               return const SliverFillRemaining(
                                 child: Center(
-                                  child: Image(
-                                    width: 160,
-                                    height: 160,
-                                    image: AssetImage("assets/NoItemsCart.png"),
+                                  child: RiveAnimation.asset(
+                                    'assets/document_icon.riv',
                                   ),
                                 ),
                               );
@@ -91,6 +91,7 @@ class _PaidTabWidgetState extends State<PaidTabWidget> {
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
+                                //TODO: Replace with rive animation
                             return const SliverFillRemaining(
                               child: Center(
                                 child: Image(

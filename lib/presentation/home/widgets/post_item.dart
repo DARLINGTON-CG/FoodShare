@@ -25,19 +25,21 @@ class PostItem extends StatelessWidget {
           final PostActorBloc postActorBloc =
               BlocProvider.of<PostActorBloc>(context);
           actionsSheet(context, post, postActorBloc);
-         
         } else {
-          final UserDataReadBloc userDataBloc = 
+          final UserDataReadBloc userDataBloc =
               BlocProvider.of<UserDataReadBloc>(context);
-          final ReadMessagesBloc readMessagesBloc = 
+          final ReadMessagesBloc readMessagesBloc =
               BlocProvider.of<ReadMessagesBloc>(context);
-          showDetailSheet(context, post,userDataBloc
-          .state.map(
-                                  initial: (_) => null,
-                                  loadingProgress: (_) => null,
-                                  // ignore: always_specify_types
-                                  loadSuccess: (success) => success.userData,
-                                  loadFailure: (_) => null),readMessagesBloc);
+          showDetailSheet(
+              context,
+              post,
+              userDataBloc.state.map(
+                  initial: (_) => null,
+                  loadingProgress: (_) => null,
+                  // ignore: always_specify_types
+                  loadSuccess: (success) => success.userData,
+                  loadFailure: (_) => null),
+              readMessagesBloc);
         }
       },
       child: Container(
@@ -72,10 +74,10 @@ class PostItem extends StatelessWidget {
                     height: 5,
                   ),
                   Text(post.description.getOrCrash(),
-                      style: GoogleFonts.lato(
-                        fontSize: 13,
-                        color: Colors.black,
-                      )),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          ?.copyWith(fontSize: 13)),
                   const SizedBox(
                     height: 10,
                   ),
@@ -86,8 +88,11 @@ class PostItem extends StatelessWidget {
                         size: 16,
                       ),
                       Text(post.quantity.getOrCrash().toString(),
-                          style: GoogleFonts.lato(
-                              fontSize: 13, fontWeight: FontWeight.bold)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  fontSize: 13, fontWeight: FontWeight.bold)),
                       const SizedBox(
                         width: 8,
                       ),
@@ -99,8 +104,11 @@ class PostItem extends StatelessWidget {
                         width: 4,
                       ),
                       Text(post.pickupTime.getOrCrash(),
-                          style: GoogleFonts.lato(
-                              fontSize: 13, fontWeight: FontWeight.bold)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  fontSize: 13, fontWeight: FontWeight.bold)),
                       const SizedBox(
                         width: 10,
                       ),
@@ -108,9 +116,12 @@ class PostItem extends StatelessWidget {
                         Icons.face,
                         size: 16,
                       ),
-                      Text("-${post.username.getOrCrash().length < 8 ? post.username.getOrCrash():"${post.username.getOrCrash().substring(0,8)}..."}",
-                          style: GoogleFonts.lato(
-                              fontSize: 13, fontWeight: FontWeight.bold)),
+                      Text(
+                        "-${post.username.getOrCrash().length < 8 ? post.username.getOrCrash() : "${post.username.getOrCrash().substring(0, 8)}..."}",
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                            overflow: TextOverflow.fade,
+                      ),
                     ],
                   ),
                 ]))

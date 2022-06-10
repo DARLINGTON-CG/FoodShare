@@ -44,7 +44,11 @@ class _HomePageViewState extends State<HomePageView>
                         color: Colors.transparent,
                         shape: BoxShape.circle,
                         border: Border.all(
-                            color: Colors.black.withOpacity(0.3), width: 0.5)),
+                            color: Theme.of(context).iconTheme.color ==
+                                    Colors.black
+                                ? Colors.grey.withOpacity(0.3)
+                                : Colors.black.withOpacity(0.1),
+                            width: 0.5)),
                     child: IconButton(
                         onPressed: () =>
                             Navigator.of(context, rootNavigator: true)
@@ -111,11 +115,8 @@ class _HomePageViewState extends State<HomePageView>
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TabBar(
-                      labelColor: Colors.black,
                       isScrollable: true,
-                      indicatorColor: Colors.black,
-                      labelStyle: GoogleFonts.lato(fontSize: 15),
-                      indicatorSize: TabBarIndicatorSize.label,
+                      indicatorColor: Theme.of(context).iconTheme.color,
                       tabs: tabs
                           .map((String name) => Tab(
                                 text: name,

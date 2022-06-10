@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../domain/messaging/chat_room.dart';
@@ -38,6 +37,7 @@ class MessagesPageView extends StatelessWidget {
                               // ignore: always_specify_types
                               loadSuccess: (state) {
                             if (state.chatRoom.isEmpty()) {
+                              //Replace with rive animation
                               return const SliverFillRemaining(
                                 child: Center(
                                   child: Image(
@@ -95,6 +95,7 @@ class MessagesPageView extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
+                                //TODO: Replace with rive animation
                             return const SliverFillRemaining(
                               child: Center(
                                 child: Image(

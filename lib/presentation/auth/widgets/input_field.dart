@@ -8,7 +8,7 @@ class InputField extends StatefulWidget {
   final bool passwordField;
   final Function()? forgotPasswordFunc;
   final Function(String)? onChangedFunc;
-  
+
   final String? Function(String?)? validator;
   final bool? hideForgot;
   const InputField({
@@ -41,16 +41,13 @@ class _InputFieldState extends State<InputField> {
       onChanged: widget.onChangedFunc,
       obscureText: hidden,
       validator: widget.validator,
-      style: GoogleFonts.lato(
-        color: Colors.black87,
-        fontSize: 14
-      ),
+      style: Theme.of(context).textTheme.bodyText2,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(kPaddingM),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.black,
+          borderSide:const BorderSide(
+            color: Colors.grey,
           ),
         ),
         errorBorder: OutlineInputBorder(
@@ -68,20 +65,15 @@ class _InputFieldState extends State<InputField> {
         errorStyle: GoogleFonts.lato(fontSize: 13, color: Colors.red),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.5),
+          borderSide: const BorderSide(
+            color: Colors.grey,
           ),
         ),
         hintText: widget.label,
-        hintStyle: GoogleFonts.lato(
-          color: Colors.black87,
-          fontSize: 14,
-          
-        ),
-      
+        hintStyle: Theme.of(context).textTheme.bodyText2,
         prefixIcon: Icon(
           widget.passwordField ? Icons.lock_rounded : Icons.person,
-          color: kBlack,
+          color: const Color(0xFF2D3243),
         ),
         suffixIcon: widget.passwordField
             ? Wrap(

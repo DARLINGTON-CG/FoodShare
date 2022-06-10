@@ -28,19 +28,15 @@ class _TitleFieldState extends State<TitleField> {
           onChanged: (String value) => BlocProvider.of<PostFormBloc>(context)
               .add(PostFormEvent.titleChanged(value)),
           keyboardType: TextInputType.text,
-          style: GoogleFonts.lato(
-            color: Colors.black,
-            fontSize: 14,
-            
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 25, left: 10, bottom: 3),
             isCollapsed: true,
 
             focusedBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: Colors.black,
+              borderSide:  BorderSide(
+                 color: Colors.black.withOpacity(0.2),
               ),
             ),
             hintText: 'Add a title...',
@@ -60,15 +56,11 @@ class _TitleFieldState extends State<TitleField> {
             enabledBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.2),
               ),
             ),
             // hintText: widget.label,
-            hintStyle: GoogleFonts.lato(
-              color: Colors.black.withOpacity(0.7),
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
+            hintStyle:Theme.of(context).textTheme.bodyText2,
           ),
         ));
   }

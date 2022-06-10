@@ -18,7 +18,6 @@ class SplashPage extends StatelessWidget {
             // ignore: always_specify_types
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (BuildContext context) => const HomePage()));
-            
           },
           unauthenticated: (_) =>
               // ignore: always_specify_types
@@ -27,10 +26,7 @@ class SplashPage extends StatelessWidget {
         );
       },
       child: const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(color: Colors.black),
-        ),
-      ),
+        body: SizedBox()),
     );
   }
 }

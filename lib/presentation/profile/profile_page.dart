@@ -33,15 +33,13 @@ class ProfilePage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
             SliverAppBar(
-              title: Text('Profile',
-                  style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
+              title: Text('Profile', style: GoogleFonts.lato(fontSize: 17)),
               centerTitle: true,
               elevation: 0.0,
               leading: IconButton(
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(
                     Icons.close_rounded,
-                    color: Colors.black,
                   )),
               pinned: true,
             ),
@@ -49,18 +47,14 @@ class ProfilePage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 20,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
-                ),
+                decoration:
+                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
               ),
             ),
             SliverToBoxAdapter(
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 55,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
                 child: ListTile(
                   title: Text(
                     "Payment Configuration",
@@ -74,13 +68,12 @@ class ProfilePage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
-                ),
+                decoration:
+                    BoxDecoration(color: Colors.blueGrey.withOpacity(0.04)),
                 child: ListTile(
                   title: Text(
                     "App Configuration",
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),
@@ -95,18 +88,18 @@ class ProfilePage extends StatelessWidget {
                 }),
             CustomListTile(label: "Push Notifications", func: () {}),
             CustomListTile(label: "Dark Mode", trailing: "Off", func: () {}),
-            CustomListTile(label: "Delete Timer", func: () {}),
+            CustomListTile(label: "Delete Timer",showListTile: false, func: () {}),
             SliverToBoxAdapter(
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 55,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Colors.grey.withOpacity(0.04),
                 ),
                 child: ListTile(
                   title: Text(
                     "Account Configuration",
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),
@@ -114,14 +107,14 @@ class ProfilePage extends StatelessWidget {
             CustomListTile(label: "Delete Account", func: () {}),
             CustomListTile(
                 label: "Sign out",
+                showListTile: false,
                 func: () {
                   showModalBottomSheet<void>(
                     context: context,
                     useRootNavigator: true,
                     builder: (BuildContext context) {
-                      return Container(
+                      return SizedBox(
                         height: 190,
-                        color: Colors.white,
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -131,11 +124,11 @@ class ProfilePage extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width,
                                 height: 55,
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
                                     border: Border(
                                         bottom: BorderSide(
-                                            color:
-                                                Colors.grey.withOpacity(0.1)))),
+                                            color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
+                                                
+                                                ))),
                                 child: ListTile(
                                   title: Text(
                                     "Proceed to sign out",
@@ -149,11 +142,9 @@ class ProfilePage extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width,
                                 height: 65,
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
                                     border: Border(
                                         bottom: BorderSide(
-                                            color:
-                                                Colors.grey.withOpacity(0.1)))),
+                                            color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)))),
                                 child: ListTile(
                                   onTap: () {
                                     Navigator.of(context).pop();
@@ -166,9 +157,9 @@ class ProfilePage extends StatelessWidget {
                                       (Route route) => false,
                                     );
                                   },
-                                  trailing: const Icon(
-                                    Icons.check,
-                                    color: Colors.black,
+                                  trailing:  Icon(
+                                    Icons.logout_rounded,
+                                    color: Theme.of(context).iconTheme.color,
                                   ),
                                   title: Text(
                                     "Accept",
@@ -183,17 +174,14 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width,
                                 height: 65,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                ),
                                 child: ListTile(
                                   onTap: () => Navigator.of(context).pop(),
-                                  trailing: const Icon(
+                                  trailing:  Icon(
                                     Icons.close,
-                                    color: Colors.black,
+                                     color: Theme.of(context).iconTheme.color,
                                   ),
                                   title: Text(
                                     "Decline",
@@ -225,13 +213,13 @@ class ProfilePage extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     "About",
-                    style: GoogleFonts.lato(fontSize: 14, color: Colors.black),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),
             ),
             CustomListTile(label: "Help", func: () {}),
-            CustomListTile(label: "Privacy policy", func: () {}),
+            CustomListTile(label: "Privacy policy",showListTile: false, func: () {}),
           ],
         ),
       ),

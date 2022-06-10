@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rive/rive.dart';
 
 import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
@@ -18,13 +19,13 @@ class UserPostsPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           elevation: 0.3,
-          title: Text('Posts',
-              style: GoogleFonts.lato(fontSize: 17, color: Colors.black)),
+          title: const Text(
+            'Posts',
+          ),
           leading: IconButton(
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(
                 Icons.close_rounded,
-                color: Colors.black,
               )),
           centerTitle: true,
         ),
@@ -45,24 +46,12 @@ class UserPostsPage extends StatelessWidget {
                     // ignore: always_specify_types
                     loadSuccess: (state) {
                   if (state.posts.isEmpty()) {
-                    return SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 200,
-                        child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            const Image(
-                              width: 160,
-                              height: 160,
-                              image: AssetImage("assets/NoDocuments.png"),
-                            ),
-                            Text("No recent posts",
-                                style: GoogleFonts.lato(fontSize: 15))
-                          ],
-                        )),
-                      ),
+                    return const SliverFillRemaining(
+                      child:Center(
+                          child: RiveAnimation.asset(
+                            'assets/document_icon.riv',
+                          )  ,
+                        ),
                     );
                   } else {
                     return SliverList(

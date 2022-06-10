@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CircularSelector extends StatelessWidget {
   final String number;
@@ -31,10 +30,7 @@ class CircularSelector extends StatelessWidget {
             border: Border.all(color: borderColor)),
         child: Center(
           child: Text(number,
-              style: GoogleFonts.lato(
-                  color: Colors.black,
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold)),
+              style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 13,fontWeight: FontWeight.bold)),
         ),
       ),
     );
