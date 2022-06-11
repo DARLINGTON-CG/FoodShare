@@ -60,7 +60,7 @@ class ChatListItem extends StatelessWidget {
       },
       trailing: const CircleAvatar(
         radius: 5 ,
-        backgroundColor:Color(0xFF3212F1),
+        backgroundColor:Colors.grey, //Color(0xFF3212F1),
       ),
     );
   }

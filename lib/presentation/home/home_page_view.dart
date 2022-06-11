@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import '../../domain/user/user_data.dart';
 import '../anim/page/slide_in.dart';
 import '../anim/page/slide_up.dart';
 import '../notification/notification_page.dart';
@@ -63,11 +64,26 @@ class _HomePageViewState extends State<HomePageView>
                   builder: (BuildContext context, UserDataReadState state) {
                     return Center(
                       child: GestureDetector(
-                        onTap: () => Navigator.of(context).push(SlideUpAnim(
-                            page: BlocProvider<UserDataReadBloc>.value(
-                                value:
-                                    BlocProvider.of<UserDataReadBloc>(context),
-                                child: const ProfilePage()))),
+                        onTap: () {
+                        final UserData userData =  state.map(
+                              initial: (_) =>UserData.empty(),
+                              loadingProgress: (_) =>
+                                  UserData.empty(),
+                              // ignore: always_specify_types
+                              loadSuccess: (success) =>
+                                success.userData,
+                              // ignore: always_specify_types
+                              loadFailure: (failure) {
+                                return UserData.empty();
+                              });
+                          Navigator.of(context).push(SlideUpAnim(
+                              page: BlocProvider<UserDataReadBloc>.value(
+                                  value: BlocProvider.of<UserDataReadBloc>(
+                                      context),
+                                  child: ProfilePage(
+                                    userData: userData,
+                                  ))));
+                        },
                         child: Container(
                           width: 38,
                           height: 38,

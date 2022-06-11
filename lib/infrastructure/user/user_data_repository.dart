@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:kt_dart/kt.dart';
 
 import 'dart:io';
 
@@ -9,6 +11,11 @@ import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
 import '../../domain/core/errors.dart';
 import '../../domain/core/value_objects.dart';
+import '../../domain/messaging/chat_room.dart';
+import '../../domain/messaging/i_message_repository.dart';
+import '../../domain/posts/i_post_repository.dart';
+import '../../domain/posts/post.dart';
+import '../../domain/posts/post_failure.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
 import '../../domain/user/i_user_repository.dart';
@@ -17,6 +24,8 @@ import '../../domain/user/user_data.dart';
 import '../../domain/user/value_objects.dart';
 import '../../injector.dart';
 import '../core/firebase_helpers.dart';
+import '../messaging/chat_room_dto.dart';
+import '../posts/post_dto.dart';
 import 'user_data_dto.dart';
 
 @LazySingleton(as: IUserRepository)
@@ -67,9 +76,69 @@ class UserDataRepository extends IUserRepository {
   }
 
   @override
-  Future<Either<UserDataFailure, Unit>> delete(UserData data) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<UserDataFailure, Unit>> delete(UserData data) async {
+    try {
+      final Option<LocalUser> userOption =
+          getIt<IAuthFacade>().getSignedInUser();
+      final LocalUser user =
+          userOption.getOrElse(() => throw NotAuthenticatedError());
+      //Pass this value to delete messages function to form id
+      print("AWAITING POINT");
+      final String username = data.username.getOrCrash();
+      // Delete user data section - deleting also profile pictures
+      print("POINT NOT PASSED");
+      final CollectionReference<Object?> userDoc =
+          await _firebaseFirestore.userDocuments();
+
+      await userDoc.doc(user.id.getOrCrash()).delete();
+      await getIt<IStorageRepository>().delete(data.imageUrl.getOrCrash());
+
+      //Delete documents user created
+      final CollectionReference<Object?> postDoc =
+          await _firebaseFirestore.postDocuments();
+
+      final Iterable<Post> postCollection = await postDoc
+          .where('postUserId', isEqualTo: user.id.getOrCrash())
+          .get()
+          .then(
+              (QuerySnapshot<Object?> value) => value.docs.map(
+                  (QueryDocumentSnapshot<Object?> doc) =>
+                      PostDto.fromFirestore(doc).toDomain()),
+              // ignore: always_specify_types
+              onError: (e) => throw Exception());
+      for (Post post in postCollection) {
+        await getIt<IPostRepository>().delete(post);
+      }
+
+      //Delete chats that user is part of
+      final CollectionReference<Object?> chatDoc =
+          await _firebaseFirestore.chatDocuments();
+
+      final Iterable<ChatRoom> chatCollection = await chatDoc
+          .where(
+            'chatIds',
+            arrayContains: user.id.getOrCrash(),
+          )
+          .get()
+          .then(
+              (QuerySnapshot<Object?> value) => value.docs.map(
+                  (QueryDocumentSnapshot<Object?> doc) =>
+                      ChatRoomDto.fromFirestore(doc).toDomain()),
+              // ignore: always_specify_types
+              onError: (e) => throw Exception());
+      for (ChatRoom chat in chatCollection) {
+        await getIt<IMessageRepository>().delete(chat, username);
+      }
+
+      //Delete user auth record
+      await getIt<IAuthFacade>().deleteUser();
+      await getIt<IAuthFacade>().signOut();
+
+      return right(unit);
+    } catch (e) {
+      print('BIG TIME ERROR $e');
+      return left(const UserDataFailure.unexpected());
+    }
   }
 
   @override

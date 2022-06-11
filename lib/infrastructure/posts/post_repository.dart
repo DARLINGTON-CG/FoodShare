@@ -130,14 +130,14 @@ class PostRepository implements IPostRepository {
 
   @override
   Stream<Either<PostFailure, KtList<Post>>> watchAllFree() async* {
-    final CollectionReference<Object?> userDoc =
+    final CollectionReference<Object?> postDoc =
         await _firebaseFirestore.postDocuments();
 
     final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
     final LocalUser user =
         userOption.getOrElse(() => throw NotAuthenticatedError());
 
-    yield* userDoc
+    yield* postDoc
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot<Object?> snapshots) => snapshots.docs.map(

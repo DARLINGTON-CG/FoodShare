@@ -9,6 +9,7 @@ import '../../application/posts/paid_post_watcher/post_paid_watcher_bloc.dart';
 import '../../application/posts/post_actor/post_actor_bloc.dart';
 import '../../application/posts/user_post_watcher/user_post_watcher_bloc.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import '../../domain/user/user_data.dart';
 import '../../domain/user/user_data_failure.dart';
 import '../../domain/utility/important_enums.dart';
 import '../anim/page/slide_in.dart';
@@ -34,8 +35,6 @@ Add dark mode.
 Add functionality for user to delete account.
 Add state management functionality for navigation bar.
 */
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -154,7 +153,6 @@ class _HomePageState extends State<HomePage> {
                       elevation: 0.5,
                       title: Text(
                         appBarTitle[pageIndex],
-                        
                       ),
                       centerTitle: true,
                       leading: Builder(builder: (BuildContext context) {
@@ -163,13 +161,26 @@ class _HomePageState extends State<HomePage> {
                               (BuildContext context, UserDataReadState state) {
                             return Center(
                               child: GestureDetector(
-                                onTap: () => Navigator.of(context).push(
-                                    SlideUpAnim(
-                                        page: BlocProvider<
-                                                UserDataReadBloc>.value(
-                                            value: BlocProvider.of<
-                                                UserDataReadBloc>(context),
-                                            child: const ProfilePage()))),
+                                onTap: () {
+                                  final UserData userData = state.map(
+                                      initial: (_) => UserData.empty(),
+                                      loadingProgress: (_) => UserData.empty(),
+                                      // ignore: always_specify_types
+                                      loadSuccess: (success) =>
+                                          success.userData,
+                                      // ignore: always_specify_types
+                                      loadFailure: (failure) {
+                                        return UserData.empty();
+                                      });
+                                  Navigator.of(context).push(SlideUpAnim(
+                                      page:
+                                          BlocProvider<UserDataReadBloc>.value(
+                                              value: BlocProvider.of<
+                                                  UserDataReadBloc>(context),
+                                              child: ProfilePage(
+                                                userData: userData,
+                                              ))));
+                                },
                                 child: Container(
                                   width: 38,
                                   height: 38,
@@ -213,11 +224,11 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.transparent,
                               shape: BoxShape.circle,
                               border: Border.all(
-                                    color: Theme.of(context).iconTheme.color ==
-                                    Colors.black
-                                ? Colors.grey.withOpacity(0.3)
-                                : Colors.black.withOpacity(0.1), width: 0.5
-                                  )),
+                                  color: Theme.of(context).iconTheme.color ==
+                                          Colors.black
+                                      ? Colors.grey.withOpacity(0.3)
+                                      : Colors.black.withOpacity(0.1),
+                                  width: 0.5)),
                           child: IconButton(
                               onPressed: () => Navigator.of(context,
                                       rootNavigator: true)
@@ -256,7 +267,6 @@ class _HomePageState extends State<HomePage> {
                           builder: (BuildContext context) {
                             return SizedBox(
                               height: 170,
-                              
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -266,13 +276,16 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: BoxDecoration(
-                                         
                                           border: Border(
                                               bottom: BorderSide(
-                                                 
-                                                  color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
-                                        
-                                                      ))),
+                                                  color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color ==
+                                                          Colors.black
+                                                      ? Colors.grey
+                                                          .withOpacity(0.1)
+                                                      : Colors.black
+                                                          .withOpacity(0.1)))),
                                       child: ListTile(
                                         title: Text(
                                           "Choose a category",
@@ -287,12 +300,16 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: BoxDecoration(
-                                         
                                           border: Border(
                                               bottom: BorderSide(
-                                                  color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
-                                                 
-                                                      ))),
+                                                  color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color ==
+                                                          Colors.black
+                                                      ? Colors.grey
+                                                          .withOpacity(0.1)
+                                                      : Colors.black
+                                                          .withOpacity(0.1)))),
                                       child: ListTile(
                                         onTap: () {
                                           Navigator.of(context).pop();
@@ -306,20 +323,21 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         trailing: Icon(
                                           Icons.animation_outlined,
-                                           color: Theme.of(context).iconTheme.color,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
                                         ),
                                         title: Text(
                                           "Free food",
-                                          style: Theme.of(context).textTheme.bodyText2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                         ),
                                       ),
                                     ),
                                     Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
-                                      decoration: const BoxDecoration(
-                                       
-                                      ),
+                                      decoration: const BoxDecoration(),
                                       child: ListTile(
                                         onTap: () {
                                           Navigator.of(context).pop();
@@ -332,11 +350,14 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         trailing: Icon(
                                           Icons.account_balance_wallet,
-                                         color: Theme.of(context).iconTheme.color,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
                                         ),
                                         title: Text(
                                           "Paid food",
-                                          style: Theme.of(context).textTheme.bodyText2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                         ),
                                       ),
                                     ),
@@ -355,7 +376,10 @@ class _HomePageState extends State<HomePage> {
                             boxShadow: <BoxShadow>[
                               BoxShadow(
                                   blurRadius: 4,
-                                  color: (Theme.of(context).iconTheme.color)! == Colors.white ? Colors.black38:Colors.grey.withOpacity(0.4),
+                                  color: (Theme.of(context).iconTheme.color)! ==
+                                          Colors.white
+                                      ? Colors.black38
+                                      : Colors.grey.withOpacity(0.4),
                                   offset: const Offset(-1, 5),
                                   spreadRadius: 0.3)
                             ],

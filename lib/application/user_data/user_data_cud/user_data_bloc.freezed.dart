@@ -20,6 +20,7 @@ mixin _$UserDataEvents {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<UserData> initialUserData) initialized,
     required TResult Function(String username) usernameChanged,
+    required TResult Function(UserData userData) userDeleted,
     required TResult Function(File? image) saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$UserDataEvents {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$UserDataEvents {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$UserDataEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(UsernameChanged value) usernameChanged,
+    required TResult Function(UserDeleted value) userDeleted,
     required TResult Function(Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$UserDataEvents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$UserDataEvents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) =>
@@ -147,6 +153,7 @@ class _$Initialized implements Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<UserData> initialUserData) initialized,
     required TResult Function(String username) usernameChanged,
+    required TResult Function(UserData userData) userDeleted,
     required TResult Function(File? image) saved,
   }) {
     return initialized(initialUserData);
@@ -157,6 +164,7 @@ class _$Initialized implements Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
   }) {
     return initialized?.call(initialUserData);
@@ -167,6 +175,7 @@ class _$Initialized implements Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
@@ -181,6 +190,7 @@ class _$Initialized implements Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(UsernameChanged value) usernameChanged,
+    required TResult Function(UserDeleted value) userDeleted,
     required TResult Function(Saved value) saved,
   }) {
     return initialized(this);
@@ -191,6 +201,7 @@ class _$Initialized implements Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
   }) {
     return initialized?.call(this);
@@ -201,6 +212,7 @@ class _$Initialized implements Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -288,6 +300,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<UserData> initialUserData) initialized,
     required TResult Function(String username) usernameChanged,
+    required TResult Function(UserData userData) userDeleted,
     required TResult Function(File? image) saved,
   }) {
     return usernameChanged(username);
@@ -298,6 +311,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
   }) {
     return usernameChanged?.call(username);
@@ -308,6 +322,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
@@ -322,6 +337,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(UsernameChanged value) usernameChanged,
+    required TResult Function(UserDeleted value) userDeleted,
     required TResult Function(Saved value) saved,
   }) {
     return usernameChanged(this);
@@ -332,6 +348,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
   }) {
     return usernameChanged?.call(this);
@@ -342,6 +359,7 @@ class _$UsernameChanged implements UsernameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -358,6 +376,161 @@ abstract class UsernameChanged implements UserDataEvents {
   String get username => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$UsernameChangedCopyWith<_$UsernameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserDeletedCopyWith<$Res> {
+  factory _$$UserDeletedCopyWith(
+          _$UserDeleted value, $Res Function(_$UserDeleted) then) =
+      __$$UserDeletedCopyWithImpl<$Res>;
+  $Res call({UserData userData});
+
+  $UserDataCopyWith<$Res> get userData;
+}
+
+/// @nodoc
+class __$$UserDeletedCopyWithImpl<$Res>
+    extends _$UserDataEventsCopyWithImpl<$Res>
+    implements _$$UserDeletedCopyWith<$Res> {
+  __$$UserDeletedCopyWithImpl(
+      _$UserDeleted _value, $Res Function(_$UserDeleted) _then)
+      : super(_value, (v) => _then(v as _$UserDeleted));
+
+  @override
+  _$UserDeleted get _value => super._value as _$UserDeleted;
+
+  @override
+  $Res call({
+    Object? userData = freezed,
+  }) {
+    return _then(_$UserDeleted(
+      userData == freezed
+          ? _value.userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as UserData,
+    ));
+  }
+
+  @override
+  $UserDataCopyWith<$Res> get userData {
+    return $UserDataCopyWith<$Res>(_value.userData, (value) {
+      return _then(_value.copyWith(userData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UserDeleted implements UserDeleted {
+  const _$UserDeleted(this.userData);
+
+  @override
+  final UserData userData;
+
+  @override
+  String toString() {
+    return 'UserDataEvents.userDeleted(userData: $userData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserDeleted &&
+            const DeepCollectionEquality().equals(other.userData, userData));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$UserDeletedCopyWith<_$UserDeleted> get copyWith =>
+      __$$UserDeletedCopyWithImpl<_$UserDeleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<UserData> initialUserData) initialized,
+    required TResult Function(String username) usernameChanged,
+    required TResult Function(UserData userData) userDeleted,
+    required TResult Function(File? image) saved,
+  }) {
+    return userDeleted(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<UserData> initialUserData)? initialized,
+    TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
+    TResult Function(File? image)? saved,
+  }) {
+    return userDeleted?.call(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<UserData> initialUserData)? initialized,
+    TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
+    TResult Function(File? image)? saved,
+    required TResult orElse(),
+  }) {
+    if (userDeleted != null) {
+      return userDeleted(userData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialized value) initialized,
+    required TResult Function(UsernameChanged value) usernameChanged,
+    required TResult Function(UserDeleted value) userDeleted,
+    required TResult Function(Saved value) saved,
+  }) {
+    return userDeleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
+    TResult Function(Saved value)? saved,
+  }) {
+    return userDeleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
+    TResult Function(Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (userDeleted != null) {
+      return userDeleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserDeleted implements UserDataEvents {
+  const factory UserDeleted(final UserData userData) = _$UserDeleted;
+
+  UserData get userData => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$UserDeletedCopyWith<_$UserDeleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -425,6 +598,7 @@ class _$Saved implements Saved {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<UserData> initialUserData) initialized,
     required TResult Function(String username) usernameChanged,
+    required TResult Function(UserData userData) userDeleted,
     required TResult Function(File? image) saved,
   }) {
     return saved(image);
@@ -435,6 +609,7 @@ class _$Saved implements Saved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
   }) {
     return saved?.call(image);
@@ -445,6 +620,7 @@ class _$Saved implements Saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<UserData> initialUserData)? initialized,
     TResult Function(String username)? usernameChanged,
+    TResult Function(UserData userData)? userDeleted,
     TResult Function(File? image)? saved,
     required TResult orElse(),
   }) {
@@ -459,6 +635,7 @@ class _$Saved implements Saved {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(UsernameChanged value) usernameChanged,
+    required TResult Function(UserDeleted value) userDeleted,
     required TResult Function(Saved value) saved,
   }) {
     return saved(this);
@@ -469,6 +646,7 @@ class _$Saved implements Saved {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
   }) {
     return saved?.call(this);
@@ -479,6 +657,7 @@ class _$Saved implements Saved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(UsernameChanged value)? usernameChanged,
+    TResult Function(UserDeleted value)? userDeleted,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {

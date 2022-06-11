@@ -55,7 +55,7 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                 ],
               ),
                Divider(
-                color: Colors.grey.withOpacity(0.1)
+                color: Colors.grey.withOpacity(0.3)
               ),
               const SizedBox(
                 height: 8,

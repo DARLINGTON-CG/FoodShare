@@ -72,6 +72,27 @@ class MessageRepository implements IMessageRepository {
     }
   }
 
+  
+   @override
+  Future<Either<MessageFailure, Unit>> delete(ChatRoom chat,String username) async {
+    try {
+      final CollectionReference<Object?> chatDoc =
+          await _firebaseFirestore.userDocuments();
+      
+      await chatDoc.doc(chat.post.id.getOrCrash() + username).delete();
+      return right(unit);
+    } catch (e) {
+      if (e.toString().toLowerCase().contains("permission-denied")) {
+        return left(const MessageFailure.insufficientPermissions());
+      } else if (e.toString().toLowerCase().contains("not-found")) {
+        return left(const MessageFailure.unableToUpdate());
+      } else {
+        return left(const MessageFailure.unexpected());
+      }
+    }
+  }
+
+
   @override
   Future<Either<MessageFailure, Unit>> sendUpdate(
       ChatRoom chat, Message message) async {

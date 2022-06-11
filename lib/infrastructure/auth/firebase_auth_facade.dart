@@ -69,6 +69,8 @@ class FirebaseAuthFacade implements IAuthFacade {
     return optionOf(firebaseuser?.toUser);
   }
 
+  
+
   @override
   Future<Either<AuthFailure, Unit>> signOut() async {
     try {
@@ -78,6 +80,18 @@ class FirebaseAuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<Either<AuthFailure, Unit>> deleteUser() async {
+    try {
+      await _firebaseAuth.currentUser?.delete();
+      return right(unit);
+    } catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+
 
   @override
   Future<Either<AuthFailure, Unit>> sendResetEmail(

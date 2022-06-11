@@ -13,14 +13,10 @@ class NotificationPage extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(Icons.close)),
         ),
-        //TODO: Replace with rive animation.
-        body:const Center(
+        
+        body: Center(
           
-                                  child: Image(
-                                    width: 160,
-                                    height: 160,
-                                    image: AssetImage("assets/NoMessages.png"),
-                                  ),
+                                  child: Text("No new notifications",style: Theme.of(context).textTheme.bodyText2),
                                 ),);
   }
 }

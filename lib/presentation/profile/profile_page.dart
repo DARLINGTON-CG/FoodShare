@@ -5,14 +5,17 @@ import 'package:get/get.dart';
 
 import '../../application/auth/auth_bloc.dart';
 import '../../application/theme/theme_service.dart';
+import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import '../../domain/user/user_data.dart';
 import '../anim/page/slide_in.dart';
 import '../auth/sign_in_page.dart';
 import 'information_page.dart';
 import 'widget/custom_list_tile.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final UserData userData;
+  const ProfilePage({Key? key,required this.userData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +123,12 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            CustomListTile(label: "Delete Account", func: () {}),
+            CustomListTile(
+                label: "Delete Account",
+                func: () {
+                  // BlocProvider.of<UserDataBloc>(context)
+                  //     .add(UserDataEvents.userDeleted(userData));
+                }),
             CustomListTile(
                 label: "Sign out",
                 showListTile: false,

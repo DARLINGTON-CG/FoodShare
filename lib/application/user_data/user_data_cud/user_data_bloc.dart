@@ -10,7 +10,6 @@ import '../../../domain/user/user_data.dart';
 import '../../../domain/user/user_data_failure.dart';
 import '../../../domain/user/value_objects.dart';
 
-
 part 'user_data_bloc.freezed.dart';
 part 'user_data_events.dart';
 part 'user_data_state.dart';
@@ -22,6 +21,7 @@ class UserDataBloc extends Bloc<UserDataEvents, UserDataState> {
   UserDataBloc(this._userRepository) : super(UserDataState.initial()) {
     on<Initialized>(_onInitialized);
     on<UsernameChanged>(_onUsernameChanged);
+    on<UserDeleted>(_onDeleted);
     on<Saved>(_onSaved);
   }
 
@@ -50,7 +50,22 @@ class UserDataBloc extends Bloc<UserDataEvents, UserDataState> {
           isSaving: false,
           showErrorMessages: true,
           successOrFailure: optionOf(failureOrSuccess)));
-     }
+    }
+    emit(state.copyWith(
+        isSaving: false, showErrorMessages: true, successOrFailure: none()));
+  }
+
+  void _onDeleted(UserDeleted event, Emitter<UserDataState> emit) async {
+    emit(state.copyWith(isSaving: true, successOrFailure: none()));
+      
+    final Either<UserDataFailure, Unit> failureOrSuccess =
+        await _userRepository.delete(event.userData);
+
+    emit(state.copyWith(
+        isSaving: false,
+        showErrorMessages: true,
+        successOrFailure: optionOf(failureOrSuccess)));
+    // Might be removed later
     emit(state.copyWith(
         isSaving: false, showErrorMessages: true, successOrFailure: none()));
   }
