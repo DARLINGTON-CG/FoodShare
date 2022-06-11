@@ -29,3 +29,10 @@ enum MessageStatus
   notViewed, 
   viewed 
 }
+
+
+enum AppTheme
+{
+  light,
+  dark
+}

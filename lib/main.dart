@@ -1,12 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import 'application/theme/theme_service.dart';
 import 'firebase_options.dart';
 import 'injector.dart';
 import 'presentation/core/app_widget.dart';
 
 Future<void> main() async {
+  await Hive.initFlutter();
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations(
@@ -20,5 +24,21 @@ Future<void> main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
+  await Get.putAsync(() => ThemeService().init());
   runApp(const AppWidget());
 }
+
+
+// Future<void> initServices() async {
+//   Get.lazyPut(() => up.AudioPlayerService());
+//   Get.lazyPut(() => up.ColorService());
+//   Get.lazyPut(() => up.CacheService());
+//   await Future.wait([
+//     Get.putAsync(() => up.AudioQueryService(
+//           cacheService: up.CacheService.instance,
+//           colorService: up.ColorService.instance,
+//         ).init()),
+//     Get.putAsync(() => up.LangService().init()),
+//     ,
+//   ]);
+// }

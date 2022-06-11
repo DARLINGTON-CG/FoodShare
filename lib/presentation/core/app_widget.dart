@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../application/auth/auth_bloc.dart';
+import '../../application/theme/theme_service.dart';
 import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../injector.dart';
 import '../splash/splash_page.dart';
@@ -12,6 +14,8 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return MultiBlocProvider(
       // ignore: always_specify_types
       providers: [
@@ -21,12 +25,15 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider<UserDataBloc>(
             create: (BuildContext context) => getIt<UserDataBloc>()),
-      ],
-      child: MaterialApp(
-          title: 'FoodShare',
-          debugShowCheckedModeBanner: false,
-          home: const SplashPage(),
-          theme: lightTheme),
+           ],
+      child: GetMaterialApp(
+              title: 'FoodShare',
+              debugShowCheckedModeBanner: false,
+              home: const SplashPage(),
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: ThemeService.instance.themeMode,
+              )
     );
   }
 }

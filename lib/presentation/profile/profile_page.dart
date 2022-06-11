@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 import '../../application/auth/auth_bloc.dart';
+import '../../application/theme/theme_service.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../anim/page/slide_in.dart';
 import '../auth/sign_in_page.dart';
@@ -86,9 +88,23 @@ class ProfilePage extends StatelessWidget {
                           value: BlocProvider.of<UserDataReadBloc>(context),
                           child: const InformationPage())));
                 }),
-            CustomListTile(label: "Push Notifications", func: () {}),
-            CustomListTile(label: "Dark Mode", trailing: "Off", func: () {}),
-            CustomListTile(label: "Delete Timer",showListTile: false, func: () {}),
+            CustomListTile(
+              label: "Push Notifications",
+              func: () {},
+              trailing: "Active",
+            ),
+            CustomListTile(
+                label: "Dark Mode",
+                trailing: Get.isDarkMode ? "On" : "Off",
+                func: () async {
+                  ThemeService.instance.switchThemeMode();
+                }),
+            //SHOW A SIDE BAR WHICH CAN BE ADJUSTED
+            CustomListTile(
+                label: "Delete Timer",
+                trailing: "10 days",
+                showListTile: false,
+                func: () {}),
             SliverToBoxAdapter(
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -126,9 +142,13 @@ class ProfilePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)
-                                                
-                                                ))),
+                                            color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color ==
+                                                    Colors.black
+                                                ? Colors.grey.withOpacity(0.1)
+                                                : Colors.black
+                                                    .withOpacity(0.1)))),
                                 child: ListTile(
                                   title: Text(
                                     "Proceed to sign out",
@@ -144,7 +164,13 @@ class ProfilePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            color: Theme.of(context).iconTheme.color == Colors.black? Colors.grey.withOpacity(0.1):Colors.black.withOpacity(0.1)))),
+                                            color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color ==
+                                                    Colors.black
+                                                ? Colors.grey.withOpacity(0.1)
+                                                : Colors.black
+                                                    .withOpacity(0.1)))),
                                 child: ListTile(
                                   onTap: () {
                                     Navigator.of(context).pop();
@@ -157,7 +183,7 @@ class ProfilePage extends StatelessWidget {
                                       (Route route) => false,
                                     );
                                   },
-                                  trailing:  Icon(
+                                  trailing: Icon(
                                     Icons.logout_rounded,
                                     color: Theme.of(context).iconTheme.color,
                                   ),
@@ -179,9 +205,9 @@ class ProfilePage extends StatelessWidget {
                                 height: 65,
                                 child: ListTile(
                                   onTap: () => Navigator.of(context).pop(),
-                                  trailing:  Icon(
+                                  trailing: Icon(
                                     Icons.close,
-                                     color: Theme.of(context).iconTheme.color,
+                                    color: Theme.of(context).iconTheme.color,
                                   ),
                                   title: Text(
                                     "Decline",
@@ -219,7 +245,8 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             CustomListTile(label: "Help", func: () {}),
-            CustomListTile(label: "Privacy policy",showListTile: false, func: () {}),
+            CustomListTile(
+                label: "Privacy policy", showListTile: false, func: () {}),
           ],
         ),
       ),

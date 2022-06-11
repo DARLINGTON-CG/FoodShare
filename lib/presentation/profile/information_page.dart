@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodshare/presentation/profile/widget/custom_list_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
+import 'widget/custom_list_tile_normal.dart';
 
 class InformationPage extends StatelessWidget {
   const InformationPage({Key? key}) : super(key: key);
@@ -12,8 +14,7 @@ class InformationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Information',
-              style: GoogleFonts.lato(fontSize: 17)),
+          title: Text('Information', style: GoogleFonts.lato(fontSize: 17)),
           leading: IconButton(
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(
@@ -26,7 +27,6 @@ class InformationPage extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              
               Container(
                 width: 90,
                 height: 90,
@@ -68,8 +68,24 @@ class InformationPage extends StatelessWidget {
                   ),
                 ),
               ),
-           
-             
+               CustomListTileNormal(label: "Live Posts", 
+               func: () {},
+               trailing: "23",
+               ),
+               CustomListTileNormal(label: "Deleted Posts", 
+               func: () {},
+               trailing: "8",
+               ),
+               CustomListTileNormal(label: "Total Posts", 
+               func: () {},
+               trailing: "50",
+               ),
+            
+               CustomListTileNormal(label: "Current Location", 
+               func: () {},
+               trailing: "Sunyani,Brong Ahafo Region.",
+               ),
+            
             ],
           );
         }));
