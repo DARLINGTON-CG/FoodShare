@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../domain/utility/important_enums.dart';
 
 final ThemeData lightTheme = ThemeData(
     appBarTheme: AppBarTheme(

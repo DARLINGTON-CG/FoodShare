@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodshare/presentation/profile/widget/custom_list_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';

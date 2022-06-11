@@ -96,13 +96,9 @@ class MessagesPageView extends StatelessWidget {
                               // ignore: always_specify_types
                               loadFailure: (state) {
                                 //TODO: Replace with rive animation
-                            return const SliverFillRemaining(
+                            return  SliverFillRemaining(
                               child: Center(
-                                child: Image(
-                                  width: 160,
-                                  height: 160,
-                                  image: AssetImage("assets/NoConnection.png"),
-                                ),
+                                child: Text('An error occured',style: Theme.of(context).textTheme.bodyText2),
                               ),
                             );
                           })),

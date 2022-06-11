@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '../../application/auth/auth_bloc.dart';
 import '../../application/theme/theme_service.dart';
-import '../../application/user_data/user_data_cud/user_data_bloc.dart';
 import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../domain/user/user_data.dart';
 import '../anim/page/slide_in.dart';

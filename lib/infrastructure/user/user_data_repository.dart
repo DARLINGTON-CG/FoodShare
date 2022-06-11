@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:firebase_core/firebase_core.dart' as firebase_core;
-import 'package:kt_dart/kt.dart';
 
 import 'dart:io';
 
@@ -15,7 +13,6 @@ import '../../domain/messaging/chat_room.dart';
 import '../../domain/messaging/i_message_repository.dart';
 import '../../domain/posts/i_post_repository.dart';
 import '../../domain/posts/post.dart';
-import '../../domain/posts/post_failure.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
 import '../../domain/user/i_user_repository.dart';
@@ -83,10 +80,10 @@ class UserDataRepository extends IUserRepository {
       final LocalUser user =
           userOption.getOrElse(() => throw NotAuthenticatedError());
       //Pass this value to delete messages function to form id
-      print("AWAITING POINT");
+    
       final String username = data.username.getOrCrash();
       // Delete user data section - deleting also profile pictures
-      print("POINT NOT PASSED");
+    
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.userDocuments();
 
@@ -136,7 +133,7 @@ class UserDataRepository extends IUserRepository {
 
       return right(unit);
     } catch (e) {
-      print('BIG TIME ERROR $e');
+     
       return left(const UserDataFailure.unexpected());
     }
   }
