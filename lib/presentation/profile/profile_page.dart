@@ -9,12 +9,20 @@ import '../../application/user_data/user_data_read/user_data_read_bloc.dart';
 import '../../domain/user/user_data.dart';
 import '../anim/page/slide_in.dart';
 import '../auth/sign_in_page.dart';
+import '../auth/widgets/custom_error_bar.dart';
 import 'information_page.dart';
 import 'widget/custom_list_tile.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   final UserData userData;
-  const ProfilePage({Key? key,required this.userData}) : super(key: key);
+  const ProfilePage({Key? key, required this.userData}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  int indexChanged = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +38,16 @@ class ProfilePage extends StatelessWidget {
                   SlideIn(page: const SignInPage()),
                   // ignore: always_specify_types
                   (Route route) => false,
-                ));
+                ),
+            serverError: (_) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  padding: EdgeInsets.all(16),
+                  content: CustomErrorBar(
+                    errorMessage: "Server Error",
+                  )));
+            });
       },
       child: Scaffold(
         body: CustomScrollView(
@@ -104,9 +121,73 @@ class ProfilePage extends StatelessWidget {
             //SHOW A SIDE BAR WHICH CAN BE ADJUSTED
             CustomListTile(
                 label: "Delete Timer",
-                trailing: "10 days",
+                trailing: "$indexChanged days",
                 showListTile: false,
-                func: () {}),
+                func: () async {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    useRootNavigator: true,
+                    enableDrag: true,
+                    backgroundColor: Colors.transparent,
+                    elevation: 0.0,
+                    builder: (BuildContext context) {
+                      return StatefulBuilder(
+                        builder:
+                            (BuildContext context, StateSetter setStateModal) =>
+                                Container(
+                          height: 100,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              color:
+                                  Get.isDarkMode ? Colors.black : Colors.white,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: ListView.builder(
+                              itemCount: 15,
+                              scrollDirection: Axis.horizontal,
+                              physics: const BouncingScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return InkWell(
+                                  onTap: () {
+                                    setStateModal(() {
+                                      setState(() {
+                                        indexChanged = index + 1;
+                                      });
+                                    });
+                                  },
+                                  child: Container(
+                                      margin: const EdgeInsets.all(10),
+                                      height: 60,
+                                      width: 60,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: index + 1 == indexChanged
+                                            ? const Color.fromARGB(
+                                                73, 120, 62, 255)
+                                            : const Color(0xFFFFAD05)
+                                                .withOpacity(0.1),
+                                        border: Border.all(
+                                            color: index + 1 == indexChanged
+                                                ? const Color.fromARGB(
+                                                    255, 120, 62, 255)
+                                                : const Color(0xFFFFAD05)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Text("${index + 1}",
+                                          style: GoogleFonts.lato(
+                                              fontWeight: FontWeight.bold,
+                                              color: index + 1 == indexChanged
+                                                  ? const Color.fromARGB(
+                                                      255, 120, 62, 255)
+                                                  : const Color(0xFFFFAD05),
+                                              fontSize: 15))),
+                                );
+                              }),
+                        ),
+                      );
+                    },
+                  );
+                }),
             SliverToBoxAdapter(
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -125,8 +206,122 @@ class ProfilePage extends StatelessWidget {
             CustomListTile(
                 label: "Delete Account",
                 func: () {
-                  // BlocProvider.of<UserDataBloc>(context)
-                  //     .add(UserDataEvents.userDeleted(userData));
+                  showModalBottomSheet<void>(
+                    context: context,
+                    useRootNavigator: true,
+                    enableDrag: true,
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                        height: 190,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 55,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color ==
+                                                    Colors.black
+                                                ? Colors.grey.withOpacity(0.1)
+                                                : Colors.black
+                                                    .withOpacity(0.1)))),
+                                child: ListTile(
+                                  title: Text(
+                                    "Critical action",
+                                    style: GoogleFonts.lato(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: const Color(0xFF3212F1)),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                        margin: const EdgeInsets.all(10),
+                                        height: 100,
+                                        width: 150,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFFFAD05)
+                                              .withOpacity(0.1),
+                                          border: Border.all(
+                                              color: const Color(0xFFFFAD05)),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: ListTile(
+                                            title: Text("Nope!",
+                                                style: GoogleFonts.lato(
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        const Color(0xFFFFAD05),
+                                                    fontSize: 15)),
+                                            subtitle: Text(
+                                                "I will give this app another try...",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1)),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        BlocProvider.of<AuthBloc>(context)
+                                            .add(const AuthEvent.deleteUser());
+                                      },
+                                      child: Container(
+                                        margin: const EdgeInsets.all(10),
+                                        height: 100,
+                                        width: 150,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFED254E)
+                                              .withOpacity(0.1),
+                                          border: Border.all(
+                                              color: const Color(0xFFED254E)),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: ListTile(
+                                            title: Text("Yes, continue.",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText2
+                                                    ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.red,
+                                                        fontSize: 15)),
+                                            subtitle: Text(
+                                                "All data will be erased permanently",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ))
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 }),
             CustomListTile(
                 label: "Sign out",

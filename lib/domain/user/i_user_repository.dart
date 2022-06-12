@@ -9,5 +9,5 @@ abstract class IUserRepository {
   Future<Either<UserDataFailure, UserData>> getUserData();
   Future<Either<UserDataFailure, Unit>> create(UserData data, File file);
   Future<Either<UserDataFailure, Unit>> update(UserData data, File? file);
-  Future<Either<UserDataFailure, Unit>> delete(UserData data);
+ // Future<Either<UserDataFailure, Unit>> delete(UserData data);
 }

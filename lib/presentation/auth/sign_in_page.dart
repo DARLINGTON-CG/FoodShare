@@ -61,6 +61,7 @@ class SignInPageState extends State<SignInPage>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
 

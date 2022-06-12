@@ -4,7 +4,7 @@ part of 'user_data_bloc.dart';
 class UserDataEvents with _$UserDataEvents {
   const factory UserDataEvents.initialized(Option<UserData> initialUserData) = Initialized;
   const factory UserDataEvents.usernameChanged(String username) = UsernameChanged;
-  const factory UserDataEvents.userDeleted(UserData userData) = UserDeleted;
+ // const factory UserDataEvents.userDeleted(UserData userData) = UserDeleted;
   const factory UserDataEvents.saved(File? image) = Saved;
 
 }

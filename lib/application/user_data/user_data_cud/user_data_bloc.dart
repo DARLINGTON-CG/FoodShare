@@ -21,7 +21,7 @@ class UserDataBloc extends Bloc<UserDataEvents, UserDataState> {
   UserDataBloc(this._userRepository) : super(UserDataState.initial()) {
     on<Initialized>(_onInitialized);
     on<UsernameChanged>(_onUsernameChanged);
-    on<UserDeleted>(_onDeleted);
+    //on<UserDeleted>(_onDeleted);
     on<Saved>(_onSaved);
   }
 
@@ -55,18 +55,18 @@ class UserDataBloc extends Bloc<UserDataEvents, UserDataState> {
         isSaving: false, showErrorMessages: true, successOrFailure: none()));
   }
 
-  void _onDeleted(UserDeleted event, Emitter<UserDataState> emit) async {
-    emit(state.copyWith(isSaving: true, successOrFailure: none()));
+  // void _onDeleted(UserDeleted event, Emitter<UserDataState> emit) async {
+  //   emit(state.copyWith(isSaving: true, successOrFailure: none()));
       
-    final Either<UserDataFailure, Unit> failureOrSuccess =
-        await _userRepository.delete(event.userData);
+  //   final Either<UserDataFailure, Unit> failureOrSuccess =
+  //       await _userRepository.delete(event.userData);
 
-    emit(state.copyWith(
-        isSaving: false,
-        showErrorMessages: true,
-        successOrFailure: optionOf(failureOrSuccess)));
-    // Might be removed later
-    emit(state.copyWith(
-        isSaving: false, showErrorMessages: true, successOrFailure: none()));
-  }
+  //   emit(state.copyWith(
+  //       isSaving: false,
+  //       showErrorMessages: true,
+  //       successOrFailure: optionOf(failureOrSuccess)));
+  //   // Might be removed later
+  //   emit(state.copyWith(
+  //       isSaving: false, showErrorMessages: true, successOrFailure: none()));
+  // }
 }

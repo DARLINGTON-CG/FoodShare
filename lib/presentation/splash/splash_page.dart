@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
           unauthenticated: (_) =>
               // ignore: always_specify_types
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => const WelcomePage())),
+                  builder: (BuildContext context) => const WelcomePage())), serverError: (_) {  },
         );
       },
       child: const Scaffold(
