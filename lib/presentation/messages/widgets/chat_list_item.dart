@@ -12,15 +12,13 @@ class ChatListItem extends StatelessWidget {
   final String title;
   final String lastMessage;
   final String imageUrl;
-  final int messageIndex;
   final ChatRoom chatRoom;
   const ChatListItem(
       {Key? key,
       required this.title,
       required this.lastMessage,
       required this.imageUrl,
-      required this.chatRoom,
-      required this.messageIndex})
+      required this.chatRoom,})
       : super(key: key);
 
   @override
@@ -33,6 +31,7 @@ class ChatListItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             color: Colors.grey.withOpacity(0.5),
             image: DecorationImage(
+              fit: BoxFit.cover,
               image: CachedNetworkImageProvider(
                 imageUrl,
               ),

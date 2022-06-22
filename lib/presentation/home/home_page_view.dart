@@ -53,7 +53,7 @@ class _HomePageViewState extends State<HomePageView>
                     child: IconButton(
                         onPressed: () =>
                             Navigator.of(context, rootNavigator: true)
-                                .push(SlideIn(page: const NotificationPage())),
+                                .push(SlideIn(page: NotificationPage( lastMessage: "",))),
                         icon: const Icon(Icons.notifications)),
                   )
                 ],

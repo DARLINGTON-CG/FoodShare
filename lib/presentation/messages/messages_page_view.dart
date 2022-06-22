@@ -38,14 +38,12 @@ class MessagesPageView extends StatelessWidget {
                               loadSuccess: (state) {
                             if (state.chatRoom.isEmpty()) {
                               //Replace with rive animation
-                              return const SliverFillRemaining(
+                              return SliverFillRemaining(
                                 child: Center(
-                                  child: Image(
-                                    width: 160,
-                                    height: 160,
-                                    image:
-                                        AssetImage("assets/NoConnection.png"),
-                                  ),
+                                  child: Text('No messages',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2),
                                 ),
                               );
                             } else {
@@ -77,7 +75,6 @@ class MessagesPageView extends StatelessWidget {
                                                   .getOrCrash()
                                               : chat.owner.username
                                                   .getOrCrash(),
-                                          messageIndex: index,
                                           lastMessage: lastMessage,
                                           imageUrl: getUserId() !=
                                                   chat.requester.userId
@@ -95,10 +92,12 @@ class MessagesPageView extends StatelessWidget {
                           },
                               // ignore: always_specify_types
                               loadFailure: (state) {
-                                //TODO: Replace with rive animation
-                            return  SliverFillRemaining(
+                            //TODO: Replace with rive animation
+                            return SliverFillRemaining(
                               child: Center(
-                                child: Text('An error occured',style: Theme.of(context).textTheme.bodyText2),
+                                child: Text('An error occured',
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2),
                               ),
                             );
                           })),

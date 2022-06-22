@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "416882440619",
+    "project_id": "foodshare-cc295",
+    "storage_bucket": "foodshare-cc295.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416882440619:android:d5350c279aa6121536faee",
+        "android_client_info": {
+          "package_name": "com.zero.foodshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416882440619-84s02bqjeb4m1p40dqjvskb9u076l0lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmdNJ3Q-bovGeLP_wzLdsVZrv-7Jjjb4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416882440619-84s02bqjeb4m1p40dqjvskb9u076l0lb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "416882440619-9iffhlbvdsdof2gce9l0a1lo4kn6d25e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.zero.foodshare"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

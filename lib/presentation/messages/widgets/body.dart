@@ -16,7 +16,6 @@ import 'message.dart';
 
 import 'constants.dart';
 import 'chat_message.dart';
-
 class Body extends StatelessWidget {
   final String chatRoomId;
   const Body({Key? key, required this.chatRoomId}) : super(key: key);

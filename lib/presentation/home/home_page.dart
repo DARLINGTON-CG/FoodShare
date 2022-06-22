@@ -1,7 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../application/messaging/read_messages/read_messages_bloc.dart';
 import '../../application/posts/free_post_watcher/post_free_watcher_bloc.dart';
@@ -26,6 +30,7 @@ import '../transactions/transactions_page_view.dart';
 import 'home_page_view.dart';
 import 'widgets/nav_bar_item.dart';
 
+
 /*
 
 Work on username regex for special characters and no spaces + no starting number
@@ -36,6 +41,9 @@ Add functionality for user to delete account.
 Add state management functionality for navigation bar.
 */
 
+final BehaviorSubject<RemoteMessage> _messageStreamController =
+    BehaviorSubject<RemoteMessage>();
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -44,6 +52,60 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String _lastMessage = "";
+
+  _HomePageState() {
+    _messageStreamController.listen((RemoteMessage message) {
+      setState(() {
+        if (message.notification != null) {
+          _lastMessage = 'Received a notification message:'
+              '\nTitle=${message.notification?.title},'
+              '\nBody=${message.notification?.body},'
+              '\nData=${message.data}';
+        } else {
+          _lastMessage = 'Received a data message: ${message.data}';
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    registerFirebaseMessaging();
+  }
+
+  void registerFirebaseMessaging() async {
+    final FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    final NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    if (kDebugMode) {
+      print('Permission granted: ${settings.authorizationStatus}');
+    }
+
+    //TODO: DO NOT GET TOKEN AT THE STARTUP, ONLY GET TOKEN WHEN THE APP REQUEST FOR IT SINCE THIS MAKES A NON BLOCKING
+    //CALL TO SOMETHING
+
+    // It requests a registration token for sending messages to users from your App server or other trusted server environment.
+    //TODO: TO ENABLE NOTIFICATIONS IN IOS, REMEMBER TO  ALLOW NOTIFICATIONS FOR BACKGROUND MODES
+
+    //FOREGROUND MESSAGE SET-UP
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      _messageStreamController.sink.add(message);
+    });
+
+   
+  }
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> appBarTitle = <String>[
     "All Activities",
@@ -230,10 +292,11 @@ class _HomePageState extends State<HomePage> {
                                       : Colors.black.withOpacity(0.1),
                                   width: 0.5)),
                           child: IconButton(
-                              onPressed: () => Navigator.of(context,
-                                      rootNavigator: true)
-                                  .push(
-                                      SlideIn(page: const NotificationPage())),
+                              onPressed: () =>
+                                  Navigator.of(context, rootNavigator: true)
+                                      .push(SlideIn(
+                                          page: NotificationPage(
+                                              lastMessage: _lastMessage))),
                               icon: const Icon(Icons.notifications)),
                         )
                       ],
