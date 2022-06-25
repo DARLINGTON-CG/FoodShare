@@ -51,7 +51,7 @@ class PostRepository implements IPostRepository {
       }, (UserData userData) => userData.username);
 
       final Post postForUpload = await getIt<IStorageRepository>()
-          .upload(file, post.id.getOrCrash())
+          .upload(file: file,fileId: post.id.getOrCrash(),storageFolder: user.id.getOrCrash())
           .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
               postUserId: PostUserId(user.id.getOrCrash()),
               username: username,
@@ -102,14 +102,16 @@ class PostRepository implements IPostRepository {
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.postDocuments();
-
+       final Option<LocalUser> userOption = getIt<IAuthFacade>().getSignedInUser();
+    final LocalUser user =
+        userOption.getOrElse(() => throw NotAuthenticatedError());
       if (file == null) {
         final PostDto postDto = PostDto.fromDomain(post);
 
         await userDoc.doc(postDto.id).update(postDto.toJson());
       } else {
         final Post postForUpload = await getIt<IStorageRepository>()
-            .upload(file, post.id.getOrCrash())
+            .upload(file: file,fileId: post.id.getOrCrash(),storageFolder: user.id.getOrCrash())
             .then((Either<StorageFailure, String> imageUrl) => post.copyWith(
                 imageUrl:
                     ImageUrl(imageUrl.getOrElse(() => throw Exception()))));

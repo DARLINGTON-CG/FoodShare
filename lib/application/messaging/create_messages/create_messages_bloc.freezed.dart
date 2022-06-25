@@ -20,21 +20,24 @@ mixin _$CreateMessagesEvents {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function(bool isUpdate) saved,
+    required TResult Function(File file) fileChanged,
+    required TResult Function(bool isUpdate, bool isFile) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +45,7 @@ mixin _$CreateMessagesEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(MessageChanged value) messageChanged,
+    required TResult Function(FileChanged value) fileChanged,
     required TResult Function(Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$CreateMessagesEvents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$CreateMessagesEvents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) =>
@@ -147,7 +153,8 @@ class _$Initialized implements Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function(bool isUpdate) saved,
+    required TResult Function(File file) fileChanged,
+    required TResult Function(bool isUpdate, bool isFile) saved,
   }) {
     return initialized(initialChat);
   }
@@ -157,7 +164,8 @@ class _$Initialized implements Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
   }) {
     return initialized?.call(initialChat);
   }
@@ -167,7 +175,8 @@ class _$Initialized implements Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -181,6 +190,7 @@ class _$Initialized implements Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(MessageChanged value) messageChanged,
+    required TResult Function(FileChanged value) fileChanged,
     required TResult Function(Saved value) saved,
   }) {
     return initialized(this);
@@ -191,6 +201,7 @@ class _$Initialized implements Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
   }) {
     return initialized?.call(this);
@@ -201,6 +212,7 @@ class _$Initialized implements Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -287,7 +299,8 @@ class _$MessageChanged implements MessageChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function(bool isUpdate) saved,
+    required TResult Function(File file) fileChanged,
+    required TResult Function(bool isUpdate, bool isFile) saved,
   }) {
     return messageChanged(message);
   }
@@ -297,7 +310,8 @@ class _$MessageChanged implements MessageChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
   }) {
     return messageChanged?.call(message);
   }
@@ -307,7 +321,8 @@ class _$MessageChanged implements MessageChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
     required TResult orElse(),
   }) {
     if (messageChanged != null) {
@@ -321,6 +336,7 @@ class _$MessageChanged implements MessageChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(MessageChanged value) messageChanged,
+    required TResult Function(FileChanged value) fileChanged,
     required TResult Function(Saved value) saved,
   }) {
     return messageChanged(this);
@@ -331,6 +347,7 @@ class _$MessageChanged implements MessageChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
   }) {
     return messageChanged?.call(this);
@@ -341,6 +358,7 @@ class _$MessageChanged implements MessageChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -361,10 +379,156 @@ abstract class MessageChanged implements CreateMessagesEvents {
 }
 
 /// @nodoc
+abstract class _$$FileChangedCopyWith<$Res> {
+  factory _$$FileChangedCopyWith(
+          _$FileChanged value, $Res Function(_$FileChanged) then) =
+      __$$FileChangedCopyWithImpl<$Res>;
+  $Res call({File file});
+}
+
+/// @nodoc
+class __$$FileChangedCopyWithImpl<$Res>
+    extends _$CreateMessagesEventsCopyWithImpl<$Res>
+    implements _$$FileChangedCopyWith<$Res> {
+  __$$FileChangedCopyWithImpl(
+      _$FileChanged _value, $Res Function(_$FileChanged) _then)
+      : super(_value, (v) => _then(v as _$FileChanged));
+
+  @override
+  _$FileChanged get _value => super._value as _$FileChanged;
+
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(_$FileChanged(
+      file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FileChanged implements FileChanged {
+  const _$FileChanged(this.file);
+
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'CreateMessagesEvents.fileChanged(file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FileChanged &&
+            const DeepCollectionEquality().equals(other.file, file));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$FileChangedCopyWith<_$FileChanged> get copyWith =>
+      __$$FileChangedCopyWithImpl<_$FileChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<ChatRoom> initialChat) initialized,
+    required TResult Function(String message) messageChanged,
+    required TResult Function(File file) fileChanged,
+    required TResult Function(bool isUpdate, bool isFile) saved,
+  }) {
+    return fileChanged(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<ChatRoom> initialChat)? initialized,
+    TResult Function(String message)? messageChanged,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
+  }) {
+    return fileChanged?.call(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<ChatRoom> initialChat)? initialized,
+    TResult Function(String message)? messageChanged,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
+    required TResult orElse(),
+  }) {
+    if (fileChanged != null) {
+      return fileChanged(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialized value) initialized,
+    required TResult Function(MessageChanged value) messageChanged,
+    required TResult Function(FileChanged value) fileChanged,
+    required TResult Function(Saved value) saved,
+  }) {
+    return fileChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
+    TResult Function(Saved value)? saved,
+  }) {
+    return fileChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialized value)? initialized,
+    TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
+    TResult Function(Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (fileChanged != null) {
+      return fileChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileChanged implements CreateMessagesEvents {
+  const factory FileChanged(final File file) = _$FileChanged;
+
+  File get file => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$FileChangedCopyWith<_$FileChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$SavedCopyWith<$Res> {
   factory _$$SavedCopyWith(_$Saved value, $Res Function(_$Saved) then) =
       __$$SavedCopyWithImpl<$Res>;
-  $Res call({bool isUpdate});
+  $Res call({bool isUpdate, bool isFile});
 }
 
 /// @nodoc
@@ -380,11 +544,16 @@ class __$$SavedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isUpdate = freezed,
+    Object? isFile = freezed,
   }) {
     return _then(_$Saved(
       isUpdate == freezed
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFile == freezed
+          ? _value.isFile
+          : isFile // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -393,14 +562,16 @@ class __$$SavedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Saved implements Saved {
-  const _$Saved(this.isUpdate);
+  const _$Saved(this.isUpdate, this.isFile);
 
   @override
   final bool isUpdate;
+  @override
+  final bool isFile;
 
   @override
   String toString() {
-    return 'CreateMessagesEvents.saved(isUpdate: $isUpdate)';
+    return 'CreateMessagesEvents.saved(isUpdate: $isUpdate, isFile: $isFile)';
   }
 
   @override
@@ -408,12 +579,15 @@ class _$Saved implements Saved {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Saved &&
-            const DeepCollectionEquality().equals(other.isUpdate, isUpdate));
+            const DeepCollectionEquality().equals(other.isUpdate, isUpdate) &&
+            const DeepCollectionEquality().equals(other.isFile, isFile));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(isUpdate));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isUpdate),
+      const DeepCollectionEquality().hash(isFile));
 
   @JsonKey(ignore: true)
   @override
@@ -425,9 +599,10 @@ class _$Saved implements Saved {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<ChatRoom> initialChat) initialized,
     required TResult Function(String message) messageChanged,
-    required TResult Function(bool isUpdate) saved,
+    required TResult Function(File file) fileChanged,
+    required TResult Function(bool isUpdate, bool isFile) saved,
   }) {
-    return saved(isUpdate);
+    return saved(isUpdate, isFile);
   }
 
   @override
@@ -435,9 +610,10 @@ class _$Saved implements Saved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
   }) {
-    return saved?.call(isUpdate);
+    return saved?.call(isUpdate, isFile);
   }
 
   @override
@@ -445,11 +621,12 @@ class _$Saved implements Saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<ChatRoom> initialChat)? initialized,
     TResult Function(String message)? messageChanged,
-    TResult Function(bool isUpdate)? saved,
+    TResult Function(File file)? fileChanged,
+    TResult Function(bool isUpdate, bool isFile)? saved,
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved(isUpdate);
+      return saved(isUpdate, isFile);
     }
     return orElse();
   }
@@ -459,6 +636,7 @@ class _$Saved implements Saved {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(MessageChanged value) messageChanged,
+    required TResult Function(FileChanged value) fileChanged,
     required TResult Function(Saved value) saved,
   }) {
     return saved(this);
@@ -469,6 +647,7 @@ class _$Saved implements Saved {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
   }) {
     return saved?.call(this);
@@ -479,6 +658,7 @@ class _$Saved implements Saved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(MessageChanged value)? messageChanged,
+    TResult Function(FileChanged value)? fileChanged,
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -490,9 +670,10 @@ class _$Saved implements Saved {
 }
 
 abstract class Saved implements CreateMessagesEvents {
-  const factory Saved(final bool isUpdate) = _$Saved;
+  const factory Saved(final bool isUpdate, final bool isFile) = _$Saved;
 
   bool get isUpdate => throw _privateConstructorUsedError;
+  bool get isFile => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$SavedCopyWith<_$Saved> get copyWith => throw _privateConstructorUsedError;
 }
@@ -501,9 +682,11 @@ abstract class Saved implements CreateMessagesEvents {
 mixin _$CreateMessagesState {
   ChatRoom get data => throw _privateConstructorUsedError;
   String get currentMessage => throw _privateConstructorUsedError;
+  File? get currentFile => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
+  bool get canUpdate => throw _privateConstructorUsedError;
   Option<Either<MessageFailure, Unit>> get successOrFailure =>
       throw _privateConstructorUsedError;
 
@@ -520,9 +703,11 @@ abstract class $CreateMessagesStateCopyWith<$Res> {
   $Res call(
       {ChatRoom data,
       String currentMessage,
+      File? currentFile,
       bool showErrorMessages,
       bool isSaving,
       bool isEditing,
+      bool canUpdate,
       Option<Either<MessageFailure, Unit>> successOrFailure});
 
   $ChatRoomCopyWith<$Res> get data;
@@ -541,9 +726,11 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
   $Res call({
     Object? data = freezed,
     Object? currentMessage = freezed,
+    Object? currentFile = freezed,
     Object? showErrorMessages = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
+    Object? canUpdate = freezed,
     Object? successOrFailure = freezed,
   }) {
     return _then(_value.copyWith(
@@ -555,6 +742,10 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
           ? _value.currentMessage
           : currentMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      currentFile: currentFile == freezed
+          ? _value.currentFile
+          : currentFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -566,6 +757,10 @@ class _$CreateMessagesStateCopyWithImpl<$Res>
       isEditing: isEditing == freezed
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      canUpdate: canUpdate == freezed
+          ? _value.canUpdate
+          : canUpdate // ignore: cast_nullable_to_non_nullable
               as bool,
       successOrFailure: successOrFailure == freezed
           ? _value.successOrFailure
@@ -592,9 +787,11 @@ abstract class _$$_CreateMessagesStateCopyWith<$Res>
   $Res call(
       {ChatRoom data,
       String currentMessage,
+      File? currentFile,
       bool showErrorMessages,
       bool isSaving,
       bool isEditing,
+      bool canUpdate,
       Option<Either<MessageFailure, Unit>> successOrFailure});
 
   @override
@@ -616,9 +813,11 @@ class __$$_CreateMessagesStateCopyWithImpl<$Res>
   $Res call({
     Object? data = freezed,
     Object? currentMessage = freezed,
+    Object? currentFile = freezed,
     Object? showErrorMessages = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
+    Object? canUpdate = freezed,
     Object? successOrFailure = freezed,
   }) {
     return _then(_$_CreateMessagesState(
@@ -630,6 +829,10 @@ class __$$_CreateMessagesStateCopyWithImpl<$Res>
           ? _value.currentMessage
           : currentMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      currentFile: currentFile == freezed
+          ? _value.currentFile
+          : currentFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -641,6 +844,10 @@ class __$$_CreateMessagesStateCopyWithImpl<$Res>
       isEditing: isEditing == freezed
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      canUpdate: canUpdate == freezed
+          ? _value.canUpdate
+          : canUpdate // ignore: cast_nullable_to_non_nullable
               as bool,
       successOrFailure: successOrFailure == freezed
           ? _value.successOrFailure
@@ -656,9 +863,11 @@ class _$_CreateMessagesState implements _CreateMessagesState {
   const _$_CreateMessagesState(
       {required this.data,
       required this.currentMessage,
+      required this.currentFile,
       required this.showErrorMessages,
       required this.isSaving,
       required this.isEditing,
+      required this.canUpdate,
       required this.successOrFailure});
 
   @override
@@ -666,17 +875,21 @@ class _$_CreateMessagesState implements _CreateMessagesState {
   @override
   final String currentMessage;
   @override
+  final File? currentFile;
+  @override
   final bool showErrorMessages;
   @override
   final bool isSaving;
   @override
   final bool isEditing;
   @override
+  final bool canUpdate;
+  @override
   final Option<Either<MessageFailure, Unit>> successOrFailure;
 
   @override
   String toString() {
-    return 'CreateMessagesState(data: $data, currentMessage: $currentMessage, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, successOrFailure: $successOrFailure)';
+    return 'CreateMessagesState(data: $data, currentMessage: $currentMessage, currentFile: $currentFile, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isEditing: $isEditing, canUpdate: $canUpdate, successOrFailure: $successOrFailure)';
   }
 
   @override
@@ -688,9 +901,12 @@ class _$_CreateMessagesState implements _CreateMessagesState {
             const DeepCollectionEquality()
                 .equals(other.currentMessage, currentMessage) &&
             const DeepCollectionEquality()
+                .equals(other.currentFile, currentFile) &&
+            const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
             const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
             const DeepCollectionEquality().equals(other.isEditing, isEditing) &&
+            const DeepCollectionEquality().equals(other.canUpdate, canUpdate) &&
             const DeepCollectionEquality()
                 .equals(other.successOrFailure, successOrFailure));
   }
@@ -700,9 +916,11 @@ class _$_CreateMessagesState implements _CreateMessagesState {
       runtimeType,
       const DeepCollectionEquality().hash(data),
       const DeepCollectionEquality().hash(currentMessage),
+      const DeepCollectionEquality().hash(currentFile),
       const DeepCollectionEquality().hash(showErrorMessages),
       const DeepCollectionEquality().hash(isSaving),
       const DeepCollectionEquality().hash(isEditing),
+      const DeepCollectionEquality().hash(canUpdate),
       const DeepCollectionEquality().hash(successOrFailure));
 
   @JsonKey(ignore: true)
@@ -716,9 +934,11 @@ abstract class _CreateMessagesState implements CreateMessagesState {
   const factory _CreateMessagesState(
       {required final ChatRoom data,
       required final String currentMessage,
+      required final File? currentFile,
       required final bool showErrorMessages,
       required final bool isSaving,
       required final bool isEditing,
+      required final bool canUpdate,
       required final Option<Either<MessageFailure, Unit>>
           successOrFailure}) = _$_CreateMessagesState;
 
@@ -727,11 +947,15 @@ abstract class _CreateMessagesState implements CreateMessagesState {
   @override
   String get currentMessage => throw _privateConstructorUsedError;
   @override
+  File? get currentFile => throw _privateConstructorUsedError;
+  @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
   bool get isSaving => throw _privateConstructorUsedError;
   @override
   bool get isEditing => throw _privateConstructorUsedError;
+  @override
+  bool get canUpdate => throw _privateConstructorUsedError;
   @override
   Option<Either<MessageFailure, Unit>> get successOrFailure =>
       throw _privateConstructorUsedError;

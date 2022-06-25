@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -8,10 +10,14 @@ import 'package:rxdart/rxdart.dart';
 import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
 import '../../domain/core/errors.dart';
+import '../../domain/core/value_objects.dart';
 import '../../domain/messaging/chat_room.dart';
 import '../../domain/messaging/i_message_repository.dart';
 import '../../domain/messaging/message.dart';
 import '../../domain/messaging/message_failure.dart';
+import '../../domain/messaging/value_objects.dart';
+import '../../domain/storage/i_storage_repository.dart';
+import '../../domain/storage/storage_failure.dart';
 import '../../injector.dart';
 import '../core/firebase_helpers.dart';
 import 'chat_room_dto.dart';
@@ -54,13 +60,56 @@ class MessageRepository implements IMessageRepository {
   }
 
   @override
-  Future<Either<MessageFailure, Unit>> send(ChatRoom chat) async {
+  Future<Either<MessageFailure, Unit>> send(
+      {required ChatRoom chat,
+      required File? file,
+      required bool isFile}) async {
+    print("isUpdate");
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.chatDocuments();
-      await userDoc
-          .doc(chat.post.id.getOrCrash() + chat.requester.username.getOrCrash())
-          .set(ChatRoomDto.fromDomain(chat).toJson());
+
+      if (isFile) {
+        final Message messageForUpload = await getIt<IStorageRepository>()
+            .upload(
+                file: file!,
+                storageFolder: chat.post.id.getOrCrash() +
+                    chat.requester.username.getOrCrash(),
+                fileId: UniqueId().value.getOrElse(() => throw Exception))
+            .then((Either<StorageFailure, String> imageUrl) => chat.messages
+                .getOrCrash()
+                .iter
+                .last
+                .copyWith(
+                    message: MessageBody(
+                        imageUrl.getOrElse(() => throw Exception))));
+        List<Message> converted = <Message>[];
+        converted.add(messageForUpload);
+        final ChatRoom chatRoomForUpload = chat.copyWith(
+            messages: MessageList<Message>(
+                converted.map((Message message) => message).toImmutableList()));
+
+        await userDoc
+            .doc(chatRoomForUpload.post.id.getOrCrash() +
+                chatRoomForUpload.requester.username.getOrCrash())
+            .set(ChatRoomDto.fromDomain(chatRoomForUpload).toJson());
+        // await userDoc
+        //     .doc(chat.post.id.getOrCrash() +
+        //         chat.requester.username.getOrCrash())
+        //     // ignore: always_specify_types
+        //     .update({
+        //   // ignore: always_specify_types
+        //   "messages": FieldValue.arrayUnion(
+        //       // ignore: always_specify_types
+        //       [MessagesDto.fromDomain(messageForUpload).toJson()])
+        // });
+
+      } else {
+        await userDoc
+            .doc(chat.post.id.getOrCrash() +
+                chat.requester.username.getOrCrash())
+            .set(ChatRoomDto.fromDomain(chat).toJson());
+      }
 
       return right(unit);
     } catch (e) {
@@ -72,13 +121,13 @@ class MessageRepository implements IMessageRepository {
     }
   }
 
-  
-   @override
-  Future<Either<MessageFailure, Unit>> delete(ChatRoom chat,String username) async {
+  @override
+  Future<Either<MessageFailure, Unit>> delete(
+      ChatRoom chat, String username) async {
     try {
       final CollectionReference<Object?> chatDoc =
           await _firebaseFirestore.userDocuments();
-      
+
       await chatDoc.doc(chat.post.id.getOrCrash() + username).delete();
       return right(unit);
     } catch (e) {
@@ -92,25 +141,57 @@ class MessageRepository implements IMessageRepository {
     }
   }
 
-
   @override
   Future<Either<MessageFailure, Unit>> sendUpdate(
-      ChatRoom chat, Message message) async {
+      ChatRoom chat, Message message, File? file) async {
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.chatDocuments();
-      await userDoc
-          .doc(chat.post.id.getOrCrash() + chat.requester.username.getOrCrash())
-          // ignore: always_specify_types
-          .update({
-        // ignore: always_specify_types
-        "messages":
-            // ignore: always_specify_types
-            FieldValue.arrayUnion([MessagesDto.fromDomain(message).toJson()])
-      } /*ChatRoomDto.fromDomain(chat).toJson()*/);
 
+  
+
+      if (message.messageType == "File") {
+        print("File business started");
+        final Message messageForUpload = await getIt<IStorageRepository>()
+            .upload(
+                file: file!,
+                storageFolder: chat.post.id.getOrCrash() +
+                    chat.requester.username.getOrCrash(),
+                fileId: UniqueId().value.getOrElse(() => throw Exception))
+            .then((Either<StorageFailure, String> imageUrl) => message.copyWith(
+                message:
+                    MessageBody(imageUrl.getOrElse(() => throw Exception))));
+
+        await userDoc
+            .doc(chat.post.id.getOrCrash() +
+                chat.requester.username.getOrCrash())
+            // ignore: always_specify_types
+            .update({
+          // ignore: always_specify_types
+          "messages": FieldValue.arrayUnion(
+              // ignore: always_specify_types
+              [MessagesDto.fromDomain(messageForUpload).toJson()])
+        });
+
+        print("File business completed");
+      } else {
+        await userDoc
+            .doc(chat.post.id.getOrCrash() +
+                chat.requester.username.getOrCrash())
+            // ignore: always_specify_types
+            .update({
+          // ignore: always_specify_types
+          "messages":
+              // ignore: always_specify_types
+              FieldValue.arrayUnion([MessagesDto.fromDomain(message).toJson()])
+        });
+      }
+
+      print("It was a success");
       return right(unit);
     } catch (e) {
+      print("It was a failure");
+      print(e.toString());
       if (e.toString().toLowerCase().contains("permission-denied")) {
         return left(const MessageFailure.insufficientPermissions());
       } else {

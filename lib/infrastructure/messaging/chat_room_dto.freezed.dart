@@ -273,6 +273,7 @@ MessagesDto _$MessagesDtoFromJson(Map<String, dynamic> json) {
 mixin _$MessagesDto {
   String get id => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  String get messageType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -285,7 +286,7 @@ abstract class $MessagesDtoCopyWith<$Res> {
   factory $MessagesDtoCopyWith(
           MessagesDto value, $Res Function(MessagesDto) then) =
       _$MessagesDtoCopyWithImpl<$Res>;
-  $Res call({String id, String message});
+  $Res call({String id, String message, String messageType});
 }
 
 /// @nodoc
@@ -300,6 +301,7 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
+    Object? messageType = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -309,6 +311,10 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      messageType: messageType == freezed
+          ? _value.messageType
+          : messageType // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -321,7 +327,7 @@ abstract class _$$_MessagesDtoCopyWith<$Res>
           _$_MessagesDto value, $Res Function(_$_MessagesDto) then) =
       __$$_MessagesDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String message});
+  $Res call({String id, String message, String messageType});
 }
 
 /// @nodoc
@@ -338,6 +344,7 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
+    Object? messageType = freezed,
   }) {
     return _then(_$_MessagesDto(
       id: id == freezed
@@ -348,6 +355,10 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      messageType: messageType == freezed
+          ? _value.messageType
+          : messageType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -355,7 +366,9 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MessagesDto extends _MessagesDto {
-  const _$_MessagesDto({required this.id, required this.message}) : super._();
+  const _$_MessagesDto(
+      {required this.id, required this.message, required this.messageType})
+      : super._();
 
   factory _$_MessagesDto.fromJson(Map<String, dynamic> json) =>
       _$$_MessagesDtoFromJson(json);
@@ -364,10 +377,12 @@ class _$_MessagesDto extends _MessagesDto {
   final String id;
   @override
   final String message;
+  @override
+  final String messageType;
 
   @override
   String toString() {
-    return 'MessagesDto(id: $id, message: $message)';
+    return 'MessagesDto(id: $id, message: $message, messageType: $messageType)';
   }
 
   @override
@@ -376,7 +391,9 @@ class _$_MessagesDto extends _MessagesDto {
         (other.runtimeType == runtimeType &&
             other is _$_MessagesDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.messageType, messageType));
   }
 
   @JsonKey(ignore: true)
@@ -384,7 +401,8 @@ class _$_MessagesDto extends _MessagesDto {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(message));
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(messageType));
 
   @JsonKey(ignore: true)
   @override
@@ -400,7 +418,8 @@ class _$_MessagesDto extends _MessagesDto {
 abstract class _MessagesDto extends MessagesDto {
   const factory _MessagesDto(
       {required final String id,
-      required final String message}) = _$_MessagesDto;
+      required final String message,
+      required final String messageType}) = _$_MessagesDto;
   const _MessagesDto._() : super._();
 
   factory _MessagesDto.fromJson(Map<String, dynamic> json) =
@@ -410,6 +429,8 @@ abstract class _MessagesDto extends MessagesDto {
   String get id => throw _privateConstructorUsedError;
   @override
   String get message => throw _privateConstructorUsedError;
+  @override
+  String get messageType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MessagesDtoCopyWith<_$_MessagesDto> get copyWith =>

@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names, always_specify_types
-
 part of 'chat_room_dto.dart';
 
 // **************************************************************************
@@ -33,10 +31,12 @@ _$_MessagesDto _$$_MessagesDtoFromJson(Map<String, dynamic> json) =>
     _$_MessagesDto(
       id: json['id'] as String,
       message: json['message'] as String,
+      messageType: json['messageType'] as String,
     );
 
 Map<String, dynamic> _$$_MessagesDtoToJson(_$_MessagesDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'message': instance.message,
+      'messageType': instance.messageType,
     };

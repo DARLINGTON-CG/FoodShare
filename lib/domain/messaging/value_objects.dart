@@ -12,7 +12,7 @@ class MessageBody extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const int maxLength = 200;
+  static const int maxLength = 500;
 
   const MessageBody._(this.value);
 

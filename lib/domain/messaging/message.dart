@@ -14,12 +14,14 @@ abstract class Message implements _$Message {
   const factory Message({
     required UniqueId id,
     required MessageBody message,
-   
+    required String messageType,
   }) = _Message;
 
   factory Message.empty() => Message(
       id: UniqueId(),
-      message: MessageBody(''));
+      message: MessageBody(''),
+      messageType: 'Text'
+      );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return message.value

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Message {
   UniqueId get id => throw _privateConstructorUsedError;
   MessageBody get message => throw _privateConstructorUsedError;
+  String get messageType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,7 @@ mixin _$Message {
 abstract class $MessageCopyWith<$Res> {
   factory $MessageCopyWith(Message value, $Res Function(Message) then) =
       _$MessageCopyWithImpl<$Res>;
-  $Res call({UniqueId id, MessageBody message});
+  $Res call({UniqueId id, MessageBody message, String messageType});
 }
 
 /// @nodoc
@@ -42,6 +43,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
+    Object? messageType = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -52,6 +54,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as MessageBody,
+      messageType: messageType == freezed
+          ? _value.messageType
+          : messageType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -62,7 +68,7 @@ abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
           _$_Message value, $Res Function(_$_Message) then) =
       __$$_MessageCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, MessageBody message});
+  $Res call({UniqueId id, MessageBody message, String messageType});
 }
 
 /// @nodoc
@@ -78,6 +84,7 @@ class __$$_MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? message = freezed,
+    Object? messageType = freezed,
   }) {
     return _then(_$_Message(
       id: id == freezed
@@ -88,6 +95,10 @@ class __$$_MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as MessageBody,
+      messageType: messageType == freezed
+          ? _value.messageType
+          : messageType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -95,16 +106,20 @@ class __$$_MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Message extends _Message {
-  const _$_Message({required this.id, required this.message}) : super._();
+  const _$_Message(
+      {required this.id, required this.message, required this.messageType})
+      : super._();
 
   @override
   final UniqueId id;
   @override
   final MessageBody message;
+  @override
+  final String messageType;
 
   @override
   String toString() {
-    return 'Message(id: $id, message: $message)';
+    return 'Message(id: $id, message: $message, messageType: $messageType)';
   }
 
   @override
@@ -113,14 +128,17 @@ class _$_Message extends _Message {
         (other.runtimeType == runtimeType &&
             other is _$_Message &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.messageType, messageType));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(message));
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(messageType));
 
   @JsonKey(ignore: true)
   @override
@@ -131,13 +149,16 @@ class _$_Message extends _Message {
 abstract class _Message extends Message {
   const factory _Message(
       {required final UniqueId id,
-      required final MessageBody message}) = _$_Message;
+      required final MessageBody message,
+      required final String messageType}) = _$_Message;
   const _Message._() : super._();
 
   @override
   UniqueId get id => throw _privateConstructorUsedError;
   @override
   MessageBody get message => throw _privateConstructorUsedError;
+  @override
+  String get messageType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MessageCopyWith<_$_Message> get copyWith =>

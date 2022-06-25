@@ -36,7 +36,6 @@ import 'widgets/nav_bar_item.dart';
 Work on username regex for special characters and no spaces + no starting number
 Only first name can be capital, rest small,no spaces, no special characters.
 Verify that user data exists before  sending message.
-Add dark mode.
 Add functionality for user to delete account.
 Add state management functionality for navigation bar.
 */
@@ -209,7 +208,7 @@ class _HomePageState extends State<HomePage> {
           child: Scaffold(
               key: _scaffoldKey,
               resizeToAvoidBottomInset: false,
-              appBar: pageIndex == 0
+              appBar: pageIndex == 0 || pageIndex ==2
                   ? null
                   : AppBar(
                       elevation: 0.5,
@@ -327,6 +326,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         showModalBottomSheet<void>(
                           context: context,
+                          
                           builder: (BuildContext context) {
                             return SizedBox(
                               height: 170,

@@ -43,5 +43,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>MBXAccessToken</key>
+	<string>sk.eyJ1IjoiemFuaXNhbGkiLCJhIjoiY2w0dGx6Y3ZqMGUwZjNjbXppdHNtdGM2ZyJ9.ioqZO7Rydu6onDUC1b00Fg</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Shows your location on the map and helps improve the map</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Shows your location on the map and helps improve the map</string>
 </dict>
 </plist>

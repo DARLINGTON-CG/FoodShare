@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:kt_dart/kt.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +29,7 @@ class CreateMessagesBloc
       : super(CreateMessagesState.initial()) {
     on<Initialized>(_onInitialized);
     on<MessageChanged>(_onMessageChanged);
+    on<FileChanged>(_onFileChanged);
     on<Saved>(_onSaved);
   }
 
@@ -43,6 +46,10 @@ class CreateMessagesBloc
         currentMessage: event.message, successOrFailure: none()));
   }
 
+  void _onFileChanged(FileChanged event, Emitter<CreateMessagesState> emit) {
+    emit(state.copyWith(currentFile: event.file, successOrFailure: none()));
+  }
+
   void _onSaved(Saved event, Emitter<CreateMessagesState> emit) async {
     emit(state.copyWith(isSaving: true, successOrFailure: none()));
     final KtList<Message> currentMessages = state.data.messages.getOrCrash();
@@ -57,33 +64,43 @@ class CreateMessagesBloc
 
     converted.add(Message(
       id: user.id,
-      message: MessageBody(state.currentMessage),
+      messageType: event.isFile ? 'File' : 'Text',
+      message:event.isFile ?  MessageBody("File"):MessageBody(state.currentMessage),
     ));
-
     emit(state.copyWith(
         data: state.data.copyWith(
           messages: MessageList<Message>(
               converted.map((Message message) => message).toImmutableList()),
         ),
         successOrFailure: none()));
-  
-    if (state.data.failureOption.isNone() && state.currentMessage.isNotEmpty) {
+    
+    if ((state.currentMessage.isNotEmpty) ||
+        (state.currentFile != null)) {
       final Either<MessageFailure, Unit> failureOrSuccess =
-          state.data.messages.length >= 2 || event.isUpdate
+          event.isUpdate || state.canUpdate || converted.length > 1
               ? await _messageRepository.sendUpdate(
                   state.data,
                   Message(
                     id: user.id,
+                    messageType: event.isFile ? "File" : "Text",
                     message: MessageBody(state.currentMessage),
-                  ))
-              : await _messageRepository.send(state.data);
+                  ),
+                  state.currentFile)
+              : await _messageRepository.send(
+                  chat: state.data,
+                  file: state.currentFile,
+                  isFile: event.isFile);
 
       emit(state.copyWith(
           isSaving: false,
           showErrorMessages: true,
+          canUpdate: failureOrSuccess.fold((_) => state.canUpdate, (_) => true),
           successOrFailure: optionOf(failureOrSuccess)));
     }
     emit(state.copyWith(
-        isSaving: false, showErrorMessages: true, successOrFailure: none()));
+        isSaving: false,
+        currentFile: null,
+        showErrorMessages: true,
+        successOrFailure: none()));
   }
 }

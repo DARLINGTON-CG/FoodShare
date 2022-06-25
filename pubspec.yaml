@@ -52,6 +52,12 @@ dependencies:
   hive_flutter: ^1.1.0
   get: ^4.6.5
   firebase_messaging: ^11.4.2
+  fluttertoast: ^8.0.9
+  http: ^0.13.4
+  crypto: ^3.0.2
+  mapbox_gl: ^0.16.0
+  geolocator: ^8.2.1
+  geocoding: ^2.0.4
 
 dev_dependencies:
   build_runner: ^2.1.7

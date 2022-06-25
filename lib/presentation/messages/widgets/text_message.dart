@@ -25,7 +25,7 @@ class TextMessage extends StatelessWidget {
       decoration: BoxDecoration(
         color: message!.isSender
             ? const Color(0xFF3212F1).withOpacity(0.8)
-            : const Color(0xFF3212F1).withOpacity(0.1),
+            : const Color(0xFF3212F1).withOpacity(0.3),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(

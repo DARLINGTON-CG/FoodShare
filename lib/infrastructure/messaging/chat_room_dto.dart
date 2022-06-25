@@ -66,12 +66,14 @@ abstract class MessagesDto implements _$MessagesDto {
   const factory MessagesDto({
     required String id,
     required String message,
+    required String messageType,
   }) = _MessagesDto;
 
   factory MessagesDto.fromDomain(Message message) {
     return MessagesDto(
       id: message.id.getOrCrash(),
       message: message.message.getOrCrash(),
+      messageType: message.messageType
     );
   }
 
@@ -79,6 +81,7 @@ abstract class MessagesDto implements _$MessagesDto {
     return Message(
       id: UniqueId.fromUniqueString(id),
       message: MessageBody(message),
+      messageType: messageType
     );
   }
 

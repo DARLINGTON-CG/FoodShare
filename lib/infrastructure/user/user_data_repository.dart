@@ -49,11 +49,12 @@ class UserDataRepository extends IUserRepository {
       });
 
       final UserData dataForUpload = await getIt<IStorageRepository>()
-          .upload(file, user.id.getOrCrash())
-          .then((Either<StorageFailure, String> imageUrl) => data.copyWith(
-              username: Username(data.username.getOrCrash().trim()),
-              userId: UserId(user.id.getOrCrash()),
-              imageUrl: ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
+          .upload( file: file,fileId: user.id.getOrCrash(),storageFolder:user.id.getOrCrash()).then(
+              (Either<StorageFailure, String> imageUrl) => data.copyWith(
+                  username: Username(data.username.getOrCrash().trim()),
+                  userId: UserId(user.id.getOrCrash()),
+                  imageUrl:
+                      ImageUrl(imageUrl.getOrElse(() => throw Exception()))));
 
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.userDocuments();
@@ -71,7 +72,6 @@ class UserDataRepository extends IUserRepository {
       }
     }
   }
-
 
   @override
   Future<Either<UserDataFailure, Unit>> checkAvailability(

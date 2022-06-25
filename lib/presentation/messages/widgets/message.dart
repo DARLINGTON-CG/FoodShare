@@ -5,7 +5,7 @@ import '../../../domain/utility/important_enums.dart';
 import 'constants.dart';
 import 'audio_message.dart';
 import 'text_message.dart';
-import 'video_message.dart';
+import 'image_message.dart';
 
 import 'chat_message.dart';
 
@@ -27,8 +27,8 @@ class DisplayMessage extends StatelessWidget {
           return TextMessage(message: message);
         case ChatMessageType.audio:
           return AudioMessage(message: message);
-        case ChatMessageType.video:
-          return const VideoMessage();
+        case ChatMessageType.image:
+          return ImageMessage(imageUrl: message.text,);
         default:
           return const SizedBox();
       }
