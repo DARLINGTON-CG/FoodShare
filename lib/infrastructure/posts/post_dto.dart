@@ -50,7 +50,6 @@ class PostDto with _$PostDto {
 
   Post toDomain() {
     return Post(
-        // id: UniqueId(),
         id: UniqueId.fromUniqueString(id),
         username: Username(username),
         postPrice: PostPrice(postPrice),
@@ -59,7 +58,6 @@ class PostDto with _$PostDto {
         pickupTime: PickupTime(pickupTime),
         quantity: PostQuantity(quantity),
         postUserId: PostUserId(postUserId),
-        
         title: PostTitle(title));
   }
 

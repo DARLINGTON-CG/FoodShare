@@ -20,6 +20,8 @@ ChatRoomDto _$ChatRoomDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ChatRoomDto {
+  String get ownerTime => throw _privateConstructorUsedError;
+  String get requesterTime => throw _privateConstructorUsedError;
   List<String> get chatIds => throw _privateConstructorUsedError;
   Map<String, dynamic> get owner => throw _privateConstructorUsedError;
   Map<String, dynamic> get requester => throw _privateConstructorUsedError;
@@ -38,7 +40,9 @@ abstract class $ChatRoomDtoCopyWith<$Res> {
           ChatRoomDto value, $Res Function(ChatRoomDto) then) =
       _$ChatRoomDtoCopyWithImpl<$Res>;
   $Res call(
-      {List<String> chatIds,
+      {String ownerTime,
+      String requesterTime,
+      List<String> chatIds,
       Map<String, dynamic> owner,
       Map<String, dynamic> requester,
       Map<String, dynamic> post,
@@ -55,6 +59,8 @@ class _$ChatRoomDtoCopyWithImpl<$Res> implements $ChatRoomDtoCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? ownerTime = freezed,
+    Object? requesterTime = freezed,
     Object? chatIds = freezed,
     Object? owner = freezed,
     Object? requester = freezed,
@@ -62,6 +68,14 @@ class _$ChatRoomDtoCopyWithImpl<$Res> implements $ChatRoomDtoCopyWith<$Res> {
     Object? messages = freezed,
   }) {
     return _then(_value.copyWith(
+      ownerTime: ownerTime == freezed
+          ? _value.ownerTime
+          : ownerTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterTime: requesterTime == freezed
+          ? _value.requesterTime
+          : requesterTime // ignore: cast_nullable_to_non_nullable
+              as String,
       chatIds: chatIds == freezed
           ? _value.chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
@@ -94,7 +108,9 @@ abstract class _$$_ChatRoomDtoCopyWith<$Res>
       __$$_ChatRoomDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<String> chatIds,
+      {String ownerTime,
+      String requesterTime,
+      List<String> chatIds,
       Map<String, dynamic> owner,
       Map<String, dynamic> requester,
       Map<String, dynamic> post,
@@ -113,6 +129,8 @@ class __$$_ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? ownerTime = freezed,
+    Object? requesterTime = freezed,
     Object? chatIds = freezed,
     Object? owner = freezed,
     Object? requester = freezed,
@@ -120,6 +138,14 @@ class __$$_ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
     Object? messages = freezed,
   }) {
     return _then(_$_ChatRoomDto(
+      ownerTime: ownerTime == freezed
+          ? _value.ownerTime
+          : ownerTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterTime: requesterTime == freezed
+          ? _value.requesterTime
+          : requesterTime // ignore: cast_nullable_to_non_nullable
+              as String,
       chatIds: chatIds == freezed
           ? _value._chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
@@ -148,7 +174,9 @@ class __$$_ChatRoomDtoCopyWithImpl<$Res> extends _$ChatRoomDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatRoomDto extends _ChatRoomDto {
   const _$_ChatRoomDto(
-      {required final List<String> chatIds,
+      {required this.ownerTime,
+      required this.requesterTime,
+      required final List<String> chatIds,
       required final Map<String, dynamic> owner,
       required final Map<String, dynamic> requester,
       required final Map<String, dynamic> post,
@@ -163,6 +191,10 @@ class _$_ChatRoomDto extends _ChatRoomDto {
   factory _$_ChatRoomDto.fromJson(Map<String, dynamic> json) =>
       _$$_ChatRoomDtoFromJson(json);
 
+  @override
+  final String ownerTime;
+  @override
+  final String requesterTime;
   final List<String> _chatIds;
   @override
   List<String> get chatIds {
@@ -200,7 +232,7 @@ class _$_ChatRoomDto extends _ChatRoomDto {
 
   @override
   String toString() {
-    return 'ChatRoomDto(chatIds: $chatIds, owner: $owner, requester: $requester, post: $post, messages: $messages)';
+    return 'ChatRoomDto(ownerTime: $ownerTime, requesterTime: $requesterTime, chatIds: $chatIds, owner: $owner, requester: $requester, post: $post, messages: $messages)';
   }
 
   @override
@@ -208,6 +240,9 @@ class _$_ChatRoomDto extends _ChatRoomDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatRoomDto &&
+            const DeepCollectionEquality().equals(other.ownerTime, ownerTime) &&
+            const DeepCollectionEquality()
+                .equals(other.requesterTime, requesterTime) &&
             const DeepCollectionEquality().equals(other._chatIds, _chatIds) &&
             const DeepCollectionEquality().equals(other._owner, _owner) &&
             const DeepCollectionEquality()
@@ -220,6 +255,8 @@ class _$_ChatRoomDto extends _ChatRoomDto {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(ownerTime),
+      const DeepCollectionEquality().hash(requesterTime),
       const DeepCollectionEquality().hash(_chatIds),
       const DeepCollectionEquality().hash(_owner),
       const DeepCollectionEquality().hash(_requester),
@@ -239,7 +276,9 @@ class _$_ChatRoomDto extends _ChatRoomDto {
 
 abstract class _ChatRoomDto extends ChatRoomDto {
   const factory _ChatRoomDto(
-      {required final List<String> chatIds,
+      {required final String ownerTime,
+      required final String requesterTime,
+      required final List<String> chatIds,
       required final Map<String, dynamic> owner,
       required final Map<String, dynamic> requester,
       required final Map<String, dynamic> post,
@@ -249,6 +288,10 @@ abstract class _ChatRoomDto extends ChatRoomDto {
   factory _ChatRoomDto.fromJson(Map<String, dynamic> json) =
       _$_ChatRoomDto.fromJson;
 
+  @override
+  String get ownerTime => throw _privateConstructorUsedError;
+  @override
+  String get requesterTime => throw _privateConstructorUsedError;
   @override
   List<String> get chatIds => throw _privateConstructorUsedError;
   @override
@@ -274,6 +317,7 @@ mixin _$MessagesDto {
   String get id => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String get messageType => throw _privateConstructorUsedError;
+  String get messageTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -286,7 +330,8 @@ abstract class $MessagesDtoCopyWith<$Res> {
   factory $MessagesDtoCopyWith(
           MessagesDto value, $Res Function(MessagesDto) then) =
       _$MessagesDtoCopyWithImpl<$Res>;
-  $Res call({String id, String message, String messageType});
+  $Res call(
+      {String id, String message, String messageType, String messageTime});
 }
 
 /// @nodoc
@@ -302,6 +347,7 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
     Object? id = freezed,
     Object? message = freezed,
     Object? messageType = freezed,
+    Object? messageTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -316,6 +362,10 @@ class _$MessagesDtoCopyWithImpl<$Res> implements $MessagesDtoCopyWith<$Res> {
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
               as String,
+      messageTime: messageTime == freezed
+          ? _value.messageTime
+          : messageTime // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -327,7 +377,8 @@ abstract class _$$_MessagesDtoCopyWith<$Res>
           _$_MessagesDto value, $Res Function(_$_MessagesDto) then) =
       __$$_MessagesDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String message, String messageType});
+  $Res call(
+      {String id, String message, String messageType, String messageTime});
 }
 
 /// @nodoc
@@ -345,6 +396,7 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
     Object? id = freezed,
     Object? message = freezed,
     Object? messageType = freezed,
+    Object? messageTime = freezed,
   }) {
     return _then(_$_MessagesDto(
       id: id == freezed
@@ -359,6 +411,10 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
               as String,
+      messageTime: messageTime == freezed
+          ? _value.messageTime
+          : messageTime // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -367,7 +423,10 @@ class __$$_MessagesDtoCopyWithImpl<$Res> extends _$MessagesDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MessagesDto extends _MessagesDto {
   const _$_MessagesDto(
-      {required this.id, required this.message, required this.messageType})
+      {required this.id,
+      required this.message,
+      required this.messageType,
+      required this.messageTime})
       : super._();
 
   factory _$_MessagesDto.fromJson(Map<String, dynamic> json) =>
@@ -379,10 +438,12 @@ class _$_MessagesDto extends _MessagesDto {
   final String message;
   @override
   final String messageType;
+  @override
+  final String messageTime;
 
   @override
   String toString() {
-    return 'MessagesDto(id: $id, message: $message, messageType: $messageType)';
+    return 'MessagesDto(id: $id, message: $message, messageType: $messageType, messageTime: $messageTime)';
   }
 
   @override
@@ -393,7 +454,9 @@ class _$_MessagesDto extends _MessagesDto {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality()
-                .equals(other.messageType, messageType));
+                .equals(other.messageType, messageType) &&
+            const DeepCollectionEquality()
+                .equals(other.messageTime, messageTime));
   }
 
   @JsonKey(ignore: true)
@@ -402,7 +465,8 @@ class _$_MessagesDto extends _MessagesDto {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(messageType));
+      const DeepCollectionEquality().hash(messageType),
+      const DeepCollectionEquality().hash(messageTime));
 
   @JsonKey(ignore: true)
   @override
@@ -419,7 +483,8 @@ abstract class _MessagesDto extends MessagesDto {
   const factory _MessagesDto(
       {required final String id,
       required final String message,
-      required final String messageType}) = _$_MessagesDto;
+      required final String messageType,
+      required final String messageTime}) = _$_MessagesDto;
   const _MessagesDto._() : super._();
 
   factory _MessagesDto.fromJson(Map<String, dynamic> json) =
@@ -431,6 +496,8 @@ abstract class _MessagesDto extends MessagesDto {
   String get message => throw _privateConstructorUsedError;
   @override
   String get messageType => throw _privateConstructorUsedError;
+  @override
+  String get messageTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MessagesDtoCopyWith<_$_MessagesDto> get copyWith =>

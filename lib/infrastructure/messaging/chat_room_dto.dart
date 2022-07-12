@@ -18,7 +18,10 @@ class ChatRoomDto with _$ChatRoomDto {
   const ChatRoomDto._();
 
   const factory ChatRoomDto(
-      {required List<String> chatIds,
+      {
+        required String ownerTime,
+        required String requesterTime,
+      required List<String> chatIds,
       required Map<String, dynamic> owner,
       required Map<String, dynamic> requester,
       required Map<String, dynamic> post,
@@ -29,6 +32,8 @@ class ChatRoomDto with _$ChatRoomDto {
 
   factory ChatRoomDto.fromDomain(ChatRoom chatRoom) {
     return ChatRoomDto(
+      requesterTime: chatRoom.requesterTime,
+      ownerTime: chatRoom.ownerTime,
       chatIds: chatRoom.chatIds,
       owner: UserDataDto.fromDomain(chatRoom.owner).toJson(),
       requester: UserDataDto.fromDomain(chatRoom.requester).toJson(),
@@ -43,6 +48,8 @@ class ChatRoomDto with _$ChatRoomDto {
   ChatRoom toDomain() {
     return ChatRoom(
       chatIds: chatIds,
+      ownerTime: ownerTime,
+      requesterTime: requesterTime,
       post: PostDto.fromMap(post).toDomain(),
       owner: UserDataDto.fromMap(owner).toDomain(),
       requester: UserDataDto.fromMap(requester).toDomain(),
@@ -67,12 +74,14 @@ abstract class MessagesDto implements _$MessagesDto {
     required String id,
     required String message,
     required String messageType,
+    required String messageTime,
   }) = _MessagesDto;
 
   factory MessagesDto.fromDomain(Message message) {
     return MessagesDto(
       id: message.id.getOrCrash(),
       message: message.message.getOrCrash(),
+      messageTime: message.messageTime.getOrCrash(),
       messageType: message.messageType
     );
   }
@@ -81,7 +90,8 @@ abstract class MessagesDto implements _$MessagesDto {
     return Message(
       id: UniqueId.fromUniqueString(id),
       message: MessageBody(message),
-      messageType: messageType
+      messageType: messageType,
+      messageTime: MessageTime(messageTime)
     );
   }
 

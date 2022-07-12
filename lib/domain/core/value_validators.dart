@@ -39,9 +39,11 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
     return right(input);
   }
 }
-
+//500
+//200
 Either<ValueFailure<String>, String> validateInputAmount(String input) {
-  const String currencyRegex = r"""^(\d+(\.\d{0,2})?|\.?\d{1,2})$""";
+  //r"""^(\d+(\.\d{0,2})?|\.?\d{1,2})$""";
+  const String currencyRegex = r"""^([0-9]|[1-9][0-9]|[1-9][0-9][0-9])""";
   if (RegExp(currencyRegex).hasMatch(input)) {
     return right(input);
   } else {
@@ -50,7 +52,11 @@ Either<ValueFailure<String>, String> validateInputAmount(String input) {
 }
 
 Either<ValueFailure<String>, String> validateMaxAmount(String input) {
-  bool exceedsMaxAmount = double.tryParse(input)! > 500;
+  if(int.tryParse(input) == null)
+  {
+     return left(ValueFailure<String>.invalidAmount(failedValue: input));
+  }
+  bool exceedsMaxAmount = int.tryParse(input)! > 500;
   if (!exceedsMaxAmount) {
     return right(input);
   } else {

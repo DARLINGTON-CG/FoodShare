@@ -13,13 +13,15 @@ class ChatListItem extends StatelessWidget {
   final String lastMessage;
   final String imageUrl;
   final ChatRoom chatRoom;
-  const ChatListItem(
-      {Key? key,
-      required this.title,
-      required this.lastMessage,
-      required this.imageUrl,
-      required this.chatRoom,})
-      : super(key: key);
+  final bool newMessage;
+  const ChatListItem({
+    Key? key,
+    required this.title,
+    required this.newMessage,
+    required this.lastMessage,
+    required this.imageUrl,
+    required this.chatRoom,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +41,12 @@ class ChatListItem extends StatelessWidget {
           )),
       title: Text(
         title,
-        style: GoogleFonts.lato(
-           fontSize: 15, fontWeight: FontWeight.bold),
+        style: GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
-        lastMessage.length > 25 ? "${lastMessage.substring(0,25)}...":lastMessage ,
+        lastMessage.length > 25
+            ? "${lastMessage.substring(0, 25)}..."
+            : lastMessage,
         style: GoogleFonts.alegreya(color: Colors.grey, fontSize: 14),
       ),
       onTap: () {
@@ -57,9 +60,10 @@ class ChatListItem extends StatelessWidget {
               )),
         ));
       },
-      trailing: const CircleAvatar(
-        radius: 5 ,
-        backgroundColor:Colors.grey, //Color(0xFF3212F1),
+      trailing: CircleAvatar(
+        radius: 5,
+        backgroundColor:
+            newMessage ? const Color(0xFF3212F1) : Colors.grey, //Color(0xFF3212F1),
       ),
     );
   }

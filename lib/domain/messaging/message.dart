@@ -15,12 +15,15 @@ abstract class Message implements _$Message {
     required UniqueId id,
     required MessageBody message,
     required String messageType,
+    required MessageTime messageTime,
+    
   }) = _Message;
 
   factory Message.empty() => Message(
       id: UniqueId(),
       message: MessageBody(''),
-      messageType: 'Text'
+      messageType: 'Text',
+       messageTime: MessageTime('')
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

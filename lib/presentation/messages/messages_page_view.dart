@@ -65,9 +65,33 @@ class MessagesPageView extends StatelessWidget {
                                           .getOrCrash()[indexOfLastMessage]
                                           .message
                                           .getOrCrash();
+                                        String lastMessageTime = chat.messages
+                                              .getOrCrash()[indexOfLastMessage]
+                                              .messageTime
+                                              .getOrCrash();
 
+                                          
+
+                                          String lastMessageId = chat.messages
+                                              .getOrCrash()[indexOfLastMessage]
+                                              .id
+                                              .getOrCrash();
+                                          String currentUserTime =
+                                              getUserId() !=
+                                                      chat.owner.userId
+                                                          .getOrCrash()
+                                                  ? chat.ownerTime
+                                                  : chat.requesterTime;
+
+                                          bool newMessage = (getUserId() !=
+                                                  lastMessageId) &&
+                                              DateTime.parse(currentUserTime)
+                                                      .compareTo(DateTime.parse(
+                                                          lastMessageTime)) <
+                                                  0;
                                       return ChatListItem(
                                           chatRoom: chat,
+                                          newMessage: newMessage,
                                           title: getUserId() !=
                                                   chat.requester.userId
                                                       .getOrCrash()

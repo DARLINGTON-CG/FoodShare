@@ -11,6 +11,7 @@ import '../anim/page/slide_in.dart';
 import '../auth/sign_in_page.dart';
 import '../auth/widgets/custom_error_bar.dart';
 import 'information_page.dart';
+import 'payment_screen.dart';
 import 'widget/custom_list_tile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -77,6 +78,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: MediaQuery.of(context).size.width,
                 height: 55,
                 child: ListTile(
+
+                  onTap: () => Navigator.of(context).push(SlideIn(page:const PaymentScreen() )),
                   title: Text(
                     "Payment Configuration",
                     style: GoogleFonts.lato(

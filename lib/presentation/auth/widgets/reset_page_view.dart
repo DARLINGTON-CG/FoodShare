@@ -23,8 +23,8 @@ class ResetPageView extends StatelessWidget {
         listener: (BuildContext context, SignInFormState state) {
       state.authFailureOrSuccessOption.fold(
           () {},
-          (Either<AuthFailure, Unit> either) => either.fold(
-                  (AuthFailure failure) {
+          (Either<AuthFailure, Unit> either) =>
+              either.fold((AuthFailure failure) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     behavior: SnackBarBehavior.floating,
                     content: Text(failure.map(
@@ -34,9 +34,11 @@ class ResetPageView extends StatelessWidget {
                         invalidEmailProvided: (_) => "Invalid email provided",
                         invalidEmailAndPasswordCombination: (_) =>
                             "Invalid email and password combination"))));
-              },
-                  (Unit success) => showSuccessDialogBox(context, "Reset Email",
-                      "A reset email link has been sent to your email address.")));
+              }, (Unit success) {
+                showSuccessDialogBox(context, "Reset Email",
+                    "A reset email link has been sent to your email address.");
+               
+              }));
     }, builder: (BuildContext context, SignInFormState state) {
       return Column(
           mainAxisAlignment: MainAxisAlignment.start,

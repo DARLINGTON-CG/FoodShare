@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatRoom {
+  String get ownerTime => throw _privateConstructorUsedError;
+  String get requesterTime => throw _privateConstructorUsedError;
   List<String> get chatIds => throw _privateConstructorUsedError;
   Post get post => throw _privateConstructorUsedError;
   UserData get owner => throw _privateConstructorUsedError;
@@ -32,7 +34,9 @@ abstract class $ChatRoomCopyWith<$Res> {
   factory $ChatRoomCopyWith(ChatRoom value, $Res Function(ChatRoom) then) =
       _$ChatRoomCopyWithImpl<$Res>;
   $Res call(
-      {List<String> chatIds,
+      {String ownerTime,
+      String requesterTime,
+      List<String> chatIds,
       Post post,
       UserData owner,
       UserData requester,
@@ -53,6 +57,8 @@ class _$ChatRoomCopyWithImpl<$Res> implements $ChatRoomCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? ownerTime = freezed,
+    Object? requesterTime = freezed,
     Object? chatIds = freezed,
     Object? post = freezed,
     Object? owner = freezed,
@@ -60,6 +66,14 @@ class _$ChatRoomCopyWithImpl<$Res> implements $ChatRoomCopyWith<$Res> {
     Object? messages = freezed,
   }) {
     return _then(_value.copyWith(
+      ownerTime: ownerTime == freezed
+          ? _value.ownerTime
+          : ownerTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterTime: requesterTime == freezed
+          ? _value.requesterTime
+          : requesterTime // ignore: cast_nullable_to_non_nullable
+              as String,
       chatIds: chatIds == freezed
           ? _value.chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
@@ -112,7 +126,9 @@ abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
       __$$_ChatRoomCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<String> chatIds,
+      {String ownerTime,
+      String requesterTime,
+      List<String> chatIds,
       Post post,
       UserData owner,
       UserData requester,
@@ -138,6 +154,8 @@ class __$$_ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? ownerTime = freezed,
+    Object? requesterTime = freezed,
     Object? chatIds = freezed,
     Object? post = freezed,
     Object? owner = freezed,
@@ -145,6 +163,14 @@ class __$$_ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
     Object? messages = freezed,
   }) {
     return _then(_$_ChatRoom(
+      ownerTime: ownerTime == freezed
+          ? _value.ownerTime
+          : ownerTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterTime: requesterTime == freezed
+          ? _value.requesterTime
+          : requesterTime // ignore: cast_nullable_to_non_nullable
+              as String,
       chatIds: chatIds == freezed
           ? _value._chatIds
           : chatIds // ignore: cast_nullable_to_non_nullable
@@ -173,7 +199,9 @@ class __$$_ChatRoomCopyWithImpl<$Res> extends _$ChatRoomCopyWithImpl<$Res>
 
 class _$_ChatRoom extends _ChatRoom {
   const _$_ChatRoom(
-      {required final List<String> chatIds,
+      {required this.ownerTime,
+      required this.requesterTime,
+      required final List<String> chatIds,
       required this.post,
       required this.owner,
       required this.requester,
@@ -181,6 +209,10 @@ class _$_ChatRoom extends _ChatRoom {
       : _chatIds = chatIds,
         super._();
 
+  @override
+  final String ownerTime;
+  @override
+  final String requesterTime;
   final List<String> _chatIds;
   @override
   List<String> get chatIds {
@@ -199,7 +231,7 @@ class _$_ChatRoom extends _ChatRoom {
 
   @override
   String toString() {
-    return 'ChatRoom(chatIds: $chatIds, post: $post, owner: $owner, requester: $requester, messages: $messages)';
+    return 'ChatRoom(ownerTime: $ownerTime, requesterTime: $requesterTime, chatIds: $chatIds, post: $post, owner: $owner, requester: $requester, messages: $messages)';
   }
 
   @override
@@ -207,6 +239,9 @@ class _$_ChatRoom extends _ChatRoom {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatRoom &&
+            const DeepCollectionEquality().equals(other.ownerTime, ownerTime) &&
+            const DeepCollectionEquality()
+                .equals(other.requesterTime, requesterTime) &&
             const DeepCollectionEquality().equals(other._chatIds, _chatIds) &&
             const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality().equals(other.owner, owner) &&
@@ -217,6 +252,8 @@ class _$_ChatRoom extends _ChatRoom {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(ownerTime),
+      const DeepCollectionEquality().hash(requesterTime),
       const DeepCollectionEquality().hash(_chatIds),
       const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(owner),
@@ -231,13 +268,19 @@ class _$_ChatRoom extends _ChatRoom {
 
 abstract class _ChatRoom extends ChatRoom {
   const factory _ChatRoom(
-      {required final List<String> chatIds,
+      {required final String ownerTime,
+      required final String requesterTime,
+      required final List<String> chatIds,
       required final Post post,
       required final UserData owner,
       required final UserData requester,
       required final MessageList<Message> messages}) = _$_ChatRoom;
   const _ChatRoom._() : super._();
 
+  @override
+  String get ownerTime => throw _privateConstructorUsedError;
+  @override
+  String get requesterTime => throw _privateConstructorUsedError;
   @override
   List<String> get chatIds => throw _privateConstructorUsedError;
   @override

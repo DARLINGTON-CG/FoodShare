@@ -71,7 +71,7 @@ class PostUserId extends ValueObject<String> {
 class PostPrice extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
-  static const double maxAmount = 500;
+  static const int maxAmount = 500;
 
   const PostPrice._(this.value);
 

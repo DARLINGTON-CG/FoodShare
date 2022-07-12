@@ -63,6 +63,7 @@ class PaymentBloc extends Bloc<PaymentEvents, PaymentStates> {
                 event.data,
                 Message(
                   id: UniqueId.fromUniqueString(getUserId()),
+                  messageTime: MessageTime(DateTime.now().toString()),
                   messageType: "Text",
                   message: MessageBody(
                       "Transaction complete with operation id${retValue.toJson()["status"]["operation_id"]}"),

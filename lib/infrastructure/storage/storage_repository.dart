@@ -5,12 +5,8 @@ import 'package:firebase_core/firebase_core.dart' as firebase_core;
 
 import 'dart:io';
 
-import '../../domain/auth/i_auth_facade.dart';
-import '../../domain/auth/user.dart';
-import '../../domain/core/errors.dart';
 import '../../domain/storage/i_storage_repository.dart';
 import '../../domain/storage/storage_failure.dart';
-import '../../injector.dart';
 
 @LazySingleton(as: IStorageRepository)
 class StorageRepository implements IStorageRepository {

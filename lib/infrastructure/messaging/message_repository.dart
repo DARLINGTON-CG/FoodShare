@@ -64,7 +64,7 @@ class MessageRepository implements IMessageRepository {
       {required ChatRoom chat,
       required File? file,
       required bool isFile}) async {
-    print("isUpdate");
+    
     try {
       final CollectionReference<Object?> userDoc =
           await _firebaseFirestore.chatDocuments();
@@ -145,13 +145,12 @@ class MessageRepository implements IMessageRepository {
   Future<Either<MessageFailure, Unit>> sendUpdate(
       ChatRoom chat, Message message, File? file) async {
     try {
-      final CollectionReference<Object?> userDoc =
+      final CollectionReference<Object?> chatDoc =
           await _firebaseFirestore.chatDocuments();
 
   
 
       if (message.messageType == "File") {
-        print("File business started");
         final Message messageForUpload = await getIt<IStorageRepository>()
             .upload(
                 file: file!,
@@ -162,7 +161,7 @@ class MessageRepository implements IMessageRepository {
                 message:
                     MessageBody(imageUrl.getOrElse(() => throw Exception))));
 
-        await userDoc
+        await chatDoc
             .doc(chat.post.id.getOrCrash() +
                 chat.requester.username.getOrCrash())
             // ignore: always_specify_types
@@ -173,9 +172,8 @@ class MessageRepository implements IMessageRepository {
               [MessagesDto.fromDomain(messageForUpload).toJson()])
         });
 
-        print("File business completed");
       } else {
-        await userDoc
+        await chatDoc
             .doc(chat.post.id.getOrCrash() +
                 chat.requester.username.getOrCrash())
             // ignore: always_specify_types
@@ -187,11 +185,8 @@ class MessageRepository implements IMessageRepository {
         });
       }
 
-      print("It was a success");
       return right(unit);
     } catch (e) {
-      print("It was a failure");
-      print(e.toString());
       if (e.toString().toLowerCase().contains("permission-denied")) {
         return left(const MessageFailure.insufficientPermissions());
       } else {
@@ -199,4 +194,25 @@ class MessageRepository implements IMessageRepository {
       }
     }
   }
+
+   @override
+  Future<Either<MessageFailure, Unit>> updateTime(
+      {required String chatDocId,
+      required String timeType,
+      required String time}) async {
+    try {
+      final CollectionReference<Object?> userDoc =
+          await _firebaseFirestore.chatDocuments();
+      await userDoc.doc(chatDocId).update(<String,dynamic>{timeType: time});
+
+      return right(unit);
+    } catch (e) {
+      if (e.toString().toLowerCase().contains("permission-denied")) {
+        return left(const MessageFailure.insufficientPermissions());
+      } else {
+        return left(const MessageFailure.unexpected());
+      }
+    }
+  }
+
 }

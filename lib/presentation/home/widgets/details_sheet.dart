@@ -54,18 +54,16 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                   ),
                 ],
               ),
-               Divider(
-                color: Colors.grey.withOpacity(0.3)
-              ),
+              Divider(color: Colors.grey.withOpacity(0.3)),
               const SizedBox(
                 height: 8,
               ),
               Text(
                 post.description.getOrCrash(),
-                style:Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        ?.copyWith(fontSize: 13),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    ?.copyWith(fontSize: 13),
               ),
               const SizedBox(
                 height: 10,
@@ -83,7 +81,7 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                   const SizedBox(
                     width: 8,
                   ),
-                Icon(
+                  Icon(
                     Icons.timer_outlined,
                     size: 14,
                     color: Theme.of(context).iconTheme.color,
@@ -92,10 +90,8 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                     width: 4,
                   ),
                   Text(post.pickupTime.getOrCrash(),
-                      style:Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        ?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                          fontSize: 12, fontWeight: FontWeight.bold)),
                   const SizedBox(
                     width: 8,
                   ),
@@ -122,6 +118,8 @@ Future<void> showDetailSheet(BuildContext context, Post post,
                       return;
                     } else {
                       ChatRoom chatRoom = ChatRoom(
+                          ownerTime: DateTime.now().toString(),
+                          requesterTime: DateTime.now().toString(),
                           chatIds: [
                             post.postUserId.getOrCrash(),
                             user.id.getOrCrash(),

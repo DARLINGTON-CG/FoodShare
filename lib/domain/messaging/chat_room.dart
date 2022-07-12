@@ -14,6 +14,8 @@ part 'chat_room.freezed.dart';
 abstract class ChatRoom implements _$ChatRoom {
   const ChatRoom._();
   const factory ChatRoom({
+    required String ownerTime,
+    required String requesterTime,
     required List<String> chatIds,
     required Post post,
      required UserData owner,
@@ -23,6 +25,8 @@ abstract class ChatRoom implements _$ChatRoom {
 
 
    factory ChatRoom.empty() => ChatRoom(
+     ownerTime: DateTime.now().toString(),
+     requesterTime: DateTime.now().toString(),
      chatIds: List<String>.empty(),
        messages: MessageList<Message>(emptyList()),
        post: Post.empty(),

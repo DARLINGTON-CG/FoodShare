@@ -8,6 +8,8 @@ part of 'chat_room_dto.dart';
 
 _$_ChatRoomDto _$$_ChatRoomDtoFromJson(Map<String, dynamic> json) =>
     _$_ChatRoomDto(
+      ownerTime: json['ownerTime'] as String,
+      requesterTime: json['requesterTime'] as String,
       chatIds:
           (json['chatIds'] as List<dynamic>).map((e) => e as String).toList(),
       owner: json['owner'] as Map<String, dynamic>,
@@ -20,6 +22,8 @@ _$_ChatRoomDto _$$_ChatRoomDtoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ChatRoomDtoToJson(_$_ChatRoomDto instance) =>
     <String, dynamic>{
+      'ownerTime': instance.ownerTime,
+      'requesterTime': instance.requesterTime,
       'chatIds': instance.chatIds,
       'owner': instance.owner,
       'requester': instance.requester,
@@ -32,6 +36,7 @@ _$_MessagesDto _$$_MessagesDtoFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       message: json['message'] as String,
       messageType: json['messageType'] as String,
+      messageTime: json['messageTime'] as String,
     );
 
 Map<String, dynamic> _$$_MessagesDtoToJson(_$_MessagesDto instance) =>
@@ -39,4 +44,5 @@ Map<String, dynamic> _$$_MessagesDtoToJson(_$_MessagesDto instance) =>
       'id': instance.id,
       'message': instance.message,
       'messageType': instance.messageType,
+      'messageTime': instance.messageTime,
     };

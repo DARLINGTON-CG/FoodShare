@@ -17,6 +17,7 @@ import '../../../domain/auth/user.dart';
 import '../../../domain/core/errors.dart';
 import '../../../domain/core/value_objects.dart';
 import '../../../domain/messaging/chat_room.dart';
+import '../../../domain/messaging/i_message_repository.dart';
 import '../../../domain/messaging/value_objects.dart';
 import '../../../domain/utility/important_enums.dart';
 import '../../../domain/utility/useful_functions.dart';
@@ -85,7 +86,38 @@ class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
                               (chatRoomElem.post.id.getOrCrash() +
                                   chatRoomElem.requester.username
                                       .getOrCrash()));
+                             String lastMessageTime = elm.messages
+                            .getOrCrash()[elm.messages.length - 1]
+                            .messageTime
+                            .getOrCrash();
 
+                        String lastMessageId = elm.messages
+                            .getOrCrash()[elm.messages.length - 1]
+                            .id
+                            .getOrCrash();
+                        String currentUserTime =
+                            getUserId() != elm.owner.userId.getOrCrash()
+                                ? elm.ownerTime
+                                : elm.requesterTime;
+
+                        bool update = (getUserId() != lastMessageId) &&
+                            DateTime.parse(currentUserTime).compareTo(
+                                    DateTime.parse(lastMessageTime)) <
+                                0;
+
+                        if (update) {
+                          final String timeType = getUserId() !=
+                                  elm.owner.userId.getOrCrash()
+                              ? "ownerTime"
+                              : "requesterTime";
+                          final messageRepository = getIt<IMessageRepository>();
+                          messageRepository.updateTime(
+                              chatDocId: widget.chatRoomId,
+                              timeType: timeType,
+                              time: DateTime.now().toString());
+                        }
+                        
+                       
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: kDefaultPadding,
@@ -116,6 +148,34 @@ class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
                                       elm.requester.userId.getOrCrash()
                                   ? elm.requester.imageUrl.getOrCrash()
                                   : elm.owner.imageUrl.getOrCrash();
+
+                              
+                              
+                                    String messageTime = elm.messages
+                                        .getOrCrash()
+                                        .get(totalSize - index)
+                                        .messageTime
+                                        .getOrCrash();
+
+                                    String messageId = elm.messages
+                                        .getOrCrash()
+                                        .get(totalSize - index)
+                                        .id
+                                        .getOrCrash();
+
+                                    String otherUserTime = getUserId() !=
+                                            elm.owner.userId.getOrCrash()
+                                        ? elm.ownerTime
+                                        : elm.requesterTime;
+
+                                    bool viewed = (getUserId() == messageId) &&
+                                        DateTime.parse(otherUserTime).compareTo(
+                                                DateTime.parse(messageTime)) >
+                                            0;
+
+                            
+                                
+                                
                               return Padding(
                                 padding: uploadedImage == null &&
                                         (totalSize - index + 1) ==
@@ -129,7 +189,7 @@ class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
                                       messageType: messageType == "Text"
                                           ? ChatMessageType.text
                                           : ChatMessageType.image,
-                                      messageStatus: MessageStatus.viewed,
+                                      messageStatus:viewed ? MessageStatus.viewed : MessageStatus.notViewed,
                                       isSender: getUserId() == id.getOrCrash(),
                                     )),
                               );
@@ -175,7 +235,7 @@ class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
                               horizontal: 20 * 0.75,
                             ),
                             child: Column(
-                              children: [
+                              children: <Widget> [
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[

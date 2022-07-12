@@ -64,6 +64,7 @@ class CreateMessagesBloc
 
     converted.add(Message(
       id: user.id,
+      messageTime: MessageTime(DateTime.now().toString()),
       messageType: event.isFile ? 'File' : 'Text',
       message:event.isFile ?  MessageBody("File"):MessageBody(state.currentMessage),
     ));
@@ -82,6 +83,7 @@ class CreateMessagesBloc
                   state.data,
                   Message(
                     id: user.id,
+                    messageTime: MessageTime(DateTime.now().toString()),
                     messageType: event.isFile ? "File" : "Text",
                     message: MessageBody(state.currentMessage),
                   ),

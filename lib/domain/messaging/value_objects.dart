@@ -23,6 +23,23 @@ class MessageBody extends ValueObject<String> {
 }
 
 
+
+class MessageTime extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const int maxLength = 500;
+
+  const MessageTime._(this.value);
+
+  factory MessageTime(String input) {
+    return MessageTime._(
+        validateMaxString(input, maxLength).flatMap(validateStringNotEmpty));
+  }
+}
+
+
+
 class MessageTimeStamp extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
